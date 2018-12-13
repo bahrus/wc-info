@@ -77,10 +77,13 @@ export class WCInfoBase extends XtallatX(HTMLElement){
         if(this._disabled || !this._c || this._href === null) return;
         fetch(this._href).then(resp =>{
             resp.json().then(info =>{
-                const wcInfo = info as IWCSuiteInfo;
-                this.innerHTML = this.genWCSuite(wcInfo);
+                this.render(info as IWCSuiteInfo)
             })
         })
+    }
+
+    render(wcInfo: IWCSuiteInfo){
+        this.innerHTML = this.genWCSuite(wcInfo);
     }
 } 
 

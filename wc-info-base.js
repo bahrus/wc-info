@@ -62,10 +62,12 @@ export class WCInfoBase extends XtallatX(HTMLElement) {
             return;
         fetch(this._href).then(resp => {
             resp.json().then(info => {
-                const wcInfo = info;
-                this.innerHTML = this.genWCSuite(wcInfo);
+                this.render(info);
             });
         });
+    }
+    render(wcInfo) {
+        this.innerHTML = this.genWCSuite(wcInfo);
     }
 }
 define(WCInfoBase);
