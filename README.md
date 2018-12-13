@@ -4,7 +4,7 @@
 
 File Sizes:
 
-Base (style-less):  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/wc-info@0.0.7/dist/wc-base-info.iife.min.js?compression=gzip">
+Base (style-less):  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/wc-info@0.0.8/dist/wc-info-base.iife.min.js?compression=gzip">
 
 # wc-info
 

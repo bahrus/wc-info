@@ -25,6 +25,7 @@ export class WCInfoBase extends XtallatX(HTMLElement) {
         this.attr('href', nv);
     }
     connectedCallback() {
+        this._upgradeProperties(['href']);
         this._c = true;
         this.onPropsChange();
     }
