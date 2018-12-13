@@ -1,0 +1,19 @@
+{
+  "name": "wc-info",
+  "version": "0.0.0",
+  "description": "TBD",
+  "main": "wc-info.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahrus/wc-info.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahrus/wc-info/issues"
+  },
+  "homepage": "https://github.com/bahrus/wc-info#readme"
+}
