@@ -8,7 +8,7 @@
                     "label": "href",
                     "description": "Url where web component information is contained."
                 },{
-                    "label": "package",
+                    "label": "package-name",
                     "description": "Name of Package."
                 }
             ]
