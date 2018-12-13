@@ -17,7 +17,7 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
 <custom-element-demo>
 <template>
     <div>
-        <wc-info href="https://unpkg.com/wc-info@0.0.9/web-components.json"></wc-info>
+        <wc-info package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.9/web-components.json"></wc-info>
         <script type="module" src="https://unpkg.com/wc-info@0.0.9/wc-info.js?module"></script>
     </div>
 </template>
