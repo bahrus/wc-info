@@ -2,6 +2,10 @@
 
 <a href="https://nodei.co/npm/wc-info/"><img src="https://nodei.co/npm/wc-info.png"></a>
 
+File Sizes:
+
+Base (style-less):  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/wc-info@0.0.7/dist/wc-base-info.iife.min.js?compression=gzip">
+
 # wc-info
 
 UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support)
@@ -61,6 +65,16 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
 </custom-element-demo>
 ```
 -->
+
+
+## Viewing Your Element (locally)
+
+```
+$ polymer serve
+```
+
+[polymer serve](https://www.npmjs.com/package/polymer-cli) required (for now) due to use of bare import specifiers.
+
 
 
 

@@ -10,6 +10,14 @@
   "dependencies": {
     "xtal-latx": "0.0.85"
   },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "@types/node": "^10.9.1",
+    "@types/tape": "4.2.32",
+    "jiife": "0.0.10",
+    "tape": "^4.9.1",
+    "xtal-test": "0.0.10"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bahrus/wc-info.git"
