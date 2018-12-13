@@ -35,7 +35,7 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
         }
         </style>
         <wc-info-base href="https://unpkg.com/wc-info@0.0.1/web-components.json"></wc-info-base>
-        <script type="module" src="../wc-info-base.js"></script>
+        <script type="module" src="https://unpkg.com/wc-info@0.0.3/wc-info-base.js?module"></script>
     </div>
   </template>
 </custom-element-demo>
