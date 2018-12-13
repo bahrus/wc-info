@@ -2,7 +2,7 @@
     "tags": [
         {
             "label": "wc-info-base",
-            "description": "Display Web Component Information based on web-components.json file.",
+            "description": "Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
             "attributes": [
                 {
                     "label": "href",
