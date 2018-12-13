@@ -6,7 +6,7 @@
             "attributes": [
                 {
                     "label": "href",
-                    "description": "Url where Web Component Information is contained."
+                    "description": "Url where web component information is contained."
                 }
             ]
         },
