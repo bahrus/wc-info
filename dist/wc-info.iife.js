@@ -107,10 +107,34 @@ function XtallatX(superClass) {
 }
 const template = document.createElement('template');
 template.innerHTML = /* html */ `
-<div id="main"></div>
+<main ></main>
 <style>
 :host{
-    display: block
+    display: block;
+}
+main{
+    border-color:grey;
+    border-width:1px;
+    border-style:solid;
+    padding:8px;
+}
+header{
+    
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+}
+mark{
+    flex:0 1 auto;
+    position:absolute;
+    left:50%;
+    transform: translateX(-50%);
+}
+nav{
+    margin-left:auto;
+}
+a{
+    text-decoration:none;
 }
 .card {
         padding: 16px;
@@ -145,7 +169,7 @@ class WCInfo extends WCInfoBase {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
     render(wcInfo) {
-        this.shadowRoot.querySelector('#main').innerHTML = this.genWCSuite(wcInfo);
+        this.shadowRoot.querySelector('main').innerHTML = this.genWCSuite(wcInfo);
     }
 }
 define(WCInfo);

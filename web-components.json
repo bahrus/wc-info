@@ -7,6 +7,9 @@
                 {
                     "label": "href",
                     "description": "Url where web component information is contained."
+                },{
+                    "label": "package",
+                    "description": "Name of Package."
                 }
             ]
         },
@@ -17,6 +20,9 @@
                 {
                     "label": "href",
                     "description": "Url where Web Component Information is contained."
+                },{
+                    "label": "package-name",
+                    "description": "Name of Package."
                 }
             ]
         }

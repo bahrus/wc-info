@@ -15,12 +15,13 @@ export interface IWCInfo extends IInfo{
 export interface IWCSuiteInfo{
     tags: IWCInfo[];
 }
+const package_name = 'package-name';
 
 export class WCInfoBase extends XtallatX(HTMLElement){
     static get is(){return 'wc-info-base';}
 
     static get observedAttributes(){
-        return super.observedAttributes.concat(['href']);
+        return super.observedAttributes.concat(['href', package_name]);
     }
 
     attributeChangedCallback(n: string, ov: string, nv: string){
@@ -28,6 +29,10 @@ export class WCInfoBase extends XtallatX(HTMLElement){
         switch(n){
             case 'href':
                 this._href = nv;
+                break;
+            case package_name:
+                this._packageName = nv;
+                break;
         }
         this.onPropsChange();
     }
@@ -38,6 +43,14 @@ export class WCInfoBase extends XtallatX(HTMLElement){
     }
     set href(nv){
         this.attr('href', nv!);
+    }
+
+    _packageName: string | null = null;
+    get packageName(){
+        return this._packageName;
+    }
+    set packageName(nv){
+        this.attr(package_name, nv!)
     }
     _c = false;
     connectedCallback(){
@@ -53,7 +66,7 @@ export class WCInfoBase extends XtallatX(HTMLElement){
     }
     genWCInfo(wc: IWCInfo){
         return /* html */`
-        <div class="WCInfo card">
+        <section class="WCInfo card">
             <header>
                 <div class="WCLabel">${wc.label}</div>
                 <div class="WCDesc">${wc.description}</div>
@@ -62,16 +75,21 @@ export class WCInfoBase extends XtallatX(HTMLElement){
                 <summary>Attributes</summary>
                 ${this.genAttrs(wc.attributes)}
             </details> 
-        </div>`;
+        </section>`;
     }
     genWCInfos(wcs: IWCInfo[]){
         return wcs.map(wc => this.genWCInfo(wc)).join('');
     }
     genWCSuite(wcSuite: IWCSuiteInfo){
         return /* html*/`
-            <div class="WCSuite">
-                ${this.genWCInfos(wcSuite.tags)}
-            </div>
+            <header>
+                <mark>${this._packageName}</mark>
+                <nav>
+                    <a href="${this._href}" target="_blank">⚙️</a>
+                </nav>
+            </header>
+            ${this.genWCInfos(wcSuite.tags)}
+            
         `;
     }
     onPropsChange(){
