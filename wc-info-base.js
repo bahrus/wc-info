@@ -39,10 +39,10 @@ export class WCInfoBase extends XtallatX(HTMLElement) {
         <div class="WCInfo card">
             <div class="WCLabel">${wc.label}</div>
             <div class="WCDesc">${wc.description}</div>
-            <detail>
+            <details>
                 <summary>Attributes</summary>
                 ${this.genAttrs(wc.attributes)}
-            </detail> 
+            </details> 
         </div>`;
     }
     genWCInfos(wcs) {
