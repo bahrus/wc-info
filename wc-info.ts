@@ -14,6 +14,9 @@ main{
     border-style:solid;
     padding:8px;
 }
+details{
+    width:100%;
+}
 header{
     
     display:flex;
@@ -46,9 +49,15 @@ a{
     }
 .WCLabel{
     font-weight: 800;
+    padding-right:20px;
+    width:20%;
+}
+dd{
+    margin-inline-start:20%;
 }
 dt{
     font-weight: 700;
+    
 }
 .WCInfo.card{
     display: flex;

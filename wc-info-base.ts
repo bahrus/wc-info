@@ -72,7 +72,7 @@ export class WCInfoBase extends XtallatX(HTMLElement){
                 <div class="WCDesc">${wc.description}</div>
             </header>
             <details>
-                <summary>Attributes</summary>
+                <summary>attributes</summary>
                 ${this.genAttrs(wc.attributes)}
             </details> 
         </section>`;

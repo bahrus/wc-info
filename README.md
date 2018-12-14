@@ -4,7 +4,7 @@
 
 File Sizes:
 
-Base (style-less):  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/wc-info@0.0.8/dist/wc-info-base.iife.min.js?compression=gzip">
+Base (style-less):  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/wc-info@0.0.12/dist/wc-info-base.iife.min.js?compression=gzip">
 
 # wc-info
 
@@ -17,8 +17,8 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
 <custom-element-demo>
 <template>
     <div>
-        <wc-info package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.11/web-components.json"></wc-info>
-        <script type="module" src="https://unpkg.com/wc-info@0.0.9/wc-info.js?module"></script>
+        <wc-info package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.12/web-components.json"></wc-info>
+        <script type="module" src="https://unpkg.com/wc-info@0.0.12/wc-info.js?module"></script>
     </div>
 </template>
 </custom-element-demo>
@@ -33,7 +33,7 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
   <template>
     <div>
 
-        <wc-info-base package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.11/web-components.json"></wc-info-base>
+        <wc-info-base package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.12/web-components.json"></wc-info-base>
         <style>
         :host{
             display: block;
@@ -43,6 +43,9 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
             border-width:1px;
             border-style:solid;
             padding:8px;
+        }
+        details{
+            width:100%;
         }
         header{
             
@@ -76,9 +79,15 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
             }
         .WCLabel{
             font-weight: 800;
+            padding-right:20px;
+            width:20%;
+        }
+        dd{
+            margin-inline-start:20%;
         }
         dt{
             font-weight: 700;
+            
         }
         .WCInfo.card{
             display: flex;
@@ -86,7 +95,7 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
             align-items: flex-start;
         }
         </style>
-        <script type="module" src="https://unpkg.com/wc-info@0.0.9/wc-info-base.js?module"></script>
+        <script type="module" src="https://unpkg.com/wc-info@0.0.12/wc-info-base.js?module"></script>
     </div>
   </template>
 </custom-element-demo>
