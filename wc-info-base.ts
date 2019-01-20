@@ -70,12 +70,13 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo>{
     }
 
     get renderContext(){
+        const matchNext = () =>({
+            matchNextSib: true,
+        });
         return {
             init: init,
             transform:{
-                '*': x =>({
-                    matchNextSib: true,
-                }),
+                '*': matchNext,
                 header: x => ({
                     matchFirstChild: {
                         mark: x => this.packageName,
@@ -117,9 +118,10 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo>{
                                                 return{
                                                     matchFirstChild: {
                                                         dt: ({idx}) => attrbs[Math.floor(idx / 2)].label,
-                                                        dd: ({idx}) => attrbs[Math.floor(idx / 2)].description
+                                                        dd: ({idx}) => attrbs[Math.floor(idx / 2)].description,
+                                                        '*': matchNext,
                                                     },
-                                                    inheritMatches: true,
+                                                    //inheritMatches: true,
                                                 }
                                             }
                                         }
