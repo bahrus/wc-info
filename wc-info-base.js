@@ -127,11 +127,11 @@ export class WCInfoBase extends XtalElement {
                                             '.WCDesc': ({ target }) => {
                                                 target.innerHTML = tags[idx].description;
                                             },
+                                            '*': matchNext,
                                         },
-                                        inheritMatches: true,
                                     }),
                                     details: x => ({
-                                        inheritMatches: true,
+                                        //inheritMatches: true,
                                         matchFirstChild: {
                                             dl: ({ target }) => {
                                                 const attrbs = this._value.tags[idx].attributes;
@@ -145,11 +145,12 @@ export class WCInfoBase extends XtalElement {
                                                         '*': matchNext,
                                                     },
                                                 };
-                                            }
+                                            },
+                                            '*': matchNext,
                                         }
-                                    })
+                                    }),
+                                    '*': matchNext,
                                 },
-                                inheritMatches: true,
                             })
                         }
                     };

@@ -105,11 +105,12 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo>{
                                             '.WCDesc': ({target}) => {
                                                 target.innerHTML = tags[idx].description
                                             },
+                                            '*': matchNext,
                                         },
-                                        inheritMatches: true,
+                                        //inheritMatches: true,
                                     }),
                                     details: x => ({
-                                        inheritMatches: true,
+                                        //inheritMatches: true,
                                         matchFirstChild:{
                                             dl: ({target}) =>{
                                                 const attrbs = this._value.tags[idx].attributes;
@@ -121,13 +122,14 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo>{
                                                         dd: ({idx}) => attrbs[Math.floor(idx / 2)].description,
                                                         '*': matchNext,
                                                     },
-                                                    //inheritMatches: true,
                                                 }
-                                            }
+                                            },
+                                            '*': matchNext,
                                         }
-                                    })
+                                    }),
+                                    '*': matchNext,
                                 },
-                                inheritMatches: true,
+                                //inheritMatches: true,
                             })
 
                         }
