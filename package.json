@@ -8,15 +8,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "xtal-element": "0.0.5",
+    "xtal-element": "0.0.7",
     "xtal-latx": "0.0.88"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.0.0",
-    "@types/node": "^10.9.1",
+    "@types/node": "10.12.18",
     "@types/tape": "4.2.32",
+    "@webcomponents/webcomponentsjs": "2.2.4",
     "jiife": "0.0.10",
-    "tape": "^4.9.1",
+    "tape": "4.9.2",
     "xtal-test": "0.0.10"
   },
   "repository": {

@@ -3,6 +3,8 @@ import {define} from 'xtal-latx/define.js';
 import {XtalElement} from 'xtal-element/xtal-element.js';
 import {RenderContext, TransformArg, TransformRules} from 'trans-render/init.d.js';
 import {init} from 'trans-render/init.js';
+import {repeatInit} from 'trans-render/repeatInit.js';
+import { WCInfo } from './wc-info';
 
 export interface IInfo{
     label: string,
@@ -52,7 +54,8 @@ const mainTemplate = createTemplate(
             <a target="_blank">⚙️</a>
         </nav>
     </header>
-`
+    <main></main>
+`   
 )
 
 export class WCInfoBase extends XtalElement<IWCSuiteInfo>{
@@ -70,22 +73,46 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo>{
         return {
             init: init,
             transform:{
+                '*': x =>({
+                    matchNextSib: true,
+                }),
                 header: x => ({
                     matchFirstChild: {
-                        '*': x=>({
-                            matchNextSib: true,
-                        }),
                         mark: x => this.packageName,
                         nav: x => ({
                             matchFirstChild:{
-                                a:({target}: TransformArg) =>{
+                                a:({target}) =>{
                                     (target as HTMLAnchorElement).href = this._href!;
                                 }
-                            } as unknown
+                            }
                             
                         })
                     },
-                })
+                    inheritMatches: true,
+                }),
+                main: ({target}) => {
+                    repeatInit(this._value.tags.length, WCInfoTemplate, target);
+                    return {
+                        inheritMatches: true,
+                        matchFirstChild:{
+                            section: ({idx}) =>({
+                                matchFirstChild:{
+                                    header: x => ({
+                                        matchFirstChild: {
+                                            '.WCLabel': x => this._value.tags[idx].label,
+                                            '.WCDesc': ({target}) => {
+                                                target.innerHTML = this._value.tags[idx].description
+                                            },
+                                        },
+                                        inheritMatches: true,
+                                    })
+                                },
+                                inheritMatches: true,
+                            })
+
+                        }
+                    };
+                }
             }
         } as RenderContext;
     }
@@ -94,7 +121,7 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo>{
         return this._href !== undefined && this._packageName !== undefined;
     }
 
-    init(el: this){
+    init(){
         return new Promise<IWCSuiteInfo>(resolve => {
             fetch(this._href!).then(resp =>{
                 resp.json().then(info =>{
@@ -103,8 +130,8 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo>{
             })
         })
     }
-    update(el: this){
-        return this.init(el);
+    update(){
+        return this.init();
     }
 
     get mainTemplate(){

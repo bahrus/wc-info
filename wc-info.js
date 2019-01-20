@@ -72,9 +72,6 @@ export class WCInfo extends WCInfoBase {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
-    render(wcInfo) {
-        this.shadowRoot.querySelector('main').innerHTML = this.genWCSuite(wcInfo);
-    }
 }
 define(WCInfo);
 //# sourceMappingURL=wc-info.js.map

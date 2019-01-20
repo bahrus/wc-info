@@ -1,6 +1,7 @@
 import { define } from 'xtal-latx/define.js';
 import { XtalElement } from 'xtal-element/xtal-element.js';
 import { init } from 'trans-render/init.js';
+import { repeatInit } from 'trans-render/repeatInit.js';
 const package_name = 'package-name';
 function createTemplate(innerHTML) {
     const template = document.createElement('template');
@@ -31,6 +32,7 @@ const mainTemplate = createTemplate(
             <a target="_blank">⚙️</a>
         </nav>
     </header>
+    <main></main>
 `);
 export class WCInfoBase extends XtalElement {
     constructor() {
@@ -94,11 +96,11 @@ export class WCInfoBase extends XtalElement {
         return {
             init: init,
             transform: {
+                '*': x => ({
+                    matchNextSib: true,
+                }),
                 header: x => ({
                     matchFirstChild: {
-                        '*': x => ({
-                            matchNextSib: true,
-                        }),
                         mark: x => this.packageName,
                         nav: x => ({
                             matchFirstChild: {
@@ -108,14 +110,37 @@ export class WCInfoBase extends XtalElement {
                             }
                         })
                     },
-                })
+                    inheritMatches: true,
+                }),
+                main: ({ target }) => {
+                    repeatInit(this._value.tags.length, WCInfoTemplate, target);
+                    return {
+                        inheritMatches: true,
+                        matchFirstChild: {
+                            section: ({ idx }) => ({
+                                matchFirstChild: {
+                                    header: x => ({
+                                        matchFirstChild: {
+                                            '.WCLabel': x => this._value.tags[idx].label,
+                                            '.WCDesc': ({ target }) => {
+                                                target.innerHTML = this._value.tags[idx].description;
+                                            },
+                                        },
+                                        inheritMatches: true,
+                                    })
+                                },
+                                inheritMatches: true,
+                            })
+                        }
+                    };
+                }
             }
         };
     }
     get ready() {
         return this._href !== undefined && this._packageName !== undefined;
     }
-    init(el) {
+    init() {
         return new Promise(resolve => {
             fetch(this._href).then(resp => {
                 resp.json().then(info => {
@@ -124,8 +149,8 @@ export class WCInfoBase extends XtalElement {
             });
         });
     }
-    update(el) {
-        return this.init(el);
+    update() {
+        return this.init();
     }
     get mainTemplate() {
         return mainTemplate;
