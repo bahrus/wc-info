@@ -10,7 +10,7 @@ function createTemplate(innerHTML) {
 }
 const attribTemplate = createTemplate(
 /* html */ `
-    <dt></dt><dd></dd>
+    <dt>a</dt><dd>b</dd>
 `);
 const WCInfoTemplate = createTemplate(
 /* html */ `
@@ -113,7 +113,8 @@ export class WCInfoBase extends XtalElement {
                     inheritMatches: true,
                 }),
                 main: ({ target }) => {
-                    repeatInit(this._value.tags.length, WCInfoTemplate, target);
+                    const tags = this._value.tags;
+                    repeatInit(tags.length, WCInfoTemplate, target);
                     return {
                         inheritMatches: true,
                         matchFirstChild: {
@@ -121,12 +122,30 @@ export class WCInfoBase extends XtalElement {
                                 matchFirstChild: {
                                     header: x => ({
                                         matchFirstChild: {
-                                            '.WCLabel': x => this._value.tags[idx].label,
+                                            '.WCLabel': x => tags[idx].label,
                                             '.WCDesc': ({ target }) => {
-                                                target.innerHTML = this._value.tags[idx].description;
+                                                target.innerHTML = tags[idx].description;
                                             },
                                         },
                                         inheritMatches: true,
+                                    }),
+                                    details: x => ({
+                                        inheritMatches: true,
+                                        matchFirstChild: {
+                                            dl: ({ target }) => {
+                                                const attrbs = this._value.tags[idx].attributes;
+                                                if (!attrbs)
+                                                    return;
+                                                repeatInit(attrbs.length, attribTemplate, target);
+                                                return {
+                                                    matchFirstChild: {
+                                                        dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
+                                                        dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
+                                                    },
+                                                    inheritMatches: true,
+                                                };
+                                            }
+                                        }
                                     })
                                 },
                                 inheritMatches: true,
