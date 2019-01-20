@@ -109,15 +109,15 @@ export class WCInfoBase extends XtalElement {
                                     target.href = this._href;
                                 }
                             }
-                        })
+                        }),
+                        '*': matchNext,
                     },
-                    inheritMatches: true,
                 }),
                 main: ({ target }) => {
                     const tags = this._value.tags;
                     repeatInit(tags.length, WCInfoTemplate, target);
                     return {
-                        inheritMatches: true,
+                        //: true,
                         matchFirstChild: {
                             section: ({ idx }) => ({
                                 matchFirstChild: {
@@ -151,7 +151,8 @@ export class WCInfoBase extends XtalElement {
                                     }),
                                     '*': matchNext,
                                 },
-                            })
+                            }),
+                            '*': matchNext,
                         }
                     };
                 }
