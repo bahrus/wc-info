@@ -1,7 +1,7 @@
 import {XtallatX} from 'xtal-latx/xtal-latx.js';
 import {define} from 'xtal-latx/define.js';
 import {XtalElement} from 'xtal-element/xtal-element.js';
-import {RenderContext} from 'trans-render/init.d.js';
+import {RenderContext, TransformArg, TransformRules} from 'trans-render/init.d.js';
 import {init} from 'trans-render/init.js';
 
 export interface IInfo{
@@ -72,7 +72,18 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo>{
             transform:{
                 header: x => ({
                     matchFirstChild: {
-                        mark: ({target}) => this.packageName
+                        '*': x=>({
+                            matchNextSib: true,
+                        }),
+                        mark: x => this.packageName,
+                        nav: x => ({
+                            matchFirstChild:{
+                                a:({target}: TransformArg) =>{
+                                    (target as HTMLAnchorElement).href = this._href!;
+                                }
+                            } as unknown
+                            
+                        })
                     },
                 })
             }

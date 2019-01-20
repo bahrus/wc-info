@@ -96,7 +96,17 @@ export class WCInfoBase extends XtalElement {
             transform: {
                 header: x => ({
                     matchFirstChild: {
-                        mark: ({ target }) => this.packageName
+                        '*': x => ({
+                            matchNextSib: true,
+                        }),
+                        mark: x => this.packageName,
+                        nav: x => ({
+                            matchFirstChild: {
+                                a: ({ target }) => {
+                                    target.href = this._href;
+                                }
+                            }
+                        })
                     },
                 })
             }
