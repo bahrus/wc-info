@@ -131,10 +131,13 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
       });
     });
   }
-  update() {
+
+  onPropsChange(){
+    this._initialized = false;
     this.root.innerHTML = '';
-    return this.init();
+    super.onPropsChange();
   }
+
 
   get mainTemplate() {
     return mainTemplate;
