@@ -5,7 +5,7 @@ import {
   TransformArg,
   TransformRules
 } from "trans-render/init.d.js";
-import { init } from "trans-render/init.js";
+import { init, _rules } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 
 export interface IInfo {
@@ -109,12 +109,11 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
                       if (!attrbs) return;
                       repeatInit(attrbs.length, attribTemplate, target);
                       return {
-                        matchFirstChild: {
-                          dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                          dd: ({ idx }) =>
-                            attrbs[Math.floor(idx / 2)].description,
-                          "*": matchNext
-                        }
+                        [_rules]: true,
+                        dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
+                        dd: ({ idx }) =>
+                          attrbs[Math.floor(idx / 2)].description,
+                        "*": matchNext
                       };
                     },
                     "*": matchNext
