@@ -25,9 +25,20 @@
         }
         header {
           display: flex;
-          flex-direction: row;
           justify-content: flex-start;
+          width:100%;
         }
+        @media only screen and (max-width: 800px) {
+          header{
+            flex-direction: column;
+          }
+        }
+        @media only screen and (min-width: 801px) {
+          header{
+            flex-direction: row;
+          }
+        }        
+
         mark {
           flex: 0 1 auto;
           position: absolute;
@@ -55,7 +66,10 @@
         .WCLabel {
           font-weight: 800;
           padding-right: 20px;
-          width: 20%;
+          flex-basis:25%;
+        }
+        .WCDescription{
+          flex-basis:75%;
         }
         dd {
           margin-inline-start: 20%;
