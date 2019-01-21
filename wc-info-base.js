@@ -60,13 +60,11 @@ export class WCInfoBase extends XtalElement {
                 header: x => ({
                     matchFirstChild: {
                         mark: x => this.packageName,
-                        nav: x => ({
-                            matchFirstChild: {
-                                a: ({ target }) => {
-                                    target.href = this._href;
-                                }
+                        nav: {
+                            a: ({ target }) => {
+                                target.href = this._href;
                             }
-                        }),
+                        },
                     }
                 }),
                 main: ({ target }) => {

@@ -81,13 +81,11 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
         header: x => ({
           matchFirstChild: {
             mark: x => this.packageName,
-            nav: x => ({
-              matchFirstChild: {
-                a: ({ target }) => {
-                  (target as HTMLAnchorElement).href = this._href!;
-                }
+            nav: {
+              a: ({ target }) => {
+                (target as HTMLAnchorElement).href = this._href!;
               }
-            }),
+            },
           }
         }),
         main: ({ target }) => {
