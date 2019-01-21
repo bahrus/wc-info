@@ -93,36 +93,35 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
           const tags = this._value.tags;
           repeatInit(tags.length, WCInfoTemplate, target);
           return {
-            matchFirstChild: {
-              section: ({ idx }) => ({
-                matchFirstChild: {
-                  header: {
-                    ".WCLabel": x => tags[idx].label,
-                    ".WCDesc": ({ target }) => {
-                      target.innerHTML = tags[idx].description;
-                    },
-                    "*": matchNext
-                  },
-                  details: {
-                    dl: ({ target }) => {
-                      const attrbs = this._value.tags[idx].attributes;
-                      if (!attrbs) return;
-                      repeatInit(attrbs.length, attribTemplate, target);
-                      return {
-                        [_rules]: true,
-                        dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                        dd: ({ idx }) =>
-                          attrbs[Math.floor(idx / 2)].description,
-                        "*": matchNext
-                      };
-                    },
-                    "*": matchNext
+            [_rules]: true,
+            section: ({ idx }) => ({
+              matchFirstChild: {
+                header: {
+                  ".WCLabel": x => tags[idx].label,
+                  ".WCDesc": ({ target }) => {
+                    target.innerHTML = tags[idx].description;
                   },
                   "*": matchNext
-                }
-              }),
-              "*": matchNext
-            }
+                },
+                details: {
+                  dl: ({ target }) => {
+                    const attrbs = this._value.tags[idx].attributes;
+                    if (!attrbs) return;
+                    repeatInit(attrbs.length, attribTemplate, target);
+                    return {
+                      [_rules]: true,
+                      dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
+                      dd: ({ idx }) =>
+                        attrbs[Math.floor(idx / 2)].description,
+                      "*": matchNext
+                    };
+                  },
+                  "*": matchNext
+                },
+                "*": matchNext
+              }
+            }),
+            "*": matchNext
           };
         }
       }
