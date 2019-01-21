@@ -96,15 +96,13 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
             matchFirstChild: {
               section: ({ idx }) => ({
                 matchFirstChild: {
-                  header: x => ({
-                    matchFirstChild: {
-                      ".WCLabel": x => tags[idx].label,
-                      ".WCDesc": ({ target }) => {
-                        target.innerHTML = tags[idx].description;
-                      },
-                      "*": matchNext
-                    }
-                  }),
+                  header: {
+                    ".WCLabel": x => tags[idx].label,
+                    ".WCDesc": ({ target }) => {
+                      target.innerHTML = tags[idx].description;
+                    },
+                    "*": matchNext
+                  },
                   details: {
                     dl: ({ target }) => {
                       const attrbs = this._value.tags[idx].attributes;
