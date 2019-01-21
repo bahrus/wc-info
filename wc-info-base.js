@@ -9,7 +9,7 @@ function createTemplate(innerHTML) {
     return template;
 }
 const attribTemplate = createTemplate(/* html */ `
-    <dt>a</dt><dd>b</dd>
+    <dt></dt><dd></dd>
 `);
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
@@ -37,20 +37,6 @@ export class WCInfoBase extends XtalElement {
         this._href = null;
         this._packageName = null;
         this._c = false;
-    }
-    static get is() {
-        return "wc-info-base";
-    }
-    get noShadow() {
-        return true;
-    }
-    get renderOptions() {
-        return {
-            matchNext: true,
-        };
-    }
-    get eventSwitchContext() {
-        return {};
     }
     get renderContext() {
         return {
@@ -97,6 +83,20 @@ export class WCInfoBase extends XtalElement {
             }
         };
     }
+    static get is() {
+        return "wc-info-base";
+    }
+    get noShadow() {
+        return true;
+    }
+    get renderOptions() {
+        return {
+            matchNext: true,
+        };
+    }
+    get eventSwitchContext() {
+        return {};
+    }
     get ready() {
         return this._href !== undefined && this._packageName !== undefined;
     }
@@ -110,6 +110,7 @@ export class WCInfoBase extends XtalElement {
         });
     }
     update() {
+        this.root.innerHTML = '';
         return this.init();
     }
     get mainTemplate() {
@@ -119,7 +120,6 @@ export class WCInfoBase extends XtalElement {
         return super.observedAttributes.concat(["href", package_name]);
     }
     attributeChangedCallback(n, ov, nv) {
-        super.attributeChangedCallback(n, ov, nv);
         switch (n) {
             case "href":
                 this._href = nv;
@@ -128,7 +128,7 @@ export class WCInfoBase extends XtalElement {
                 this._packageName = nv;
                 break;
         }
-        this.onPropsChange();
+        super.attributeChangedCallback(n, ov, nv);
     }
     get href() {
         return this._href;

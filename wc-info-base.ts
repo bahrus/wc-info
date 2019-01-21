@@ -3,6 +3,7 @@ import { XtalElement } from "xtal-element/xtal-element.js";
 import {
   RenderContext,
   RenderOptions,
+  TransformRules,
 } from "trans-render/init.d.js";
 import { init, _rules } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
@@ -29,7 +30,7 @@ function createTemplate(innerHTML: string): HTMLTemplateElement {
 }
 
 const attribTemplate = createTemplate(/* html */ `
-    <dt>a</dt><dd>b</dd>
+    <dt></dt><dd></dd>
 `);
 
 const WCInfoTemplate = createTemplate(/* html */ `
@@ -55,24 +56,6 @@ const mainTemplate = createTemplate(/* html */ `
 `);
 
 export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
-  static get is() {
-    return "wc-info-base";
-  }
-
-  get noShadow() {
-    return true;
-  }
-
-  get renderOptions() : RenderOptions{
-      return {
-          matchNext: true,
-      }
-  }
-
-  get eventSwitchContext() {
-    return {};
-  }
-
   get renderContext() {
     return {
       init: init,
@@ -106,8 +89,7 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
                     return {
                       [_rules]: true,
                       dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                      dd: ({ idx }) =>
-                        attrbs[Math.floor(idx / 2)].description,
+                      dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description,
                     };
                   },
                 },
@@ -119,6 +101,23 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
     } as RenderContext;
   }
 
+  static get is() {
+    return "wc-info-base";
+  }
+
+  get noShadow() {
+    return true;
+  }
+
+  get renderOptions() : RenderOptions{
+      return {
+          matchNext: true,
+      }
+  }
+
+  get eventSwitchContext() {
+    return {};
+  }
   get ready() {
     return this._href !== undefined && this._packageName !== undefined;
   }
@@ -133,6 +132,7 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
     });
   }
   update() {
+    this.root.innerHTML = '';
     return this.init();
   }
 
@@ -145,7 +145,6 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
   }
 
   attributeChangedCallback(n: string, ov: string, nv: string) {
-    super.attributeChangedCallback(n, ov, nv);
     switch (n) {
       case "href":
         this._href = nv;
@@ -154,7 +153,7 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
         this._packageName = nv;
         break;
     }
-    this.onPropsChange();
+    super.attributeChangedCallback(n, ov, nv);
   }
 
   _href: string | null = null;
