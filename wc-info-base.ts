@@ -2,8 +2,7 @@ import { define } from "xtal-latx/define.js";
 import { XtalElement } from "xtal-element/xtal-element.js";
 import {
   RenderContext,
-  TransformArg,
-  TransformRules
+  RenderOptions,
 } from "trans-render/init.d.js";
 import { init, _rules } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
@@ -64,18 +63,21 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
     return true;
   }
 
+  get renderOptions() : RenderOptions{
+      return {
+          prepend: false,
+          matchNext: true,
+      }
+  }
+
   get eventSwitchContext() {
     return {};
   }
 
   get renderContext() {
-    const matchNext = () => ({
-      matchNextSib: true
-    });
     return {
       init: init,
       transform: {
-        "*": matchNext,
         header: x => ({
           matchFirstChild: {
             mark: x => this.packageName,
@@ -86,7 +88,6 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
                 }
               }
             }),
-            "*": matchNext
           }
         }),
         main: ({ target }) => {
@@ -101,7 +102,6 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
                   ".WCDesc": ({ target }) => {
                     target.innerHTML = tags[idx].description;
                   },
-                  "*": matchNext
                 },
                 details: {
                   dl: ({ target }) => {
@@ -113,15 +113,11 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
                       dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
                       dd: ({ idx }) =>
                         attrbs[Math.floor(idx / 2)].description,
-                      "*": matchNext
                     };
                   },
-                  "*": matchNext
                 },
-                "*": matchNext
               }
             }),
-            "*": matchNext
           };
         }
       }

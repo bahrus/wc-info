@@ -44,17 +44,19 @@ export class WCInfoBase extends XtalElement {
     get noShadow() {
         return true;
     }
+    get renderOptions() {
+        return {
+            prepend: false,
+            matchNext: true,
+        };
+    }
     get eventSwitchContext() {
         return {};
     }
     get renderContext() {
-        const matchNext = () => ({
-            matchNextSib: true
-        });
         return {
             init: init,
             transform: {
-                "*": matchNext,
                 header: x => ({
                     matchFirstChild: {
                         mark: x => this.packageName,
@@ -65,7 +67,6 @@ export class WCInfoBase extends XtalElement {
                                 }
                             }
                         }),
-                        "*": matchNext
                     }
                 }),
                 main: ({ target }) => {
@@ -80,7 +81,6 @@ export class WCInfoBase extends XtalElement {
                                     ".WCDesc": ({ target }) => {
                                         target.innerHTML = tags[idx].description;
                                     },
-                                    "*": matchNext
                                 },
                                 details: {
                                     dl: ({ target }) => {
@@ -92,15 +92,11 @@ export class WCInfoBase extends XtalElement {
                                             [_rules]: true,
                                             dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
                                             dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description,
-                                            "*": matchNext
                                         };
                                     },
-                                    "*": matchNext
                                 },
-                                "*": matchNext
                             }
                         }),
-                        "*": matchNext
                     };
                 }
             }
