@@ -3,7 +3,7 @@ import { XtalElement } from "xtal-element/xtal-element.js";
 import { init, _rules } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 const package_name = "package-name";
-function createTemplate(innerHTML) {
+export function createTemplate(innerHTML) {
     const template = document.createElement("template");
     template.innerHTML = innerHTML;
     return template;
@@ -22,15 +22,16 @@ const WCInfoTemplate = createTemplate(/* html */ `
         <dl></dl>
     </details> 
 </section>`);
-const mainTemplate = createTemplate(/* html */ `
-    <header>
-        <mark></mark>
-        <nav>
-            <a target="_blank">⚙️</a>
-        </nav>
-    </header>
-    <main></main>
-`);
+export const mainTemplate$ = /* html */ `
+<header>
+    <mark></mark>
+    <nav>
+        <a target="_blank">⚙️</a>
+    </nav>
+</header>
+<main></main>
+`;
+const mainTemplate = createTemplate(mainTemplate$);
 export class WCInfoBase extends XtalElement {
     constructor() {
         super(...arguments);
@@ -109,6 +110,7 @@ export class WCInfoBase extends XtalElement {
             });
         });
     }
+    update() { return this.init(); }
     onPropsChange() {
         this._initialized = false;
         this.root.innerHTML = '';

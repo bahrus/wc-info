@@ -23,7 +23,7 @@ export interface IWCSuiteInfo {
 }
 const package_name = "package-name";
 
-function createTemplate(innerHTML: string): HTMLTemplateElement {
+export function createTemplate(innerHTML: string): HTMLTemplateElement {
   const template = document.createElement("template") as HTMLTemplateElement;
   template.innerHTML = innerHTML;
   return template;
@@ -45,15 +45,17 @@ const WCInfoTemplate = createTemplate(/* html */ `
     </details> 
 </section>`);
 
-const mainTemplate = createTemplate(/* html */ `
-    <header>
-        <mark></mark>
-        <nav>
-            <a target="_blank">⚙️</a>
-        </nav>
-    </header>
-    <main></main>
-`);
+export const mainTemplate$ = /* html */ `
+<header>
+    <mark></mark>
+    <nav>
+        <a target="_blank">⚙️</a>
+    </nav>
+</header>
+<main></main>
+`;
+
+const mainTemplate = createTemplate(mainTemplate$);
 
 export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
   get renderContext() {
@@ -131,6 +133,8 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
       });
     });
   }
+
+  update(){return this.init();}
 
   onPropsChange(){
     this._initialized = false;

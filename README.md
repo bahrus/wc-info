@@ -2,9 +2,7 @@
 
 <a href="https://nodei.co/npm/wc-info/"><img src="https://nodei.co/npm/wc-info.png"></a>
 
-File Sizes:
-
-Base (style-less):  <img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/wc-info@0.0.12/dist/wc-info-base.iife.min.js?compression=gzip">
+<img src="https://badgen.net/bundlephobia/minzip/wc-info">
 
 # wc-info
 
@@ -29,7 +27,7 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
         </wc-info>
         <wc-info package-name="npm install xtal-siema" href="https://unpkg.com/xtal-siema@0.0.26/web-components.json">
         </wc-info>
-        <script type="module" src="https://unpkg.com/wc-info@0.0.12/wc-info.js?module"></script>
+        <script type="module" src="https://unpkg.com/wc-info@0.0.14/wc-info.js?module"></script>
     </div>
 </template>
 </custom-element-demo>
