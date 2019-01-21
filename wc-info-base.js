@@ -66,7 +66,7 @@ export class WCInfoBase extends XtalElement {
                                 },
                                 details: {
                                     dl: ({ target }) => {
-                                        const attrbs = this._value.tags[idx].attributes;
+                                        const attrbs = tags[idx].attributes;
                                         if (!attrbs)
                                             return;
                                         repeatInit(attrbs.length, attribTemplate, target);
