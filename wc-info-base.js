@@ -46,7 +46,6 @@ export class WCInfoBase extends XtalElement {
     }
     get renderOptions() {
         return {
-            prepend: false,
             matchNext: true,
         };
     }
@@ -57,16 +56,14 @@ export class WCInfoBase extends XtalElement {
         return {
             init: init,
             transform: {
-                header: x => ({
-                    matchFirstChild: {
-                        mark: x => this.packageName,
-                        nav: {
-                            a: ({ target }) => {
-                                target.href = this._href;
-                            }
-                        },
-                    }
-                }),
+                header: {
+                    mark: x => this.packageName,
+                    nav: {
+                        a: ({ target }) => {
+                            target.href = this._href;
+                        }
+                    },
+                },
                 main: ({ target }) => {
                     const tags = this._value.tags;
                     repeatInit(tags.length, WCInfoTemplate, target);
