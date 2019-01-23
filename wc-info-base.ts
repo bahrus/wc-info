@@ -71,7 +71,7 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
           },
         },
         main: ({ target }) => {
-          const tags = this._value.tags;
+          const tags = this.viewModel.tags;
           repeatInit(tags.length, WCInfoTemplate, target);
           return {
             [_rules]: true,

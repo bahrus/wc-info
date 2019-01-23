@@ -21,6 +21,8 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
         </wc-info>
         <wc-info package-name="npm install p-d.p-u" href="https://unpkg.com/p-d.p-u@0.0.94/web-components.json">
         </wc-info>
+        <wc-info package-name="npm install xtal-fetch" href="https://unpkg.com/xtal-fetch@0.0.53/web-components.json">
+        </wc-info>
         <wc-info package-name="npm install xtal-state" href="https://unpkg.com/xtal-state@0.0.60/web-components.json">
         </wc-info>
         <wc-info package-name="npm install billboard-charts" href="https://unpkg.com/billboard-charts@0.1.31/web-components.json">
