@@ -1,11 +1,12 @@
 import { define } from "xtal-latx/define.js";
 import { XtalElement } from "xtal-element/xtal-element.js";
+import {createTemplate} from "xtal-element/utils.js";
 import {
   RenderContext,
   RenderOptions,
   TransformRules,
 } from "trans-render/init.d.js";
-import { init, _rules } from "trans-render/init.js";
+import { init} from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 
 export interface IInfo {
@@ -23,11 +24,6 @@ export interface IWCSuiteInfo {
 }
 const package_name = "package-name";
 
-export function createTemplate(innerHTML: string): HTMLTemplateElement {
-  const template = document.createElement("template") as HTMLTemplateElement;
-  template.innerHTML = innerHTML;
-  return template;
-}
 
 const attribTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
@@ -58,49 +54,49 @@ export const mainTemplate$ = /* html */ `
 const mainTemplate = createTemplate(mainTemplate$);
 
 export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
-  get renderContext() {
-    return {
-      init: init,
-      transform: {
-        header:{
-          mark: x => this.packageName,
-          nav: {
-            a: ({ target }) => {
-              (target as HTMLAnchorElement).href = this._href!;
-            }
-          },
+  _renderContext: RenderContext = {
+    init: init,
+    Transform: {
+      header:{
+        mark: x => this.packageName,
+        nav: {
+          a: ({ target }) => {
+            (target as HTMLAnchorElement).href = this._href!;
+          }
         },
-        main: ({ target }) => {
-          const tags = this.viewModel.tags;
-          repeatInit(tags.length, WCInfoTemplate, target);
-          return {
-            [_rules]: true,
-            section: ({ idx }) => ({
-              matchFirstChild: {
-                header: {
-                  ".WCLabel": x => tags[idx].label,
-                  ".WCDesc": ({ target }) => {
-                    target.innerHTML = tags[idx].description;
-                  },
+      } as TransformRules,
+      main: ({ target }) => {
+        const tags = this.viewModel.tags;
+        repeatInit(tags.length, WCInfoTemplate, target);
+        return {
+          section: ({ idx }) => ({
+            matchFirstChild: {
+              header: {
+                ".WCLabel": x => tags[idx].label,
+                ".WCDesc": ({ target }) => {
+                  target.innerHTML = tags[idx].description;
                 },
-                details: {
-                  dl: ({ target }) => {
-                    const attrbs = tags[idx].attributes;
-                    if (!attrbs) return;
-                    repeatInit(attrbs.length, attribTemplate, target);
-                    return {
-                      [_rules]: true,
-                      dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                      dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description,
-                    };
-                  },
+              },
+              details: {
+                dl: ({ target }) => {
+                  const attrbs = tags[idx].attributes;
+                  if (!attrbs) return;
+                  repeatInit(attrbs.length, attribTemplate, target);
+                  return {
+                    dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
+                    dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description,
+                  };
                 },
-              }
-            }),
-          };
-        }
-      }
-    } as RenderContext;
+              },
+            }
+          }),
+        };
+      } 
+    } as TransformRules
+  };
+
+  get renderContext() {
+    return this._renderContext;
   }
 
   static get is() {
@@ -111,11 +107,9 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
     return true;
   }
 
-  get renderOptions() : RenderOptions{
-      return {
-          matchNext: true,
-      }
-  }
+  // get renderOptions() : RenderOptions{
+  //     return {}
+  // }
 
   get eventSwitchContext() {
     return {};

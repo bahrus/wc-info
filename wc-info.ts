@@ -1,5 +1,6 @@
-import { WCInfoBase, createTemplate, mainTemplate$ } from "./wc-info-base.js";
+import { WCInfoBase, mainTemplate$ } from "./wc-info-base.js";
 import { define } from "xtal-latx/define.js";
+import {createTemplate} from "xtal-element/utils.js";
 
 const template = document.createElement("template");
 const mainTemplateExt$ =

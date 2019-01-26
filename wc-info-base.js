@@ -1,13 +1,9 @@
 import { define } from "xtal-latx/define.js";
 import { XtalElement } from "xtal-element/xtal-element.js";
-import { init, _rules } from "trans-render/init.js";
+import { createTemplate } from "xtal-element/utils.js";
+import { init } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 const package_name = "package-name";
-export function createTemplate(innerHTML) {
-    const template = document.createElement("template");
-    template.innerHTML = innerHTML;
-    return template;
-}
 const attribTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
@@ -35,14 +31,9 @@ const mainTemplate = createTemplate(mainTemplate$);
 export class WCInfoBase extends XtalElement {
     constructor() {
         super(...arguments);
-        this._href = null;
-        this._packageName = null;
-        this._c = false;
-    }
-    get renderContext() {
-        return {
+        this._renderContext = {
             init: init,
-            transform: {
+            Transform: {
                 header: {
                     mark: x => this.packageName,
                     nav: {
@@ -55,7 +46,6 @@ export class WCInfoBase extends XtalElement {
                     const tags = this.viewModel.tags;
                     repeatInit(tags.length, WCInfoTemplate, target);
                     return {
-                        [_rules]: true,
                         section: ({ idx }) => ({
                             matchFirstChild: {
                                 header: {
@@ -71,7 +61,6 @@ export class WCInfoBase extends XtalElement {
                                             return;
                                         repeatInit(attrbs.length, attribTemplate, target);
                                         return {
-                                            [_rules]: true,
                                             dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
                                             dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description,
                                         };
@@ -83,6 +72,12 @@ export class WCInfoBase extends XtalElement {
                 }
             }
         };
+        this._href = null;
+        this._packageName = null;
+        this._c = false;
+    }
+    get renderContext() {
+        return this._renderContext;
     }
     static get is() {
         return "wc-info-base";
@@ -90,11 +85,9 @@ export class WCInfoBase extends XtalElement {
     get noShadow() {
         return true;
     }
-    get renderOptions() {
-        return {
-            matchNext: true,
-        };
-    }
+    // get renderOptions() : RenderOptions{
+    //     return {}
+    // }
     get eventSwitchContext() {
         return {};
     }
