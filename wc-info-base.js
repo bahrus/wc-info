@@ -40,34 +40,32 @@ export class WCInfoBase extends XtalElement {
                         a: ({ target }) => {
                             target.href = this._href;
                         }
-                    },
+                    }
                 },
                 main: ({ target }) => {
                     const tags = this.viewModel.tags;
                     repeatInit(tags.length, WCInfoTemplate, target);
                     return {
                         section: ({ idx }) => ({
-                            matchFirstChild: {
-                                header: {
-                                    ".WCLabel": x => tags[idx].label,
-                                    ".WCDesc": ({ target }) => {
-                                        target.innerHTML = tags[idx].description;
-                                    },
-                                },
-                                details: {
-                                    dl: ({ target }) => {
-                                        const attrbs = tags[idx].attributes;
-                                        if (!attrbs)
-                                            return;
-                                        repeatInit(attrbs.length, attribTemplate, target);
-                                        return {
-                                            dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                                            dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description,
-                                        };
-                                    },
-                                },
+                            header: {
+                                ".WCLabel": x => tags[idx].label,
+                                ".WCDesc": ({ target }) => {
+                                    target.innerHTML = tags[idx].description;
+                                }
+                            },
+                            details: {
+                                dl: ({ target }) => {
+                                    const attrbs = tags[idx].attributes;
+                                    if (!attrbs)
+                                        return;
+                                    repeatInit(attrbs.length, attribTemplate, target);
+                                    return {
+                                        dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
+                                        dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
+                                    };
+                                }
                             }
-                        }),
+                        })
                     };
                 }
             }
@@ -103,10 +101,12 @@ export class WCInfoBase extends XtalElement {
             });
         });
     }
-    update() { return this.init(); }
+    update() {
+        return this.init();
+    }
     onPropsChange() {
         this._initialized = false;
-        this.root.innerHTML = '';
+        this.root.innerHTML = "";
         super.onPropsChange();
     }
     get mainTemplate() {

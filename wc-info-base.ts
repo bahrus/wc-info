@@ -1,12 +1,12 @@
 import { define } from "xtal-latx/define.js";
 import { XtalElement } from "xtal-element/xtal-element.js";
-import {createTemplate} from "xtal-element/utils.js";
+import { createTemplate } from "xtal-element/utils.js";
 import {
   RenderContext,
   RenderOptions,
-  TransformRules,
+  TransformRules
 } from "trans-render/init.d.js";
-import { init} from "trans-render/init.js";
+import { init } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 
 export interface IInfo {
@@ -23,7 +23,6 @@ export interface IWCSuiteInfo {
   tags: IWCInfo[];
 }
 const package_name = "package-name";
-
 
 const attribTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
@@ -57,41 +56,39 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
   _renderContext: RenderContext = {
     init: init,
     Transform: {
-      header:{
+      header: {
         mark: x => this.packageName,
         nav: {
           a: ({ target }) => {
             (target as HTMLAnchorElement).href = this._href!;
           }
-        },
+        }
       } as TransformRules,
       main: ({ target }) => {
         const tags = this.viewModel.tags;
         repeatInit(tags.length, WCInfoTemplate, target);
         return {
           section: ({ idx }) => ({
-            matchFirstChild: {
-              header: {
-                ".WCLabel": x => tags[idx].label,
-                ".WCDesc": ({ target }) => {
-                  target.innerHTML = tags[idx].description;
-                },
-              },
-              details: {
-                dl: ({ target }) => {
-                  const attrbs = tags[idx].attributes;
-                  if (!attrbs) return;
-                  repeatInit(attrbs.length, attribTemplate, target);
-                  return {
-                    dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                    dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description,
-                  };
-                },
-              },
+            header: {
+              ".WCLabel": x => tags[idx].label,
+              ".WCDesc": ({ target }) => {
+                target.innerHTML = tags[idx].description;
+              }
+            },
+            details: {
+              dl: ({ target }) => {
+                const attrbs = tags[idx].attributes;
+                if (!attrbs) return;
+                repeatInit(attrbs.length, attribTemplate, target);
+                return {
+                  dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
+                  dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
+                };
+              }
             }
-          }),
+          })
         };
-      } 
+      }
     } as TransformRules
   };
 
@@ -128,14 +125,15 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
     });
   }
 
-  update(){return this.init();}
-
-  onPropsChange(){
-    this._initialized = false;
-    this.root.innerHTML = '';
-    super.onPropsChange();
+  update() {
+    return this.init();
   }
 
+  onPropsChange() {
+    this._initialized = false;
+    this.root.innerHTML = "";
+    super.onPropsChange();
+  }
 
   get mainTemplate() {
     return mainTemplate;
