@@ -28,11 +28,20 @@ export const mainTemplate$ = /* html */ `
 <main></main>
 `;
 const mainTemplate = createTemplate(mainTemplate$);
+export const subTemplates = {
+    attribTransform: 'attribTransform',
+};
 export class WCInfoBase extends XtalElement {
     constructor() {
         super(...arguments);
         this._renderContext = {
             init: init,
+            refs: {
+                [subTemplates.attribTransform]: (attrbs) => ({
+                    dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
+                    dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
+                })
+            },
             Transform: {
                 header: {
                     mark: x => this.packageName,
@@ -54,15 +63,12 @@ export class WCInfoBase extends XtalElement {
                                 }
                             },
                             details: {
-                                dl: ({ target }) => {
+                                dl: ({ target, ctx }) => {
                                     const attrbs = tags[idx].attributes;
                                     if (!attrbs)
                                         return;
                                     repeatInit(attrbs.length, attribTemplate, target);
-                                    return {
-                                        dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                                        dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
-                                    };
+                                    return ctx.refs[subTemplates.attribTransform](attrbs);
                                 }
                             }
                         })

@@ -51,10 +51,18 @@ export const mainTemplate$ = /* html */ `
 `;
 
 const mainTemplate = createTemplate(mainTemplate$);
-
+export const subTemplates = {
+  attribTransform:'attribTransform',
+} 
 export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
   _renderContext: RenderContext = {
     init: init,
+    refs:{
+      [subTemplates.attribTransform]: (attrbs: IAttribInfo[]) => ({
+        dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
+        dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
+      } as TransformRules)
+    },
     Transform: {
       header: {
         mark: x => this.packageName,
@@ -76,14 +84,11 @@ export class WCInfoBase extends XtalElement<IWCSuiteInfo> {
               }
             },
             details: {
-              dl: ({ target }) => {
+              dl: ({ target, ctx }) => {
                 const attrbs = tags[idx].attributes;
                 if (!attrbs) return;
                 repeatInit(attrbs.length, attribTemplate, target);
-                return {
-                  dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                  dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
-                };
+                return ctx.refs![subTemplates.attribTransform](attrbs); 
               }
             }
           })
