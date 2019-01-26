@@ -30,6 +30,7 @@ export const mainTemplate$ = /* html */ `
 const mainTemplate = createTemplate(mainTemplate$);
 export const subTemplates = {
     attribTransform: 'attribTransform',
+    WCInfo: 'WCInfo'
 };
 export class WCInfoBase extends XtalElement {
     constructor() {
@@ -40,6 +41,23 @@ export class WCInfoBase extends XtalElement {
                 [subTemplates.attribTransform]: (attrbs) => ({
                     dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
                     dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
+                }),
+                [subTemplates.WCInfo]: (tags, idx) => ({
+                    header: {
+                        ".WCLabel": x => tags[idx].label,
+                        ".WCDesc": ({ target }) => {
+                            target.innerHTML = tags[idx].description;
+                        }
+                    },
+                    details: {
+                        dl: ({ target, ctx }) => {
+                            const attrbs = tags[idx].attributes;
+                            if (!attrbs)
+                                return;
+                            repeatInit(attrbs.length, attribTemplate, target);
+                            return ctx.refs[subTemplates.attribTransform](attrbs);
+                        }
+                    }
                 })
             },
             Transform: {
@@ -54,25 +72,9 @@ export class WCInfoBase extends XtalElement {
                 main: ({ target }) => {
                     const tags = this.viewModel.tags;
                     repeatInit(tags.length, WCInfoTemplate, target);
-                    return {
-                        section: ({ idx }) => ({
-                            header: {
-                                ".WCLabel": x => tags[idx].label,
-                                ".WCDesc": ({ target }) => {
-                                    target.innerHTML = tags[idx].description;
-                                }
-                            },
-                            details: {
-                                dl: ({ target, ctx }) => {
-                                    const attrbs = tags[idx].attributes;
-                                    if (!attrbs)
-                                        return;
-                                    repeatInit(attrbs.length, attribTemplate, target);
-                                    return ctx.refs[subTemplates.attribTransform](attrbs);
-                                }
-                            }
-                        })
-                    };
+                    return ({
+                        section: ({ idx, ctx }) => ctx.refs[subTemplates.WCInfo](tags, idx),
+                    });
                 }
             }
         };
