@@ -1,11 +1,7 @@
 import { define } from "xtal-latx/define.js";
 import { XtalElement } from "xtal-element/xtal-element.js";
 import { createTemplate } from "xtal-element/utils.js";
-import {
-  RenderContext,
-  RenderOptions,
-  TransformRules
-} from "trans-render/init.d.js";
+import { RenderContext, TransformRules } from "trans-render/init.d.js";
 import { init } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 
@@ -28,12 +24,6 @@ const attribListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
 
-const attribListTemplateTransform = (attribs: AttribList[]) =>
-({
-  dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
-  dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
-} as TransformRules);
-
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
     <header>
@@ -46,25 +36,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
     </details> 
 </section>`);
 
-const WCInfoTemplateTransform = (tags: WCInfo[], idx: number) =>
-  ({
-    header: {
-      ".WCLabel": x => tags[idx].label,
-      ".WCDesc": ({ target }) => {
-        target.innerHTML = tags[idx].description;
-      }
-    },
-    details: {
-      dl: ({ target, ctx }) => {
-        const attrbs = tags[idx].attributes;
-        if (!attrbs) return;
-        repeatInit(attrbs.length, attribListTemplate, target);
-        return attribListTemplateTransform(attrbs);
-      }
-    }
-  } as TransformRules);
-
-export const mainTemplate$ =   /* html */ `
+export const mainTemplate$ = /* html */ `
 <header>
     <mark></mark>
     <nav>
@@ -72,9 +44,8 @@ export const mainTemplate$ =   /* html */ `
     </nav>
 </header>
 <main></main>
-`
+`;
 const mainTemplate = createTemplate(mainTemplate$);
-
 
 export class WCInfoBase extends XtalElement<WCSuiteInfo> {
   _renderContext: RenderContext = {
@@ -92,7 +63,26 @@ export class WCInfoBase extends XtalElement<WCSuiteInfo> {
         const tags = this.viewModel.tags;
         repeatInit(tags.length, WCInfoTemplate, target);
         return {
-          section: ({ idx, ctx }) => WCInfoTemplateTransform(tags, idx)
+          section: ({ idx, ctx }) =>
+            ({
+              header: {
+                ".WCLabel": x => tags[idx].label,
+                ".WCDesc": ({ target }) => {
+                  target.innerHTML = tags[idx].description;
+                }
+              },
+              details: {
+                dl: ({ target, ctx }) => {
+                  const attribs = tags[idx].attributes;
+                  if (!attribs) return;
+                  repeatInit(attribs.length, attribListTemplate, target);
+                  return {
+                    dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
+                    dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
+                  } as TransformRules;
+                }
+              }
+            } as TransformRules)
         };
       }
     }
