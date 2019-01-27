@@ -1,10 +1,10 @@
-import { WCInfoBase, mainTemplate$ } from "./wc-info-base.js";
+import { WCInfoBase } from "./wc-info-base.js";
 import { define } from "xtal-latx/define.js";
-import {createTemplate} from "xtal-element/utils.js";
+import { createTemplate } from "xtal-element/utils.js";
+import {RenderOptions, RenderContext} from 'trans-render/init.d.js';
+import {append} from 'trans-render/append.js';
 
-const template = document.createElement("template");
-const mainTemplateExt$ =
-  mainTemplate$ +
+const styleTemplate = createTemplate(
   /* html */ `
 <style>
 :host{
@@ -81,8 +81,9 @@ dt {
     align-items: flex-start;
 }
 </style>
-`;
-const mainTemplateExt = createTemplate(mainTemplateExt$);
+`);
+
+//const mainTemplateExt = createTemplate(mainTemplateExt$);
 
 export class WCInfo extends WCInfoBase {
   static get is() {
@@ -92,8 +93,15 @@ export class WCInfo extends WCInfoBase {
     return false;
   }
 
-  get mainTemplate() {
-    return mainTemplateExt;
+
+  //initializedCallback()
+  _renderOptions = {
+    initializedCallback:(ctx: RenderContext, target: HTMLElement | DocumentFragment) =>{
+        append(target, styleTemplate)
+    }
+  } as RenderOptions;
+  get renderOptions(): RenderOptions {
+      return this._renderOptions;
   }
 }
 define(WCInfo);

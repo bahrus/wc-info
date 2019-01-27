@@ -1,9 +1,9 @@
-import { WCInfoBase, mainTemplate$ } from "./wc-info-base.js";
+import { WCInfoBase } from "./wc-info-base.js";
 import { define } from "xtal-latx/define.js";
 import { createTemplate } from "xtal-element/utils.js";
-const template = document.createElement("template");
-const mainTemplateExt$ = mainTemplate$ +
-    /* html */ `
+import { append } from 'trans-render/append.js';
+const styleTemplate = createTemplate(
+/* html */ `
 <style>
 :host{
     display: block;
@@ -79,17 +79,26 @@ dt {
     align-items: flex-start;
 }
 </style>
-`;
-const mainTemplateExt = createTemplate(mainTemplateExt$);
+`);
+//const mainTemplateExt = createTemplate(mainTemplateExt$);
 export class WCInfo extends WCInfoBase {
+    constructor() {
+        super(...arguments);
+        //initializedCallback()
+        this._renderOptions = {
+            initializedCallback: (ctx, target) => {
+                append(target, styleTemplate);
+            }
+        };
+    }
     static get is() {
         return "wc-info";
     }
     get noShadow() {
         return false;
     }
-    get mainTemplate() {
-        return mainTemplateExt;
+    get renderOptions() {
+        return this._renderOptions;
     }
 }
 define(WCInfo);

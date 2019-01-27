@@ -1,7 +1,7 @@
 import { define } from "xtal-latx/define.js";
 import { XtalElement } from "xtal-element/xtal-element.js";
 import { createTemplate } from "xtal-element/utils.js";
-import { RenderContext, TransformRules } from "trans-render/init.d.js";
+import { RenderContext, TransformRules, RenderOptions } from "trans-render/init.d.js";
 import { init } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 
@@ -36,7 +36,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
     </details> 
 </section>`);
 
-export const mainTemplate$ = /* html */ `
+const mainTemplate = createTemplate(/* html */ `
 <header>
     <mark></mark>
     <nav>
@@ -44,8 +44,7 @@ export const mainTemplate$ = /* html */ `
     </nav>
 </header>
 <main></main>
-`;
-const mainTemplate = createTemplate(mainTemplate$);
+`);
 
 export class WCInfoBase extends XtalElement<WCSuiteInfo> {
   _renderContext: RenderContext = {
@@ -100,9 +99,7 @@ export class WCInfoBase extends XtalElement<WCSuiteInfo> {
     return true;
   }
 
-  // get renderOptions() : RenderOptions{
-  //     return {}
-  // }
+
 
   get eventSwitchContext() {
     return {};

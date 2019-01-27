@@ -18,7 +18,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
         <dl></dl>
     </details> 
 </section>`);
-export const mainTemplate$ = /* html */ `
+const mainTemplate = createTemplate(/* html */ `
 <header>
     <mark></mark>
     <nav>
@@ -26,8 +26,7 @@ export const mainTemplate$ = /* html */ `
     </nav>
 </header>
 <main></main>
-`;
-const mainTemplate = createTemplate(mainTemplate$);
+`);
 export class WCInfoBase extends XtalElement {
     constructor() {
         super(...arguments);
@@ -83,9 +82,6 @@ export class WCInfoBase extends XtalElement {
     get noShadow() {
         return true;
     }
-    // get renderOptions() : RenderOptions{
-    //     return {}
-    // }
     get eventSwitchContext() {
         return {};
     }
