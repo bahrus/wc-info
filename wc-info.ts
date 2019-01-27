@@ -94,7 +94,6 @@ export class WCInfo extends WCInfoBase {
   }
 
 
-  //initializedCallback()
   _renderOptions = {
     initializedCallback:(ctx: RenderContext, target: HTMLElement | DocumentFragment) =>{
         append(target, styleTemplate)

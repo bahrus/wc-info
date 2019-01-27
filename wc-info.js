@@ -84,7 +84,6 @@ dt {
 export class WCInfo extends WCInfoBase {
     constructor() {
         super(...arguments);
-        //initializedCallback()
         this._renderOptions = {
             initializedCallback: (ctx, target) => {
                 append(target, styleTemplate);
