@@ -4,9 +4,13 @@ import { createTemplate } from "xtal-element/utils.js";
 import { init } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 const package_name = "package-name";
-const attribTemplate = createTemplate(/* html */ `
+const attribListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
+const attribListTemplateTransform = (attribs) => ({
+    dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
+    dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
+});
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
     <header>
@@ -18,6 +22,23 @@ const WCInfoTemplate = createTemplate(/* html */ `
         <dl></dl>
     </details> 
 </section>`);
+const WCInfoTemplateTransform = (tags, idx) => ({
+    header: {
+        ".WCLabel": x => tags[idx].label,
+        ".WCDesc": ({ target }) => {
+            target.innerHTML = tags[idx].description;
+        }
+    },
+    details: {
+        dl: ({ target, ctx }) => {
+            const attrbs = tags[idx].attributes;
+            if (!attrbs)
+                return;
+            repeatInit(attrbs.length, attribListTemplate, target);
+            return attribListTemplateTransform(attrbs);
+        }
+    }
+});
 export const mainTemplate$ = /* html */ `
 <header>
     <mark></mark>
@@ -28,38 +49,11 @@ export const mainTemplate$ = /* html */ `
 <main></main>
 `;
 const mainTemplate = createTemplate(mainTemplate$);
-export const subTemplates = {
-    attribTransform: 'attribTransform',
-    WCInfo: 'WCInfo'
-};
 export class WCInfoBase extends XtalElement {
     constructor() {
         super(...arguments);
         this._renderContext = {
             init: init,
-            refs: {
-                [subTemplates.attribTransform]: (attrbs) => ({
-                    dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                    dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
-                }),
-                [subTemplates.WCInfo]: (tags, idx) => ({
-                    header: {
-                        ".WCLabel": x => tags[idx].label,
-                        ".WCDesc": ({ target }) => {
-                            target.innerHTML = tags[idx].description;
-                        }
-                    },
-                    details: {
-                        dl: ({ target, ctx }) => {
-                            const attrbs = tags[idx].attributes;
-                            if (!attrbs)
-                                return;
-                            repeatInit(attrbs.length, attribTemplate, target);
-                            return ctx.refs[subTemplates.attribTransform](attrbs);
-                        }
-                    }
-                })
-            },
             Transform: {
                 header: {
                     mark: x => this.packageName,
@@ -72,9 +66,9 @@ export class WCInfoBase extends XtalElement {
                 main: ({ target }) => {
                     const tags = this.viewModel.tags;
                     repeatInit(tags.length, WCInfoTemplate, target);
-                    return ({
-                        section: ({ idx, ctx }) => ctx.refs[subTemplates.WCInfo](tags, idx),
-                    });
+                    return {
+                        section: ({ idx, ctx }) => WCInfoTemplateTransform(tags, idx)
+                    };
                 }
             }
         };

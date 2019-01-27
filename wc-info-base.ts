@@ -14,19 +14,25 @@ export interface Info {
   description: string;
 }
 
-export interface AttribInfo extends Info {}
+export interface AttribList extends Info {}
 
 export interface WCInfo extends Info {
-  attributes: AttribInfo[];
+  attributes: AttribList[];
 }
 export interface WCSuiteInfo {
   tags: WCInfo[];
 }
 const package_name = "package-name";
 
-const attribTemplate = createTemplate(/* html */ `
+const attribListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
+
+const attribListTemplateTransform = (attribs: AttribList[]) =>
+({
+  dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
+  dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
+} as TransformRules);
 
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
@@ -40,7 +46,25 @@ const WCInfoTemplate = createTemplate(/* html */ `
     </details> 
 </section>`);
 
-export const mainTemplate$ = /* html */ `
+const WCInfoTemplateTransform = (tags: WCInfo[], idx: number) =>
+  ({
+    header: {
+      ".WCLabel": x => tags[idx].label,
+      ".WCDesc": ({ target }) => {
+        target.innerHTML = tags[idx].description;
+      }
+    },
+    details: {
+      dl: ({ target, ctx }) => {
+        const attrbs = tags[idx].attributes;
+        if (!attrbs) return;
+        repeatInit(attrbs.length, attribListTemplate, target);
+        return attribListTemplateTransform(attrbs);
+      }
+    }
+  } as TransformRules);
+
+export const mainTemplate$ =   /* html */ `
 <header>
     <mark></mark>
     <nav>
@@ -48,39 +72,13 @@ export const mainTemplate$ = /* html */ `
     </nav>
 </header>
 <main></main>
-`;
-
+`
 const mainTemplate = createTemplate(mainTemplate$);
-export const subTemplates = {
-  attribTransform:'attribTransform',
-  WCInfo: 'WCInfo'
-} 
+
+
 export class WCInfoBase extends XtalElement<WCSuiteInfo> {
   _renderContext: RenderContext = {
     init: init,
-    refs:{
-      [subTemplates.attribTransform]: (attrbs: AttribInfo[]) => ({
-        dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-        dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description
-      } as TransformRules),
-      [subTemplates.WCInfo]: (tags: WCInfo[], idx: number) =>({
-        
-          header: {
-            ".WCLabel": x => tags[idx].label,
-            ".WCDesc": ({ target }) => {
-              target.innerHTML = tags[idx].description;
-            }
-          },
-          details: {
-            dl: ({ target, ctx }) => {
-              const attrbs = tags[idx].attributes;
-              if (!attrbs) return;
-              repeatInit(attrbs.length, attribTemplate, target);
-              return ctx.refs![subTemplates.attribTransform](attrbs); 
-            }
-          }
-      } as TransformRules)
-    },
     Transform: {
       header: {
         mark: x => this.packageName,
@@ -93,9 +91,9 @@ export class WCInfoBase extends XtalElement<WCSuiteInfo> {
       main: ({ target }) => {
         const tags = this.viewModel.tags;
         repeatInit(tags.length, WCInfoTemplate, target);
-        return ({
-          section: ({ idx, ctx }) => ctx.refs![subTemplates.WCInfo](tags, idx),
-        })
+        return {
+          section: ({ idx, ctx }) => WCInfoTemplateTransform(tags, idx)
+        };
       }
     }
   };
