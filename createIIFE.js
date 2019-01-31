@@ -3,7 +3,7 @@ const xl = 'node_modules/xtal-latx/';
 const tr = 'node_modules/trans-render/';
 const xe = 'node_modules/xtal-element/';
 const xlDep = [xl + 'define.js', xl + 'xtal-latx.js'];
-const trDep = [tr + 'init.js', tr + 'update.js', tr + 'repeatInit.js', tr + 'repeatUpdate.js', tr + 'interpolate.js'];
+const trDep = [tr + 'init.js', tr + 'update.js', tr + 'repeatInit.js', tr + 'repeatUpdate.js', tr + 'interpolate.js', tr + 'append.js'];
 const xeDep = [xe + 'utils.js', xe + 'xtal-element.js', xe + 'xtal-view-element.js'];
 const common = xlDep.concat(trDep).concat(xeDep);
 jiife.processFiles(common.concat(['wc-info-base.js']), 'dist/wc-info-base.iife.js');

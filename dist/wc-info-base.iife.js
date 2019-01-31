@@ -315,6 +315,10 @@ function interpolate(target, prop, obj, isAttr = false) {
     }
 }
 
+function append(target, template) {
+    target.appendChild(template.content.cloneNode(true));
+}
+
 function createTemplate(innerHTML) {
     const template = document.createElement("template");
     template.innerHTML = innerHTML;
