@@ -29,7 +29,7 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
         </wc-info>
         <wc-info package-name="npm install xtal-siema" href="https://unpkg.com/xtal-siema@0.0.26/web-components.json">
         </wc-info>
-        <script type="module" src="https://unpkg.com/wc-info@0.0.14/dist/wc-info.iife.js"></script>
+        <script type="module" src="https://unpkg.com/wc-info@0.0.19/dist/wc-info.iife.js"></script>
     </div>
 </template>
 </custom-element-demo>

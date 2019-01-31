@@ -105,52 +105,54 @@ function XtallatX(superClass) {
         }
     };
 }
-const _rules = "_rules";
 function init(template, ctx, target, options) {
-    //ctx.init = init;
-    const clonedTemplate = template.content.cloneNode(true);
+    const clonedTemplate = template.localName === "template"
+        ? template.content.cloneNode(true)
+        : template;
     ctx.template = clonedTemplate;
-    if (ctx.transform) {
+    if (ctx.Transform) {
         const firstChild = clonedTemplate.firstElementChild;
         if (firstChild !== null) {
             ctx.leaf = firstChild;
             process(ctx, 0, 0, options);
         }
     }
-    const verb = options && options.prepend ? "prepend" : "appendChild";
+    let verb = "appendChild";
+    if (options) {
+        if (options.prepend)
+            verb = "prepend";
+        const callback = options.initializedCallback;
+        if (callback !== undefined)
+            callback(ctx, target, options);
+    }
     target[verb](ctx.template);
     return ctx;
 }
-function inheritTemplate(context, transform, inherit) {
-    if (inherit) {
-        return Object.assign(Object.assign({}, context.transform), transform);
-    }
-    return transform;
+function isTR(obj) {
+    const keys = Object.keys(obj);
+    if (keys.length === 0)
+        return true;
+    const firstCharOfFirstProp = keys[0][0];
+    return "SNTM".indexOf(firstCharOfFirstProp) === -1;
 }
 function process(context, idx, level, options) {
     const target = context.leaf;
     if (target.matches === undefined)
         return;
-    const transform = context.transform;
-    let drill = null;
-    let matchFirstChild = false;
-    let matchNextSib = false;
+    const transform = context.Transform;
+    let nextTransform = {};
+    let nextSelector = "";
+    let firstSelector = true;
+    let matchNextSib = true;
     let inherit = false;
     let nextMatch = [];
-    //context.inheritMatches = false;
     for (const selector in transform) {
-        if (selector === _rules)
-            continue;
         if (target.matches(selector)) {
             const transformTemplateVal = transform[selector];
             switch (typeof transformTemplateVal) {
                 case "object":
-                    if (typeof matchFirstChild === "object") {
-                        Object.assign(matchFirstChild, transformTemplateVal);
-                    }
-                    else {
-                        matchFirstChild = transformTemplateVal;
-                    }
+                    nextSelector = "*";
+                    Object.assign(nextTransform, transformTemplateVal);
                     break;
                 case "function":
                     const transformTemplate = transformTemplateVal;
@@ -166,46 +168,30 @@ function process(context, idx, level, options) {
                                 target.textContent = resp;
                                 break;
                             case "object":
-                                if (resp[_rules]) {
+                                if (isTR(resp)) {
                                     const respAsTransformRules = resp;
-                                    if (typeof matchFirstChild === "object") {
-                                        Object.assign(matchFirstChild, respAsTransformRules);
-                                    }
-                                    else {
-                                        matchFirstChild = respAsTransformRules;
-                                    }
+                                    nextSelector = "*";
+                                    Object.assign(nextTransform, respAsTransformRules);
                                 }
                                 else {
-                                    const respAsNextSteps = resp;
-                                    inherit = inherit || !!resp.inheritMatches;
-                                    if (respAsNextSteps.select !== undefined) {
-                                        drill =
-                                            drill === null
-                                                ? respAsNextSteps.select
-                                                : Object.assign(drill, resp.select);
+                                    const respAsNextStep = resp;
+                                    inherit = inherit || !!resp.MergeTransforms;
+                                    if (respAsNextStep.Select !== undefined) {
+                                        nextSelector =
+                                            (firstSelector ? "" : ",") + respAsNextStep.Select;
+                                        firstSelector = false;
                                     }
-                                    if (resp.matchFirstChild !== undefined) {
-                                        switch (typeof resp.matchFirstChild) {
-                                            case "boolean":
-                                                if (typeof matchFirstChild === "boolean" &&
-                                                    resp.matchFirstChild) {
-                                                    matchFirstChild = true;
-                                                }
-                                                break;
-                                            case "object":
-                                                if (typeof matchFirstChild === "object") {
-                                                    Object.assign(matchFirstChild, resp.matchFirstChild);
-                                                }
-                                                else {
-                                                    matchFirstChild = resp.matchFirstChild;
-                                                }
-                                                break;
-                                        }
+                                    const newTransform = respAsNextStep.Transform;
+                                    if (newTransform === undefined) {
+                                        Object.assign(nextTransform, context.Transform);
                                     }
-                                    if (resp.matchNextSib)
-                                        matchNextSib = true;
-                                    if (!matchNextSib && resp.nextMatch) {
-                                        nextMatch.push(resp.nextMatch);
+                                    else {
+                                        Object.assign(nextTransform, newTransform);
+                                    }
+                                    if (respAsNextStep.SkipSibs)
+                                        matchNextSib = false;
+                                    if (!matchNextSib && resp.NextMatch) {
+                                        nextMatch.push(resp.NextMatch);
                                     }
                                 }
                                 break;
@@ -215,74 +201,75 @@ function process(context, idx, level, options) {
             }
         }
     }
-    if (matchNextSib || (options && options.matchNext)) {
-        let transform = context.transform;
-        if (typeof matchNextSib === "object") {
-            context.transform = inheritTemplate(context, matchNextSib, inherit);
-        }
+    if (matchNextSib) {
+        let transform = context.Transform;
         const nextSib = target.nextElementSibling;
         if (nextSib !== null) {
             context.leaf = nextSib;
             process(context, idx + 1, level, options);
         }
-        context.transform = transform;
-    }
-    else if (nextMatch.length > 0) {
-        const match = nextMatch.join(",");
-        let nextSib = target.nextElementSibling;
-        while (nextSib !== null) {
-            if (nextSib.matches(match)) {
-                context.leaf = nextSib;
-                process(context, idx + 1, level, options);
-                break;
+        context.Transform = transform;
+        if (nextMatch.length > 0) {
+            const match = nextMatch.join(",");
+            let nextSib = target.nextElementSibling;
+            while (nextSib !== null) {
+                if (nextSib.matches(match)) {
+                    context.leaf = nextSib;
+                    process(context, idx + 1, level, options);
+                    break;
+                }
+                nextSib = nextSib.nextElementSibling;
             }
-            nextSib = nextSib.nextElementSibling;
         }
     }
-    if (matchFirstChild || drill !== null) {
-        let transform = context.transform;
-        let nextChild;
-        if (drill !== null) {
-            const keys = Object.keys(drill);
-            nextChild = target.querySelector(keys[0]);
-            context.transform = inheritTemplate(context, drill, inherit);
-        }
-        else {
-            nextChild = target.firstElementChild;
-            if (typeof matchFirstChild === "object") {
-                context.transform = inheritTemplate(context, matchFirstChild, inherit);
-            }
+    if (nextSelector.length > 0) {
+        let transform = context.Transform;
+        const nextChild = target.querySelector(nextSelector);
+        if (inherit) {
+            Object.assign(nextTransform, context.Transform);
         }
         if (nextChild !== null) {
             context.leaf = nextChild;
+            context.Transform = nextTransform;
             process(context, 0, level + 1, options);
+            context.Transform = transform;
         }
-        context.transform = transform;
     }
 }
-function update(ctx, target) {
+
+function update(ctx, target, options) {
     const updateCtx = ctx;
     updateCtx.update = update;
     const firstChild = target.firstElementChild;
     if (firstChild !== null) {
         ctx.leaf = firstChild;
-        process(ctx, 0, 0);
+        process(ctx, 0, 0, options);
+        if (options) {
+            const updatedCallback = options.updatedCallback;
+            if (updatedCallback !== undefined)
+                updatedCallback(ctx, target, options);
+        }
     }
     return updateCtx;
 }
-const countKey = '__transRenderCount';
-const initKey = '__trInit';
+
+const countKey = '__trCount';
+const idxKey = '__trIdx';
+//export const initKey = '__trInit';
 function repeatInit(count, template, target) {
     target[countKey] = count;
     for (let i = 0; i < count; i++) {
         const clonedTemplate = template.content.cloneNode(true);
         Array.from(clonedTemplate.children).forEach(c => {
-            c.setAttribute(initKey, '');
+            //c.setAttribute(initKey, '');
+            c[idxKey] = i;
+            //(c as HTMLElement).dataset.idxKey = i + '';
         });
         //TODO:  assign index to children
         target.appendChild(clonedTemplate);
     }
 }
+
 //type HTMLFn = (el: HTMLElement) => void
 function repeatUpdate(count, template, target) {
     const childCount = target[countKey];
@@ -293,13 +280,24 @@ function repeatUpdate(count, template, target) {
         for (let i = 0; i < diff; i++) {
             const clonedTemplate = template.content.cloneNode(true);
             //TODO:  mark children as needing initialization
+            Array.from(clonedTemplate.children).forEach(c => {
+                c[idxKey] = childCount + i;
+                //(c as HTMLElement).dataset.idxKey = childCount + i + '';
+            });
             target.appendChild(clonedTemplate);
         }
     }
     else {
+        for (let i = target.children.length - 1; i > -1; i--) {
+            const child = target.children[i];
+            if (child[idxKey] >= count) {
+                child.remove();
+            }
+        }
     }
     target[countKey] = count;
 }
+
 function interpolate(target, prop, obj, isAttr = false) {
     const privateStorageKey = '__' + prop + '__split';
     let split = target[privateStorageKey];
@@ -316,6 +314,7 @@ function interpolate(target, prop, obj, isAttr = false) {
         target[prop] = newVal;
     }
 }
+
 class XtalElement extends XtallatX(HTMLElement) {
     get noShadow() {
         return false;
@@ -326,15 +325,6 @@ class XtalElement extends XtallatX(HTMLElement) {
     attributeChangedCallback(n, ov, nv) {
         super.attributeChangedCallback(n, ov, nv);
         this.onPropsChange();
-    }
-    get viewModel() {
-        return this._viewModel;
-    }
-    set viewModel(nv) {
-        this._viewModel = nv;
-        this.de('value', {
-            value: nv
-        });
     }
     connectedCallback() {
         this._upgradeProperties([disabled]);
@@ -351,7 +341,25 @@ class XtalElement extends XtallatX(HTMLElement) {
     }
     onPropsChange() {
         if (this._disabled || !this._connected || !this.ready)
-            return;
+            return false;
+        return true;
+    }
+}
+
+class XtalViewElement extends XtalElement {
+    get viewModel() {
+        return this._viewModel;
+    }
+    set viewModel(nv) {
+        this._viewModel = nv;
+        this.de('view-model', {
+            value: nv
+        });
+    }
+    onPropsChange() {
+        if (!super.onPropsChange())
+            return false;
+        //TODO: add abort support
         const rc = this.renderContext;
         const esc = this.eventSwitchContext;
         if (this._initialized) {
@@ -366,8 +374,8 @@ class XtalElement extends XtallatX(HTMLElement) {
             this.init().then(model => {
                 this.viewModel = model;
                 if (this.mainTemplate !== undefined) {
-                    if (esc && esc.addEventListeners !== undefined) {
-                        esc.addEventListeners(this.root, esc);
+                    if (esc && esc.eventManager !== undefined) {
+                        esc.eventManager(this.root, esc);
                     }
                     if (rc && rc.init !== undefined) {
                         rc.init(this.mainTemplate, rc, this.root, this.renderOptions);
@@ -379,15 +387,12 @@ class XtalElement extends XtallatX(HTMLElement) {
                 }
             });
         }
+        return true;
     }
 }
+
 const package_name = "package-name";
-function createTemplate(innerHTML) {
-    const template = document.createElement("template");
-    template.innerHTML = innerHTML;
-    return template;
-}
-const attribTemplate = createTemplate(/* html */ `
+const attribListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
 const WCInfoTemplate = createTemplate(/* html */ `
@@ -401,78 +406,69 @@ const WCInfoTemplate = createTemplate(/* html */ `
         <dl></dl>
     </details> 
 </section>`);
-const mainTemplate$ = /* html */ `
+const mainTemplate = createTemplate(/* html */ `
 <header>
     <mark></mark>
     <nav>
-        <a target="_blank">⚙️</a>
+        <a target="_blank">🚾</a>
     </nav>
 </header>
 <main></main>
-`;
-const mainTemplate = createTemplate(mainTemplate$);
-class WCInfoBase extends XtalElement {
+`);
+class WCInfoBase extends XtalViewElement {
     constructor() {
         super(...arguments);
-        this._href = null;
-        this._packageName = null;
-        this._c = false;
-    }
-    get renderContext() {
-        return {
+        this._renderContext = {
             init: init,
-            transform: {
+            Transform: {
                 header: {
                     mark: x => this.packageName,
                     nav: {
                         a: ({ target }) => {
                             target.href = this._href;
                         }
-                    },
+                    }
                 },
                 main: ({ target }) => {
                     const tags = this.viewModel.tags;
                     repeatInit(tags.length, WCInfoTemplate, target);
                     return {
-                        [_rules]: true,
-                        section: ({ idx }) => ({
-                            matchFirstChild: {
-                                header: {
-                                    ".WCLabel": x => tags[idx].label,
-                                    ".WCDesc": ({ target }) => {
-                                        target.innerHTML = tags[idx].description;
-                                    },
-                                },
-                                details: {
-                                    dl: ({ target }) => {
-                                        const attrbs = tags[idx].attributes;
-                                        if (!attrbs)
-                                            return;
-                                        repeatInit(attrbs.length, attribTemplate, target);
-                                        return {
-                                            [_rules]: true,
-                                            dt: ({ idx }) => attrbs[Math.floor(idx / 2)].label,
-                                            dd: ({ idx }) => attrbs[Math.floor(idx / 2)].description,
-                                        };
-                                    },
-                                },
+                        section: ({ idx, ctx }) => ({
+                            header: {
+                                ".WCLabel": x => tags[idx].label,
+                                ".WCDesc": ({ target }) => {
+                                    target.innerHTML = tags[idx].description;
+                                }
+                            },
+                            details: {
+                                dl: ({ target, ctx }) => {
+                                    const attribs = tags[idx].attributes;
+                                    if (!attribs)
+                                        return;
+                                    repeatInit(attribs.length, attribListTemplate, target);
+                                    return {
+                                        dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
+                                        dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
+                                    };
+                                }
                             }
-                        }),
+                        })
                     };
                 }
             }
         };
+        this._href = null;
+        this._packageName = null;
+        this._c = false;
+    }
+    get renderContext() {
+        return this._renderContext;
     }
     static get is() {
         return "wc-info-base";
     }
     get noShadow() {
         return true;
-    }
-    get renderOptions() {
-        return {
-            matchNext: true,
-        };
     }
     get eventSwitchContext() {
         return {};
@@ -489,11 +485,13 @@ class WCInfoBase extends XtalElement {
             });
         });
     }
-    update() { return this.init(); }
+    update() {
+        return this.init();
+    }
     onPropsChange() {
         this._initialized = false;
-        this.root.innerHTML = '';
-        super.onPropsChange();
+        this.root.innerHTML = "";
+        return super.onPropsChange();
     }
     get mainTemplate() {
         return mainTemplate;
@@ -530,9 +528,8 @@ class WCInfoBase extends XtalElement {
     }
 }
 define(WCInfoBase);
-const template = document.createElement("template");
-const mainTemplateExt$ = mainTemplate$ +
-    /* html */ `
+const styleTemplate = createTemplate(
+/* html */ `
 <style>
 :host{
     display: block;
@@ -608,17 +605,25 @@ dt {
     align-items: flex-start;
 }
 </style>
-`;
-const mainTemplateExt = createTemplate(mainTemplateExt$);
+`);
+//const mainTemplateExt = createTemplate(mainTemplateExt$);
 class WCInfo extends WCInfoBase {
+    constructor() {
+        super(...arguments);
+        this._renderOptions = {
+            initializedCallback: (ctx, target) => {
+                append(target, styleTemplate);
+            }
+        };
+    }
     static get is() {
         return "wc-info";
     }
     get noShadow() {
         return false;
     }
-    get mainTemplate() {
-        return mainTemplateExt;
+    get renderOptions() {
+        return this._renderOptions;
     }
 }
 define(WCInfo);

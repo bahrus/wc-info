@@ -1,5 +1,5 @@
 import { define } from "xtal-latx/define.js";
-import { XtalElement } from "xtal-element/xtal-element.js";
+import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate } from "xtal-element/utils.js";
 import { init } from "trans-render/init.js";
 import { repeatInit } from "trans-render/repeatInit.js";
@@ -22,12 +22,12 @@ const mainTemplate = createTemplate(/* html */ `
 <header>
     <mark></mark>
     <nav>
-        <a target="_blank">⚙️</a>
+        <a target="_blank">🚾</a>
     </nav>
 </header>
 <main></main>
 `);
-export class WCInfoBase extends XtalElement {
+export class WCInfoBase extends XtalViewElement {
     constructor() {
         super(...arguments);
         this._renderContext = {
@@ -103,7 +103,7 @@ export class WCInfoBase extends XtalElement {
     onPropsChange() {
         this._initialized = false;
         this.root.innerHTML = "";
-        super.onPropsChange();
+        return super.onPropsChange();
     }
     get mainTemplate() {
         return mainTemplate;

@@ -1,5 +1,5 @@
 import { define } from "xtal-latx/define.js";
-import { XtalElement } from "xtal-element/xtal-element.js";
+import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate } from "xtal-element/utils.js";
 import { RenderContext, TransformRules, RenderOptions } from "trans-render/init.d.js";
 import { init } from "trans-render/init.js";
@@ -40,13 +40,13 @@ const mainTemplate = createTemplate(/* html */ `
 <header>
     <mark></mark>
     <nav>
-        <a target="_blank">⚙️</a>
+        <a target="_blank">🚾</a>
     </nav>
 </header>
 <main></main>
 `);
 
-export class WCInfoBase extends XtalElement<WCSuiteInfo> {
+export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   _renderContext: RenderContext = {
     init: init,
     Transform: {
@@ -125,7 +125,7 @@ export class WCInfoBase extends XtalElement<WCSuiteInfo> {
   onPropsChange() {
     this._initialized = false;
     this.root.innerHTML = "";
-    super.onPropsChange();
+    return super.onPropsChange();
   }
 
   get mainTemplate() {
