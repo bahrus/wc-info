@@ -315,6 +315,12 @@ function interpolate(target, prop, obj, isAttr = false) {
     }
 }
 
+function createTemplate(innerHTML) {
+    const template = document.createElement("template");
+    template.innerHTML = innerHTML;
+    return template;
+}
+
 class XtalElement extends XtallatX(HTMLElement) {
     get noShadow() {
         return false;
