@@ -7,11 +7,17 @@ const styleTemplate = createTemplate(
 <style>
 :host{
     display: block;
-}
-main {
-    border-color: grey;
+    border-color: black;
     border-width: 1px;
     border-style: solid;
+    /* border-color: red;
+    border-width 1px;
+    border-style: solid; */
+}
+main {
+    /*border-color: grey;
+    border-width: 1px;
+    border-style: solid;*/
     padding: 8px;
 }
 details {
