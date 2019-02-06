@@ -31,6 +31,11 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
         </wc-info>
         <script type="module" src="https://unpkg.com/wc-info@0.0.23/dist/wc-info.iife.js"></script>
     </div>
+    <style>
+        wc-info{
+            margin-top: 10px;
+        }
+    </style>
 </template>
 </custom-element-demo>
 ```
