@@ -1,7 +1,6 @@
 import { define } from "xtal-latx/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
-import { createTemplate } from "xtal-element/utils.js";
-import { init } from "trans-render/init.js";
+import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 const package_name = "package-name";
 const attribListTemplate = createTemplate(/* html */ `
@@ -30,45 +29,43 @@ const mainTemplate = createTemplate(/* html */ `
 export class WCInfoBase extends XtalViewElement {
     constructor() {
         super(...arguments);
-        this._renderContext = {
-            init: init,
-            Transform: {
-                header: {
-                    mark: x => this.packageName,
-                    nav: {
-                        a: ({ target }) => {
-                            target.href = this._href;
-                        }
+        this._renderContext = newRenderContext({
+            header: {
+                mark: x => this.packageName,
+                nav: {
+                    a: ({ target }) => {
+                        const link = target;
+                        link.href = this._href;
                     }
-                },
-                main: ({ target }) => {
-                    const tags = this.viewModel.tags;
-                    repeatInit(tags.length, WCInfoTemplate, target);
-                    return {
-                        section: ({ idx, ctx }) => ({
-                            header: {
-                                ".WCLabel": x => tags[idx].label,
-                                ".WCDesc": ({ target }) => {
-                                    target.innerHTML = tags[idx].description;
-                                }
-                            },
-                            details: {
-                                dl: ({ target, ctx }) => {
-                                    const attribs = tags[idx].attributes;
-                                    if (!attribs)
-                                        return;
-                                    repeatInit(attribs.length, attribListTemplate, target);
-                                    return {
-                                        dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
-                                        dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
-                                    };
-                                }
-                            }
-                        })
-                    };
                 }
+            },
+            main: ({ target }) => {
+                const tags = this.viewModel.tags;
+                repeatInit(tags.length, WCInfoTemplate, target);
+                return {
+                    section: ({ idx, ctx }) => ({
+                        header: {
+                            ".WCLabel": x => tags[idx].label,
+                            ".WCDesc": ({ target }) => {
+                                target.innerHTML = tags[idx].description;
+                            }
+                        },
+                        details: {
+                            dl: ({ target, ctx }) => {
+                                const attribs = tags[idx].attributes;
+                                if (!attribs)
+                                    return;
+                                repeatInit(attribs.length, attribListTemplate, target);
+                                return {
+                                    dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
+                                    dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
+                                };
+                            }
+                        }
+                    })
+                };
             }
-        };
+        });
         this._href = null;
         this._packageName = null;
         this._c = false;
@@ -82,7 +79,7 @@ export class WCInfoBase extends XtalViewElement {
     get noShadow() {
         return true;
     }
-    get eventSwitchContext() {
+    get eventContext() {
         return {};
     }
     get ready() {

@@ -1,8 +1,7 @@
 import { define } from "xtal-latx/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
-import { createTemplate } from "xtal-element/utils.js";
-import { RenderContext, TransformRules, RenderOptions } from "trans-render/init.d.js";
-import { init } from "trans-render/init.js";
+import { createTemplate, newRenderContext } from "xtal-element/utils.js";
+import { TransformRules, RenderOptions } from "trans-render/init.d.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 
 export interface Info {
@@ -47,14 +46,13 @@ const mainTemplate = createTemplate(/* html */ `
 `);
 
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
-  _renderContext: RenderContext = {
-    init: init,
-    Transform: {
+  _renderContext = newRenderContext({
       header: {
         mark: x => this.packageName,
         nav: {
           a: ({ target }) => {
-            (target as HTMLAnchorElement).href = this._href!;
+            const link = (target as HTMLAnchorElement);
+            link.href = this._href!;
           }
         }
       } as TransformRules,
@@ -84,8 +82,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
             } as TransformRules)
         };
       }
-    }
-  };
+  });
 
   get renderContext() {
     return this._renderContext;
@@ -101,7 +98,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
 
 
 
-  get eventSwitchContext() {
+  get eventContext() {
     return {};
   }
   get ready() {
