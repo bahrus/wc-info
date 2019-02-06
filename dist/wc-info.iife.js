@@ -106,7 +106,8 @@ function XtallatX(superClass) {
     };
 }
 function init(template, ctx, target, options) {
-    const clonedTemplate = template.localName === "template"
+    const isTemplate = template.localName === "template";
+    const clonedTemplate = isTemplate
         ? template.content.cloneNode(true)
         : template;
     ctx.template = clonedTemplate;
@@ -117,23 +118,18 @@ function init(template, ctx, target, options) {
             process(ctx, 0, 0, options);
         }
     }
-    let verb = "appendChild";
-    if (options) {
-        if (options.prepend)
-            verb = "prepend";
-        const callback = options.initializedCallback;
-        if (callback !== undefined)
-            callback(ctx, target, options);
+    if (isTemplate) {
+        let verb = "appendChild";
+        if (options) {
+            if (options.prepend)
+                verb = "prepend";
+            const callback = options.initializedCallback;
+            if (callback !== undefined)
+                callback(ctx, target, options);
+        }
+        target[verb](ctx.template);
     }
-    target[verb](ctx.template);
     return ctx;
-}
-function isTR(obj) {
-    const keys = Object.keys(obj);
-    if (keys.length === 0)
-        return true;
-    const firstCharOfFirstProp = keys[0][0];
-    return "SNTM".indexOf(firstCharOfFirstProp) === -1;
 }
 function process(context, idx, level, options) {
     const target = context.leaf;
@@ -168,7 +164,13 @@ function process(context, idx, level, options) {
                                 target.textContent = resp;
                                 break;
                             case "object":
-                                if (isTR(resp)) {
+                                let isTR = true;
+                                const keys = Object.keys(resp);
+                                if (keys.length > 0) {
+                                    const firstCharOfFirstProp = keys[0][0];
+                                    isTR = "SNTM".indexOf(firstCharOfFirstProp) === -1;
+                                }
+                                if (isTR) {
                                     const respAsTransformRules = resp;
                                     nextSelector = "*";
                                     Object.assign(nextTransform, respAsTransformRules);
@@ -324,6 +326,12 @@ function createTemplate(innerHTML) {
     template.innerHTML = innerHTML;
     return template;
 }
+function newRenderContext(transformRules) {
+    return {
+        init: init,
+        Transform: transformRules,
+    };
+}
 
 class XtalElement extends XtallatX(HTMLElement) {
     get noShadow() {
@@ -371,7 +379,7 @@ class XtalViewElement extends XtalElement {
             return false;
         //TODO: add abort support
         const rc = this.renderContext;
-        const esc = this.eventSwitchContext;
+        const esc = this.eventContext;
         if (this._initialized) {
             this.update().then(model => {
                 this.viewModel = model;
@@ -418,9 +426,9 @@ const WCInfoTemplate = createTemplate(/* html */ `
 </section>`);
 const mainTemplate = createTemplate(/* html */ `
 <header>
-    <mark></mark>
+    <h2></h2>
     <nav>
-        <a target="_blank">🚾</a>
+        <a target="_blank">📜</a>
     </nav>
 </header>
 <main></main>
@@ -428,45 +436,43 @@ const mainTemplate = createTemplate(/* html */ `
 class WCInfoBase extends XtalViewElement {
     constructor() {
         super(...arguments);
-        this._renderContext = {
-            init: init,
-            Transform: {
-                header: {
-                    mark: x => this.packageName,
-                    nav: {
-                        a: ({ target }) => {
-                            target.href = this._href;
-                        }
+        this._renderContext = newRenderContext({
+            header: {
+                h2: x => this.packageName,
+                nav: {
+                    a: ({ target }) => {
+                        const link = target;
+                        link.href = this._href;
                     }
-                },
-                main: ({ target }) => {
-                    const tags = this.viewModel.tags;
-                    repeatInit(tags.length, WCInfoTemplate, target);
-                    return {
-                        section: ({ idx, ctx }) => ({
-                            header: {
-                                ".WCLabel": x => tags[idx].label,
-                                ".WCDesc": ({ target }) => {
-                                    target.innerHTML = tags[idx].description;
-                                }
-                            },
-                            details: {
-                                dl: ({ target, ctx }) => {
-                                    const attribs = tags[idx].attributes;
-                                    if (!attribs)
-                                        return;
-                                    repeatInit(attribs.length, attribListTemplate, target);
-                                    return {
-                                        dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
-                                        dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
-                                    };
-                                }
-                            }
-                        })
-                    };
                 }
+            },
+            main: ({ target }) => {
+                const tags = this.viewModel.tags;
+                repeatInit(tags.length, WCInfoTemplate, target);
+                return {
+                    section: ({ idx, ctx }) => ({
+                        header: {
+                            ".WCLabel": x => tags[idx].label,
+                            ".WCDesc": ({ target }) => {
+                                target.innerHTML = tags[idx].description;
+                            }
+                        },
+                        details: {
+                            dl: ({ target, ctx }) => {
+                                const attribs = tags[idx].attributes;
+                                if (!attribs)
+                                    return;
+                                repeatInit(attribs.length, attribListTemplate, target);
+                                return {
+                                    dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
+                                    dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
+                                };
+                            }
+                        }
+                    })
+                };
             }
-        };
+        });
         this._href = null;
         this._packageName = null;
         this._c = false;
@@ -480,7 +486,7 @@ class WCInfoBase extends XtalViewElement {
     get noShadow() {
         return true;
     }
-    get eventSwitchContext() {
+    get eventContext() {
         return {};
     }
     get ready() {
@@ -540,15 +546,18 @@ class WCInfoBase extends XtalViewElement {
 define(WCInfoBase);
 const styleTemplate = createTemplate(
 /* html */ `
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <style>
 :host{
     display: block;
-}
-main {
-    border-color: grey;
+    border-color: black;
     border-width: 1px;
     border-style: solid;
+    
+}
+main {
     padding: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, sans-serif;
 }
 details {
     width: 100%;
@@ -556,6 +565,7 @@ details {
 header {
     display: flex;
     justify-content: flex-start;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, sans-serif;
     width:100%;
 }
 @media only screen and (max-width: 800px) {
@@ -571,7 +581,7 @@ header {
 summary {
     margin-top: 20px;
 }
-mark {
+h2 {
     flex: 0 1 auto;
     position: absolute;
     left: 50%;

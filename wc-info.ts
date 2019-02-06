@@ -6,21 +6,18 @@ import {append} from 'trans-render/append.js';
 
 const styleTemplate = createTemplate(
   /* html */ `
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <style>
 :host{
     display: block;
     border-color: black;
     border-width: 1px;
     border-style: solid;
-    /* border-color: red;
-    border-width 1px;
-    border-style: solid; */
+    
 }
 main {
-    /*border-color: grey;
-    border-width: 1px;
-    border-style: solid;*/
     padding: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, sans-serif;
 }
 details {
     width: 100%;
@@ -28,6 +25,7 @@ details {
 header {
     display: flex;
     justify-content: flex-start;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, sans-serif;
     width:100%;
 }
 @media only screen and (max-width: 800px) {
@@ -43,7 +41,7 @@ header {
 summary {
     margin-top: 20px;
 }
-mark {
+h2 {
     flex: 0 1 auto;
     position: absolute;
     left: 50%;

@@ -37,9 +37,9 @@ const WCInfoTemplate = createTemplate(/* html */ `
 
 const mainTemplate = createTemplate(/* html */ `
 <header>
-    <mark></mark>
+    <h2></h2>
     <nav>
-        <a target="_blank">🚾</a>
+        <a target="_blank">📜</a>
     </nav>
 </header>
 <main></main>
@@ -48,7 +48,7 @@ const mainTemplate = createTemplate(/* html */ `
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   _renderContext = newRenderContext({
       header: {
-        mark: x => this.packageName,
+        h2: x => this.packageName,
         nav: {
           a: ({ target }) => {
             const link = (target as HTMLAnchorElement);
