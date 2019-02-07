@@ -1,27 +1,28 @@
 {
+    "version":1,
     "tags": [
         {
-            "label": "wc-info-base",
+            "name": "wc-info-base",
             "description": "Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
             "attributes": [
                 {
-                    "label": "href",
+                    "name": "href",
                     "description": "Url where web component information is contained."
                 },{
-                    "label": "package-name",
+                    "name": "package-name",
                     "description": "Name of Package."
                 }
             ]
         },
         {
-            "label": "wc-info",
+            "name": "wc-info",
             "description": "Display Web Component Information based on web-components.json file.",
             "attributes": [
                 {
-                    "label": "href",
+                    "name": "href",
                     "description": "Url where Web Component Information is contained."
                 },{
-                    "label": "package-name",
+                    "name": "package-name",
                     "description": "Name of Package."
                 }
             ]
