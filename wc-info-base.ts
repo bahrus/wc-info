@@ -26,7 +26,7 @@ const attribListTemplate = createTemplate(/* html */ `
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
     <header>
-        <div class="WCLabel"></div>
+        <div class="WCName"></div>
         <div class="WCDesc"></div>
     </header>
     <details>
@@ -37,51 +37,50 @@ const WCInfoTemplate = createTemplate(/* html */ `
 
 const mainTemplate = createTemplate(/* html */ `
 <header>
+  <nav>
     <h3></h3>
-    <nav>
-        <a target="_blank">📜</a>
-    </nav>
+    <a target="_blank">📜</a>
+  </nav>
 </header>
 <main></main>
 `);
 
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   _renderContext = newRenderContext({
-      header: {
-        h3: x => this.packageName,
-        nav: {
-          a: ({ target }) => {
-            const link = (target as HTMLAnchorElement);
-            link.href = this._href!;
-          }
+    header: {
+      h3: x => this.packageName,
+      nav: {
+        a: ({ target }) => {
+          (target as HTMLAnchorElement).href = this._href!;
         }
-      } as TransformRules,
-      main: ({ target }) => {
-        const tags = this.viewModel.tags;
-        repeatInit(tags.length, WCInfoTemplate, target);
-        return {
-          section: ({ idx, ctx }) =>
-            ({
-              header: {
-                ".WCLabel": x => tags[idx].name,
-                ".WCDesc": ({ target }) => {
-                  target.innerHTML = tags[idx].description;
-                }
-              },
-              details: {
-                dl: ({ target, ctx }) => {
-                  const attribs = tags[idx].attributes;
-                  if (!attribs) return;
-                  repeatInit(attribs.length, attribListTemplate, target);
-                  return {
-                    dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
-                    dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
-                  } as TransformRules;
-                }
-              }
-            } as TransformRules)
-        };
       }
+    } as TransformRules,
+    main: ({ target }) => {
+      const tags = this.viewModel.tags;
+      repeatInit(tags.length, WCInfoTemplate, target);
+      return {
+        section: ({ idx, ctx }) =>
+          ({
+            header: {
+              ".WCName": x => tags[idx].name,
+              ".WCDesc": ({ target }) => {
+                target.innerHTML = tags[idx].description;
+              }
+            },
+            details: {
+              dl: ({ target, ctx }) => {
+                const attribs = tags[idx].attributes;
+                if (!attribs) return;
+                repeatInit(attribs.length, attribListTemplate, target);
+                return {
+                  dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
+                  dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
+                } as TransformRules;
+              }
+            }
+          } as TransformRules)
+      };
+    }
   });
 
   get renderContext() {
@@ -95,8 +94,6 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   get noShadow() {
     return true;
   }
-
-
 
   get eventContext() {
     return {};

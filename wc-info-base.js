@@ -9,7 +9,7 @@ const attribListTemplate = createTemplate(/* html */ `
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
     <header>
-        <div class="WCLabel"></div>
+        <div class="WCName"></div>
         <div class="WCDesc"></div>
     </header>
     <details>
@@ -19,10 +19,10 @@ const WCInfoTemplate = createTemplate(/* html */ `
 </section>`);
 const mainTemplate = createTemplate(/* html */ `
 <header>
+  <nav>
     <h3></h3>
-    <nav>
-        <a target="_blank">📜</a>
-    </nav>
+    <a target="_blank">📜</a>
+  </nav>
 </header>
 <main></main>
 `);
@@ -34,8 +34,7 @@ export class WCInfoBase extends XtalViewElement {
                 h3: x => this.packageName,
                 nav: {
                     a: ({ target }) => {
-                        const link = target;
-                        link.href = this._href;
+                        target.href = this._href;
                     }
                 }
             },
@@ -45,7 +44,7 @@ export class WCInfoBase extends XtalViewElement {
                 return {
                     section: ({ idx, ctx }) => ({
                         header: {
-                            ".WCLabel": x => tags[idx].name,
+                            ".WCName": x => tags[idx].name,
                             ".WCDesc": ({ target }) => {
                                 target.innerHTML = tags[idx].description;
                             }
@@ -137,4 +136,3 @@ export class WCInfoBase extends XtalViewElement {
     }
 }
 define(WCInfoBase);
-//# sourceMappingURL=wc-info-base.js.map

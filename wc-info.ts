@@ -65,7 +65,7 @@ a {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     /* transition: 0.3s; */
 }
-.WCLabel {
+.WCName {
     font-weight: 800;
     padding-right: 20px;
     flex-basis:25%;
