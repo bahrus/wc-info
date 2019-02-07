@@ -29,46 +29,6 @@ UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_ht
 ```
 -->
 
-## BYOS (where S=Style)
-
-<!--
-```
-<custom-element-demo>
-  <template>
-    <div>
-
-        <wc-info-base href="https://unpkg.com/wc-info@0.0.4/web-components.json" package-name="npm.wc-info"></wc-info-base>
-        <style>
-            .card {
-                    padding: 16px;
-                    mix-blend-mode: difference;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-        
-                    /* Add shadows to create the "card" effect */
-                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-                    /* transition: 0.3s; */
-                }
-            .WCLabel{
-                font-weight: 800;
-            }
-            dt{
-                font-weight: 700;
-            }
-            .WCInfo.card{
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        </style>
-        <script type="module" src="https://unpkg.com/wc-info@0.0.14/dist/wc-info-base.iife.js"></script>
-    </div>
-  </template>
-</custom-element-demo>
-```
--->
 
 
 ## Viewing Your Element (locally)
