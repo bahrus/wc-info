@@ -426,7 +426,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
 </section>`);
 const mainTemplate = createTemplate(/* html */ `
 <header>
-    <h2></h2>
+    <h3></h3>
     <nav>
         <a target="_blank">📜</a>
     </nav>
@@ -438,7 +438,7 @@ class WCInfoBase extends XtalViewElement {
         super(...arguments);
         this._renderContext = newRenderContext({
             header: {
-                h2: x => this.packageName,
+                h3: x => this.packageName,
                 nav: {
                     a: ({ target }) => {
                         const link = target;
@@ -452,7 +452,7 @@ class WCInfoBase extends XtalViewElement {
                 return {
                     section: ({ idx, ctx }) => ({
                         header: {
-                            ".WCLabel": x => tags[idx].label,
+                            ".WCLabel": x => tags[idx].name,
                             ".WCDesc": ({ target }) => {
                                 target.innerHTML = tags[idx].description;
                             }
@@ -464,7 +464,7 @@ class WCInfoBase extends XtalViewElement {
                                     return;
                                 repeatInit(attribs.length, attribListTemplate, target);
                                 return {
-                                    dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
+                                    dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                                     dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
                                 };
                             }
@@ -581,7 +581,7 @@ header {
 summary {
     margin-top: 20px;
 }
-h2 {
+h3 {
     flex: 0 1 auto;
     position: absolute;
     left: 50%;

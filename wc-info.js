@@ -39,7 +39,7 @@ header {
 summary {
     margin-top: 20px;
 }
-h2 {
+h3 {
     flex: 0 1 auto;
     position: absolute;
     left: 50%;

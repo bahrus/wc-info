@@ -5,7 +5,7 @@ import { TransformRules, RenderOptions } from "trans-render/init.d.js";
 import { repeatInit } from "trans-render/repeatInit.js";
 
 export interface Info {
-  label: string;
+  name: string;
   description: string;
 }
 
@@ -37,7 +37,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
 
 const mainTemplate = createTemplate(/* html */ `
 <header>
-    <h2></h2>
+    <h3></h3>
     <nav>
         <a target="_blank">📜</a>
     </nav>
@@ -48,7 +48,7 @@ const mainTemplate = createTemplate(/* html */ `
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   _renderContext = newRenderContext({
       header: {
-        h2: x => this.packageName,
+        h3: x => this.packageName,
         nav: {
           a: ({ target }) => {
             const link = (target as HTMLAnchorElement);
@@ -63,7 +63,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
           section: ({ idx, ctx }) =>
             ({
               header: {
-                ".WCLabel": x => tags[idx].label,
+                ".WCLabel": x => tags[idx].name,
                 ".WCDesc": ({ target }) => {
                   target.innerHTML = tags[idx].description;
                 }
@@ -74,7 +74,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   if (!attribs) return;
                   repeatInit(attribs.length, attribListTemplate, target);
                   return {
-                    dt: ({ idx }) => attribs[Math.floor(idx / 2)].label,
+                    dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                     dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
                   } as TransformRules;
                 }

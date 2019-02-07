@@ -6,7 +6,7 @@
 
 # wc-info
 
-UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support)
+UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_html-and-css-custom-data-support)
 
 ## Basic in-built styling
 
@@ -15,21 +15,9 @@ UI for [VSCode's web-component.json file](https://code.visualstudio.com/updates/
 <custom-element-demo>
 <template>
     <div>
-        <wc-info package-name="npm install wc-info" href="https://unpkg.com/wc-info@0.0.12/web-components.json">
+        <wc-info package-name="npm install wc-info" href="https://unpkg.com/wc-info@0.0.25/html.json">
         </wc-info>
-        <wc-info package-name="npm install if-diff" href="https://unpkg.com/if-diff@0.0.17/web-components.json">
-        </wc-info>
-        <wc-info package-name="npm install p-d.p-u" href="https://unpkg.com/p-d.p-u@0.0.94/web-components.json">
-        </wc-info>
-        <wc-info package-name="npm install xtal-fetch" href="https://unpkg.com/xtal-fetch@0.0.53/web-components.json">
-        </wc-info>
-        <wc-info package-name="npm install xtal-state" href="https://unpkg.com/xtal-state@0.0.60/web-components.json">
-        </wc-info>
-        <wc-info package-name="npm install billboard-charts" href="https://unpkg.com/billboard-charts@0.1.31/web-components.json">
-        </wc-info>
-        <wc-info package-name="npm install xtal-siema" href="https://unpkg.com/xtal-siema@0.0.26/web-components.json">
-        </wc-info>
-        <script type="module" src="https://unpkg.com/wc-info@0.0.23/dist/wc-info.iife.js"></script>
+        <script type="module" src="https://unpkg.com/wc-info@0.0.25/dist/wc-info.iife.js"></script>
     </div>
     <style>
         wc-info{
@@ -92,6 +80,7 @@ $ polymer serve
 [polymer serve](https://www.npmjs.com/package/polymer-cli) required (for now) due to use of bare import specifiers.
 
 
-[Here's](https://github.com/search?q=%22description%22+%22tags%22+path%3A%2F+filename%3A%22web-components.json%22) a URL that may provide an approximate list of all the VSCode web-components.json files.
-
+<!--
+[Here's](https://github.com/search?q=%22description%22+%22tags%22+path%3A%2F+filename%3A%22html.json%22) a URL that may provide an approximate list of all the VSCode web-components.json files.
+-->
 
