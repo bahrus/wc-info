@@ -3,7 +3,7 @@ import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { TransformRules, RenderOptions } from "trans-render/init.d.js";
 import { repeatInit } from "trans-render/repeatInit.js";
-
+import {HypoLink} from "hypo-link/hypo-link.js";
 export interface Info {
   name: string;
   description: string;
@@ -27,7 +27,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
     <header>
         <div class="WCName"></div>
-        <div class="WCDesc"></div>
+        <div class="WCDesc"><hypo-link></hypo-link></div>
     </header>
     <details>
         <summary>attributes</summary>
@@ -37,8 +37,8 @@ const WCInfoTemplate = createTemplate(/* html */ `
 
 const mainTemplate = createTemplate(/* html */ `
 <header>
+  <h3></h3>
   <nav>
-    <h3></h3>
     <a target="_blank">📜</a>
   </nav>
 </header>
@@ -63,8 +63,8 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
           ({
             header: {
               ".WCName": x => tags[idx].name,
-              ".WCDesc": ({ target }) => {
-                target.innerHTML = tags[idx].description;
+              ".WCDesc": {
+                [HypoLink.is]: x => tags[idx].description
               }
             },
             details: {
