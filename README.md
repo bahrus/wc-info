@@ -55,7 +55,7 @@ UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_ht
               "trans-render/": "https://cdn.jsdelivr.net/npm/trans-render@0.0.60/",
               "hypo-link/": "https://cdn.jsdelivr.net/npm/hypo-link@0.0.8/",
               "xtal-element/": "https://cdn.jsdelivr.net/npm/xtal-element@0.0.23/",
-              "wc-info/": "https://cdn.jsdelivr.net/npm/wc-info@0.0.27/"
+              "wc-info/": "https://cdn.jsdelivr.net/npm/wc-info@0.0.28/"
               
             }
           }
