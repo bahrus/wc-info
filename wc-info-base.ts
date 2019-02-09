@@ -3,7 +3,7 @@ import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { TransformRules, RenderOptions } from "trans-render/init.d.js";
 import { repeatInit } from "trans-render/repeatInit.js";
-import {HypoLink} from "hypo-link/hypo-link.js";
+//import {HypoLink} from "hypo-link/hypo-link.js";
 export interface Info {
   name: string;
   description: string;
@@ -64,7 +64,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
             header: {
               ".WCName": x => tags[idx].name,
               ".WCDesc": {
-                [HypoLink.is]: x => tags[idx].description
+                'hypo-link': x => tags[idx].description
               }
             },
             details: {
@@ -103,6 +103,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   }
 
   init() {
+    import('hypo-link/hypo-link.js');
     return new Promise<WCSuiteInfo>(resolve => {
       fetch(this._href!).then(resp => {
         resp.json().then(info => {

@@ -2,7 +2,6 @@ import { define } from "xtal-latx/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { repeatInit } from "trans-render/repeatInit.js";
-import { HypoLink } from "hypo-link/hypo-link.js";
 const package_name = "package-name";
 const attribListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
@@ -47,7 +46,7 @@ export class WCInfoBase extends XtalViewElement {
                         header: {
                             ".WCName": x => tags[idx].name,
                             ".WCDesc": {
-                                [HypoLink.is]: x => tags[idx].description
+                                'hypo-link': x => tags[idx].description
                             }
                         },
                         details: {
@@ -86,6 +85,7 @@ export class WCInfoBase extends XtalViewElement {
         return this._href !== undefined && this._packageName !== undefined;
     }
     init() {
+        import('hypo-link/hypo-link.js');
         return new Promise(resolve => {
             fetch(this._href).then(resp => {
                 resp.json().then(info => {
