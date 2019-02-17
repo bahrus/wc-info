@@ -26,31 +26,35 @@ const mainTemplate = createTemplate(/* html */ `
 </header>
 <main></main>
 `);
+const x = {};
 export class WCInfoBase extends XtalViewElement {
     constructor() {
         super(...arguments);
         this._renderContext = newRenderContext({
             header: {
-                h3: x => this.packageName,
+                h3: this.packageName,
                 nav: {
                     a: ({ target }) => {
                         target.href = this._href;
                     }
+                    // a: ({target}) => Object.assign<HTMLAnchorElement, HTMLAnchorElement>  (target as HTMLAnchorElement, {
+                    //   href: this._href
+                    // } as HTMLAnchorElement);
                 }
             },
             main: ({ target }) => {
                 const tags = this.viewModel.tags;
                 repeatInit(tags.length, WCInfoTemplate, target);
                 return {
-                    section: ({ idx, ctx }) => ({
+                    section: ({ idx }) => ({
                         header: {
-                            ".WCName": x => tags[idx].name,
+                            ".WCName": tags[idx].name,
                             ".WCDesc": {
-                                'hypo-link': x => tags[idx].description
+                                'hypo-link': tags[idx].description
                             }
                         },
                         details: {
-                            dl: ({ target, ctx }) => {
+                            dl: ({ target }) => {
                                 const attribs = tags[idx].attributes;
                                 if (!attribs)
                                     return;
