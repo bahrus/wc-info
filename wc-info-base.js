@@ -30,7 +30,7 @@ const x = {};
 export class WCInfoBase extends XtalViewElement {
     constructor() {
         super(...arguments);
-        this._renderContext = newRenderContext({
+        this._initContext = newRenderContext({
             header: {
                 h3: this.packageName,
                 nav: {
@@ -42,9 +42,9 @@ export class WCInfoBase extends XtalViewElement {
                     // } as HTMLAnchorElement);
                 }
             },
-            main: ({ target }) => {
+            main: ({ target, ctx }) => {
                 const tags = this.viewModel.tags;
-                repeatInit(tags.length, WCInfoTemplate, target);
+                repeatInit(WCInfoTemplate, ctx, tags.length, target);
                 return {
                     section: ({ idx }) => ({
                         header: {
@@ -54,11 +54,11 @@ export class WCInfoBase extends XtalViewElement {
                             }
                         },
                         details: {
-                            dl: ({ target }) => {
+                            dl: ({ target, ctx }) => {
                                 const attribs = tags[idx].attributes;
                                 if (!attribs)
                                     return;
-                                repeatInit(attribs.length, attribListTemplate, target);
+                                repeatInit(attribListTemplate, ctx, attribs.length, target);
                                 return {
                                     dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                                     dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
@@ -73,8 +73,8 @@ export class WCInfoBase extends XtalViewElement {
         this._packageName = null;
         this._c = false;
     }
-    get renderContext() {
-        return this._renderContext;
+    get initContext() {
+        return this._initContext;
     }
     static get is() {
         return "wc-info-base";

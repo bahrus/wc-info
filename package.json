@@ -8,16 +8,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "xtal-element": "0.0.25",
-    "xtal-latx": "0.0.88",
-    "hypo-link": "0.0.10"
+    "hypo-link": "0.0.10",
+    "xtal-element": "0.0.39"
   },
   "devDependencies": {
-    "@types/node": "10.12.18",
+    "@types/node": "11.11.3",
     "@types/tape": "4.2.33",
-    "@webcomponents/webcomponentsjs": "2.2.4",
-    "jiife": "0.0.11",
-    "tape": "4.9.2",
+    "@webcomponents/webcomponentsjs": "2.2.7",
+    "jiife": "0.0.12",
+    "tape": "4.10.1",
     "xtal-test": "0.0.10"
   },
   "repository": {
