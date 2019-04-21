@@ -1,5 +1,5 @@
 import { WCInfoBase } from "./wc-info-base.js";
-import { define } from "xtal-latx/define.js";
+import { define } from "trans-render/define.js";
 import { createTemplate } from "xtal-element/utils.js";
 import { append } from 'trans-render/append.js';
 const styleTemplate = createTemplate(

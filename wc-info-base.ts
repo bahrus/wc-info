@@ -1,4 +1,4 @@
-import { define } from "xtal-latx/define.js";
+import { define } from "trans-render/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { TransformRules, RenderOptions } from "trans-render/init.d.js";
