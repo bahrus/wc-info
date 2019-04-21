@@ -3,6 +3,7 @@ import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { TransformRules, RenderOptions } from "trans-render/init.d.js";
 import { repeatInit } from "trans-render/repeatInit.js";
+import {up} from 'trans-render/hydrate.js';
 //import {HypoLink} from "hypo-link/hypo-link.js";
 export interface Info {
   name: string;
@@ -165,7 +166,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   }
   _c = false;
   connectedCallback() {
-    this._upgradeProperties(["href", "packageName"]);
+    this[up](["href", "packageName"]);
     super.connectedCallback();
   }
 }
