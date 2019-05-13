@@ -2,7 +2,6 @@ import { define } from "trans-render/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { repeatInit } from "trans-render/repeatInit.js";
-import { up } from 'trans-render/hydrate.js';
 const package_name = "package-name";
 const attribListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
@@ -137,7 +136,7 @@ export class WCInfoBase extends XtalViewElement {
         this.attr(package_name, nv);
     }
     connectedCallback() {
-        this[up](["href", "packageName"]);
+        this.propUp(["href", "packageName"]);
         super.connectedCallback();
     }
 }
