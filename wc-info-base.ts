@@ -107,12 +107,12 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                       h5: customEvents[Math.floor(idx / 2)].description,
                       details:{
                         dl:({target, ctx}) =>{
-                          const details = customEvents[Math.floor(idx / 2)].details;
-                          if(details === undefined) return;
-                          repeat(definitionListTemplate, ctx, details.length, target);
+                          const detail = customEvents[Math.floor(idx / 2)].detail;
+                          if(detail === undefined) return;
+                          repeat(definitionListTemplate, ctx, detail.length, target);
                           return {
-                            dt: ({ idx }) => details[Math.floor(idx / 2)].name,
-                            dd: ({ idx }) => details[Math.floor(idx / 2)].description
+                            dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
+                            dd: ({ idx }) => detail[Math.floor(idx / 2)].description
                           }
                         }
                       }

@@ -5,7 +5,7 @@ export interface Info {
   
   export interface AttribInfo extends Info {}
   export interface CustomEventInfo extends Info{
-    details: CustomEventDetailProperty[]
+    detail: CustomEventDetailProperty[]
   }
   export interface CustomEventDetailProperty extends Info{
       type: string
