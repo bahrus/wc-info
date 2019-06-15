@@ -29,10 +29,18 @@ const WCInfoTemplate = createTemplate(/* html */ `
         <div class="WCName"></div>
         <div class="WCDesc"><hypo-link></hypo-link></div>
     </header>
-    <details>
-        <summary>attributes</summary>
-        <dl></dl>
-    </details> 
+    <section data-type="attributes">
+      <details>
+          <summary>attributes</summary>
+          <dl></dl>
+      </details>
+    </section>
+    <section data-type="events">
+      <details>
+          <summary>events</summary>
+          <dl></dl>
+      </details>
+    </section>
 </section>`);
 
 const mainTemplate = createTemplate(/* html */ `
@@ -72,17 +80,20 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                 'hypo-link': tags[idx].description
               }
             },
-            details: {
-              dl: ({ target, ctx}) => {
-                const attribs = tags[idx].attributes;
-                if (!attribs) return;
-                repeatInit(attribListTemplate, ctx, attribs.length, target);
-                return {
-                  dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
-                  dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
-                } as TransformRules;
+            "section[data-type='attributes']":{
+              details: {
+                dl: ({ target, ctx}) => {
+                  const attribs = tags[idx].attributes;
+                  if (!attribs) return;
+                  repeatInit(attribListTemplate, ctx, attribs.length, target);
+                  return {
+                    dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
+                    dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
+                  } as TransformRules;
+                }
               }
             }
+
           } as TransformRules)
       };
     }
