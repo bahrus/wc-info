@@ -9,17 +9,17 @@
     "serve": "node node_modules/xtal-test/serve.js"
   },
   "dependencies": {
-    "hypo-link": "0.0.14",
+    "hypo-link": "0.0.15",
     "xtal-element": "0.0.59",
-    "trans-render": "0.0.111"
+    "trans-render": "0.0.112"
   },
   "devDependencies": {
-    "@types/node": "12.0.0",
+    "@types/node": "12.0.8",
     "@types/tape": "4.2.33",
     "@webcomponents/webcomponentsjs": "2.2.10",
     "jiife": "0.0.12",
-    "tape": "4.10.1",
-    "xtal-test": "0.0.18"
+    "tape": "4.10.2",
+    "xtal-test": "0.0.19"
   },
   "repository": {
     "type": "git",
