@@ -6,6 +6,9 @@ export interface Info {
   export interface AttribInfo extends Info {}
   export interface CustomEventInfo extends Info{
     detail: CustomEventDetailProperty[],
+    /**
+     * Event fires when this property changes
+     */
     associatedPropName: string
   }
   export interface CustomEventDetailProperty extends Info{
