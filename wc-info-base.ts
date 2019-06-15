@@ -7,16 +7,18 @@ import  "hypo-link/hypo-link.js";
 import {WCSuiteInfo} from "types.d.js";
 const package_name = "package-name";
 
-const attributeListTemplate = createTemplate(/* html */ `
+const definitionListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
 
 const eventListTemplate = createTemplate(/* html */ `
-<dt></dt>
+<dt>⚡<span></span></dt>
 <dd>
+  
   <h5></h5>
   <details>
     <summary>Event Detail Properties</summary>
+    <dl></dl>
   </details>
 </dd>
 `);
@@ -83,7 +85,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                 dl: ({ target, ctx}) => {
                   const attribs = tags[idx].attributes;
                   if (attribs === undefined) return;
-                  repeat(attributeListTemplate, ctx, attribs.length, target);
+                  repeat(definitionListTemplate, ctx, attribs.length, target);
                   return {
                     dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                     dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
@@ -98,9 +100,19 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   if(customEvents === undefined) return;
                   repeat(eventListTemplate, ctx, customEvents.length, target);
                   return {
-                    dt: ({ idx }) => customEvents[Math.floor(idx / 2)].name,
+                    dt: ({ idx }) => ({
+                      span: customEvents[Math.floor(idx / 2)].name
+                    }),
                     dd: ({ idx }) => ({
                       h5: customEvents[Math.floor(idx / 2)].description,
+                      dl:({target, ctx}) =>{
+                        const details = customEvents[Math.floor(idx / 2)].details;
+                        repeat(definitionListTemplate, ctx, details.length, target);
+                        return {
+                          dt: ({ idx }) => details[Math.floor(idx / 2)].name,
+                          dd: ({ idx }) => details[Math.floor(idx / 2)].description
+                        }
+                      }
                     })
                   } as TransformRules;
                 }
