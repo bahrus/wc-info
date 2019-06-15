@@ -8,6 +8,11 @@
 
 UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_html-and-css-custom-data-support)
 
+So far, only attributes are supported, and it's been a few months since the schema has been updated.  So this web component adds additional support for custom events (but schema will change to support whatever VSCode decides, should they add support).  Such support should go a long way towards declaring a "contract" between independent components.
+
+```JSON
+```
+
 ## Basic in-built styling
 
 <!--
