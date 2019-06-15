@@ -2,21 +2,9 @@ import { define } from "trans-render/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { TransformRules, RenderOptions } from "trans-render/init.d.js";
-import { repeatInit } from "trans-render/repeatInit.js";
+import { repeat } from "trans-render/repeat.js";
 //import {HypoLink} from "hypo-link/hypo-link.js";
-export interface Info {
-  name: string;
-  description: string;
-}
-
-export interface AttribList extends Info {}
-
-export interface WCInfo extends Info {
-  attributes: AttribList[];
-}
-export interface WCSuiteInfo {
-  tags: WCInfo[];
-}
+import {WCSuiteInfo} from "types.d.js";
 const package_name = "package-name";
 
 const attribListTemplate = createTemplate(/* html */ `
@@ -70,7 +58,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
     } as TransformRules,
     main: ({ target, ctx }) => {
       const tags = this.viewModel.tags;
-      repeatInit(WCInfoTemplate, ctx, tags.length, target);
+      repeat(WCInfoTemplate, ctx, tags.length, target);
       return {
         section: ({ idx}) =>
           ({
@@ -85,11 +73,18 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                 dl: ({ target, ctx}) => {
                   const attribs = tags[idx].attributes;
                   if (!attribs) return;
-                  repeatInit(attribListTemplate, ctx, attribs.length, target);
+                  repeat(attribListTemplate, ctx, attribs.length, target);
                   return {
                     dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                     dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
                   } as TransformRules;
+                }
+              }
+            },
+            "section[data-type='events']":{
+              details:{
+                dl:({target, ctx}) =>{
+
                 }
               }
             }

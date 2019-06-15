@@ -1,7 +1,7 @@
 import { define } from "trans-render/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
-import { repeatInit } from "trans-render/repeatInit.js";
+import { repeat } from "trans-render/repeat.js";
 const package_name = "package-name";
 const attribListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
@@ -52,7 +52,7 @@ export class WCInfoBase extends XtalViewElement {
             },
             main: ({ target, ctx }) => {
                 const tags = this.viewModel.tags;
-                repeatInit(WCInfoTemplate, ctx, tags.length, target);
+                repeat(WCInfoTemplate, ctx, tags.length, target);
                 return {
                     section: ({ idx }) => ({
                         header: {
@@ -67,11 +67,17 @@ export class WCInfoBase extends XtalViewElement {
                                     const attribs = tags[idx].attributes;
                                     if (!attribs)
                                         return;
-                                    repeatInit(attribListTemplate, ctx, attribs.length, target);
+                                    repeat(attribListTemplate, ctx, attribs.length, target);
                                     return {
                                         dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                                         dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
                                     };
+                                }
+                            }
+                        },
+                        "section[data-type='events']": {
+                            details: {
+                                dl: ({ target, ctx }) => {
                                 }
                             }
                         }
