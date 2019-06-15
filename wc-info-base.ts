@@ -7,7 +7,7 @@ import { repeat } from "trans-render/repeat.js";
 import {WCSuiteInfo} from "types.d.js";
 const package_name = "package-name";
 
-const attribListTemplate = createTemplate(/* html */ `
+const definitionListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
 
@@ -72,8 +72,8 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
               details: {
                 dl: ({ target, ctx}) => {
                   const attribs = tags[idx].attributes;
-                  if (!attribs) return;
-                  repeat(attribListTemplate, ctx, attribs.length, target);
+                  if (attribs === undefined) return;
+                  repeat(definitionListTemplate, ctx, attribs.length, target);
                   return {
                     dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                     dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
@@ -84,7 +84,13 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
             "section[data-type='events']":{
               details:{
                 dl:({target, ctx}) =>{
-
+                  const customEvents = tags[idx].customEvents;
+                  if(customEvents === undefined) return;
+                  repeat(definitionListTemplate, ctx, customEvents.length, target);
+                  return {
+                    dt: ({ idx }) => customEvents[Math.floor(idx / 2)].name,
+                    dd: ({ idx }) => customEvents[Math.floor(idx / 2)].description
+                  } as TransformRules;
                 }
               }
             }

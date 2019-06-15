@@ -4,9 +4,15 @@ export interface Info {
   }
   
   export interface AttribInfo extends Info {}
-  
+  export interface CustomEventInfo extends Info{
+
+  }
+  export interface CustomEventDetailProperty extends Info{
+      type: string
+  }
   export interface WCInfo extends Info {
-    attributes: AttribInfo[];
+    attributes: AttribInfo[] | undefined;
+    customEvents: CustomEventInfo[] | undefined;
   }
   export interface WCSuiteInfo {
     tags: WCInfo[];
