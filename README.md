@@ -8,7 +8,7 @@
 
 UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_html-and-css-custom-data-support)
 
-So far, only attributes are supported, and it's been a few months since the schema has been updated.  So this web component adds additional support for custom events (but schema will change to support whatever VSCode decides, should they add support).  Such support should go a long way towards declaring a "contract" between independent components.
+So far, only attributes are supported, and it's been a few months since the schema has been updated.  So this web component adds additional support for custom events (but schema will change to support whatever VSCode decides, should they add support).  Such support should go a long way towards declaring a ["contract" between independent components](https://martinfowler.com/articles/micro-frontends.html#Cross-applicationCommunication).
 
 ```JSON
 ```
@@ -19,31 +19,17 @@ So far, only attributes are supported, and it's been a few months since the sche
 ```
 <custom-element-demo>
 <template>
+  <div>
     <div>
-      <wc-info
-        package-name="npm install wc-info"
-        href="https://unpkg.com/wc-info@0.0.25/html.json"
-      >
+      <wc-info package-name="npm install wc-info" href="https://unpkg.com/wc-info@0.0.25/html.json">
       </wc-info>
-      <wc-info
-        package-name="npm install if-diff"
-        href="https://unpkg.com/if-diff@0.0.20/html.json"
-      >
+      <wc-info package-name="npm install if-diff" href="https://unpkg.com/if-diff@0.0.34/html.json">
       </wc-info>
-      <wc-info
-        package-name="npm install p-d.p-u"
-        href="https://unpkg.com/p-d.p-u@0.0.101/html.json"
-      >
+      <wc-info package-name="npm install p-d.p-u" href="https://unpkg.com/p-d.p-u@0.0.101/html.json">
       </wc-info>
-      <wc-info
-        package-name="npm install pre-render-tron"
-        href="https://unpkg.com/pre-render-tron@0.0.6/html.json"
-      >
+      <wc-info package-name="npm install pre-render-tron" href="https://unpkg.com/pre-render-tron@0.0.6/html.json">
       </wc-info>
-      <wc-info
-        package-name="npm install hypo-link"
-        href="https://unpkg.com/hypo-link@0.0.10/html.json"
-      >
+      <wc-info package-name="npm install hypo-link" href="https://unpkg.com/hypo-link@0.0.15/html.json">
       </wc-info>
     </div>
     <style>
@@ -51,24 +37,24 @@ So far, only attributes are supported, and it's been a few months since the sche
         margin-top: 10px;
       }
     </style>
-        <!-- Use experimental import maps -->
-        <script defer src="https://cdn.jsdelivr.net/npm/es-module-shims@0.2.0/dist/es-module-shims.js"></script>
-        <script type="importmap-shim">
-          {
-            "imports": {
-              "xtal-latx/": "https://cdn.jsdelivr.net/npm/xtal-latx@0.0.88/",
-              "trans-render/": "https://cdn.jsdelivr.net/npm/trans-render@0.0.60/",
-              "hypo-link/": "https://cdn.jsdelivr.net/npm/hypo-link@0.0.8/",
-              "xtal-element/": "https://cdn.jsdelivr.net/npm/xtal-element@0.0.23/",
-              "wc-info/": "https://cdn.jsdelivr.net/npm/wc-info@0.0.28/"
-              
-            }
-          }
-          </script>
-          
-        <script  type="module-shim">
-          import 'wc-info/wc-info.js';
-        </script>
+    <!-- Use experimental import maps -->
+    <script defer src="https://cdn.jsdelivr.net/npm/es-module-shims@0.2.0/dist/es-module-shims.js"></script>
+    <script type="importmap-shim">
+                {
+                  "imports": {
+                    "trans-render/": "https://cdn.jsdelivr.net/npm/trans-render@0.0.112/",
+                    "hypo-link/": "https://cdn.jsdelivr.net/npm/hypo-link@0.0.15/",
+                    "xtal-element/": "https://cdn.jsdelivr.net/npm/xtal-element@0.0.60/",
+                    "wc-info/": "https://cdn.jsdelivr.net/npm/wc-info@0.0.34/"
+                    
+                  }
+                }
+                </script>
+
+    <script type="module-shim">
+                import 'wc-info/wc-info.js';
+              </script>
+  </div>
 </template>
 </custom-element-demo>
 ```
