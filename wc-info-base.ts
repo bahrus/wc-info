@@ -7,8 +7,18 @@ import  "hypo-link/hypo-link.js";
 import {WCSuiteInfo} from "types.d.js";
 const package_name = "package-name";
 
-const definitionListTemplate = createTemplate(/* html */ `
+const attributeListTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
+`);
+
+const eventListTemplate = createTemplate(/* html */ `
+<dt></dt>
+<dd>
+  <h5></h5>
+  <details>
+    <summary>Event Detail Properties</summary>
+  </details>
+</dd>
 `);
 
 const WCInfoTemplate = createTemplate(/* html */ `
@@ -73,7 +83,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                 dl: ({ target, ctx}) => {
                   const attribs = tags[idx].attributes;
                   if (attribs === undefined) return;
-                  repeat(definitionListTemplate, ctx, attribs.length, target);
+                  repeat(attributeListTemplate, ctx, attribs.length, target);
                   return {
                     dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                     dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
@@ -86,10 +96,12 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                 dl:({target, ctx}) =>{
                   const customEvents = tags[idx].customEvents;
                   if(customEvents === undefined) return;
-                  repeat(definitionListTemplate, ctx, customEvents.length, target);
+                  repeat(eventListTemplate, ctx, customEvents.length, target);
                   return {
                     dt: ({ idx }) => customEvents[Math.floor(idx / 2)].name,
-                    dd: ({ idx }) => customEvents[Math.floor(idx / 2)].description
+                    dd: ({ idx }) => ({
+                      h5: customEvents[Math.floor(idx / 2)].description,
+                    })
                   } as TransformRules;
                 }
               }
