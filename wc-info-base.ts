@@ -105,14 +105,18 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                     }),
                     dd: ({ idx }) => ({
                       h5: customEvents[Math.floor(idx / 2)].description,
-                      dl:({target, ctx}) =>{
-                        const details = customEvents[Math.floor(idx / 2)].details;
-                        repeat(definitionListTemplate, ctx, details.length, target);
-                        return {
-                          dt: ({ idx }) => details[Math.floor(idx / 2)].name,
-                          dd: ({ idx }) => details[Math.floor(idx / 2)].description
+                      details:{
+                        dl:({target, ctx}) =>{
+                          const details = customEvents[Math.floor(idx / 2)].details;
+                          if(details === undefined) return;
+                          repeat(definitionListTemplate, ctx, details.length, target);
+                          return {
+                            dt: ({ idx }) => details[Math.floor(idx / 2)].name,
+                            dd: ({ idx }) => details[Math.floor(idx / 2)].description
+                          }
                         }
                       }
+
                     })
                   } as TransformRules;
                 }

@@ -15,14 +15,9 @@
             ],
             "customEvents":[
                 {
-                    "name": "my-test-event-name-1",
-                    "description":  "Not a real event, this is just for testing.",
-                    "detail":"number"
-                },
-                {
                     "name": "my-test-event-name-2",
                     "description":  "Not a real event, this is just for testing.",
-                    "detail":[
+                    "details":[
                         {
                             "name": "value",
                             "description": "Value of event",
