@@ -9,9 +9,9 @@ const definitionListTemplate = createTemplate(/* html */ `
 `);
 const eventListTemplate = createTemplate(/* html */ `
 <dt>⚡<span></span></dt>
-<dd>
-  
+<dd> 
   <h5></h5>
+  <h6>Associated Property Name: <span></span></h6>
   <details>
     <summary>Event Detail Properties</summary>
     <dl></dl>
@@ -100,6 +100,9 @@ export class WCInfoBase extends XtalViewElement {
                                         }),
                                         dd: ({ idx }) => ({
                                             h5: customEvents[Math.floor(idx / 2)].description,
+                                            h6: {
+                                                span: customEvents[Math.floor(idx / 2)].associatedPropName
+                                            },
                                             details: {
                                                 dl: ({ target, ctx }) => {
                                                     const detail = customEvents[Math.floor(idx / 2)].detail;
