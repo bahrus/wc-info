@@ -57,20 +57,6 @@
                     "description": "Name of Package."
                 }
             ],
-            "customEvents":[
-                {
-                    "name": "my-test-event-name-2",
-                    "description":  "Not a real event, this is just for testing.",
-                    "associatedPropName": "Test",
-                    "detail":[
-                        {
-                            "name": "value",
-                            "description": "Value of event",
-                            "type": "string"
-                        }
-                    ]
-                }
-            ],
             "properties":[
                 {
                     "name": "href",

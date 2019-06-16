@@ -11,19 +11,28 @@ const definitionItemTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
 
-//const attribute
+const attributeItemTemplate = createTemplate(/* html */ `
+  <dt data-bind=name></dt>
+  <dd>
+    <hypo-link data-bind=description></hypo-link>
+    <details>
+      <summary>Allowed Values</summary>
+      <dl></dl>
+    </details>
+  </dd>
+`);
 
 const eventItemTemplate = createTemplate(/* html */ `
-<dt>Name: <label></label></dt>
+<dt>Name: <label data-bind=name></label></dt>
 <dd>
-  <label></label>
+  <hypo-link data-bind=description></hypo-link>
   <details>
     <summary>Details</summary>
     <details>
       <summary>Event Detail Properties</summary>
       <dl></dl>
     </details>
-    <aside>Associated Property Name: <label></label></aside>
+    <aside>Associated Property Name: <label data-bind=associatedPropName></label></aside>
   </details>
   
 
@@ -65,9 +74,7 @@ const mainTemplate = createTemplate(/* html */ `
 </header>
 <main></main>
 `);
-const x = {
-  
-}
+
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   _initContext = newRenderContext({
     header: {
@@ -97,63 +104,70 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
               details: {
                 dl: ({ target, ctx}) => {
                   const attribs = tags[idx].attributes;
-                  if (attribs === undefined) return;
-                  repeat(definitionItemTemplate, ctx, attribs.length, target);
+                  if (attribs === undefined) return false;
+                  repeat(attributeItemTemplate, ctx, attribs.length, target);
                   return {
                     dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
-                    dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
+                    dd: ({ idx }) => ({
+                      'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
+                    }) 
                   } as TransformRules;
                 }
               }
             },
-            "section[data-type='events']":{
-              details:{
-                dl:({target, ctx}) =>{
-                  const customEvents = tags[idx].customEvents;
-                  if(customEvents === undefined) return;
-                  repeat(eventItemTemplate, ctx, customEvents.length, target);
-                  return {
-                    dt: ({ idx }) => ({
-                      label: customEvents[Math.floor(idx / 2)].name
-                    }),
-                    dd: ({ idx }) => ({
-                      label: customEvents[Math.floor(idx / 2)].description,
-                      details:{
-                        aside: {
-                          label: customEvents[Math.floor(idx / 2)].associatedPropName
-                        },
+            "section[data-type='events']":({target, ctx}) =>{
+              const customEvents = tags[idx].customEvents;
+              if(customEvents === undefined) return false;
+              return {
+                details:{
+                  dl:({target, ctx}) =>{
+                    repeat(eventItemTemplate, ctx, customEvents.length, target);
+                    return {
+                      dt: ({ idx }) => ({
+                        'label[data-bind="name"]': customEvents[Math.floor(idx / 2)].name
+                      }),
+                      dd: ({ idx}) => ({
+                        'hypo-link[data-bind="description"]': customEvents[Math.floor(idx / 2)].description,
                         details:{
-                          dl:({target, ctx}) =>{
-                            const detail = customEvents[Math.floor(idx / 2)].detail;
-                            if(detail === undefined) return;
-                            repeat(definitionItemTemplate, ctx, detail.length, target);
-                            return {
-                              dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
-                              dd: ({ idx }) => detail[Math.floor(idx / 2)].description
+                          aside: {
+                            'label[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
+                          },
+                          details:{
+                            dl:({target, ctx}) =>{
+                              const detail = customEvents[Math.floor(idx / 2)].detail;
+                              if(detail === undefined) return false;
+                              repeat(definitionItemTemplate, ctx, detail.length, target);
+                              return {
+                                dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
+                                dd: ({ idx }) => detail[Math.floor(idx / 2)].description
+                              }
                             }
                           }
                         }
-                      }
-
-
-
-                    })
-                  } as TransformRules;
+  
+  
+  
+                      })
+                    } as TransformRules;
+                  }
                 }
               }
             },
-            "section[data-type='properties']":{
-              details: {
-                dl: ({ target, ctx}) => {
-                  const props = tags[idx].properties;
-                  if (props === undefined) return;
-                  repeat(definitionItemTemplate, ctx, props.length, target);
-                  return {
-                    dt: ({ idx }) => props[Math.floor(idx / 2)].name,
-                    dd: ({ idx }) => props[Math.floor(idx / 2)].description
-                  } as TransformRules;
-                }
-              }              
+            "section[data-type='properties']": ({ target, ctx}) =>{
+              const props = tags[idx].properties;
+              if (props === undefined) return false;
+              return {
+                details: {
+                  dl: ({ target, ctx}) => {
+                    
+                    repeat(definitionItemTemplate, ctx, props.length, target);
+                    return {
+                      dt: ({ idx }) => props[Math.floor(idx / 2)].name,
+                      dd: ({ idx }) => props[Math.floor(idx / 2)].description
+                    } as TransformRules;
+                  }
+                }              
+              }
             }
 
           } as TransformRules)
