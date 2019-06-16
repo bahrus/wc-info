@@ -93,21 +93,23 @@ export class WCInfoBase extends XtalViewElement {
                                 "hypo-link": tags[idx].description
                             }
                         },
-                        "section[data-type='attributes']": {
-                            details: {
-                                dl: ({ target, ctx }) => {
-                                    const attribs = tags[idx].attributes;
-                                    if (attribs === undefined)
-                                        return false;
-                                    repeat(attributeItemTemplate, ctx, attribs.length, target);
-                                    return {
-                                        dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
-                                        dd: ({ idx }) => ({
-                                            'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
-                                        })
-                                    };
+                        "section[data-type='attributes']": ({ target, ctx }) => {
+                            const attribs = tags[idx].attributes;
+                            if (attribs === undefined)
+                                return false;
+                            return {
+                                details: {
+                                    dl: ({ target, ctx }) => {
+                                        repeat(attributeItemTemplate, ctx, attribs.length, target);
+                                        return {
+                                            dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
+                                            dd: ({ idx }) => ({
+                                                'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
+                                            })
+                                        };
+                                    }
                                 }
-                            }
+                            };
                         },
                         "section[data-type='events']": ({ target, ctx }) => {
                             const customEvents = tags[idx].customEvents;
@@ -124,9 +126,9 @@ export class WCInfoBase extends XtalViewElement {
                                             dd: ({ idx }) => ({
                                                 'hypo-link[data-bind="description"]': customEvents[Math.floor(idx / 2)].description,
                                                 details: {
-                                                    aside: {
+                                                    aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
                                                         'label[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
-                                                    },
+                                                    } : false,
                                                     details: {
                                                         dl: ({ target, ctx }) => {
                                                             const detail = customEvents[Math.floor(idx / 2)].detail;
