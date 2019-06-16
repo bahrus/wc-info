@@ -15,6 +15,11 @@ const styleTemplate = createTemplate(
     border-style: solid;
     
 }
+
+aside{
+    font-size:0.5rem;
+}
+
 main {
     padding: 8px;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, sans-serif;

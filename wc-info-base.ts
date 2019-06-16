@@ -14,14 +14,19 @@ const definitionItemTemplate = createTemplate(/* html */ `
 //const attribute
 
 const eventItemTemplate = createTemplate(/* html */ `
-<dt>Name of ⚡: <label></label></dt>
+<dt>Name: <label></label></dt>
 <dd>
   <label></label>
-  <h6>Associated Property Name:<label></label></h6>
   <details>
-    <summary>Event Detail Properties</summary>
-    <dl></dl>
+    <summary>Details</summary>
+    <details>
+      <summary>Event Detail Properties</summary>
+      <dl></dl>
+    </details>
+    <aside>Associated Property Name: <label></label></aside>
   </details>
+  
+
 </dd>
 `);
 
@@ -45,7 +50,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
     </section>
     <section data-type="events">
       <details>
-          <summary>events</summary>
+          <summary>⚡events⚡</summary>
           <dl></dl>
       </details>
     </section>
@@ -113,20 +118,24 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                     }),
                     dd: ({ idx }) => ({
                       label: customEvents[Math.floor(idx / 2)].description,
-                      h6: {
-                        label: customEvents[Math.floor(idx / 2)].associatedPropName
-                      },
                       details:{
-                        dl:({target, ctx}) =>{
-                          const detail = customEvents[Math.floor(idx / 2)].detail;
-                          if(detail === undefined) return;
-                          repeat(definitionItemTemplate, ctx, detail.length, target);
-                          return {
-                            dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
-                            dd: ({ idx }) => detail[Math.floor(idx / 2)].description
+                        aside: {
+                          label: customEvents[Math.floor(idx / 2)].associatedPropName
+                        },
+                        details:{
+                          dl:({target, ctx}) =>{
+                            const detail = customEvents[Math.floor(idx / 2)].detail;
+                            if(detail === undefined) return;
+                            repeat(definitionItemTemplate, ctx, detail.length, target);
+                            return {
+                              dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
+                              dd: ({ idx }) => detail[Math.floor(idx / 2)].description
+                            }
                           }
                         }
                       }
+
+
 
                     })
                   } as TransformRules;
