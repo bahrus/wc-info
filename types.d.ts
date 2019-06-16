@@ -4,6 +4,12 @@ export interface Info {
   }
   
   export interface AttribInfo extends Info {
+    defaultValue: string | undefined,
+    /**
+     * key = test name
+     * val = test attribute value
+     */
+    testValues: {[key:string]: string} | undefined,
     values: Info[] | undefined;
   }
   export interface CustomEventInfo extends Info{
@@ -11,13 +17,21 @@ export interface Info {
     /**
      * Event fires when this property changes
      */
-    associatedPropName: string
+    associatedPropName: string,
+    testExpectedValues: {[key: string]: CustomEventDetailProperty[]} | undefined
   }
   export interface PropertyInfo extends Info{
-    type: string,
+    type: string | undefined,
+    defaultValue: any,
+    /**
+    * key = test name
+    * val = test attribute value
+    */
+   testValues: {[key:string]: any} | undefined,
   }
   export interface CustomEventDetailProperty extends Info{
-      type: string
+    type: string | undefined,
+    testValue: any | undefined
   }
   export interface WCInfo extends Info {
     attributes: AttribInfo[] | undefined;
