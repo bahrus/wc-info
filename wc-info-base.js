@@ -77,9 +77,6 @@ export class WCInfoBase extends XtalViewElement {
                     a: ({ target }) => {
                         target.href = this._href;
                     }
-                    // a: ({target}) => Object.assign<HTMLAnchorElement, HTMLAnchorElement>  (target as HTMLAnchorElement, {
-                    //   href: this._href
-                    // } as HTMLAnchorElement);
                 }
             },
             main: ({ target, ctx }) => {
@@ -105,6 +102,20 @@ export class WCInfoBase extends XtalViewElement {
                                             dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                                             dd: ({ idx }) => ({
                                                 'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
+                                                details: x => {
+                                                    const vals = attribs[Math.floor(idx / 2)].values;
+                                                    if (vals === undefined)
+                                                        return false;
+                                                    return {
+                                                        dl: ({ target, ctx }) => {
+                                                            repeat(definitionItemTemplate, ctx, vals.length, target);
+                                                            return {
+                                                                dt: ({ idx }) => vals[Math.floor(idx / 2)].name,
+                                                                dd: ({ idx }) => vals[Math.floor(idx / 2)].description
+                                                            };
+                                                        }
+                                                    };
+                                                }
                                             })
                                         };
                                     }
