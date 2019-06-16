@@ -11,12 +11,16 @@ export interface Info {
      */
     associatedPropName: string
   }
+  export interface PropertyInfo extends Info{
+    type: string,
+  }
   export interface CustomEventDetailProperty extends Info{
       type: string
   }
   export interface WCInfo extends Info {
     attributes: AttribInfo[] | undefined;
     customEvents: CustomEventInfo[] | undefined;
+    properties: PropertyInfo[] | undefined;
   }
   export interface WCSuiteInfo {
     tags: WCInfo[];

@@ -35,6 +35,12 @@ const WCInfoTemplate = createTemplate(/* html */ `
           <dl></dl>
       </details>
     </section>
+    <section data-type="properties">
+      <details>
+        <summary>properties</summary>
+        <dl></dl>
+      </details>
+    </section>
     <section data-type="events">
       <details>
           <summary>events</summary>
@@ -124,6 +130,19 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   } as TransformRules;
                 }
               }
+            },
+            "section[data-type='properties']":{
+              details: {
+                dl: ({ target, ctx}) => {
+                  const props = tags[idx].properties;
+                  if (props === undefined) return;
+                  repeat(definitionListTemplate, ctx, props.length, target);
+                  return {
+                    dt: ({ idx }) => props[Math.floor(idx / 2)].name,
+                    dd: ({ idx }) => props[Math.floor(idx / 2)].description
+                  } as TransformRules;
+                }
+              }              
             }
 
           } as TransformRules)

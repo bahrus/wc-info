@@ -3,7 +3,7 @@
     "tags": [
         {
             "name": "wc-info-base",
-            "description": "Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
+            "description": "Non-themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
             "attributes": [
                 {
                     "name": "href",
@@ -26,11 +26,20 @@
                         }
                     ]
                 }
+            ],
+            "properties":[
+                {
+                    "name": "href",
+                    "description": "Url where Web Component Information is contained."
+                },{
+                    "name": "packageName",
+                    "description": "Name of Package."
+                }                
             ]
         },
         {
             "name": "wc-info",
-            "description": "Display Web Component Information based on web-components.json file.",
+            "description": "Themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
             "attributes": [
                 {
                     "name": "href",
@@ -39,6 +48,31 @@
                     "name": "package-name",
                     "description": "Name of Package."
                 }
+            ],
+            "customEvents":[
+                {
+                    "name": "my-test-event-name-2",
+                    "description":  "Not a real event, this is just for testing.",
+                    "associatedPropName": "Test",
+                    "detail":[
+                        {
+                            "name": "value",
+                            "description": "Value of event",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ],
+            "properties":[
+                {
+                    "name": "href",
+                    "description": "Url where Web Component Information is contained.",
+                    "type": "string"
+                },{
+                    "name": "packageName",
+                    "description": "Name of Package.",
+                    "type": "string"
+                }                
             ]
         }
     ]
