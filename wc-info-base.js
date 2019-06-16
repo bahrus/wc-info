@@ -93,7 +93,7 @@ export class WCInfoBase extends XtalViewElement {
                                 "hypo-link": tags[idx].description
                             }
                         },
-                        "section[data-type='attributes']": ({ target, ctx }) => {
+                        "section[data-type='attributes']": x => {
                             const attribs = tags[idx].attributes;
                             if (attribs === undefined)
                                 return false;
@@ -111,7 +111,7 @@ export class WCInfoBase extends XtalViewElement {
                                 }
                             };
                         },
-                        "section[data-type='events']": ({ target, ctx }) => {
+                        "section[data-type='events']": x => {
                             const customEvents = tags[idx].customEvents;
                             if (customEvents === undefined)
                                 return false;
@@ -148,7 +148,7 @@ export class WCInfoBase extends XtalViewElement {
                                 }
                             };
                         },
-                        "section[data-type='properties']": ({ target, ctx }) => {
+                        "section[data-type='properties']": x => {
                             const props = tags[idx].properties;
                             if (props === undefined)
                                 return false;
