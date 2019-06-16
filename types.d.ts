@@ -3,7 +3,9 @@ export interface Info {
     description: string;
   }
   
-  export interface AttribInfo extends Info {}
+  export interface AttribInfo extends Info {
+    values: Info[] | undefined;
+  }
   export interface CustomEventInfo extends Info{
     detail: CustomEventDetailProperty[],
     /**

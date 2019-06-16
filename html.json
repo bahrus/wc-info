@@ -11,6 +11,14 @@
                 },{
                     "name": "package-name",
                     "description": "Name of Package."
+                },{
+                    "name": "test",
+                    "values":[
+                        {
+                            "name": "val1",
+                            "description": "desc 1"
+                        }
+                    ]
                 }
             ],
             "customEvents":[

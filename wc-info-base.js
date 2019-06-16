@@ -4,14 +4,15 @@ import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { repeat } from "trans-render/repeat.js";
 import "hypo-link/hypo-link.js";
 const package_name = "package-name";
-const definitionListTemplate = createTemplate(/* html */ `
+const definitionItemTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
-const eventListTemplate = createTemplate(/* html */ `
-<dt>⚡<span></span></dt>
-<dd> 
-  <h5></h5>
-  <h6>Associated Property Name: <span></span></h6>
+//const attribute
+const eventItemTemplate = createTemplate(/* html */ `
+<dt>Name of ⚡: <label></label></dt>
+<dd>
+  <label></label>
+  <h6>Associated Property Name:<label></label></h6>
   <details>
     <summary>Event Detail Properties</summary>
     <dl></dl>
@@ -85,7 +86,7 @@ export class WCInfoBase extends XtalViewElement {
                                     const attribs = tags[idx].attributes;
                                     if (attribs === undefined)
                                         return;
-                                    repeat(definitionListTemplate, ctx, attribs.length, target);
+                                    repeat(definitionItemTemplate, ctx, attribs.length, target);
                                     return {
                                         dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
                                         dd: ({ idx }) => attribs[Math.floor(idx / 2)].description
@@ -99,22 +100,22 @@ export class WCInfoBase extends XtalViewElement {
                                     const customEvents = tags[idx].customEvents;
                                     if (customEvents === undefined)
                                         return;
-                                    repeat(eventListTemplate, ctx, customEvents.length, target);
+                                    repeat(eventItemTemplate, ctx, customEvents.length, target);
                                     return {
                                         dt: ({ idx }) => ({
-                                            span: customEvents[Math.floor(idx / 2)].name
+                                            label: customEvents[Math.floor(idx / 2)].name
                                         }),
                                         dd: ({ idx }) => ({
-                                            h5: customEvents[Math.floor(idx / 2)].description,
+                                            label: customEvents[Math.floor(idx / 2)].description,
                                             h6: {
-                                                span: customEvents[Math.floor(idx / 2)].associatedPropName
+                                                label: customEvents[Math.floor(idx / 2)].associatedPropName
                                             },
                                             details: {
                                                 dl: ({ target, ctx }) => {
                                                     const detail = customEvents[Math.floor(idx / 2)].detail;
                                                     if (detail === undefined)
                                                         return;
-                                                    repeat(definitionListTemplate, ctx, detail.length, target);
+                                                    repeat(definitionItemTemplate, ctx, detail.length, target);
                                                     return {
                                                         dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
                                                         dd: ({ idx }) => detail[Math.floor(idx / 2)].description
@@ -132,7 +133,7 @@ export class WCInfoBase extends XtalViewElement {
                                     const props = tags[idx].properties;
                                     if (props === undefined)
                                         return;
-                                    repeat(definitionListTemplate, ctx, props.length, target);
+                                    repeat(definitionItemTemplate, ctx, props.length, target);
                                     return {
                                         dt: ({ idx }) => props[Math.floor(idx / 2)].name,
                                         dd: ({ idx }) => props[Math.floor(idx / 2)].description
