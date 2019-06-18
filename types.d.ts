@@ -18,7 +18,7 @@ export interface Info {
      * Event fires when this property changes
      */
     associatedPropName: string,
-    testExpectedValues: {[key: string]: CustomEventDetailProperty[]} | undefined
+    testExpectedValues: {[key: string]: CustomEventInfo[]} | undefined
   }
   export interface PropertyInfo extends Info{
     type: string | undefined,
