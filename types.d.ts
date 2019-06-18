@@ -25,7 +25,7 @@ export interface Info {
     defaultValue: any,
     /**
     * key = test name
-    * val = test attribute value
+    * val = test prop value
     */
    testValues: {[key:string]: any} | undefined,
   }
@@ -38,6 +38,7 @@ export interface Info {
     attributes: AttribInfo[] | undefined;
     customEvents: CustomEventInfo[] | undefined;
     properties: PropertyInfo[] | undefined;
+    testCaseNames: string[] | undefined;
   }
   export interface WCSuiteInfo {
     tags: WCInfo[];
