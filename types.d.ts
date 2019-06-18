@@ -34,6 +34,7 @@ export interface Info {
     testValue: any | undefined
   }
   export interface WCInfo extends Info {
+    selfResolvingModulePath: string | undefined;
     attributes: AttribInfo[] | undefined;
     customEvents: CustomEventInfo[] | undefined;
     properties: PropertyInfo[] | undefined;
