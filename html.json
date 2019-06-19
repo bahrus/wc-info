@@ -4,7 +4,7 @@
         {
             "name": "wc-info-base",
             "description": "Non-themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
-            "selfResolvingModulePath": "https://unpkg.com/wc-info@0.0.39/wc-info-base.js?module",
+            "selfResolvingModulePath": "https://unpkg.com/wc-info@0.0.44/wc-info-base.js?module",
             "testCaseNames": ["test1"],
             "attributes": [
                 {
@@ -45,7 +45,7 @@
         {
             "name": "wc-info",
             "description": "Themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
-            "selfResolvingModulePath": "https://unpkg.com/wc-info@0.0.39/wc-info.js?module",
+            "selfResolvingModulePath": "https://unpkg.com/wc-info@0.0.44/wc-info.js?module",
             "testCaseNames": ["test1"],
             "attributes": [
                 {
