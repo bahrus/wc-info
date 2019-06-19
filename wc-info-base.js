@@ -7,8 +7,14 @@ const package_name = "package-name";
 const definitionItemTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
 `);
+const propertyItemTemplate = createTemplate(/* html */ `
+  <dt>🏠 <label data-bind=name></label></dt>
+  <dd>
+    <hypo-link data-bind=description></hypo-link>
+  </dd>
+`);
 const attributeItemTemplate = createTemplate(/* html */ `
-  <dt data-bind=name></dt>
+  <dt>💠 <label data-bind=name></label></dt>
   <dd>
     <hypo-link data-bind=description></hypo-link>
     <details>
@@ -18,7 +24,7 @@ const attributeItemTemplate = createTemplate(/* html */ `
   </dd>
 `);
 const eventItemTemplate = createTemplate(/* html */ `
-<dt>⚡Name: <label data-bind=name></label></dt>
+<dt>⚡ <label data-bind=name></label></dt>
 <dd>
   <hypo-link data-bind=description></hypo-link>
   <details>
@@ -36,24 +42,24 @@ const eventItemTemplate = createTemplate(/* html */ `
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
     <header>
-        <div class="WCName"></div>
+        <div class="WCName"><span>⚛️</span><label data-bind="name"></label></div>
         <div class="WCDesc"><hypo-link></hypo-link></div>
     </header>
     <section data-type="attributes">
       <details>
-          <summary>attributes</summary>
+          <summary>⚙️attributes</summary>
           <dl></dl>
       </details>
     </section>
     <section data-type="properties">
       <details>
-        <summary>🏠properties🏠</summary>
+        <summary>🏘️properties</summary>
         <dl></dl>
       </details>
     </section>
     <section data-type="events">
       <details>
-          <summary>⚡events⚡</summary>
+          <summary>🌩️events</summary>
           <dl></dl>
       </details>
     </section>
@@ -85,7 +91,9 @@ export class WCInfoBase extends XtalViewElement {
                 return {
                     section: ({ idx }) => ({
                         header: {
-                            ".WCName": tags[idx].name,
+                            ".WCName": {
+                                "label[data-bind='name']": tags[idx].name,
+                            },
                             ".WCDesc": {
                                 "hypo-link": tags[idx].description
                             }
@@ -99,7 +107,9 @@ export class WCInfoBase extends XtalViewElement {
                                     dl: ({ target, ctx }) => {
                                         repeat(attributeItemTemplate, ctx, attribs.length, target);
                                         return {
-                                            dt: ({ idx }) => attribs[Math.floor(idx / 2)].name,
+                                            dt: ({ idx }) => ({
+                                                'label[data-bind="name"]': attribs[Math.floor(idx / 2)].name
+                                            }),
                                             dd: ({ idx }) => ({
                                                 'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
                                                 details: x => {
@@ -166,9 +176,11 @@ export class WCInfoBase extends XtalViewElement {
                             return {
                                 details: {
                                     dl: ({ target, ctx }) => {
-                                        repeat(definitionItemTemplate, ctx, props.length, target);
+                                        repeat(propertyItemTemplate, ctx, props.length, target);
                                         return {
-                                            dt: ({ idx }) => props[Math.floor(idx / 2)].name,
+                                            dt: ({ idx }) => ({
+                                                'label[data-bind="name"]': props[Math.floor(idx / 2)].name
+                                            }),
                                             dd: ({ idx }) => props[Math.floor(idx / 2)].description
                                         };
                                     }

@@ -26,6 +26,10 @@ main {
 }
 details {
     width: 100%;
+    
+}
+dl{
+    margin-left:20px;
 }
 header {
     display: flex;
@@ -45,6 +49,11 @@ header {
 }        
 summary {
     margin-top: 20px;
+    list-style: none;
+    cursor:pointer;
+}
+summary::-webkit-details-marker{
+    display:none;
 }
 h3 {
     flex: 0 1 auto;
@@ -74,6 +83,8 @@ a {
     font-weight: 800;
     padding-right: 20px;
     flex-basis:25%;
+    display:flex;
+    flex-direction:row;
 }
 .WCDescription{
     flex-basis:75%;
