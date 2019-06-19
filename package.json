@@ -1,6 +1,6 @@
 {
   "name": "wc-info",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "description": "Display Web Component Information based on [web-components.json file](https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support).",
   "module": "wc-info.js",
   "types": "types.d.ts",
