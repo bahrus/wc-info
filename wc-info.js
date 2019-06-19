@@ -18,6 +18,10 @@ aside{
     font-size:0.75rem;
 }
 
+section[data-type]{
+    margin-left:20px;
+}
+
 main {
     padding: 8px;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, sans-serif;
