@@ -5,21 +5,17 @@
             "name": "wc-info-base",
             "description": "Non-themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
             "selfResolvingModulePath": "https://unpkg.com/wc-info@0.0.39/wc-info-base.js?module",
+            "testCaseNames": "test1",
             "attributes": [
                 {
                     "name": "href",
-                    "description": "Url where web component information is contained."
+                    "description": "Url where web component information is contained.",
+                    "testValues":{
+                        "test1": "https://unpkg.com/wc-info@0.0.42/html.json"
+                    }
                 },{
                     "name": "package-name",
                     "description": "Name of Package."
-                },{
-                    "name": "test",
-                    "values":[
-                        {
-                            "name": "val1",
-                            "description": "desc 1"
-                        }
-                    ]
                 }
             ],
             "customEvents":[
@@ -63,7 +59,10 @@
                 {
                     "name": "href",
                     "description": "Url where Web Component Information is contained.",
-                    "type": "string"
+                    "type": "string",
+                    "testValues":{
+                        "test1": "https://unpkg.com/wc-info@0.0.42/html.json"
+                    }
                 },{
                     "name": "packageName",
                     "description": "Name of Package.",
