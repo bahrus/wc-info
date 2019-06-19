@@ -23,7 +23,7 @@ const attributeItemTemplate = createTemplate(/* html */ `
 `);
 
 const eventItemTemplate = createTemplate(/* html */ `
-<dt>Name: <label data-bind=name></label></dt>
+<dt>⚡Name: <label data-bind=name></label></dt>
 <dd>
   <hypo-link data-bind=description></hypo-link>
   <details>
@@ -53,7 +53,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
     </section>
     <section data-type="properties">
       <details>
-        <summary>properties</summary>
+        <summary>🏠properties🏠</summary>
         <dl></dl>
       </details>
     </section>
