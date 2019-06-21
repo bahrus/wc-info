@@ -8,10 +8,15 @@
 
 UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_html-and-css-custom-data-support)
 
-So far, only attributes are supported, and it's been a few months since the schema has been updated.  So this web component adds additional support for custom events (but schema will change to support whatever VSCode decides, should they add support).  Such support should go a long way towards declaring a ["contract" between independent components](https://martinfowler.com/articles/micro-frontends.html#Cross-applicationCommunication).
+So far, only attributes are supported, and it's been a few months since the schema has been updated.  So this web component adds additional support for properties and custom events (but schema will change to support whatever VSCode decides, should they add support).  Such support should go a long way towards declaring a ["contract" between independent components](https://martinfowler.com/articles/micro-frontends.html#Cross-applicationCommunication).
 
+The "schema" currently follows the type information provided [here](https://github.com/bahrus/wc-info/blob/master/types.d.ts).  A JSON schema file is planned.
+
+I think most web component helper libraries should be capable of generating such files automatically if some "macro" for that library is created.
 
 ## Basic in-built styling
+
+Only visible from [webcomponents.org](https://www.webcomponents.org/element/wc-info)
 
 <!--
 ```
@@ -19,16 +24,20 @@ So far, only attributes are supported, and it's been a few months since the sche
 <template>
   <div>
     <div>
-      <wc-info package-name="npm install wc-info" href="https://unpkg.com/wc-info@0.0.25/html.json">
+      <wc-info package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.49/html.json">
       </wc-info>
-      <wc-info package-name="npm install if-diff" href="https://unpkg.com/if-diff@0.0.34/html.json">
+      <wc-info package-name="npm.xtal-fetch" href="https://unpkg.com/xtal-fetch@0.0.65/html.json">
       </wc-info>
-      <wc-info package-name="npm install p-d.p-u" href="https://unpkg.com/p-d.p-u@0.0.101/html.json">
+      <wc-info package-name="npm.xtal-frappe-chart" href="https://unpkg.com/xtal-frappe-chart@0.0.35/html.json"></wc-info>
+      <wc-info package-name="npm.if-diff" href="https://unpkg.com/if-diff@0.0.34/html.json">
       </wc-info>
-      <wc-info package-name="npm install pre-render-tron" href="https://unpkg.com/pre-render-tron@0.0.6/html.json">
+      <wc-info package-name="npm.p-et-alia" href="https://unpkg.com/p-et-alia@0.0.8/html.json">
       </wc-info>
-      <wc-info package-name="npm install hypo-link" href="https://unpkg.com/hypo-link@0.0.15/html.json">
+      <wc-info package-name="npm.pre-render-tron" href="https://unpkg.com/pre-render-tron@0.0.6/html.json">
       </wc-info>
+      <wc-info package-name="npm.hypo-link" href="https://unpkg.com/hypo-link@0.0.15/html.json">
+      </wc-info>
+
     </div>
     <style>
       wc-info {
@@ -38,20 +47,20 @@ So far, only attributes are supported, and it's been a few months since the sche
     <!-- Use experimental import maps -->
     <script defer src="https://cdn.jsdelivr.net/npm/es-module-shims@0.2.0/dist/es-module-shims.js"></script>
     <script type="importmap-shim">
-                {
-                  "imports": {
-                    "trans-render/": "https://cdn.jsdelivr.net/npm/trans-render@0.0.112/",
-                    "hypo-link/": "https://cdn.jsdelivr.net/npm/hypo-link@0.0.15/",
-                    "xtal-element/": "https://cdn.jsdelivr.net/npm/xtal-element@0.0.60/",
-                    "wc-info/": "https://cdn.jsdelivr.net/npm/wc-info@0.0.34/"
-                    
-                  }
-                }
-                </script>
+    {
+      "imports": {
+        "trans-render/": "https://cdn.jsdelivr.net/npm/trans-render@0.0.115/",
+        "hypo-link/": "https://cdn.jsdelivr.net/npm/hypo-link@0.0.15/",
+        "xtal-element/": "https://cdn.jsdelivr.net/npm/xtal-element@0.0.60/",
+        "wc-info/": "https://cdn.jsdelivr.net/npm/wc-info@0.0.51/"
+        
+      }
+    }
+    </script>
 
     <script type="module-shim">
-                import 'wc-info/wc-info.js';
-              </script>
+      import 'wc-info/wc-info.js';
+    </script>
   </div>
 </template>
 </custom-element-demo>

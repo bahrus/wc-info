@@ -51,12 +51,12 @@ header {
     flex-direction: row;
     }
 }        
-summary {
+section>details>summary {
     margin-top: 20px;
     list-style: none;
     cursor:pointer;
 }
-summary::-webkit-details-marker{
+section>details>summary::-webkit-details-marker{
     display:none;
 }
 h3 {
