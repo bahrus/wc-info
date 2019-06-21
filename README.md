@@ -52,7 +52,7 @@ Only visible from [webcomponents.org](https://www.webcomponents.org/element/wc-i
         "trans-render/": "https://cdn.jsdelivr.net/npm/trans-render@0.0.115/",
         "hypo-link/": "https://cdn.jsdelivr.net/npm/hypo-link@0.0.15/",
         "xtal-element/": "https://cdn.jsdelivr.net/npm/xtal-element@0.0.60/",
-        "wc-info/": "https://cdn.jsdelivr.net/npm/wc-info@0.0.51/"
+        "wc-info/": "https://cdn.jsdelivr.net/npm/wc-info@0.0.52/"
         
       }
     }
