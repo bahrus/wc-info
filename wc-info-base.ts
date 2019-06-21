@@ -85,7 +85,7 @@ const mainTemplate = createTemplate(/* html */ `
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   _initContext = newRenderContext({
     header: {
-      h3: this.packageName,
+      h3: x => this.packageName,
       nav: {
         a: ({ target }) => {
           (target as HTMLAnchorElement).href = this._href!;
@@ -119,7 +119,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                       }),
                       dd: ({ idx }) => ({
                         'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
-                        details: x =>{
+                        details: x => {
                           const vals = attribs[Math.floor(idx / 2)].values;
                           if(vals === undefined) return false;
                           return{

@@ -78,7 +78,7 @@ export class WCInfoBase extends XtalViewElement {
         super(...arguments);
         this._initContext = newRenderContext({
             header: {
-                h3: this.packageName,
+                h3: x => this.packageName,
                 nav: {
                     a: ({ target }) => {
                         target.href = this._href;
