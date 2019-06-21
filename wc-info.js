@@ -62,6 +62,9 @@ h3 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    margin-top:0px;
+    margin-block-start:0px;
+    margin-block-end:0px;
 }
 nav {
     margin-left: auto;
