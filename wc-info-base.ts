@@ -112,8 +112,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
               return {
                 details: {
                   dl: ({ target, ctx}) => {
-                    repeat(attributeItemTemplate, ctx, attribs.length, target);
-                    return {
+                    return repeat(attributeItemTemplate, ctx, attribs.length, target, {
                       dt: ({ idx }) => ({
                         'label[data-bind="name"]': attribs[Math.floor(idx / 2)].name
                       }),
@@ -133,7 +132,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                           }
                         }
                       }) 
-                    } as TransformRules;
+                    } as TransformRules);
                   }
                 }
               }
