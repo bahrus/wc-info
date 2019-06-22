@@ -104,30 +104,28 @@ export class WCInfoBase extends XtalViewElement {
                                 return false;
                             return {
                                 details: {
-                                    dl: ({ target, ctx }) => {
-                                        return repeat(attributeItemTemplate, ctx, attribs.length, target, {
-                                            dt: ({ idx }) => ({
-                                                'label[data-bind="name"]': attribs[Math.floor(idx / 2)].name
-                                            }),
-                                            dd: ({ idx }) => ({
-                                                'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
-                                                details: x => {
-                                                    const vals = attribs[Math.floor(idx / 2)].values;
-                                                    if (vals === undefined)
-                                                        return false;
-                                                    return {
-                                                        dl: ({ target, ctx }) => {
-                                                            repeat(definitionItemTemplate, ctx, vals.length, target);
-                                                            return {
-                                                                dt: ({ idx }) => vals[Math.floor(idx / 2)].name,
-                                                                dd: ({ idx }) => vals[Math.floor(idx / 2)].description
-                                                            };
-                                                        }
-                                                    };
-                                                }
-                                            })
-                                        });
-                                    }
+                                    dl: ({ target, ctx }) => repeat(attributeItemTemplate, ctx, attribs.length, target, {
+                                        dt: ({ idx }) => ({
+                                            'label[data-bind="name"]': attribs[Math.floor(idx / 2)].name
+                                        }),
+                                        dd: ({ idx }) => ({
+                                            'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
+                                            details: x => {
+                                                const vals = attribs[Math.floor(idx / 2)].values;
+                                                if (vals === undefined)
+                                                    return false;
+                                                return {
+                                                    dl: ({ target, ctx }) => {
+                                                        repeat(definitionItemTemplate, ctx, vals.length, target);
+                                                        return {
+                                                            dt: ({ idx }) => vals[Math.floor(idx / 2)].name,
+                                                            dd: ({ idx }) => vals[Math.floor(idx / 2)].description
+                                                        };
+                                                    }
+                                                };
+                                            }
+                                        })
+                                    })
                                 }
                             };
                         },
