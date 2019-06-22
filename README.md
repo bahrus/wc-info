@@ -72,13 +72,7 @@ Only visible from [webcomponents.org](https://www.webcomponents.org/element/wc-i
 ## Viewing Your Element (locally)
 
 ```
-$ polymer serve
+$ npm run serve
 ```
 
-[polymer serve](https://www.npmjs.com/package/polymer-cli) required (for now) due to use of bare import specifiers.
-
-
-<!--
-[Here's](https://github.com/search?q=%22description%22+%22tags%22+path%3A%2F+filename%3A%22html.json%22) a URL that may provide an approximate list of all the VSCode web-components.json files.
--->
 

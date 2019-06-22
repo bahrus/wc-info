@@ -109,14 +109,6 @@ dt {
 `);
 //const mainTemplateExt = createTemplate(mainTemplateExt$);
 export class WCInfo extends WCInfoBase {
-    constructor() {
-        super(...arguments);
-        this._renderOptions = {
-            initializedCallback: (ctx, target) => {
-                append(target, styleTemplate);
-            }
-        };
-    }
     static get is() {
         return "wc-info";
     }
@@ -124,6 +116,13 @@ export class WCInfo extends WCInfoBase {
         return false;
     }
     get renderOptions() {
+        if (this._renderOptions === undefined) {
+            this._renderOptions = {
+                initializedCallback: (ctx, target) => {
+                    append(target, styleTemplate);
+                }
+            };
+        }
         return this._renderOptions;
     }
 }

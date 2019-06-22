@@ -121,12 +121,15 @@ export class WCInfo extends WCInfoBase {
   }
 
 
-  _renderOptions = {
-    initializedCallback:(ctx: RenderContext, target: HTMLElement | DocumentFragment) =>{
-        append(target, styleTemplate)
-    }
-  } as RenderOptions;
+  _renderOptions: RenderOptions | undefined; 
   get renderOptions(): RenderOptions {
+      if(this._renderOptions === undefined){
+          this._renderOptions = {
+            initializedCallback:(ctx: RenderContext, target: HTMLElement | DocumentFragment) =>{
+                append(target, styleTemplate)
+            }
+          } as RenderOptions;
+      }
       return this._renderOptions;
   }
 }
