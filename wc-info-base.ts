@@ -121,13 +121,10 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                           const vals = attribs[Math.floor(idx / 2)].values;
                           if(vals === undefined) return false;
                           return{
-                            dl: ({target, ctx}) =>{
-                              repeat(definitionItemTemplate, ctx, vals.length, target);
-                              return {
+                            dl: ({target, ctx}) => repeat(definitionItemTemplate, ctx, vals.length, target, {
                                 dt: ({idx}) => vals[Math.floor(idx / 2)].name,
                                 dd: ({idx}) => vals[Math.floor(idx / 2)].description
-                              }
-                            }
+                            })
                           }
                         }
                       }) 

@@ -115,13 +115,10 @@ export class WCInfoBase extends XtalViewElement {
                                                 if (vals === undefined)
                                                     return false;
                                                 return {
-                                                    dl: ({ target, ctx }) => {
-                                                        repeat(definitionItemTemplate, ctx, vals.length, target);
-                                                        return {
-                                                            dt: ({ idx }) => vals[Math.floor(idx / 2)].name,
-                                                            dd: ({ idx }) => vals[Math.floor(idx / 2)].description
-                                                        };
-                                                    }
+                                                    dl: ({ target, ctx }) => repeat(definitionItemTemplate, ctx, vals.length, target, {
+                                                        dt: ({ idx }) => vals[Math.floor(idx / 2)].name,
+                                                        dd: ({ idx }) => vals[Math.floor(idx / 2)].description
+                                                    })
                                                 };
                                             }
                                         })
