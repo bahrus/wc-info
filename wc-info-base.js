@@ -43,7 +43,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
     <header>
         <div class="WCName"><span>⚛️</span><dfn data-bind="name"></dfn></div>
-        <div class="WCDesc"><hypo-link></hypo-link></div>
+        <hypo-link class=WCDesc></hypo-link>
     </header>
     <section data-type="attributes">
       <details>
@@ -98,9 +98,7 @@ export class WCInfoBase extends XtalViewElement {
                             ".WCName": {
                                 "dfn[data-bind='name']": tags[idx].name,
                             },
-                            ".WCDesc": {
-                                "hypo-link": tags[idx].description
-                            }
+                            "hypo-link": tags[idx].description
                         },
                         "section[data-type='attributes']": x => {
                             const attribs = tags[idx].attributes;
