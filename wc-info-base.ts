@@ -87,6 +87,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   _initContext: RenderContext | undefined;
   get initContext() {
     if(this._initContext === undefined){
+      const tags = this.viewModel.tags;
       this._initContext = newRenderContext({
         header: {
           h3: this.packageName,
@@ -97,7 +98,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
           }
         } as TransformRules,
         main: ({ target, ctx }) => {
-          const tags = this.viewModel.tags;
+          
           return repeat(WCInfoTemplate, ctx, tags.length, target, {
             section: ({ idx}) =>
               ({
