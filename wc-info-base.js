@@ -2,7 +2,7 @@ import { define } from "trans-render/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { repeat } from "trans-render/repeat.js";
-import "hypo-link/hypo-link.js";
+import { HypoLink } from "hypo-link/hypo-link.js";
 const package_name = "package-name";
 const definitionItemTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
@@ -96,9 +96,9 @@ export class WCInfoBase extends XtalViewElement {
                     section: ({ idx }) => ({
                         header: {
                             ".WCName": {
-                                "dfn[data-bind='name']": tags[idx].name,
+                                dfn: tags[idx].name,
                             },
-                            "hypo-link": tags[idx].description
+                            [HypoLink.is]: tags[idx].description
                         },
                         "section[data-type='attributes']": x => {
                             const attribs = tags[idx].attributes;
@@ -108,10 +108,10 @@ export class WCInfoBase extends XtalViewElement {
                                 details: {
                                     dl: ({ target, ctx }) => repeat(attributeItemTemplate, ctx, attribs.length, target, {
                                         dt: ({ idx }) => ({
-                                            'dfn[data-bind="name"]': attribs[Math.floor(idx / 2)].name
+                                            dfn: attribs[Math.floor(idx / 2)].name
                                         }),
                                         dd: ({ idx }) => ({
-                                            'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
+                                            [HypoLink.is]: attribs[Math.floor(idx / 2)].description,
                                             details: x => {
                                                 const vals = attribs[Math.floor(idx / 2)].values;
                                                 if (vals === undefined)
@@ -136,10 +136,10 @@ export class WCInfoBase extends XtalViewElement {
                                 details: {
                                     dl: ({ target, ctx }) => repeat(eventItemTemplate, ctx, customEvents.length, target, {
                                         dt: ({ idx }) => ({
-                                            'dfn[data-bind="name"]': customEvents[Math.floor(idx / 2)].name
+                                            dfn: customEvents[Math.floor(idx / 2)].name
                                         }),
                                         dd: ({ idx }) => ({
-                                            'hypo-link[data-bind="description"]': customEvents[Math.floor(idx / 2)].description,
+                                            [HypoLink.is]: customEvents[Math.floor(idx / 2)].description,
                                             details: {
                                                 aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
                                                     'dfn[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
@@ -169,7 +169,7 @@ export class WCInfoBase extends XtalViewElement {
                                 details: {
                                     dl: ({ target, ctx }) => repeat(propertyItemTemplate, ctx, props.length, target, {
                                         dt: ({ idx }) => ({
-                                            'dfn[data-bind="name"]': props[Math.floor(idx / 2)].name
+                                            dfn: props[Math.floor(idx / 2)].name
                                         }),
                                         dd: ({ idx }) => props[Math.floor(idx / 2)].description
                                     })
