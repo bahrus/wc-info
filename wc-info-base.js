@@ -131,33 +131,30 @@ export class WCInfoBase extends XtalViewElement {
                                 return false;
                             return {
                                 details: {
-                                    dl: ({ target, ctx }) => {
-                                        repeat(eventItemTemplate, ctx, customEvents.length, target);
-                                        return {
-                                            dt: ({ idx }) => ({
-                                                'label[data-bind="name"]': customEvents[Math.floor(idx / 2)].name
-                                            }),
-                                            dd: ({ idx }) => ({
-                                                'hypo-link[data-bind="description"]': customEvents[Math.floor(idx / 2)].description,
+                                    dl: ({ target, ctx }) => repeat(eventItemTemplate, ctx, customEvents.length, target, {
+                                        dt: ({ idx }) => ({
+                                            'label[data-bind="name"]': customEvents[Math.floor(idx / 2)].name
+                                        }),
+                                        dd: ({ idx }) => ({
+                                            'hypo-link[data-bind="description"]': customEvents[Math.floor(idx / 2)].description,
+                                            details: {
+                                                aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
+                                                    'label[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
+                                                } : false,
                                                 details: {
-                                                    aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
-                                                        'label[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
-                                                    } : false,
-                                                    details: {
-                                                        dl: ({ target, ctx }) => {
-                                                            const detail = customEvents[Math.floor(idx / 2)].detail;
-                                                            if (detail === undefined)
-                                                                return false;
-                                                            return repeat(definitionItemTemplate, ctx, detail.length, target, {
-                                                                dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
-                                                                dd: ({ idx }) => detail[Math.floor(idx / 2)].description
-                                                            });
-                                                        }
+                                                    dl: ({ target, ctx }) => {
+                                                        const detail = customEvents[Math.floor(idx / 2)].detail;
+                                                        if (detail === undefined)
+                                                            return false;
+                                                        return repeat(definitionItemTemplate, ctx, detail.length, target, {
+                                                            dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
+                                                            dd: ({ idx }) => detail[Math.floor(idx / 2)].description
+                                                        });
                                                     }
                                                 }
-                                            })
-                                        };
-                                    }
+                                            }
+                                        })
+                                    })
                                 }
                             };
                         },

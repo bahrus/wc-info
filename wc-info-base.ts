@@ -136,9 +136,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
               if(customEvents === undefined) return false;
               return {
                 details:{
-                  dl:({target, ctx}) =>{
-                    repeat(eventItemTemplate, ctx, customEvents.length, target);
-                    return {
+                  dl:({target, ctx}) => repeat(eventItemTemplate, ctx, customEvents.length, target, {
                       dt: ({ idx }) => ({
                         'label[data-bind="name"]': customEvents[Math.floor(idx / 2)].name
                       }),
@@ -160,8 +158,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                           }
                         }
                       })
-                    } as TransformRules;
-                  }
+                    } as TransformRules)
                 }
               }
             },
