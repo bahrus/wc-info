@@ -94,8 +94,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
     } as TransformRules,
     main: ({ target, ctx }) => {
       const tags = this.viewModel.tags;
-      repeat(WCInfoTemplate, ctx, tags.length, target);
-      return {
+      return repeat(WCInfoTemplate, ctx, tags.length, target, {
         section: ({ idx}) =>
           ({
             header: {
@@ -153,11 +152,10 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                             dl:({target, ctx}) =>{
                               const detail = customEvents[Math.floor(idx / 2)].detail;
                               if(detail === undefined) return false;
-                              repeat(definitionItemTemplate, ctx, detail.length, target);
-                              return {
+                              return repeat(definitionItemTemplate, ctx, detail.length, target, {
                                 dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
                                 dd: ({ idx }) => detail[Math.floor(idx / 2)].description
-                              }
+                              });
                             }
                           }
                         }
@@ -172,22 +170,18 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
               if (props === undefined) return false;
               return {
                 details: {
-                  dl: ({ target, ctx}) => {
-                    
-                    repeat(propertyItemTemplate, ctx, props.length, target);
-                    return {
+                  dl: ({ target, ctx}) => repeat(propertyItemTemplate, ctx, props.length, target, {
                       dt: ({ idx }) => ({
                         'label[data-bind="name"]': props[Math.floor(idx / 2)].name
                       }),
                       dd: ({ idx }) => props[Math.floor(idx / 2)].description
-                    } as TransformRules;
-                  }
+                  } as TransformRules)
                 }              
               }
             }
 
           } as TransformRules)
-      };
+      }) as TransformRules;
     }
   });
 
