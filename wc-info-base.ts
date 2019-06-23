@@ -12,14 +12,14 @@ const definitionItemTemplate = createTemplate(/* html */ `
 `);
 
 const propertyItemTemplate = createTemplate(/* html */ `
-  <dt>🏠 <label data-bind=name></label></dt>
+  <dt>🏠 <dfn data-bind=name></dfn></dt>
   <dd>
     <hypo-link data-bind=description></hypo-link>
   </dd>
 `);
 
 const attributeItemTemplate = createTemplate(/* html */ `
-  <dt>💠 <label data-bind=name></label></dt>
+  <dt>💠 <dfn data-bind=name></dfn></dt>
   <dd>
     <hypo-link data-bind=description></hypo-link>
     <details>
@@ -30,7 +30,7 @@ const attributeItemTemplate = createTemplate(/* html */ `
 `);
 
 const eventItemTemplate = createTemplate(/* html */ `
-<dt>⚡ <label data-bind=name></label></dt>
+<dt>⚡ <dfn data-bind=name></dfn></dt>
 <dd>
   <hypo-link data-bind=description></hypo-link>
   <details>
@@ -39,7 +39,7 @@ const eventItemTemplate = createTemplate(/* html */ `
       <summary>Event Detail Properties</summary>
       <dl></dl>
     </details>
-    <aside>Associated Property Name: <label data-bind=associatedPropName></label></aside>
+    <aside>Associated Property Name: <dfn data-bind=associatedPropName></dfn></aside>
   </details>
   
 
@@ -49,7 +49,7 @@ const eventItemTemplate = createTemplate(/* html */ `
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
     <header>
-        <div class="WCName"><span>⚛️</span><label data-bind="name"></label></div>
+        <div class="WCName"><span>⚛️</span><dfn data-bind="name"></dfn></div>
         <div class="WCDesc"><hypo-link></hypo-link></div>
     </header>
     <section data-type="attributes">
@@ -102,7 +102,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
               ({
                 header: {
                   ".WCName":{
-                    "label[data-bind='name']": tags[idx].name,
+                    "dfn[data-bind='name']": tags[idx].name,
                   },
                   ".WCDesc": {
                     "hypo-link": tags[idx].description
@@ -115,7 +115,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                     details: {
                       dl: ({ target, ctx}) => repeat(attributeItemTemplate, ctx, attribs.length, target, {
                           dt: ({ idx }) => ({
-                            'label[data-bind="name"]': attribs[Math.floor(idx / 2)].name
+                            'dfn[data-bind="name"]': attribs[Math.floor(idx / 2)].name
                           }),
                           dd: ({ idx }) => ({
                             'hypo-link[data-bind="description"]': attribs[Math.floor(idx / 2)].description,
@@ -141,13 +141,13 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                     details:{
                       dl:({target, ctx}) => repeat(eventItemTemplate, ctx, customEvents.length, target, {
                           dt: ({ idx }) => ({
-                            'label[data-bind="name"]': customEvents[Math.floor(idx / 2)].name
+                            'dfn[data-bind="name"]': customEvents[Math.floor(idx / 2)].name
                           }),
                           dd: ({ idx}) => ({
                             'hypo-link[data-bind="description"]': customEvents[Math.floor(idx / 2)].description,
                             details:{
                               aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
-                                'label[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
+                                'dfn[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
                               } : false,
                               details:{
                                 dl:({target, ctx}) =>{
@@ -172,7 +172,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                     details: {
                       dl: ({ target, ctx}) => repeat(propertyItemTemplate, ctx, props.length, target, {
                           dt: ({ idx }) => ({
-                            'label[data-bind="name"]': props[Math.floor(idx / 2)].name
+                            'dfn[data-bind="name"]': props[Math.floor(idx / 2)].name
                           }),
                           dd: ({ idx }) => props[Math.floor(idx / 2)].description
                       } as TransformRules)
