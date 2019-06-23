@@ -97,9 +97,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
             }
           }
         } as TransformRules,
-        main: ({ target, ctx }) => {
-          
-          return repeat(WCInfoTemplate, ctx, tags.length, target, {
+        main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags.length, target, {
             section: ({ idx}) =>
               ({
                 header: {
@@ -183,8 +181,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                 }
     
               } as TransformRules)
-          }) as TransformRules;
-        }
+          }) as TransformRules,
       });
     };
     return this._initContext;
