@@ -44,7 +44,7 @@ export interface CustomEventInfo extends Info {
   /**
    * Event fires when this property changes
    */
-  associatedPropName: string;
+  associatedPropName: string | undefined;
   testExpectedValues: { [key: string]: CustomEventInfo[] } | undefined;
 }
 
