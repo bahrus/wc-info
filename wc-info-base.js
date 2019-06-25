@@ -28,7 +28,7 @@ const eventItemTemplate = createTemplate(/* html */ `
 <dd>
   <hypo-link data-bind=description></hypo-link>
   <details>
-    <summary>Details</summary>
+    <summary>🔬Details</summary>
     <details>
       <summary>Event Detail Properties</summary>
       <dl></dl>

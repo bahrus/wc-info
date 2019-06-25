@@ -49,12 +49,12 @@ header {
     flex-direction: row;
     }
 }        
-section>details>summary {
+details>summary {
     margin-top: 20px;
     list-style: none;
     cursor:pointer;
 }
-section>details>summary::-webkit-details-marker{
+details>summary::-webkit-details-marker{
     display:none;
 }
 h3 {
