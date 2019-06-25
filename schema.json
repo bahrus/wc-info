@@ -1,0 +1,583 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "The Root Schema",
+    "required": [
+      "version",
+      "tags"
+    ],
+    "properties": {
+      "version": {
+        "$id": "#/properties/version",
+        "type": "integer",
+        "title": "The Version Schema",
+        "default": 0,
+        "examples": [
+          1
+        ]
+      },
+      "tags": {
+        "$id": "#/properties/tags",
+        "type": "array",
+        "title": "The Tags Schema",
+        "items": {
+          "$id": "#/properties/tags/items",
+          "type": "object",
+          "title": "The Items Schema",
+          "required": [
+            "name",
+            "description",
+            "selfResolvingModulePath",
+            "testCaseNames",
+            "attributes",
+            "properties",
+            "customEvents"
+          ],
+          "properties": {
+            "name": {
+              "$id": "#/properties/tags/items/properties/name",
+              "type": "string",
+              "title": "The Name Schema",
+              "default": "",
+              "examples": [
+                "xtal-fetch-get"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "description": {
+              "$id": "#/properties/tags/items/properties/description",
+              "type": "string",
+              "title": "The Description Schema",
+              "default": "",
+              "examples": [
+                "A small, basic vanilla web component wrapper around the fetch api."
+              ],
+              "pattern": "^(.*)$"
+            },
+            "selfResolvingModulePath": {
+              "$id": "#/properties/tags/items/properties/selfResolvingModulePath",
+              "type": "string",
+              "title": "The Selfresolvingmodulepath Schema",
+              "default": "",
+              "examples": [
+                "https://unpkg.com/xtal-fetch@0.0.61/xtal-fetch-get.js?module"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "testCaseNames": {
+              "$id": "#/properties/tags/items/properties/testCaseNames",
+              "type": "array",
+              "title": "The Testcasenames Schema",
+              "items": {
+                "$id": "#/properties/tags/items/properties/testCaseNames/items",
+                "type": "string",
+                "title": "The Items Schema",
+                "default": "",
+                "examples": [
+                  "test1"
+                ],
+                "pattern": "^(.*)$"
+              }
+            },
+            "attributes": {
+              "$id": "#/properties/tags/items/properties/attributes",
+              "type": "array",
+              "title": "The Attributes Schema",
+              "items": {
+                "$id": "#/properties/tags/items/properties/attributes/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "required": [
+                  "name",
+                  "description"
+                ],
+                "properties": {
+                  "name": {
+                    "$id": "#/properties/tags/items/properties/attributes/items/properties/name",
+                    "type": "string",
+                    "title": "The Name Schema",
+                    "default": "",
+                    "examples": [
+                      "fetch"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "description": {
+                    "$id": "#/properties/tags/items/properties/attributes/items/properties/description",
+                    "type": "string",
+                    "title": "The Description Schema",
+                    "default": "",
+                    "examples": [
+                      "Boolean property / attribute -- must be true to enable (or pre-validate) fetch requests."
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            },
+            "properties": {
+              "$id": "#/properties/tags/items/properties/properties",
+              "type": "array",
+              "title": "The Properties Schema",
+              "items": {
+                "$id": "#/properties/tags/items/properties/properties/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "required": [
+                  "name",
+                  "description",
+                  "testValues"
+                ],
+                "properties": {
+                  "name": {
+                    "$id": "#/properties/tags/items/properties/properties/items/properties/name",
+                    "type": "string",
+                    "title": "The Name Schema",
+                    "default": "",
+                    "examples": [
+                      "fetch"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "description": {
+                    "$id": "#/properties/tags/items/properties/properties/items/properties/description",
+                    "type": "string",
+                    "title": "The Description Schema",
+                    "default": "",
+                    "examples": [
+                      "Boolean property / attribute -- must be true to enable (or pre-validate) fetch requests."
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "testValues": {
+                    "$id": "#/properties/tags/items/properties/properties/items/properties/testValues",
+                    "type": "object",
+                    "title": "The Testvalues Schema",
+                    "required": [
+                      "test1"
+                    ],
+                    "properties": {
+                      "test1": {
+                        "$id": "#/properties/tags/items/properties/properties/items/properties/testValues/properties/test1",
+                        "type": "boolean",
+                        "title": "The Test1 Schema",
+                        "default": false,
+                        "examples": [
+                          true
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "customEvents": {
+              "$id": "#/properties/tags/items/properties/customEvents",
+              "type": "array",
+              "title": "The Customevents Schema",
+              "items": {
+                "$id": "#/properties/tags/items/properties/customEvents/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "required": [
+                  "name",
+                  "description",
+                  "associatedPropName",
+                  "detail",
+                  "testExpectedValues"
+                ],
+                "properties": {
+                  "name": {
+                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/name",
+                    "type": "string",
+                    "title": "The Name Schema",
+                    "default": "",
+                    "examples": [
+                      "result-changed"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "description": {
+                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/description",
+                    "type": "string",
+                    "title": "The Description Schema",
+                    "default": "",
+                    "examples": [
+                      "Result of fetch changed"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "associatedPropName": {
+                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/associatedPropName",
+                    "type": "string",
+                    "title": "The Associatedpropname Schema",
+                    "default": "",
+                    "examples": [
+                      "result"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
+                  "detail": {
+                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail",
+                    "type": "array",
+                    "title": "The Detail Schema",
+                    "items": {
+                      "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items",
+                      "type": "object",
+                      "title": "The Items Schema",
+                      "required": [
+                        "name",
+                        "description",
+                        "type"
+                      ],
+                      "properties": {
+                        "name": {
+                          "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items/properties/name",
+                          "type": "string",
+                          "title": "The Name Schema",
+                          "default": "",
+                          "examples": [
+                            "value"
+                          ],
+                          "pattern": "^(.*)$"
+                        },
+                        "description": {
+                          "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items/properties/description",
+                          "type": "string",
+                          "title": "The Description Schema",
+                          "default": "",
+                          "examples": [
+                            "Result of fetch"
+                          ],
+                          "pattern": "^(.*)$"
+                        },
+                        "type": {
+                          "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items/properties/type",
+                          "type": "string",
+                          "title": "The Type Schema",
+                          "default": "",
+                          "examples": [
+                            "any"
+                          ],
+                          "pattern": "^(.*)$"
+                        }
+                      }
+                    }
+                  },
+                  "testExpectedValues": {
+                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues",
+                    "type": "object",
+                    "title": "The Testexpectedvalues Schema",
+                    "required": [
+                      "test1"
+                    ],
+                    "properties": {
+                      "test1": {
+                        "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1",
+                        "type": "object",
+                        "title": "The Test1 Schema",
+                        "required": [
+                          "value"
+                        ],
+                        "properties": {
+                          "value": {
+                            "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value",
+                            "type": "array",
+                            "title": "The Value Schema",
+                            "items": {
+                              "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items",
+                              "type": "object",
+                              "title": "The Items Schema",
+                              "required": [
+                                "_id",
+                                "index",
+                                "guid",
+                                "isActive",
+                                "balance",
+                                "picture",
+                                "age",
+                                "eyeColor",
+                                "name",
+                                "gender",
+                                "company",
+                                "email",
+                                "phone",
+                                "address",
+                                "about",
+                                "registered",
+                                "latitude",
+                                "longitude",
+                                "tags",
+                                "friends",
+                                "greeting",
+                                "favoriteFruit"
+                              ],
+                              "properties": {
+                                "_id": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/_id",
+                                  "type": "string",
+                                  "title": "The _id Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "580d3fbba86e6de6accf5cd1"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "index": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/index",
+                                  "type": "integer",
+                                  "title": "The Index Schema",
+                                  "default": 0,
+                                  "examples": [
+                                    0
+                                  ]
+                                },
+                                "guid": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/guid",
+                                  "type": "string",
+                                  "title": "The Guid Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "23bc285a-1c9e-4975-9c85-f3203721444e"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "isActive": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/isActive",
+                                  "type": "boolean",
+                                  "title": "The Isactive Schema",
+                                  "default": false,
+                                  "examples": [
+                                    false
+                                  ]
+                                },
+                                "balance": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/balance",
+                                  "type": "string",
+                                  "title": "The Balance Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "$3,317.88"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "picture": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/picture",
+                                  "type": "string",
+                                  "title": "The Picture Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "http://placehold.it/32x32"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "age": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/age",
+                                  "type": "integer",
+                                  "title": "The Age Schema",
+                                  "default": 0,
+                                  "examples": [
+                                    37
+                                  ]
+                                },
+                                "eyeColor": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/eyeColor",
+                                  "type": "string",
+                                  "title": "The Eyecolor Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "brown"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "name": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/name",
+                                  "type": "string",
+                                  "title": "The Name Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "Cooper Patel"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "gender": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/gender",
+                                  "type": "string",
+                                  "title": "The Gender Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "male"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "company": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/company",
+                                  "type": "string",
+                                  "title": "The Company Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "UNISURE"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "email": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/email",
+                                  "type": "string",
+                                  "title": "The Email Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "cooperpatel@unisure.com"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "phone": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/phone",
+                                  "type": "string",
+                                  "title": "The Phone Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "+1 (821) 531-3163"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "address": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/address",
+                                  "type": "string",
+                                  "title": "The Address Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "962 Varick Avenue, Bentley, Delaware, 1319"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "about": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/about",
+                                  "type": "string",
+                                  "title": "The About Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "Aliqua reprehenderit sit reprehenderit cillum anim duis reprehenderit ea deserunt veniam aliquip pariatur aute. Anim sint ea sunt ut sunt sint incididunt dolor. Ipsum ex dolor consequat aute. Eiusmod mollit qui nulla labore Lorem aute occaecat cillum irure fugiat. Nisi proident anim quis laboris veniam aute deserunt eu ipsum culpa eiusmod duis et pariatur.\r\n"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "registered": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/registered",
+                                  "type": "string",
+                                  "title": "The Registered Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "2015-06-20T05:36:12 +04:00"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "latitude": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/latitude",
+                                  "type": "number",
+                                  "title": "The Latitude Schema",
+                                  "default": 0.0,
+                                  "examples": [
+                                    -53.862758
+                                  ]
+                                },
+                                "longitude": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/longitude",
+                                  "type": "number",
+                                  "title": "The Longitude Schema",
+                                  "default": 0.0,
+                                  "examples": [
+                                    -135.928028
+                                  ]
+                                },
+                                "tags": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/tags",
+                                  "type": "array",
+                                  "title": "The Tags Schema",
+                                  "items": {
+                                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/tags/items",
+                                    "type": "string",
+                                    "title": "The Items Schema",
+                                    "default": "",
+                                    "examples": [
+                                      "et",
+                                      "deserunt",
+                                      "proident",
+                                      "proident",
+                                      "qui",
+                                      "magna",
+                                      "voluptate"
+                                    ],
+                                    "pattern": "^(.*)$"
+                                  }
+                                },
+                                "friends": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/friends",
+                                  "type": "array",
+                                  "title": "The Friends Schema",
+                                  "items": {
+                                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/friends/items",
+                                    "type": "object",
+                                    "title": "The Items Schema",
+                                    "required": [
+                                      "id",
+                                      "name"
+                                    ],
+                                    "properties": {
+                                      "id": {
+                                        "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/friends/items/properties/id",
+                                        "type": "integer",
+                                        "title": "The Id Schema",
+                                        "default": 0,
+                                        "examples": [
+                                          0
+                                        ]
+                                      },
+                                      "name": {
+                                        "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/friends/items/properties/name",
+                                        "type": "string",
+                                        "title": "The Name Schema",
+                                        "default": "",
+                                        "examples": [
+                                          "Stuart Massey"
+                                        ],
+                                        "pattern": "^(.*)$"
+                                      }
+                                    }
+                                  }
+                                },
+                                "greeting": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/greeting",
+                                  "type": "string",
+                                  "title": "The Greeting Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "Hello, Cooper Patel! You have 1 unread messages."
+                                  ],
+                                  "pattern": "^(.*)$"
+                                },
+                                "favoriteFruit": {
+                                  "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues/properties/test1/properties/value/items/properties/favoriteFruit",
+                                  "type": "string",
+                                  "title": "The Favoritefruit Schema",
+                                  "default": "",
+                                  "examples": [
+                                    "strawberry"
+                                  ],
+                                  "pattern": "^(.*)$"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
