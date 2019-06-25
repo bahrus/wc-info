@@ -28,11 +28,8 @@ const eventItemTemplate = createTemplate(/* html */ `
 <dd>
   <hypo-link data-bind=description></hypo-link>
   <details>
-    <summary>🔬Details</summary>
-    <details>
-      <summary>Event Detail Properties</summary>
-      <dl></dl>
-    </details>
+    <summary>🔬detail</summary>
+    <dl></dl>
     <aside>Associated Property Name: <dfn data-bind=associatedPropName></dfn></aside>
   </details>
   
@@ -144,17 +141,17 @@ export class WCInfoBase extends XtalViewElement {
                                                 aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
                                                     'dfn[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
                                                 } : false,
-                                                details: {
-                                                    dl: ({ target, ctx }) => {
-                                                        const detail = customEvents[Math.floor(idx / 2)].detail;
-                                                        if (detail === undefined)
-                                                            return false;
-                                                        return repeat(definitionItemTemplate, ctx, detail.length, target, {
-                                                            dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
-                                                            dd: ({ idx }) => detail[Math.floor(idx / 2)].description
-                                                        });
-                                                    }
+                                                //details:{
+                                                dl: ({ target, ctx }) => {
+                                                    const detail = customEvents[Math.floor(idx / 2)].detail;
+                                                    if (detail === undefined)
+                                                        return false;
+                                                    return repeat(definitionItemTemplate, ctx, detail.length, target, {
+                                                        dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
+                                                        dd: ({ idx }) => detail[Math.floor(idx / 2)].description
+                                                    });
                                                 }
+                                                //}
                                             }
                                         })
                                     })
