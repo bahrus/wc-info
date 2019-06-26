@@ -77,10 +77,10 @@ export class WCInfoBase extends XtalViewElement {
         this._packageName = null;
         this._c = false;
     }
-    get initContext() {
-        if (this._initContext === undefined) {
+    get initRenderContext() {
+        if (this._initRenderContext === undefined) {
             const tags = this.viewModel.tags;
-            this._initContext = newRenderContext({
+            this._initRenderContext = newRenderContext({
                 header: {
                     h3: this.packageName,
                     nav: {
@@ -178,7 +178,7 @@ export class WCInfoBase extends XtalViewElement {
             });
         }
         ;
-        return this._initContext;
+        return this._initRenderContext;
     }
     static get is() {
         return "wc-info-base";

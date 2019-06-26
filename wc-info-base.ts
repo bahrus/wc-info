@@ -81,11 +81,11 @@ const mainTemplate = createTemplate(/* html */ `
 
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
 
-  _initContext: RenderContext | undefined;
-  get initContext() {
-    if(this._initContext === undefined){
+  _initRenderContext: RenderContext | undefined;
+  get initRenderContext() {
+    if(this._initRenderContext === undefined){
       const tags = this.viewModel.tags;
-      this._initContext = newRenderContext({
+      this._initRenderContext = newRenderContext({
         header: {
           h3: this.packageName,
           nav: {
@@ -179,7 +179,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
           }) as TransformRules,
       });
     };
-    return this._initContext;
+    return this._initRenderContext;
   }
 
   static get is() {

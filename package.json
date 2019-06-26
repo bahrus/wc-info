@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "hypo-link": "0.0.15",
-    "xtal-element": "0.0.61",
-    "trans-render": "0.0.115"
+    "xtal-element": "0.0.63",
+    "trans-render": "0.0.116"
   },
   "devDependencies": {
     "@types/node": "12.0.8",
