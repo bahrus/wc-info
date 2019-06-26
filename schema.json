@@ -13,7 +13,7 @@
         "$id": "#/properties/version",
         "type": "integer",
         "title": "The Version Schema",
-        "default": 0,
+        "default": 1,
         "examples": [
           1
         ]
@@ -36,7 +36,7 @@
               "title": "The Name Schema",
               "default": "",
               "examples": [
-                "xtal-fetch-get"
+                "my-custom-element"
               ],
               "pattern": "^(.*)$"
             },
@@ -45,9 +45,6 @@
               "type": "string",
               "title": "The Description Schema",
               "default": "",
-              "examples": [
-                "A small, basic vanilla web component wrapper around the fetch api."
-              ],
               "pattern": "^(.*)$"
             },
             "selfResolvingModulePath": {
@@ -56,7 +53,7 @@
               "title": "The Selfresolvingmodulepath Schema",
               "default": "",
               "examples": [
-                "https://unpkg.com/xtal-fetch@0.0.61/xtal-fetch-get.js?module"
+                "https://unpkg.com/my-custom-element@0.0.1/my-custom-element.js?module"
               ],
               "pattern": "^(.*)$"
             },
@@ -70,7 +67,7 @@
                 "title": "The Items Schema",
                 "default": "",
                 "examples": [
-                  "test1"
+                  "myFirstTest"
                 ],
                 "pattern": "^(.*)$"
               }
@@ -93,7 +90,7 @@
                     "title": "The Name Schema",
                     "default": "",
                     "examples": [
-                      "fetch"
+                      "my-attribute"
                     ],
                     "pattern": "^(.*)$"
                   },
@@ -103,7 +100,7 @@
                     "title": "The Description Schema",
                     "default": "",
                     "examples": [
-                      "Boolean property / attribute -- must be true to enable (or pre-validate) fetch requests."
+                      "My attribute description."
                     ],
                     "pattern": "^(.*)$"
                   }
@@ -128,7 +125,7 @@
                     "title": "The Name Schema",
                     "default": "",
                     "examples": [
-                      "fetch"
+                      "myProperty"
                     ],
                     "pattern": "^(.*)$"
                   },
@@ -138,7 +135,7 @@
                     "title": "The Description Schema",
                     "default": "",
                     "examples": [
-                      "Boolean property / attribute -- must be true to enable (or pre-validate) fetch requests."
+                      "My Property description."
                     ],
                     "pattern": "^(.*)$"
                   },
