@@ -10,7 +10,7 @@ UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_ht
 
 So far, only attributes are supported, and it's been a few months since the schema has been updated.  So this web component adds additional support for properties and custom events (but schema will change to support whatever VSCode decides, should they add support).  Such support should go a long way towards declaring a ["contract" between independent components](https://martinfowler.com/articles/micro-frontends.html#Cross-applicationCommunication).
 
-The "schema" currently follows the type information provided [here](https://github.com/bahrus/wc-info/blob/master/types.d.ts).  A JSON schema file is planned.
+An enhanced JSON schema file with this additional support for properties and custom events is provided:  [https://unpkg.com/wc-info@0.0.58/schema.json](https://unpkg.com/wc-info@0.0.58/schema.json).
 
 I think most web component helper libraries should be capable of generating such files automatically if some "macro" for that library is created.
 
