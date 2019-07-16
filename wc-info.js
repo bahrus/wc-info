@@ -107,7 +107,6 @@ dt {
 }
 </style>
 `);
-//const mainTemplateExt = createTemplate(mainTemplateExt$);
 export class WCInfo extends WCInfoBase {
     static get is() {
         return "wc-info";

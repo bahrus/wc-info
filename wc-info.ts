@@ -110,7 +110,7 @@ dt {
 </style>
 `);
 
-//const mainTemplateExt = createTemplate(mainTemplateExt$);
+
 
 export class WCInfo extends WCInfoBase {
   static get is() {
@@ -123,16 +123,6 @@ export class WCInfo extends WCInfoBase {
   initRenderCallback(ctx: RenderContext, target: HTMLElement | DocumentFragment){
     append(target, styleTemplate);   
   }
-//   _renderOptions!: RenderOptions; 
-//   get renderOptions(): RenderOptions {
-//       if(this._renderOptions === undefined || ){
-//           this._renderOptions = {
-//             initializedCallback:(ctx: RenderContext, target: HTMLElement | DocumentFragment) =>{
-//                 append(target, styleTemplate)
-//             }
-//           } as RenderOptions;
-//       }
-//       return this._renderOptions;
-//   }
+
 }
 define(WCInfo);
