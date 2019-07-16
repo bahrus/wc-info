@@ -26,7 +26,7 @@ export interface AttribInfo extends Info {
 }
 
 export interface PropertyInfo extends Info {
-  type: string | undefined;
+  type: 'string' | 'boolean' | 'object' | undefined;
   defaultValue: any;
   /**
    * key = test name

@@ -10,15 +10,15 @@
   },
   "dependencies": {
     "hypo-link": "0.0.15",
-    "xtal-element": "0.0.63",
-    "trans-render": "0.0.116"
+    "xtal-element": "0.0.76",
+    "trans-render": "0.0.126"
   },
   "devDependencies": {
-    "@types/node": "12.0.8",
+    "@types/node": "12.6.5",
     "@types/tape": "4.2.33",
     "@webcomponents/webcomponentsjs": "2.2.10",
     "jiife": "0.0.12",
-    "tape": "4.10.2",
+    "tape": "4.11.0",
     "xtal-test": "0.0.19"
   },
   "repository": {

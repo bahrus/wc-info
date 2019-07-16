@@ -115,15 +115,8 @@ export class WCInfo extends WCInfoBase {
     get noShadow() {
         return false;
     }
-    get renderOptions() {
-        if (this._renderOptions === undefined) {
-            this._renderOptions = {
-                initializedCallback: (ctx, target) => {
-                    append(target, styleTemplate);
-                }
-            };
-        }
-        return this._renderOptions;
+    initRenderCallback(ctx, target) {
+        append(target, styleTemplate);
     }
 }
 define(WCInfo);

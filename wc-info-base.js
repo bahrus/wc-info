@@ -75,110 +75,110 @@ export class WCInfoBase extends XtalViewElement {
         super(...arguments);
         this._href = null;
         this._packageName = null;
-        this._c = false;
     }
+    //_initRenderContext: RenderContext | undefined;
     get initRenderContext() {
-        if (this._initRenderContext === undefined) {
-            const tags = this.viewModel.tags;
-            this._initRenderContext = newRenderContext({
-                header: {
-                    h3: this.packageName,
-                    nav: {
-                        a: ({ target }) => {
-                            target.href = this._href;
-                        }
+        //if(this._initRenderContext === undefined){
+        const tags = this.viewModel.tags;
+        //this._initRenderContext = newRenderContext({
+        return newRenderContext({
+            header: {
+                h3: this.packageName,
+                nav: {
+                    a: ({ target }) => {
+                        target.href = this._href;
                     }
-                },
-                main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags.length, target, {
-                    section: ({ idx }) => ({
-                        header: {
-                            ".WCName": {
-                                dfn: tags[idx].name,
-                            },
-                            [HypoLink.is]: tags[idx].description
+                }
+            },
+            main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags.length, target, {
+                section: ({ idx }) => ({
+                    header: {
+                        ".WCName": {
+                            dfn: tags[idx].name,
                         },
-                        "section[data-type='attributes']": x => {
-                            const attribs = tags[idx].attributes;
-                            if (attribs === undefined)
-                                return false;
-                            return {
-                                details: {
-                                    dl: ({ target, ctx }) => repeat(attributeItemTemplate, ctx, attribs.length, target, {
-                                        dt: ({ idx }) => ({
-                                            dfn: attribs[Math.floor(idx / 2)].name
-                                        }),
-                                        dd: ({ idx }) => ({
-                                            [HypoLink.is]: attribs[Math.floor(idx / 2)].description,
-                                            details: x => {
-                                                const vals = attribs[Math.floor(idx / 2)].values;
-                                                if (vals === undefined)
+                        [HypoLink.is]: tags[idx].description
+                    },
+                    "section[data-type='attributes']": x => {
+                        const attribs = tags[idx].attributes;
+                        if (attribs === undefined)
+                            return false;
+                        return {
+                            details: {
+                                dl: ({ target, ctx }) => repeat(attributeItemTemplate, ctx, attribs.length, target, {
+                                    dt: ({ idx }) => ({
+                                        dfn: attribs[Math.floor(idx / 2)].name
+                                    }),
+                                    dd: ({ idx }) => ({
+                                        [HypoLink.is]: attribs[Math.floor(idx / 2)].description,
+                                        details: x => {
+                                            const vals = attribs[Math.floor(idx / 2)].values;
+                                            if (vals === undefined)
+                                                return false;
+                                            return {
+                                                dl: ({ target, ctx }) => repeat(definitionItemTemplate, ctx, vals.length, target, {
+                                                    dt: ({ idx }) => vals[Math.floor(idx / 2)].name,
+                                                    dd: ({ idx }) => vals[Math.floor(idx / 2)].description
+                                                })
+                                            };
+                                        }
+                                    })
+                                })
+                            }
+                        };
+                    },
+                    "section[data-type='events']": x => {
+                        const customEvents = tags[idx].customEvents;
+                        if (customEvents === undefined)
+                            return false;
+                        return {
+                            details: {
+                                dl: ({ target, ctx }) => repeat(eventItemTemplate, ctx, customEvents.length, target, {
+                                    dt: ({ idx }) => ({
+                                        dfn: customEvents[Math.floor(idx / 2)].name
+                                    }),
+                                    dd: ({ idx }) => ({
+                                        [HypoLink.is]: customEvents[Math.floor(idx / 2)].description,
+                                        details: {
+                                            aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
+                                                'dfn[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
+                                            } : false,
+                                            //details:{
+                                            dl: ({ target, ctx }) => {
+                                                const detail = customEvents[Math.floor(idx / 2)].detail;
+                                                if (detail === undefined)
                                                     return false;
-                                                return {
-                                                    dl: ({ target, ctx }) => repeat(definitionItemTemplate, ctx, vals.length, target, {
-                                                        dt: ({ idx }) => vals[Math.floor(idx / 2)].name,
-                                                        dd: ({ idx }) => vals[Math.floor(idx / 2)].description
-                                                    })
-                                                };
+                                                return repeat(definitionItemTemplate, ctx, detail.length, target, {
+                                                    dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
+                                                    dd: ({ idx }) => detail[Math.floor(idx / 2)].description
+                                                });
                                             }
-                                        })
+                                            //}
+                                        }
                                     })
-                                }
-                            };
-                        },
-                        "section[data-type='events']": x => {
-                            const customEvents = tags[idx].customEvents;
-                            if (customEvents === undefined)
-                                return false;
-                            return {
-                                details: {
-                                    dl: ({ target, ctx }) => repeat(eventItemTemplate, ctx, customEvents.length, target, {
-                                        dt: ({ idx }) => ({
-                                            dfn: customEvents[Math.floor(idx / 2)].name
-                                        }),
-                                        dd: ({ idx }) => ({
-                                            [HypoLink.is]: customEvents[Math.floor(idx / 2)].description,
-                                            details: {
-                                                aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
-                                                    'dfn[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
-                                                } : false,
-                                                //details:{
-                                                dl: ({ target, ctx }) => {
-                                                    const detail = customEvents[Math.floor(idx / 2)].detail;
-                                                    if (detail === undefined)
-                                                        return false;
-                                                    return repeat(definitionItemTemplate, ctx, detail.length, target, {
-                                                        dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
-                                                        dd: ({ idx }) => detail[Math.floor(idx / 2)].description
-                                                    });
-                                                }
-                                                //}
-                                            }
-                                        })
-                                    })
-                                }
-                            };
-                        },
-                        "section[data-type='properties']": x => {
-                            const props = tags[idx].properties;
-                            if (props === undefined)
-                                return false;
-                            return {
-                                details: {
-                                    dl: ({ target, ctx }) => repeat(propertyItemTemplate, ctx, props.length, target, {
-                                        dt: ({ idx }) => ({
-                                            dfn: props[Math.floor(idx / 2)].name
-                                        }),
-                                        dd: ({ idx }) => props[Math.floor(idx / 2)].description
-                                    })
-                                }
-                            };
-                        }
-                    })
-                }),
-            });
-        }
-        ;
-        return this._initRenderContext;
+                                })
+                            }
+                        };
+                    },
+                    "section[data-type='properties']": x => {
+                        const props = tags[idx].properties;
+                        if (props === undefined)
+                            return false;
+                        return {
+                            details: {
+                                dl: ({ target, ctx }) => repeat(propertyItemTemplate, ctx, props.length, target, {
+                                    dt: ({ idx }) => ({
+                                        dfn: props[Math.floor(idx / 2)].name
+                                    }),
+                                    dd: ({ idx }) => props[Math.floor(idx / 2)].description
+                                })
+                            }
+                        };
+                    }
+                })
+            }),
+        });
+        //};
+        //return this._initRenderContext;
     }
     static get is() {
         return "wc-info-base";
@@ -189,7 +189,7 @@ export class WCInfoBase extends XtalViewElement {
     get eventContext() {
         return {};
     }
-    get ready() {
+    get readyToInit() {
         return this._href !== undefined && this._packageName !== undefined;
     }
     init() {
@@ -238,6 +238,7 @@ export class WCInfoBase extends XtalViewElement {
     set packageName(nv) {
         this.attr(package_name, nv);
     }
+    //_c = false;
     connectedCallback() {
         this.propUp(["href", "packageName"]);
         super.connectedCallback();

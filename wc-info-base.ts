@@ -81,11 +81,12 @@ const mainTemplate = createTemplate(/* html */ `
 
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
 
-  _initRenderContext: RenderContext | undefined;
+  //_initRenderContext: RenderContext | undefined;
   get initRenderContext() {
-    if(this._initRenderContext === undefined){
+    //if(this._initRenderContext === undefined){
       const tags = this.viewModel.tags;
-      this._initRenderContext = newRenderContext({
+      //this._initRenderContext = newRenderContext({
+      return newRenderContext({
         header: {
           h3: this.packageName,
           nav: {
@@ -178,8 +179,8 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
               } as TransformRules)
           }) as TransformRules,
       });
-    };
-    return this._initRenderContext;
+    //};
+    //return this._initRenderContext;
   }
 
   static get is() {
@@ -193,7 +194,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   get eventContext() {
     return {};
   }
-  get ready() {
+  get readyToInit() {
     return this._href !== undefined && this._packageName !== undefined;
   }
 
@@ -252,7 +253,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   set packageName(nv) {
     this.attr(package_name, nv!);
   }
-  _c = false;
+  //_c = false;
   connectedCallback() {
     this.propUp(["href", "packageName"]);
     super.connectedCallback();
