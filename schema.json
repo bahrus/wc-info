@@ -246,6 +246,12 @@
                             "any"
                           ],
                           "pattern": "^(.*)$"
+                        },
+                        "readOnly": {
+                          "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items/properties/readOnly",
+                          "type": "boolean",
+                          "title": "The ReadOnly Schema",
+                          "default": false
                         }
                       }
                     }
