@@ -139,6 +139,16 @@
                     ],
                     "pattern": "^(.*)$"
                   },
+                  "type":{
+                    "$id": "#/properties/tags/items/properties/properties/items/properties/type",
+                    "type": "string",
+                    "title": "The Type Schema",
+                    "default": "string",
+                    "examples":[
+                      "string", "boolean", "number", "object"
+                    ],
+                    "pattern": "^(.*)$"
+                  },
                   "testValues": {
                     "$id": "#/properties/tags/items/properties/properties/items/properties/testValues",
                     "type": "object",
