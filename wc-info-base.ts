@@ -131,7 +131,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   }
                 },
                 "section[data-type='events']": x =>{
-                  const customEvents = tags[idx].customEvents;
+                  const customEvents = tags[idx].events;
                   if(customEvents === undefined) return false;
                   return {
                     details:{

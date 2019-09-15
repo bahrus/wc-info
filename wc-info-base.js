@@ -127,7 +127,7 @@ export class WCInfoBase extends XtalViewElement {
                         };
                     },
                     "section[data-type='events']": x => {
-                        const customEvents = tags[idx].customEvents;
+                        const customEvents = tags[idx].events;
                         if (customEvents === undefined)
                             return false;
                         return {

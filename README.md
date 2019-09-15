@@ -6,13 +6,12 @@
 
 # wc-info
 
-UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_html-and-css-custom-data-support)
+UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_html-and-css-custom-data-support) / [Web Component Analyzer](https://www.npmjs.com/package/web-component-analyzer) JSON format.
 
-So far, only attributes are supported, and it's been a few months since the schema has been updated.  So this web component adds additional support for properties and custom events (but schema will change to support whatever VSCode decides, should they add support).  Such support should go a long way towards declaring a ["contract" between independent components](https://martinfowler.com/articles/micro-frontends.html#Cross-applicationCommunication).
+So far, VSCode only supports attributes, and it's been a few months since the schema has been updated.  So this web component adds additional support for properties and custom events (but schema will change to support whatever VSCode decides, should they add support).  Schema for properties and events is based on the Web Component Analyzer format (subject to change).  
 
-An enhanced JSON schema file with this additional support for properties and custom events is provided:  [https://unpkg.com/wc-info@0.0.58/schema.json](https://unpkg.com/wc-info@0.0.58/schema.json).
+An enhanced JSON schema file with this additional support for properties and custom events is provided:  [https://unpkg.com/wc-info@0.0.66/schema.json](https://unpkg.com/wc-info@0.0.58/schema.json).
 
-I think most web component helper libraries should be capable of generating such files automatically if some "macro" for that library is created.
 
 ## Basic in-built styling
 

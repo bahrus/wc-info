@@ -10,9 +10,9 @@
     "serve": "node node_modules/xtal-test/serve.js"
   },
   "dependencies": {
-    "hypo-link": "0.0.15",
-    "xtal-element": "0.0.76",
-    "trans-render": "0.0.126"
+    "hypo-link": "0.0.18",
+    "xtal-element": "0.0.83",
+    "trans-render": "0.0.131"
   },
   "devDependencies": {
     "@types/node": "12.6.5",

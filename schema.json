@@ -150,7 +150,7 @@
                     "pattern": "^(.*)$"
                   },
                   "readOnly": {
-                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items/properties/readOnly",
+                    "$id": "#/properties/tags/items/properties/events/items/properties/detail/items/properties/readOnly",
                     "type": "boolean",
                     "title": "The ReadOnly Schema",
                     "default": false
@@ -169,12 +169,12 @@
                 }
               }
             },
-            "customEvents": {
-              "$id": "#/properties/tags/items/properties/customEvents",
+            "events": {
+              "$id": "#/properties/tags/items/properties/events",
               "type": "array",
-              "title": "The Customevents Schema",
+              "title": "The Events Schema",
               "items": {
-                "$id": "#/properties/tags/items/properties/customEvents/items",
+                "$id": "#/properties/tags/items/properties/events/items",
                 "type": "object",
                 "title": "The Items Schema",
                 "required": [
@@ -182,7 +182,7 @@
                 ],
                 "properties": {
                   "name": {
-                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/name",
+                    "$id": "#/properties/tags/items/properties/events/items/properties/name",
                     "type": "string",
                     "title": "The Name Schema",
                     "default": "",
@@ -192,7 +192,7 @@
                     "pattern": "^(.*)$"
                   },
                   "description": {
-                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/description",
+                    "$id": "#/properties/tags/items/properties/events/items/properties/description",
                     "type": "string",
                     "title": "The Description Schema",
                     "default": "",
@@ -202,7 +202,7 @@
                     "pattern": "^(.*)$"
                   },
                   "associatedPropName": {
-                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/associatedPropName",
+                    "$id": "#/properties/tags/items/properties/events/items/properties/associatedPropName",
                     "type": "string",
                     "title": "The Associatedpropname Schema",
                     "default": "",
@@ -212,11 +212,11 @@
                     "pattern": "^(.*)$"
                   },
                   "detail": {
-                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail",
+                    "$id": "#/properties/tags/items/properties/events/items/properties/detail",
                     "type": "array",
                     "title": "The Detail Schema",
                     "items": {
-                      "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items",
+                      "$id": "#/properties/tags/items/properties/events/items/properties/detail/items",
                       "type": "object",
                       "title": "The Items Schema",
                       "required": [
@@ -224,7 +224,7 @@
                       ],
                       "properties": {
                         "name": {
-                          "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items/properties/name",
+                          "$id": "#/properties/tags/items/properties/events/items/properties/detail/items/properties/name",
                           "type": "string",
                           "title": "The Name Schema",
                           "default": "",
@@ -234,7 +234,7 @@
                           "pattern": "^(.*)$"
                         },
                         "description": {
-                          "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items/properties/description",
+                          "$id": "#/properties/tags/items/properties/events/items/properties/detail/items/properties/description",
                           "type": "string",
                           "title": "The Description Schema",
                           "default": "",
@@ -244,7 +244,7 @@
                           "pattern": "^(.*)$"
                         },
                         "type": {
-                          "$id": "#/properties/tags/items/properties/customEvents/items/properties/detail/items/properties/type",
+                          "$id": "#/properties/tags/items/properties/events/items/properties/detail/items/properties/type",
                           "type": "string",
                           "title": "The Type Schema",
                           "default": "",
@@ -257,7 +257,7 @@
                     }
                   },
                   "testExpectedValues": {
-                    "$id": "#/properties/tags/items/properties/customEvents/items/properties/testExpectedValues",
+                    "$id": "#/properties/tags/items/properties/events/items/properties/testExpectedValues",
                     "type": "object",
                     "title": "The Testexpectedvalues Schema",
                     "required": [

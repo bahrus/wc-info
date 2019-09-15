@@ -5,7 +5,7 @@ export interface WCSuiteInfo {
 export interface WCInfo extends Info {
   selfResolvingModulePath: string | undefined;
   attributes: AttribInfo[] | undefined;
-  customEvents: CustomEventInfo[] | undefined;
+  events: CustomEventInfo[] | undefined;
   properties: PropertyInfo[] | undefined;
   testCaseNames: string[] | undefined;
 }
