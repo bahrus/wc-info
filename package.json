@@ -15,12 +15,13 @@
     "trans-render": "0.0.131"
   },
   "devDependencies": {
-    "@types/node": "12.6.5",
+    "@types/node": "12.7.5",
     "@types/tape": "4.2.33",
     "@webcomponents/webcomponentsjs": "2.2.10",
-    "jiife": "0.0.12",
+    "jiife": "0.0.14",
     "tape": "4.11.0",
-    "xtal-test": "0.0.19"
+    "xtal-test": "0.0.20",
+    "es-module-shims": "0.4.5"
   },
   "repository": {
     "type": "git",

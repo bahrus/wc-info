@@ -13,7 +13,7 @@ const styleTemplate = createTemplate(
     border-color: black;
     border-width: 1px;
     border-style: solid;
-    
+    color:black;
 }
 
 aside{
