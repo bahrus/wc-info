@@ -74,7 +74,7 @@ a {
 }
 .card {
     padding: 16px;
-    mix-blend-mode: difference;
+    /* mix-blend-mode: difference; --problems for safari*/
     display: flex;
     flex-direction: column;
     align-items: center;

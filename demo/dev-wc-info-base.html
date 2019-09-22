@@ -20,6 +20,7 @@
           border-style: solid;
           padding: 8px;
         }
+        
         details {
           width: 100%;
         }
@@ -37,7 +38,7 @@
           header{
             flex-direction: row;
           }
-        }        
+        } 
         summary {
           margin-top: 20px;
         }
@@ -55,20 +56,18 @@
         }
         .card {
           padding: 16px;
-          mix-blend-mode: difference;
+          /* mix-blend-mode: difference; */
           display: flex;
           flex-direction: column;
           align-items: center;
           transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-          /* Add shadows to create the "card" effect */
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-          /* transition: 0.3s; */
         }
         .WCLabel {
           font-weight: 800;
           padding-right: 20px;
           flex-basis:25%;
+          color:black;
         }
         .WCDescription{
           flex-basis:75%;
@@ -83,7 +82,7 @@
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-        }
+        } 
       </style>
       <!-- Use experimental import maps -->
     <script defer src="../node_modules/es-module-shims/dist/es-module-shims.js"></script>
