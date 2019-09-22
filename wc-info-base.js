@@ -100,7 +100,7 @@ export class WCInfoBase extends XtalViewElement {
                     },
                     "section[data-type='attributes']": x => {
                         const attribs = tags[idx].attributes;
-                        if (attribs === undefined)
+                        if (attribs === undefined || attribs.length === 0)
                             return false;
                         return {
                             details: {
@@ -128,7 +128,7 @@ export class WCInfoBase extends XtalViewElement {
                     },
                     "section[data-type='events']": x => {
                         const customEvents = tags[idx].events;
-                        if (customEvents === undefined)
+                        if (customEvents === undefined || customEvents.length === 0)
                             return false;
                         return {
                             details: {
@@ -161,7 +161,7 @@ export class WCInfoBase extends XtalViewElement {
                     },
                     "section[data-type='properties']": x => {
                         const props = tags[idx].properties;
-                        if (props === undefined)
+                        if (props === undefined || props.length === 0)
                             return false;
                         return {
                             details: {
