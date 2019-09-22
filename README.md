@@ -43,20 +43,7 @@ Only visible from [webcomponents.org](https://www.webcomponents.org/element/wc-i
         margin-top: 10px;
       }
     </style>
-    <!-- Use experimental import maps -->
-    <script defer src="https://cdn.jsdelivr.net/npm/es-module-shims@0.2.0/dist/es-module-shims.js"></script>
-    <script type="importmap-shim">
-    {
-      "imports": {
-        "trans-render/": "https://cdn.jsdelivr.net/npm/trans-render@0.0.115/",
-        "hypo-link/": "https://cdn.jsdelivr.net/npm/hypo-link@0.0.15/",
-        "xtal-element/": "https://cdn.jsdelivr.net/npm/xtal-element@0.0.60/",
-        "wc-info/": "https://cdn.jsdelivr.net/npm/wc-info@0.0.52/"
-        
-      }
-    }
-    </script>
-
+    
     <script type="module-shim">
       import 'wc-info/wc-info.js';
     </script>
