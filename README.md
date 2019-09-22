@@ -25,7 +25,7 @@ Only visible from [webcomponents.org](https://www.webcomponents.org/element/wc-i
     <div>
       <wc-info package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.49/html.json">
       </wc-info>
-      <wc-info package-name="npm.xtal-fetch" href="https://unpkg.com/xtal-fetch@0.0.65/html.json">
+      <wc-info package-name="npm.xtal-fetch" href="https://unpkg.com/xtal-fetch@0.0.73/custom-elements.json">
       </wc-info>
       <wc-info package-name="npm.xtal-frappe-chart" href="https://unpkg.com/xtal-frappe-chart@0.0.35/html.json"></wc-info>
       <wc-info package-name="npm.if-diff" href="https://unpkg.com/if-diff@0.0.34/html.json">
@@ -44,9 +44,7 @@ Only visible from [webcomponents.org](https://www.webcomponents.org/element/wc-i
       }
     </style>
     
-    <script type="module-shim">
-      import 'wc-info/wc-info.js';
-    </script>
+    <script type="module" src="https://unpkg.com/wc-info@0.0.67/wc-info.js?module"></script>
   </div>
 </template>
 </custom-element-demo>
