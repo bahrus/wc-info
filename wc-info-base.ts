@@ -51,13 +51,13 @@ const WCInfoTemplate = createTemplate(/* html */ `
     </header>
     <section data-type="attributes">
       <details>
-          <summary>⚙️attributes</summary>
+          <summary><slot name="attributesLabel">⚙️attributes</slot></summary>
           <dl></dl>
       </details>
     </section>
     <section data-type="properties">
       <details>
-        <summary>🏘️properties</summary>
+        <summary><slot name="propertiesLabel">🏘️properties</slot></summary>
         <dl></dl>
       </details>
     </section>
