@@ -2,7 +2,6 @@ import { define } from "trans-render/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
 import { repeat } from "trans-render/repeat.js";
-import { HypoLink } from "hypo-link/hypo-link.js";
 const package_name = "package-name";
 const definitionItemTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
@@ -76,11 +75,8 @@ export class WCInfoBase extends XtalViewElement {
         this._href = null;
         this._packageName = null;
     }
-    //_initRenderContext: RenderContext | undefined;
     get initRenderContext() {
-        //if(this._initRenderContext === undefined){
         const tags = this.viewModel.tags;
-        //this._initRenderContext = newRenderContext({
         return newRenderContext({
             header: {
                 h3: this.packageName,
@@ -96,7 +92,7 @@ export class WCInfoBase extends XtalViewElement {
                         ".WCName": {
                             dfn: tags[idx].name,
                         },
-                        [HypoLink.is]: tags[idx].description
+                        'hypo-link': tags[idx].description
                     },
                     "section[data-type='attributes']": x => {
                         const attribs = tags[idx].attributes;
@@ -109,7 +105,7 @@ export class WCInfoBase extends XtalViewElement {
                                         dfn: attribs[Math.floor(idx / 2)].name
                                     }),
                                     dd: ({ idx }) => ({
-                                        [HypoLink.is]: attribs[Math.floor(idx / 2)].description,
+                                        'hypo-link': attribs[Math.floor(idx / 2)].description,
                                         details: x => {
                                             const vals = attribs[Math.floor(idx / 2)].values;
                                             if (vals === undefined)
@@ -137,7 +133,7 @@ export class WCInfoBase extends XtalViewElement {
                                         dfn: customEvents[Math.floor(idx / 2)].name
                                     }),
                                     dd: ({ idx }) => ({
-                                        [HypoLink.is]: customEvents[Math.floor(idx / 2)].description,
+                                        'hypo-link': customEvents[Math.floor(idx / 2)].description,
                                         details: {
                                             aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
                                                 'dfn[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
@@ -177,17 +173,15 @@ export class WCInfoBase extends XtalViewElement {
                 })
             }),
         });
-        //};
-        //return this._initRenderContext;
+    }
+    afterInitRenderCallback() {
+        import('hypo-link/hypo-link.js');
     }
     static get is() {
         return "wc-info-base";
     }
     get noShadow() {
         return true;
-    }
-    get eventContext() {
-        return {};
     }
     get readyToInit() {
         return this._href !== undefined && this._packageName !== undefined;
