@@ -36,7 +36,6 @@ const eventItemTemplate = createTemplate(/* html */ `
   <details>
     <summary>🔬detail</summary>
     <dl></dl>
-    <aside>Associated Property Name: <dfn data-bind=associatedPropName></dfn></aside>
   </details>
   
 
@@ -138,21 +137,21 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                           }),
                           dd: ({ idx}) => ({
                             'hypo-link': customEvents[Math.floor(idx / 2)].description,
-                            details:{
-                              aside: customEvents[Math.floor(idx / 2)].associatedPropName ? {
-                                'dfn[data-bind="associatedPropName"]': customEvents[Math.floor(idx / 2)].associatedPropName
-                              } : false,
-                              //details:{
+                            details: ({target}) =>{
+                              const detail = customEvents[Math.floor(idx / 2)].detail;
+                              if(detail === undefined) return false;
+                              return({
                                 dl:({target, ctx}) =>{
-                                  const detail = customEvents[Math.floor(idx / 2)].detail;
-                                  if(detail === undefined) return false;
+
                                   return repeat(definitionItemTemplate, ctx, detail.length, target, {
                                     dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
                                     dd: ({ idx }) => detail[Math.floor(idx / 2)].description
                                   });
-                                }
-                              //}
+                                }                                
+                              } as TransformRules)
+
                             }
+                              
                           })
                         } as TransformRules)
                     }
