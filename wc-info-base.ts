@@ -88,11 +88,14 @@ const mainTemplate = createTemplate(/* html */ `
   [part=allowedValuesLabel]::after{
     content: "Allowed Values"
   }
+  .logo{
+    height:32px;
+  }
 </style>
 <header>
   <h3></h3>
   <nav>
-    <a target="_blank">📜</a>
+    <a target="_blank"><img class="logo" alt="JSON" src="https://json-schema.org/assets/logo.svg"></a>
   </nav>
 </header>
 <main></main>
