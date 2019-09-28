@@ -15,7 +15,7 @@ An enhanced JSON schema file with this additional support for properties and cus
 
 ## Basic in-built styling
 
-Only visible from [webcomponents.org](https://www.webcomponents.org/element/wc-info)
+[Demo](https://jsfiddle.net/bahrus/xzo0j6g2/)
 
 <!--
 ```
@@ -23,7 +23,7 @@ Only visible from [webcomponents.org](https://www.webcomponents.org/element/wc-i
 <template>
   <div>
     <div>
-      <wc-info package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.49/html.json">
+      <wc-info package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.69/custom-elements.json">
       </wc-info>
       <wc-info package-name="npm.xtal-fetch" href="https://unpkg.com/xtal-fetch@0.0.73/custom-elements.json">
       </wc-info>
@@ -44,7 +44,7 @@ Only visible from [webcomponents.org](https://www.webcomponents.org/element/wc-i
       }
     </style>
     
-    <script type="module" src="https://unpkg.com/wc-info@0.0.68/wc-info.js?module"></script>
+    <script type="module" src="https://unpkg.com/wc-info@0.0.69/wc-info.js?module"></script>
   </div>
 </template>
 </custom-element-demo>

@@ -6,6 +6,7 @@ import { repeat } from "trans-render/repeat.js";
 //import  {HypoLink} from "hypo-link/hypo-link.js";
 import {WCSuiteInfo} from "types.d.js";
 const package_name = "package-name";
+const href = 'href';
 
 const definitionItemTemplate = createTemplate(/* html */ `
     <dt></dt><dd></dd>
@@ -23,7 +24,7 @@ const attributeItemTemplate = createTemplate(/* html */ `
   <dd>
     <hypo-link data-bind=description></hypo-link>
     <details>
-      <summary>Allowed Values</summary>
+      <summary><slot name=allowedValuesLabel>Allowed Values</slot></summary>
       <dl></dl>
     </details>
   </dd>
@@ -34,7 +35,7 @@ const eventItemTemplate = createTemplate(/* html */ `
 <dd>
   <hypo-link data-bind=description></hypo-link>
   <details>
-    <summary>🔬detail</summary>
+    <summary><slot name=detailLabel>🔬detail</slot></summary>
     <dl></dl>
   </details>
   
@@ -78,6 +79,11 @@ const mainTemplate = createTemplate(/* html */ `
 <main></main>
 `);
 
+/**
+ * Non-themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.
+ * @element wc-info-base
+ * 
+ */
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
 
   get initRenderContext() {
@@ -218,12 +224,12 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   }
 
   static get observedAttributes() {
-    return super.observedAttributes.concat(["href", package_name]);
+    return super.observedAttributes.concat([href, package_name]);
   }
 
   attributeChangedCallback(n: string, ov: string, nv: string) {
     switch (n) {
-      case "href":
+      case href:
         this._href = nv;
         break;
       case package_name:
@@ -237,22 +243,29 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
   get href() {
     return this._href;
   }
+  /**
+   * Url where Web Component Information is contained.
+   * @attr
+   */
   set href(nv) {
-    this.attr("href", nv!);
+    this.attr(href, nv!);
   }
 
   _packageName: string | null = null;
   get packageName() {
     return this._packageName;
   }
+  /**
+   * Name of Package.
+   * @attr package-name
+   */
   set packageName(nv) {
     this.attr(package_name, nv!);
   }
   //_c = false;
   connectedCallback() {
-    this.propUp(["href", "packageName"]);
+    this.propUp([href, "packageName"]);
     super.connectedCallback();
-    
   }
 }
 

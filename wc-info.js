@@ -4,7 +4,18 @@ import { createTemplate } from "xtal-element/utils.js";
 import { append } from 'trans-render/append.js';
 const styleTemplate = createTemplate(
 /* html */ `
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style id=mediaQ>
+@media only screen and (max-width: 800px) {
+    header{
+    flex-direction: column;
+    }
+}
+@media only screen and (min-width: 801px) {
+    header{
+    flex-direction: row;
+    }
+}
+</style>
 <style>
 :host{
     display: block;
@@ -12,10 +23,6 @@ const styleTemplate = createTemplate(
     border-width: 1px;
     border-style: solid;
     color:black;
-}
-
-aside{
-    font-size:0.75rem;
 }
 
 section[data-type]{
@@ -39,16 +46,7 @@ header {
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Roboto, sans-serif;
     width:100%;
 }
-@media only screen and (max-width: 800px) {
-    header{
-    flex-direction: column;
-    }
-}
-@media only screen and (min-width: 801px) {
-    header{
-    flex-direction: row;
-    }
-}        
+       
 details>summary {
     margin-top: 20px;
     list-style: none;

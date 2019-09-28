@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "wc-info-base",
+      "description": "Non-themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
+      "jsDoc": "/**\n * Non-themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.\n * @element wc-info-base\n *\n */",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Any component that emits events should not do so if it is disabled.\r\nNote that this is not enforced, but the disabled property is made available.\r\nUsers of this mix-in should ensure not to call \"de\" if this property is set to true.",
+          "jsDoc": "/**\r\n         * Any component that emits events should not do so if it is disabled.\r\n         * Note that this is not enforced, but the disabled property is made available.\r\n         * Users of this mix-in should ensure not to call \"de\" if this property is set to true.\r\n         * @attr\r\n         */",
+          "type": "boolean"
+        },
+        {
+          "name": "href",
+          "description": "Url where Web Component Information is contained.",
+          "jsDoc": "/**\n     * Url where Web Component Information is contained.\n     * @attr\n     */",
+          "type": "any"
+        },
+        {
+          "name": "package-name",
+          "description": "Name of Package.",
+          "jsDoc": "/**\n     * Name of Package.\n     * @attr package-name\n     */",
+          "type": "any"
+        }
+      ],
+      "properties": [
+        {
+          "name": "val",
+          "type": "\"set\" | \"remove\""
+        },
+        {
+          "name": "disabled",
+          "description": "Any component that emits events should not do so if it is disabled.\r\nNote that this is not enforced, but the disabled property is made available.\r\nUsers of this mix-in should ensure not to call \"de\" if this property is set to true.",
+          "jsDoc": "/**\r\n         * Any component that emits events should not do so if it is disabled.\r\n         * Note that this is not enforced, but the disabled property is made available.\r\n         * Users of this mix-in should ensure not to call \"de\" if this property is set to true.\r\n         * @attr\r\n         */",
+          "type": "boolean"
+        },
+        {
+          "name": "evCount",
+          "description": "Tracks how many times each event type was called.",
+          "jsDoc": "/**\r\n         * Tracks how many times each event type was called.\r\n         */",
+          "type": "{ [key: string]: number; }"
+        },
+        {
+          "name": "asIs",
+          "type": "\"\" | \"-changed\""
+        },
+        {
+          "name": "viewModel",
+          "type": "ViewModel"
+        },
+        {
+          "name": "href",
+          "description": "Url where Web Component Information is contained.",
+          "jsDoc": "/**\n     * Url where Web Component Information is contained.\n     * @attr\n     */",
+          "type": "any"
+        },
+        {
+          "name": "packageName",
+          "description": "Name of Package.",
+          "jsDoc": "/**\n     * Name of Package.\n     * @attr package-name\n     */",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

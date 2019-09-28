@@ -7,7 +7,8 @@
   "types": "types.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "node node_modules/xtal-test/serve.js"
+    "serve": "node node_modules/xtal-test/serve.js",
+    "doc": "wca analyze wc-*.js --outFile custom-elements.json"
   },
   "dependencies": {
     "hypo-link": "0.0.19",
