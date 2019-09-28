@@ -18,7 +18,7 @@ const attributeItemTemplate = createTemplate(/* html */ `
   <dd>
     <hypo-link data-bind=description></hypo-link>
     <details>
-      <summary><slot name=allowedValuesLabel>Allowed Values</slot></summary>
+      <summary part=allowedValuesLabel></summary>
       <dl></dl>
     </details>
   </dd>
@@ -28,7 +28,7 @@ const eventItemTemplate = createTemplate(/* html */ `
 <dd>
   <hypo-link data-bind=description></hypo-link>
   <details>
-    <summary><slot name=detailLabel>🔬detail</slot></summary>
+    <summary part="detailLabel"></summary>
     <dl></dl>
   </details>
   
@@ -37,17 +37,7 @@ const eventItemTemplate = createTemplate(/* html */ `
 `);
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
-    <style>      
-      [part=attributesLabel]::after{
-        content: "⚙️attributes"
-      }
-      [part=propertiesLabel]::after{
-        content: "🏘️properties"
-      }
-      [part=eventsLabel]::after{
-        content: "🌩️events"
-      }
-    </style>
+
     <header>
         <div class="WCName"><span>⚛️</span><dfn data-bind="name"></dfn></div>
         <hypo-link class=WCDesc></hypo-link>
@@ -71,7 +61,25 @@ const WCInfoTemplate = createTemplate(/* html */ `
       </details>
     </section>
 </section>`);
+//https://medium.com/datadriveninvestor/internationalize-your-css-media-queries-64c749eb00c
 const mainTemplate = createTemplate(/* html */ `
+<style role=i11n>      
+  [part=attributesLabel]::after{
+    content: "⚙️attributes"
+  }
+  [part=propertiesLabel]::after{
+    content: "🏘️properties"
+  }
+  [part=eventsLabel]::after{
+    content: "🌩️events"
+  }
+  [part=detailLabel]::after{
+    content: "🔬detail"
+  }
+  [part=allowedValuesLabel]::after{
+    content: "Allowed Values"
+  }
+</style>
 <header>
   <h3></h3>
   <nav>
