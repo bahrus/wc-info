@@ -201,16 +201,6 @@
                     ],
                     "pattern": "^(.*)$"
                   },
-                  "associatedPropName": {
-                    "$id": "#/properties/tags/items/properties/events/items/properties/associatedPropName",
-                    "type": "string",
-                    "title": "The Associatedpropname Schema",
-                    "default": "",
-                    "examples": [
-                      "result"
-                    ],
-                    "pattern": "^(.*)$"
-                  },
                   "detail": {
                     "$id": "#/properties/tags/items/properties/events/items/properties/detail",
                     "type": "array",
