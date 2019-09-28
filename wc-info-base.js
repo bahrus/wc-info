@@ -37,13 +37,18 @@ const eventItemTemplate = createTemplate(/* html */ `
 `);
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
+    <style>
+      [part="attributesLabel"]::after{
+        content: "⚙️attributes"
+      }
+    </style>
     <header>
         <div class="WCName"><span>⚛️</span><dfn data-bind="name"></dfn></div>
         <hypo-link class=WCDesc></hypo-link>
     </header>
     <section data-type="attributes">
       <details>
-          <summary><slot name="attributesLabel">⚙️attributes</slot></summary>
+          <summary part="attributesLabel"></summary>
           <dl></dl>
       </details>
     </section>
