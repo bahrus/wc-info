@@ -108,9 +108,9 @@ export class WCInfoBase extends XtalViewElement {
             header: {
                 h3: this.packageName,
                 nav: {
-                    a: ({ target }) => {
+                    a: (({ target }) => {
                         target.href = this._href;
-                    }
+                    })
                 }
             },
             main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags.length, target, {
@@ -150,19 +150,19 @@ export class WCInfoBase extends XtalViewElement {
                         };
                     },
                     "section[data-type='events']": x => {
-                        const customEvents = tags[idx].events;
-                        if (customEvents === undefined || customEvents.length === 0)
+                        const events = tags[idx].events;
+                        if (events === undefined || events.length === 0)
                             return false;
                         return {
                             details: {
-                                dl: ({ target, ctx }) => repeat(eventItemTemplate, ctx, customEvents.length, target, {
+                                dl: ({ target, ctx }) => repeat(eventItemTemplate, ctx, events.length, target, {
                                     dt: ({ idx }) => ({
-                                        dfn: customEvents[Math.floor(idx / 2)].name
+                                        dfn: events[Math.floor(idx / 2)].name
                                     }),
                                     dd: ({ idx }) => ({
-                                        'hypo-link': customEvents[Math.floor(idx / 2)].description,
+                                        'hypo-link': events[Math.floor(idx / 2)].description,
                                         details: ({ target }) => {
-                                            const detail = customEvents[Math.floor(idx / 2)].detail;
+                                            const detail = events[Math.floor(idx / 2)].detail;
                                             if (detail === undefined)
                                                 return false;
                                             return {

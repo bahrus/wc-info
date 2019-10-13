@@ -8,14 +8,16 @@
 
 UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_html-and-css-custom-data-support) / [Web Component Analyzer](https://www.npmjs.com/package/web-component-analyzer) JSON format.
 
-So far, VSCode only supports attributes, and it's been a few months since the schema has been updated.  So this web component adds additional support for properties and custom events (but schema will change to support whatever VSCode decides, should they add support).  Schema for properties and events is based on the Web Component Analyzer format (subject to change).  
+Schema for properties and events is based on the Web Component Analyzer format (subject to change), which extends the VSCode format. 
 
-An enhanced JSON schema file with this additional support for properties and custom events is provided:  [https://unpkg.com/wc-info@0.0.66/schema.json](https://unpkg.com/wc-info@0.0.58/schema.json).
+An enhanced JSON schema file with this additional support for properties and custom events is provided:  [https://unpkg.com/wc-info@0.0.70/schema.json](https://unpkg.com/wc-info@0.0.70/schema.json).
+
+Additional experimental support for examples / test cases is also included in the schema.
 
 
 ## Basic in-built styling
 
-[Demo](https://jsfiddle.net/bahrus/xzo0j6g2/)
+[Demo](https://jsfiddle.net/bahrus/xzo0j6g2/4/)
 
 <!--
 ```
@@ -44,7 +46,7 @@ An enhanced JSON schema file with this additional support for properties and cus
       }
     </style>
     
-    <script type="module" src="https://unpkg.com/wc-info@0.0.69/wc-info.js?module"></script>
+    <script type="module" src="https://unpkg.com/wc-info@0.0.70/wc-info.js?module"></script>
   </div>
 </template>
 </custom-element-demo>

@@ -7,7 +7,13 @@ export interface WCInfo extends Info {
   attributes: AttribInfo[] | undefined;
   events: CustomEventInfo[] | undefined;
   properties: PropertyInfo[] | undefined;
+  slots: SlotInfo[] | undefined;
   testCaseNames: string[] | undefined;
+}
+
+export interface SlotInfo{
+  name: string;
+  description: string;
 }
 
 export interface Info {
@@ -26,7 +32,7 @@ export interface AttribInfo extends Info {
 }
 
 export interface PropertyInfo extends Info {
-  type: 'string' | 'boolean' | 'object' | 'number' | undefined;
+  type: 'string' | 'boolean' | 'object' | 'number' | 'any' | undefined;
   readOnly: boolean;
   defaultValue: any;
   /**

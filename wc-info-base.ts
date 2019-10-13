@@ -1,7 +1,7 @@
 import { define } from "trans-render/define.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
 import { createTemplate, newRenderContext } from "xtal-element/utils.js";
-import { TransformRules, RenderOptions, RenderContext } from "trans-render/init.d.js";
+import { TransformRules, RenderOptions, RenderContext, TransformFn } from "trans-render/init.d.js";
 import { repeat } from "trans-render/repeat.js";
 //import  {HypoLink} from "hypo-link/hypo-link.js";
 import {WCSuiteInfo} from "types.d.js";
@@ -107,16 +107,16 @@ const mainTemplate = createTemplate(/* html */ `
  * 
  */
 export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
-
+  
   get initRenderContext() {
       const tags = this.viewModel.tags;
       return newRenderContext({
         header: {
           h3: this.packageName,
           nav: {
-            a: ({ target }) => {
-              (target as HTMLAnchorElement).href = this._href!;
-            }
+            a:  (({target}) => {
+              target.href = this._href!;
+            }) as  TransformFn<HTMLAnchorElement> as TransformFn
           }
         } as TransformRules,
         main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags.length, target, {
@@ -155,18 +155,18 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   }
                 },
                 "section[data-type='events']": x =>{
-                  const customEvents = tags[idx].events;
-                  if(customEvents === undefined || customEvents.length === 0) return false;
+                  const events = tags[idx].events;
+                  if(events === undefined || events.length === 0) return false;
                   return {
                     details:{
-                      dl:({target, ctx}) => repeat(eventItemTemplate, ctx, customEvents.length, target, {
+                      dl:({target, ctx}) => repeat(eventItemTemplate, ctx, events.length, target, {
                           dt: ({ idx }) => ({
-                            dfn: customEvents[Math.floor(idx / 2)].name
+                            dfn: events[Math.floor(idx / 2)].name
                           }),
                           dd: ({ idx}) => ({
-                            'hypo-link': customEvents[Math.floor(idx / 2)].description,
+                            'hypo-link': events[Math.floor(idx / 2)].description,
                             details: ({target}) =>{
-                              const detail = customEvents[Math.floor(idx / 2)].detail;
+                              const detail = events[Math.floor(idx / 2)].detail;
                               if(detail === undefined) return false;
                               return({
                                 dl:({target, ctx}) =>{
