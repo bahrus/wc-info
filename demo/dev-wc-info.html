@@ -14,7 +14,7 @@
         href="https://unpkg.com/billboard-charts@0.1.31/web-components.json"
       >
       </wc-info>-->
-      <wc-info
+      <!-- <wc-info
         package-name="npm install if-diff"
         href="https://unpkg.com/if-diff@0.0.20/html.json"
       >
@@ -31,7 +31,7 @@
       <wc-info
         package-name="npm install hypo-link"
         href="https://unpkg.com/hypo-link@0.0.10/html.json">
-      </wc-info>
+      </wc-info> -->
       <!--
       <wc-info
         package-name="npm install purr-sist"
@@ -39,7 +39,7 @@
       ></wc-info> -->
       <wc-info
         package-name="npm install wc-info"
-        href="https://unpkg.com/wc-info@0.0.31/web-components.json"
+        href="../custom-elements.json"
       >
       </wc-info>
 
@@ -59,7 +59,20 @@
           margin-top: 10px;
         }
       </style>
-      <script type="module" src="../wc-info.js"></script>
+      <script defer src="../node_modules/es-module-shims/dist/es-module-shims.js"></script>
+      <script type="importmap-shim">
+      {
+          "imports": {
+              "xtal-element/": "../node_modules/xtal-element/",
+              "trans-render/": "../node_modules/trans-render/",
+              "hypo-link/": "https://cdn.jsdelivr.net/npm/hypo-link@0.0.14/"
+              
+          }
+      }
+      </script>
+      <script  type="module-shim">
+          import "../wc-info.js";
+      </script>
     </div>
   </body>
 </html>

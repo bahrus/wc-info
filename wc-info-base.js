@@ -35,6 +35,16 @@ const eventItemTemplate = createTemplate(/* html */ `
 
 </dd>
 `);
+const slotItemTemplate = createTemplate(/* html */ `
+<dt>🎰 <dfn data-bind=name></dfn></dt>
+<dd>
+  <hypo-link data-bind=description></hypo-link>
+  <details>
+    <summary part="slotLabel"></summary>
+    <dl></dl>
+  </details>
+</dd>
+`);
 const WCInfoTemplate = createTemplate(/* html */ `
 <section class="WCInfo card">
 
@@ -60,6 +70,12 @@ const WCInfoTemplate = createTemplate(/* html */ `
           <dl></dl>
       </details>
     </section>
+    <section data-type=slots>
+      <details>
+        <summary part=slotsLabel></summary>
+        <dl></dl>
+      </details>
+    </section>
 </section>`);
 //https://medium.com/datadriveninvestor/internationalize-your-css-media-queries-64c749eb00c
 const mainTemplate = createTemplate(/* html */ `
@@ -79,6 +95,9 @@ const mainTemplate = createTemplate(/* html */ `
   [part=allowedValuesLabel]::after{
     content: "Allowed Values"
   }
+  [part=slotsLabel]::after{
+    content: "🎰 slots"
+  }
   .logo{
     height:32px;
   }
@@ -94,6 +113,7 @@ const mainTemplate = createTemplate(/* html */ `
 /**
  * Non-themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.
  * @element wc-info-base
+ * @slot test - this is just a slot for testing purposes.
  *
  */
 export class WCInfoBase extends XtalViewElement {
@@ -192,6 +212,19 @@ export class WCInfoBase extends XtalViewElement {
                                     dd: ({ idx }) => props[Math.floor(idx / 2)].description
                                 })
                             }
+                        };
+                    },
+                    "section[data-type='slots']": x => {
+                        const slots = tags[idx].slots;
+                        if (slots === undefined || slots.length === 0)
+                            return false;
+                        return {
+                            dl: ({ target, ctx }) => repeat(slotItemTemplate, ctx, slots.length, target, {
+                                dt: ({ idx }) => ({
+                                    dfn: slots[Math.floor(idx / 2)].name
+                                }),
+                                dd: ({ idx }) => slots[Math.floor(idx / 2)].description
+                            })
                         };
                     }
                 })
