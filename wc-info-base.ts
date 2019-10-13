@@ -224,12 +224,14 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   const slots = tags[idx].slots;
                   if(slots === undefined || slots.length === 0) return false;
                   return {
-                    dl: ({ target, ctx}) => repeat(slotItemTemplate, ctx, slots.length, target, {
-                      dt: ({ idx }) => ({
-                        dfn: slots[Math.floor(idx / 2)].name
-                      }),
-                      dd: ({ idx }) => slots[Math.floor(idx / 2)].description
-                    })
+                    details:{
+                      dl: ({ target, ctx}) => repeat(slotItemTemplate, ctx, slots.length, target, {
+                        dt: ({ idx }) => ({
+                          dfn: slots[Math.floor(idx / 2)].name
+                        }),
+                        dd: ({ idx }) => slots[Math.floor(idx / 2)].description
+                      })
+                    }
                   }
                 }
     
