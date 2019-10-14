@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "hypo-link": "0.0.19",
-    "xtal-element": "0.0.85",
-    "trans-render": "0.0.134"
+    "xtal-element": "0.0.86",
+    "trans-render": "0.0.135"
   },
   "devDependencies": {
-    "@types/node": "12.7.8",
+    "@types/node": "12.7.12",
     "@types/tape": "4.2.33",
     "@webcomponents/webcomponentsjs": "2.2.10",
     "jiife": "0.0.14",
