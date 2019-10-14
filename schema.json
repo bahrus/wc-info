@@ -37,15 +37,13 @@
               "default": "",
               "examples": [
                 "my-custom-element"
-              ],
-              "pattern": "^(.*)$"
+              ]
             },
             "description": {
               "$id": "#/properties/tags/items/properties/description",
               "type": "string",
               "title": "The Description Schema",
-              "default": "",
-              "pattern": "^(.*)$"
+              "default": ""
             },
             "selfResolvingModulePath": {
               "$id": "#/properties/tags/items/properties/selfResolvingModulePath",
@@ -54,8 +52,7 @@
               "default": "",
               "examples": [
                 "https://unpkg.com/my-custom-element@0.0.1/my-custom-element.js?module"
-              ],
-              "pattern": "^(.*)$"
+              ]
             },
             "testCaseNames": {
               "$id": "#/properties/tags/items/properties/testCaseNames",
@@ -68,8 +65,7 @@
                 "default": "",
                 "examples": [
                   "myFirstTest"
-                ],
-                "pattern": "^(.*)$"
+                ]
               }
             },
             "attributes": {
@@ -91,8 +87,7 @@
                     "default": "",
                     "examples": [
                       "my-attribute"
-                    ],
-                    "pattern": "^(.*)$"
+                    ]
                   },
                   "description": {
                     "$id": "#/properties/tags/items/properties/attributes/items/properties/description",
@@ -101,8 +96,7 @@
                     "default": "",
                     "examples": [
                       "My attribute description."
-                    ],
-                    "pattern": "^(.*)$"
+                    ]
                   }
                 }
               }
@@ -126,8 +120,7 @@
                     "default": "",
                     "examples": [
                       "myProperty"
-                    ],
-                    "pattern": "^(.*)$"
+                    ]
                   },
                   "description": {
                     "$id": "#/properties/tags/items/properties/properties/items/properties/description",
@@ -136,8 +129,7 @@
                     "default": "",
                     "examples": [
                       "My Property description."
-                    ],
-                    "pattern": "^(.*)$"
+                    ]
                   },
                   "type":{
                     "$id": "#/properties/tags/items/properties/properties/items/properties/type",
@@ -146,8 +138,7 @@
                     "default": "string",
                     "examples":[
                       "string", "boolean", "number", "object"
-                    ],
-                    "pattern": "^(.*)$"
+                    ]
                   },
                   "readOnly": {
                     "$id": "#/properties/tags/items/properties/events/items/properties/detail/items/properties/readOnly",
@@ -188,8 +179,7 @@
                     "default": "",
                     "examples": [
                       "result-changed"
-                    ],
-                    "pattern": "^(.*)$"
+                    ]
                   },
                   "description": {
                     "$id": "#/properties/tags/items/properties/events/items/properties/description",
@@ -198,8 +188,7 @@
                     "default": "",
                     "examples": [
                       "Result of fetch changed"
-                    ],
-                    "pattern": "^(.*)$"
+                    ]
                   },
                   "detail": {
                     "$id": "#/properties/tags/items/properties/events/items/properties/detail",
@@ -220,8 +209,7 @@
                           "default": "",
                           "examples": [
                             "value"
-                          ],
-                          "pattern": "^(.*)$"
+                          ]
                         },
                         "description": {
                           "$id": "#/properties/tags/items/properties/events/items/properties/detail/items/properties/description",
@@ -230,8 +218,7 @@
                           "default": "",
                           "examples": [
                             "Result of fetch"
-                          ],
-                          "pattern": "^(.*)$"
+                          ]
                         },
                         "type": {
                           "$id": "#/properties/tags/items/properties/events/items/properties/detail/items/properties/type",
@@ -240,8 +227,7 @@
                           "default": "",
                           "examples": [
                             "any"
-                          ],
-                          "pattern": "^(.*)$"
+                          ]
                         }
                       }
                     }
@@ -279,8 +265,7 @@
                     "default": "",
                     "examples": [
                       "my-slot"
-                    ],
-                    "pattern": "^(.*)$"
+                    ]
                   },
                   "description": {
                     "$id": "#/properties/tags/items/properties/slots/items/properties/description",
@@ -289,8 +274,7 @@
                     "default": "",
                     "examples": [
                       "My slot description."
-                    ],
-                    "pattern": "^(.*)$"
+                    ]
                   }
                 }
               }
