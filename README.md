@@ -53,11 +53,22 @@ Additional experimental support for examples / test cases is also included in th
 ```
 -->
 
+A web is available that allows you to pass in the package name via the query string, and it generates the syntax document:
+
+https://bahrus.github.io/wc-info/syntax.html?npmPackage=[npm package name]
+
+This assumes the package contains a "custom-elements.json" file in the root folder.
+
+For example:
+
+<a href="https://bahrus.github.io/wc-info/syntax.html?npmPackage=xtal-text-input-md">Syntax for xtal-text-input-md</a>
+
 
 
 ## Viewing Your Element (locally)
 
 ```
+$ npm install
 $ npm run serve
 ```
 
