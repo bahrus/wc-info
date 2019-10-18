@@ -104,9 +104,9 @@ const mainTemplate = createTemplate(/* html */ `
 </style>
 <header>
   <h3></h3>
-  <nav>
+  <!-- <nav> -->
     <a target="_blank"><img class="logo" alt="JSON" src="https://json-schema.org/assets/logo.svg"></a>
-  </nav>
+  <!-- </nav> -->
 </header>
 <main></main>
 `);
@@ -127,11 +127,11 @@ export class WCInfoBase extends XtalViewElement {
         return newRenderContext({
             header: {
                 h3: this.packageName,
-                nav: {
-                    a: (({ target }) => {
-                        target.href = this._href;
-                    })
-                }
+                //nav: {
+                a: (({ target }) => {
+                    target.href = this._href;
+                })
+                //}
             },
             main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags.length, target, {
                 section: ({ idx }) => ({

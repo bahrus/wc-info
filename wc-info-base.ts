@@ -114,9 +114,9 @@ const mainTemplate = createTemplate(/* html */ `
 </style>
 <header>
   <h3></h3>
-  <nav>
+  <!-- <nav> -->
     <a target="_blank"><img class="logo" alt="JSON" src="https://json-schema.org/assets/logo.svg"></a>
-  </nav>
+  <!-- </nav> -->
 </header>
 <main></main>
 `);
@@ -134,11 +134,11 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
       return newRenderContext({
         header: {
           h3: this.packageName,
-          nav: {
+          //nav: {
             a:  (({target}) => {
               target.href = this._href!;
             }) as  TransformFn<HTMLAnchorElement> as TransformFn
-          }
+          //}
         } as TransformRules,
         main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags.length, target, {
             section: ({ idx}) =>
