@@ -11,18 +11,14 @@
     "doc": "wca analyze wc-*.js --outFile custom-elements.json"
   },
   "dependencies": {
-    "hypo-link": "0.0.19",
-    "xtal-element": "0.0.86",
-    "trans-render": "0.0.135"
+    "hypo-link": "0.0.20",
+    "xtal-element": "0.0.101",
+    "trans-render": "0.0.143"
   },
   "devDependencies": {
-    "@types/node": "12.7.12",
-    "@types/tape": "4.2.33",
     "@webcomponents/webcomponentsjs": "2.2.10",
-    "jiife": "0.0.14",
-    "tape": "4.11.0",
-    "xtal-test": "0.0.20",
-    "es-module-shims": "0.4.5"
+    "xtal-test": "0.0.44",
+    "es-module-shims": "0.4.6"
   },
   "repository": {
     "type": "git",
