@@ -22,7 +22,7 @@ export interface Info {
 }
 
 export interface AttribInfo extends Info {
-  defaultValue: string | undefined;
+  default: string | undefined;
   /**
    * key = test name
    * val = test attribute value
@@ -34,7 +34,7 @@ export interface AttribInfo extends Info {
 export interface PropertyInfo extends Info {
   type: 'string' | 'boolean' | 'object' | 'number' | 'any' | undefined;
   readOnly: boolean;
-  defaultValue: any;
+  default: any;
   /**
    * key = test name
    * val = test prop value
