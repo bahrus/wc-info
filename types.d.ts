@@ -3,7 +3,7 @@ export interface WCSuiteInfo {
 }
 
 export interface WCInfo extends Info {
-  selfResolvingModulePath: string | undefined;
+  path: string | undefined;
   attributes: AttribInfo[] | undefined;
   events: CustomEventInfo[] | undefined;
   properties: PropertyInfo[] | undefined;

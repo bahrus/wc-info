@@ -6,6 +6,8 @@
 
 # wc-info
 
+**NB**  A great, more fully featured alternative to wc-info is the [api-viewer element](https://api-viewer-element.netlify.com/#api-viewer).
+
 UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_html-and-css-custom-data-support) / [Web Component Analyzer](https://www.npmjs.com/package/web-component-analyzer) JSON format.
 
 Schema for properties and events is based on the Web Component Analyzer format (subject to change), which extends the VSCode format. 
