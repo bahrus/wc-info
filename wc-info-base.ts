@@ -5,7 +5,7 @@ import { newRenderContext } from "xtal-element/newRenderContext.js";
 import { TransformRules, RenderOptions, RenderContext, TransformFn } from "trans-render/init.d.js";
 import { repeat } from "trans-render/repeat.js";
 //import  {HypoLink} from "hypo-link/hypo-link.js";
-import {WCSuiteInfo} from "types.d.js";
+import { WCSuiteInfo, WCInfo, AttribInfo } from "types.d.js";
 const package_name = "package-name";
 const href = 'href';
 
@@ -57,7 +57,6 @@ const slotItemTemplate = T(/* html */`
 
 const WCInfoTemplate = T(/* html */ `
 <section class="WCInfo card">
-
     <header>
         <div class="WCName"><span>⚛️</span><dfn data-bind="name"></dfn></div>
         <hypo-link class=WCDesc></hypo-link>
@@ -115,15 +114,13 @@ const mainTemplate = T(/* html */ `
 </style>
 <header>
   <h3></h3>
-  <!-- <nav> -->
-    <a target="_blank"><img class="logo" alt="JSON" src="https://json-schema.org/assets/logo.svg"></a>
-  <!-- </nav> -->
+  <a target="_blank"><img class="logo" alt="JSON" src="https://json-schema.org/assets/logo.svg"></a>
 </header>
 <main></main>
 `);
 
 /**
- * Non-themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.
+ * Non-styled.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.
  * @element wc-info-base
  * @slot test - this is just a slot for testing purposes.
  * 
@@ -135,30 +132,30 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
       return newRenderContext({
         header: {
           h3: this.packageName,
-            a: [{}, {}, {href: this._href}] 
-        } as TransformRules,
-        main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags.length, target, {
-            section: ({ idx}) =>
+          a: [{}, {}, {href: this._href}] 
+        },
+        main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags, target, {
+            section: ({ item } : {item: WCInfo}) =>
               ({
                 header: {
                   ".WCName":{
-                    dfn: tags[idx].name,
+                    dfn: item.name,
                   },
-                  'hypo-link': tags[idx].description
+                  'hypo-link': item.description
                 },
                 "section[data-type='attributes']": x => {
-                  const attribs = tags[idx].attributes;
+                  const attribs = item.attributes;
                   if (attribs === undefined || attribs.length === 0) return false;
                   return {
                     details: {
-                      dl: ({ target, ctx}) => repeat(attributeItemTemplate, ctx, attribs.length, target, {
-                          dt: ({ idx }) => ({
-                            dfn: attribs[Math.floor(idx / 2)].name
+                      dl: ({ target, ctx}) => repeat(attributeItemTemplate, ctx, attribs, target, {
+                          dt: ({ item }: {item: AttribInfo}) => ({
+                            dfn: item.name
                           }),
-                          dd: ({ idx }) => ({
-                            'hypo-link': attribs[Math.floor(idx / 2)].description,
+                          dd: ({ item }: {item: AttribInfo}) => ({
+                            'hypo-link': item.description,
                             details: x => {
-                              const vals = attribs[Math.floor(idx / 2)].values;
+                              const vals = item.values;
                               if(vals === undefined) return false;
                               return{
                                 dl: ({target, ctx}) => repeat(definitionItemTemplate, ctx, vals.length, target, {
@@ -173,7 +170,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   }
                 },
                 "section[data-type='events']": x =>{
-                  const events = tags[idx].events;
+                  const events = item.events;
                   if(events === undefined || events.length === 0) return false;
                   return {
                     details:{
@@ -204,7 +201,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   }
                 },
                 "section[data-type='properties']": x =>{
-                  const props = tags[idx].properties;
+                  const props = item.properties;
                   if (props === undefined || props.length === 0) return false;
                   return {
                     details: {
@@ -218,7 +215,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   }
                 },
                 "section[data-type='slots']": x =>{
-                  const slots = tags[idx].slots;
+                  const slots = item.slots;
                   if(slots === undefined || slots.length === 0) return false;
                   return {
                     details:{
@@ -233,8 +230,8 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                 }
     
               } as TransformRules)
-          }) as TransformRules,
-      });
+        }),
+      } as TransformRules);
   }
 
   afterInitRenderCallback(){
