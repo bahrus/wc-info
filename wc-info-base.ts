@@ -135,11 +135,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
       return newRenderContext({
         header: {
           h3: this.packageName,
-          //nav: {
-            a:  (({target}) => {
-              target.href = this._href!;
-            }) as  TransformFn<HTMLAnchorElement> as TransformFn
-          //}
+            a: [{}, {}, {href: this._href}] 
         } as TransformRules,
         main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags.length, target, {
             section: ({ idx}) =>
