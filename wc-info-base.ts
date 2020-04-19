@@ -5,7 +5,7 @@ import { newRenderContext } from "xtal-element/newRenderContext.js";
 import { TransformRules, RenderOptions, RenderContext, TransformFn } from "trans-render/init.d.js";
 import { repeat } from "trans-render/repeat.js";
 //import  {HypoLink} from "hypo-link/hypo-link.js";
-import { WCSuiteInfo, WCInfo, AttribInfo } from "types.d.js";
+import { WCSuiteInfo, WCInfo, AttribInfo, CustomEventInfo, PropertyInfo, SlotInfo } from "types.d.js";
 const package_name = "package-name";
 const href = 'href';
 
@@ -174,14 +174,14 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   if(events === undefined || events.length === 0) return false;
                   return {
                     details:{
-                      dl:({target, ctx}) => repeat(eventItemTemplate, ctx, events.length, target, {
-                          dt: ({ idx }) => ({
-                            dfn: events[Math.floor(idx / 2)].name
+                      dl:({target, ctx}) => repeat(eventItemTemplate, ctx, events, target, {
+                          dt: ({ item } : {item: CustomEventInfo}) => ({
+                            dfn: item.name
                           }),
-                          dd: ({ idx}) => ({
-                            'hypo-link': events[Math.floor(idx / 2)].description,
+                          dd: ({ item } : { item: CustomEventInfo }) => ({
+                            'hypo-link': item.description,
                             details: ({target}) =>{
-                              const detail = events[Math.floor(idx / 2)].detail;
+                              const detail = item.detail;
                               if(detail === undefined) return false;
                               return({
                                 dl:({target, ctx}) =>{
@@ -205,11 +205,11 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   if (props === undefined || props.length === 0) return false;
                   return {
                     details: {
-                      dl: ({ target, ctx}) => repeat(propertyItemTemplate, ctx, props.length, target, {
-                          dt: ({ idx }) => ({
-                            dfn: props[Math.floor(idx / 2)].name
+                      dl: ({ target, ctx}) => repeat(propertyItemTemplate, ctx, props, target, {
+                          dt: ({ item } : {item: PropertyInfo}) => ({
+                            dfn: item.name
                           }),
-                          dd: ({ idx }) => props[Math.floor(idx / 2)].description
+                          dd: ({ item } : {item: PropertyInfo}) => item.description
                       } as TransformRules)
                     }              
                   }
@@ -219,11 +219,11 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   if(slots === undefined || slots.length === 0) return false;
                   return {
                     details:{
-                      dl: ({ target, ctx}) => repeat(slotItemTemplate, ctx, slots.length, target, {
-                        dt: ({ idx }) => ({
-                          dfn: slots[Math.floor(idx / 2)].name
+                      dl: ({ target, ctx}) => repeat(slotItemTemplate, ctx, slots, target, {
+                        dt: ({ item }: {item: SlotInfo}) => ({
+                          dfn: item.name
                         }),
-                        dd: ({ idx }) => slots[Math.floor(idx / 2)].description
+                        dd: ({ item } : {item: SlotInfo}) => item.description
                       })
                     }
                   }

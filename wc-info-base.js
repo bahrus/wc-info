@@ -169,14 +169,14 @@ export class WCInfoBase extends XtalViewElement {
                             return false;
                         return {
                             details: {
-                                dl: ({ target, ctx }) => repeat(eventItemTemplate, ctx, events.length, target, {
-                                    dt: ({ idx }) => ({
-                                        dfn: events[Math.floor(idx / 2)].name
+                                dl: ({ target, ctx }) => repeat(eventItemTemplate, ctx, events, target, {
+                                    dt: ({ item }) => ({
+                                        dfn: item.name
                                     }),
-                                    dd: ({ idx }) => ({
-                                        'hypo-link': events[Math.floor(idx / 2)].description,
+                                    dd: ({ item }) => ({
+                                        'hypo-link': item.description,
                                         details: ({ target }) => {
-                                            const detail = events[Math.floor(idx / 2)].detail;
+                                            const detail = item.detail;
                                             if (detail === undefined)
                                                 return false;
                                             return {
@@ -199,11 +199,11 @@ export class WCInfoBase extends XtalViewElement {
                             return false;
                         return {
                             details: {
-                                dl: ({ target, ctx }) => repeat(propertyItemTemplate, ctx, props.length, target, {
-                                    dt: ({ idx }) => ({
-                                        dfn: props[Math.floor(idx / 2)].name
+                                dl: ({ target, ctx }) => repeat(propertyItemTemplate, ctx, props, target, {
+                                    dt: ({ item }) => ({
+                                        dfn: item.name
                                     }),
-                                    dd: ({ idx }) => props[Math.floor(idx / 2)].description
+                                    dd: ({ item }) => item.description
                                 })
                             }
                         };
@@ -214,11 +214,11 @@ export class WCInfoBase extends XtalViewElement {
                             return false;
                         return {
                             details: {
-                                dl: ({ target, ctx }) => repeat(slotItemTemplate, ctx, slots.length, target, {
-                                    dt: ({ idx }) => ({
-                                        dfn: slots[Math.floor(idx / 2)].name
+                                dl: ({ target, ctx }) => repeat(slotItemTemplate, ctx, slots, target, {
+                                    dt: ({ item }) => ({
+                                        dfn: item.name
                                     }),
-                                    dd: ({ idx }) => slots[Math.floor(idx / 2)].description
+                                    dd: ({ item }) => item.description
                                 })
                             }
                         };
