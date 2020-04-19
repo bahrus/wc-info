@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "hypo-link": "0.0.20",
-    "xtal-element": "0.0.101",
-    "trans-render": "0.0.143"
+    "xtal-element": "0.0.110",
+    "trans-render": "0.0.158"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "2.2.10",

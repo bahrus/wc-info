@@ -1,19 +1,20 @@
 import { define } from "trans-render/define.js";
+import { createTemplate as T } from "trans-render/createTemplate.js";
 import { XtalViewElement } from "xtal-element/xtal-view-element.js";
-import { createTemplate, newRenderContext } from "xtal-element/utils.js";
+import { newRenderContext } from "xtal-element/newRenderContext.js";
 import { repeat } from "trans-render/repeat.js";
 const package_name = "package-name";
 const href = 'href';
-const definitionItemTemplate = createTemplate(/* html */ `
+const definitionItemTemplate = T(/* html */ `
     <dt></dt><dd></dd>
 `);
-const propertyItemTemplate = createTemplate(/* html */ `
+const propertyItemTemplate = T(/* html */ `
   <dt>🏠 <dfn data-bind=name></dfn></dt>
   <dd>
     <hypo-link data-bind=description></hypo-link>
   </dd>
 `);
-const attributeItemTemplate = createTemplate(/* html */ `
+const attributeItemTemplate = T(/* html */ `
   <dt>💠 <dfn data-bind=name></dfn></dt>
   <dd>
     <hypo-link data-bind=description></hypo-link>
@@ -23,7 +24,7 @@ const attributeItemTemplate = createTemplate(/* html */ `
     </details>
   </dd>
 `);
-const eventItemTemplate = createTemplate(/* html */ `
+const eventItemTemplate = T(/* html */ `
 <dt>⚡ <dfn data-bind=name></dfn></dt>
 <dd>
   <hypo-link data-bind=description></hypo-link>
@@ -35,7 +36,7 @@ const eventItemTemplate = createTemplate(/* html */ `
 
 </dd>
 `);
-const slotItemTemplate = createTemplate(/* html */ `
+const slotItemTemplate = T(/* html */ `
 <dt>🎰 <dfn data-bind=name></dfn></dt>
 <dd>
   <hypo-link data-bind=description></hypo-link>
@@ -45,7 +46,7 @@ const slotItemTemplate = createTemplate(/* html */ `
   </details>
 </dd>
 `);
-const WCInfoTemplate = createTemplate(/* html */ `
+const WCInfoTemplate = T(/* html */ `
 <section class="WCInfo card">
 
     <header>
@@ -78,7 +79,7 @@ const WCInfoTemplate = createTemplate(/* html */ `
     </section>
 </section>`);
 //https://medium.com/datadriveninvestor/internationalize-your-css-media-queries-64c749eb00c
-const mainTemplate = createTemplate(/* html */ `
+const mainTemplate = T(/* html */ `
 <style role=i11n>      
   [part=attributesLabel]::after{
     content: "⚙️attributes"
