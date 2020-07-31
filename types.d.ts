@@ -4,7 +4,7 @@ export interface WCSuiteInfo {
 
 export interface WCInfo extends Info {
   path: string | undefined;
-  attributes: AttribInfo[] | undefined;
+  attribs: AttribInfo[] | undefined;
   events: CustomEventInfo[] | undefined;
   properties: PropertyInfo[] | undefined;
   slots: SlotInfo[] | undefined;
@@ -17,8 +17,8 @@ export interface SlotInfo{
 }
 
 export interface Info {
-  name: string;
-  description: string;
+  name: string | undefined;
+  description: string | undefined;
 }
 
 export interface AttribInfo extends Info {
@@ -32,14 +32,15 @@ export interface AttribInfo extends Info {
 }
 
 export interface PropertyInfo extends Info {
-  type: 'string' | 'boolean' | 'object' | 'number' | 'any' | undefined;
+  type: 'string' | 'boolean' | 'object' | 'number' | 'stringArray' | 'any' | undefined;
   readOnly: boolean;
-  default: any;
+  value: any;
   /**
    * key = test name
    * val = test prop value
    */
   testValues: { [key: string]: any } | undefined;
+  options: string[]
 }
 export interface CustomEventDetailProperty extends Info {
   type: string | undefined;

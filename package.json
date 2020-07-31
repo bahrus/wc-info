@@ -12,12 +12,12 @@
   },
   "dependencies": {
     "hypo-link": "0.0.20",
-    "xtal-element": "0.0.110",
-    "trans-render": "0.0.158"
+    "xtal-element": "0.0.201",
+    "trans-render": "0.0.197"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "2.2.10",
-    "xtal-test": "0.0.44",
+    "@webcomponents/webcomponentsjs": "2.4.3",
+    "xtal-test": "0.0.46",
     "es-module-shims": "0.4.6"
   },
   "repository": {

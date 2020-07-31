@@ -144,7 +144,7 @@ export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
                   'hypo-link': item.description
                 },
                 "section[data-type='attributes']": x => {
-                  const attribs = item.attributes;
+                  const attribs = item.attribs;
                   if (attribs === undefined || attribs.length === 0) return false;
                   return {
                     details: {
