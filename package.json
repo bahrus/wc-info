@@ -1,24 +1,25 @@
 {
   "name": "wc-info",
   "version": "0.0.75",
-  "description": "Display Web Component Information based on [web-components.json file](https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support).",
+  "description": "Display Web Component Information based on [custom element manifest file](https://github.com/webcomponents/custom-elements-manifest).",
   "main": "wc-info.js",
   "module": "wc-info.js",
   "types": "types.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node node_modules/xtal-test/serve.js",
-    "doc": "wca analyze wc-*.js --outFile custom-elements.json"
+    "doc": "custom-elements-manifest analyze"
   },
   "dependencies": {
-    "hypo-link": "0.0.20",
-    "xtal-element": "0.0.201",
-    "trans-render": "0.0.197"
+    "hypo-link": "0.0.30",
+    "xtal-element": "0.0.400",
+    "xtal-fetch": "0.0.84"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "2.4.3",
-    "xtal-test": "0.0.46",
-    "es-module-shims": "0.4.6"
+    "@skypack/package-check": "0.2.2",
+    "xtal-test": "0.0.51",
+    "custom-elements-manifest": "1.0.0",
+    "@custom-elements-manifest/analyzer": "0.2.1"
   },
   "repository": {
     "type": "git",

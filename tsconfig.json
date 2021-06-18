@@ -3,15 +3,12 @@
 		"target": "esnext",
 		"module":"esnext",
 		"sourceMap": false,
-		"experimentalDecorators": true,
+		"experimentalDecorators": false,
 		"strict": true,
 		"newLine": "LF",
 		"watch": true
 	},
-	"exclude":[
-		"build",
-		"bower_components",
-		"node_modules"
-	]
-
+	"files": [
+		"wc-info-base-2.ts",
+	],
 }
