@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "hypo-link": "0.0.30",
-    "xtal-element": "0.0.400",
-    "xtal-fetch": "0.0.84"
+    "xtal-element": "0.0.401",
+    "xtal-fetch": "0.0.88",
+    "proxy-prop": "0.0.17",
+    "pass-up": "0.0.4"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
