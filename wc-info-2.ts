@@ -9,7 +9,21 @@ import {IProxyPropProps} from 'node_modules/proxy-prop/types.d.js';
 import('proxy-prop/proxy-prop.js');
 import('xtal-fetch/xtal-fetch-get.js');
 import('pass-up/p-u.js');
+import('carbon-copy/c-c.js');
+
+const subComponents = html`
+
+`;
+
 const mainTemplate = html`
+<template id=wc-info-field-template>
+<dt>🏠 <dfn data-bind=name></dfn></dt>
+<dd>
+    <hypo-link data-bind=description></hypo-link>
+</dd>
+</template>
+<c-c copy from-prev-sibling></c-c>
+
 <proxy-prop from-host observe-prop=href to=[-href] ></proxy-prop>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-u on=result-changed to-host prop=package val=target.result init-val=result></p-u>
@@ -33,6 +47,7 @@ export class WCInfo extends HTMLElement implements ReactiveSurface{
     href: string | undefined;
     package: Package | undefined;
 }
+
 const propActions = [
     xp.manageMainTemplate,
     xp.createShadow
