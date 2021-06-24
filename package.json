@@ -16,7 +16,9 @@
     "xtal-fetch": "0.0.88",
     "proxy-prop": "0.0.17",
     "pass-up": "0.0.4",
-    "carbon-copy": "0.1.58"
+    "pass-down": "0.0.36",
+    "carbon-copy": "0.1.59",
+    "ib-id": "0.0.40"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",

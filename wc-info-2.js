@@ -5,23 +5,29 @@ import { define } from 'xtal-element/lib/define.js';
 import { DOMKeyPE } from 'xtal-element/lib/DOMKeyPE.js';
 import('proxy-prop/proxy-prop.js');
 import('xtal-fetch/xtal-fetch-get.js');
-import('pass-up/p-u.js');
+import('pass-down/p-d.js');
 import('carbon-copy/c-c.js');
-const subComponents = html `
-
-`;
+import('ib-id/i-bid.js');
 const mainTemplate = html `
-<template id=wc-info-field-template>
-<dt>🏠 <dfn data-bind=name></dfn></dt>
-<dd>
-    <hypo-link data-bind=description></hypo-link>
-</dd>
+<template id=wc-info-module>
+    <div>Module: {{path}}</div>
+    <div>Summary: {{summary}}</div>
+    <div>Kind: {{kind}}
 </template>
-<c-c copy from-prev-sibling></c-c>
+<c-c copy from-prev-sibling string-props='["path", "summary", "kind"]' noshadow></c-c>
+<template id=wc-field-info>
+<div>🏠 Property: {{name}}</div>
+<hypo-link>{{summary}}</hypo-link>
+</template>
+<c-c copy from-prev-sibling string-props='["name", "summary"]' noshadow></c-c>
 
 <proxy-prop from-host observe-prop=href to=[-href] ></proxy-prop>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
-<p-u on=result-changed to-host prop=package val=target.result init-val=result></p-u>
+<p-d on=result-changed to=[-list] val-from-target=result.modules></p-d>
+<div>Modules</div>
+<i-bid -list>
+    <wc-info-module></wc-info-module>
+</i-bid>
 `;
 export class WCInfo extends HTMLElement {
     static is = 'wc-info';
@@ -41,7 +47,8 @@ export class WCInfo extends HTMLElement {
         this.reactor.addToQueue(prop, nv);
     }
     href;
-    package;
+    packageInfo;
+    modules;
 }
 const propActions = [
     xp.manageMainTemplate,
@@ -55,9 +62,18 @@ const strProp1 = {
     ...baseProp,
     type: String
 };
+const objProp1 = {
+    ...baseProp,
+    type: Object,
+};
+const nnObjProp = {
+    ...objProp1,
+    stopReactionsIfFalsy: true,
+};
 const propDefMap = {
     ...xp.props,
     href: strProp1,
+    packageInfo: nnObjProp,
 };
 const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
 xc.letThereBeProps(WCInfo, slicedPropDefs, 'onPropChange');
