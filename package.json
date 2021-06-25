@@ -14,10 +14,10 @@
     "hypo-link": "0.0.30",
     "xtal-element": "0.0.401",
     "xtal-fetch": "0.0.88",
-    "proxy-prop": "0.0.17",
+    "proxy-prop": "0.0.20",
     "pass-up": "0.0.4",
     "pass-down": "0.0.36",
-    "carbon-copy": "0.1.59",
+    "carbon-copy": "0.1.63",
     "ib-id": "0.0.40"
   },
   "devDependencies": {

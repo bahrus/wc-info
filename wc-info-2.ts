@@ -18,14 +18,20 @@ const mainTemplate = html`
         <summary>{{path}}</summary>
         <div>Summary: {{summary}}</div>
         <div>Kind: {{kind}}</div>
+        <details>
+            <summary>Exports</summary>
+            <proxy-prop observe-prop=exports from-upsearch=wc-info-module to=[-list]></proxy-prop>
+            <i-bid -list>
+                <wc-info-export></wc-info-export>
+            </i-bid>
+        </details>
     </details>
 </template>
-<c-c copy from-prev-sibling string-props='["path", "summary", "kind"]' noshadow></c-c>
-<template id=wc-field-info>
-<div>🏠 Property: {{name}}</div>
-<hypo-link>{{summary}}</hypo-link>
+<c-c copy from-prev-sibling string-props='["path", "summary", "kind"]' obj-props='["exports"]' noshadow></c-c>
+<template id=wc-info-export>
+    <div>{{name}}</div>
 </template>
-<c-c copy from-prev-sibling string-props='["name", "summary"]' noshadow></c-c>
+<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c>
 
 <proxy-prop from-host observe-prop=href to=[-href] ></proxy-prop>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
