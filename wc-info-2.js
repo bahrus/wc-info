@@ -16,7 +16,7 @@ const mainTemplate = html `
         <div>Kind: {{kind}}</div>
         <details>
             <summary>Exports</summary>
-            <proxy-prop observe-prop=exports from-upsearch=wc-info-module to=[-list]></proxy-prop>
+            <proxy-prop from-upsearch=wc-info-module observe-prop=exports  to=[-list]></proxy-prop>
             <i-bid -list>
                 <wc-info-export></wc-info-export>
             </i-bid>
@@ -24,10 +24,18 @@ const mainTemplate = html `
     </details>
 </template>
 <c-c copy from-prev-sibling string-props='["path", "summary", "kind"]' obj-props='["exports"]' noshadow></c-c>
+
 <template id=wc-info-export>
     <div>{{name}}</div>
+    <div>Description: {{description}}</div>
+    <div>Kind: {{kind}}</div>
+    <details>
+        <summary>Members</summary>
+    </details>
 </template>
-<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["members"]' noshadow></c-c>
+
+
 
 <proxy-prop from-host observe-prop=href to=[-href] ></proxy-prop>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
