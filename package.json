@@ -11,14 +11,15 @@
     "doc": "custom-elements-manifest analyze"
   },
   "dependencies": {
-    "hypo-link": "0.0.30",
-    "xtal-element": "0.0.401",
-    "xtal-fetch": "0.0.88",
-    "proxy-prop": "0.0.20",
-    "pass-up": "0.0.4",
-    "pass-down": "0.0.36",
-    "carbon-copy": "0.1.63",
-    "ib-id": "0.0.40"
+    "hypo-link": "0.0.31",
+    "xtal-element": "0.0.402",
+    "xtal-fetch": "0.0.89",
+    "proxy-prop": "0.0.21",
+    "pass-up": "0.0.5",
+    "pass-down": "0.0.37",
+    "carbon-copy": "0.1.64",
+    "ib-id": "0.0.41",
+    "trans-render": "0.0.291"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
