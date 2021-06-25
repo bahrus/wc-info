@@ -10,9 +10,11 @@ import('carbon-copy/c-c.js');
 import('ib-id/i-bid.js');
 const mainTemplate = html `
 <template id=wc-info-module>
-    <div>Module: {{path}}</div>
-    <div>Summary: {{summary}}</div>
-    <div>Kind: {{kind}}
+    <details>
+        <summary>{{path}}</summary>
+        <div>Summary: {{summary}}</div>
+        <div>Kind: {{kind}}</div>
+    </details>
 </template>
 <c-c copy from-prev-sibling string-props='["path", "summary", "kind"]' noshadow></c-c>
 <template id=wc-field-info>
