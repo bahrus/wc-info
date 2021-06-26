@@ -53,7 +53,7 @@ const mainTemplate = html `
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["members"]' noshadow></c-c>
 
-<template id=wc-member>
+<template id=wc-info-member>
     <div>{{name}}</div>
     <div>Description: {{description}}</div>
     <div>Kind: {{kind}}</div>
