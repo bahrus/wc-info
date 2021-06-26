@@ -19,7 +19,8 @@
     "pass-down": "0.0.37",
     "carbon-copy": "0.1.64",
     "ib-id": "0.0.41",
-    "trans-render": "0.0.291"
+    "trans-render": "0.0.291",
+    "if-diff": "0.0.72"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",

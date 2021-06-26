@@ -8,6 +8,7 @@ import('xtal-fetch/xtal-fetch-get.js');
 import('pass-down/p-d.js');
 import('carbon-copy/c-c.js');
 import('ib-id/i-bid.js');
+import('if-diff/if-diff.js');
 const mainTemplate = html `
 <style>
 details{
@@ -19,20 +20,30 @@ details{
         <summary>{{path}}</summary>
         <div>Summary: {{summary}}</div>
         <div>Kind: {{kind}}</div>
-        <details>
-            <summary>Exports</summary>
-            <proxy-prop from-upsearch=wc-info-module observe-prop=exports  to=[-list]></proxy-prop>
-            <i-bid -list>
-                <wc-info-export></wc-info-export>
-            </i-bid>
-        </details>
-        <details>
-            <summary>Declarations</summary>
-            <proxy-prop from-upsearch=wc-info-module observe-prop=declarations to=[-list]></proxy-prop>
-            <i-bid -list>
-                <wc-info-declaration></wc-info-declaration>
-            </i-bid>
-        </details>
+        <proxy-prop from-upsearch=wc-info-module observe-prop=exports  to=[-iff] m=1></proxy-prop>
+        <if-diff -iff>
+            <template>
+                <details>
+                    <summary>Exports</summary>
+                    <proxy-prop from-upsearch=wc-info-module observe-prop=exports  to=[-list]></proxy-prop>
+                    <i-bid -list>
+                        <wc-info-export></wc-info-export>
+                    </i-bid>
+                </details>
+            </template>
+        </if-diff>
+        <proxy-prop from-upsearch=wc-info-module observe-prop=declarations to=[-iff]></proxy-prop>
+        <if-diff -iff>
+            <template>
+                <details>
+                    <summary>Declarations</summary>
+                    <proxy-prop from-upsearch=wc-info-module observe-prop=declarations to=[-list]></proxy-prop>
+                    <i-bid -list>
+                        <wc-info-declaration></wc-info-declaration>
+                    </i-bid>
+                </details>
+            </template>
+        </if-diff>
     </details>
 </template>
 <c-c copy from-prev-sibling string-props='["path", "summary", "kind"]' obj-props='["exports", "declarations"]' noshadow></c-c>
@@ -62,12 +73,16 @@ details{
     <div>{{name}}</div>
     <div>Description: {{description}}</div>
     <div>Kind: {{kind}}</div>
+
     <details>
         <summary>Parameters</summary>
     </details>
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
 
+<template id=wc-info-parameter>
+</template>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
 
 <proxy-prop from-host observe-prop=href to=[-href] ></proxy-prop>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
