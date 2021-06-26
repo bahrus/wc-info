@@ -44,9 +44,29 @@ const mainTemplate = html`
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]'  noshadow></c-c>
 
 <template id=wc-info-declaration>
-iah
+    <div>{{name}}</div>
+    <div>Description: {{description}}</div>
+    <div>Kind: {{kind}}</div>
+    <details>
+        <summary>Members</summary>
+        <proxy-prop from-upsearch=wc-info-declaration observe-prop=members to=[-list]></proxy-prop>
+        <i-bid -list>
+            <wc-info-member></wc-info-declaration>
+        </i-bid>
+    </details>
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["members"]' noshadow></c-c>
+
+<template id=wc-member>
+    <div>{{name}}</div>
+    <div>Description: {{description}}</div>
+    <div>Kind: {{kind}}</div>
+    <details>
+        <summary>Parameters</summary>
+    </details>
+</template>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
+
 
 <proxy-prop from-host observe-prop=href to=[-href] ></proxy-prop>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
