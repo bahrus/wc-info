@@ -101,8 +101,8 @@ details{
     <wc-info-module></wc-info-module>
 </i-bid>
 `;
-export class WCInfo extends HTMLElement {
-    static is = 'wc-info';
+export class WCInfoPackage extends HTMLElement {
+    static is = 'wc-info-package';
     self = this;
     propActions = propActions;
     clonedTemplate;
@@ -118,9 +118,6 @@ export class WCInfo extends HTMLElement {
     onPropChange(n, prop, nv) {
         this.reactor.addToQueue(prop, nv);
     }
-    href;
-    packageInfo;
-    modules;
 }
 const propActions = [
     xp.manageMainTemplate,
@@ -145,8 +142,7 @@ const nnObjProp = {
 const propDefMap = {
     ...xp.props,
     href: strProp1,
-    packageInfo: nnObjProp,
 };
 const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
-xc.letThereBeProps(WCInfo, slicedPropDefs, 'onPropChange');
-define(WCInfo);
+xc.letThereBeProps(WCInfoPackage, slicedPropDefs, 'onPropChange');
+define(WCInfoPackage);

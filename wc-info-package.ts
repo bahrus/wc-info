@@ -1,5 +1,6 @@
 import {html} from 'xtal-element/lib/html.js';
 import {xc, ReactiveSurface, IReactor, PropAction, PropDef, PropDefMap} from 'xtal-element/lib/XtalCore.js';
+import {WCInfoPackageProps} from './types.d.js';
 import {xp} from 'xtal-element/lib/XtalPattern.js';
 import {define} from 'xtal-element/lib/define.js';
 import { DOMKeyPE } from 'xtal-element/lib/DOMKeyPE.js';
@@ -105,8 +106,8 @@ details{
     <wc-info-module></wc-info-module>
 </i-bid>
 `;
-export class WCInfo extends HTMLElement implements ReactiveSurface{
-    static is = 'wc-info';
+export class WCInfoPackage extends HTMLElement implements ReactiveSurface, WCInfoPackageProps{
+    static is = 'wc-info-package';
     self = this;
     propActions = propActions;
     clonedTemplate: DocumentFragment | undefined; domCache: any;
@@ -121,10 +122,8 @@ export class WCInfo extends HTMLElement implements ReactiveSurface{
     onPropChange(n: string, prop: PropDef, nv: any){
         this.reactor.addToQueue(prop, nv);
     }
-    href: string | undefined;
-    packageInfo: Package | undefined;
-    modules: Module[] | undefined;
-    //fieldInfos: ClassField[] | undefined;
+
+
 }
 
 
@@ -149,11 +148,10 @@ const nnObjProp: PropDef = {
     ...objProp1,
     stopReactionsIfFalsy: true,
 }
-const propDefMap: PropDefMap<WCInfo> = {
+const propDefMap: PropDefMap<WCInfoPackageProps> = {
     ...xp.props,
     href: strProp1,
-    packageInfo: nnObjProp,
 };
 const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
-xc.letThereBeProps(WCInfo, slicedPropDefs, 'onPropChange');
-define(WCInfo);
+xc.letThereBeProps(WCInfoPackage, slicedPropDefs, 'onPropChange');
+define(WCInfoPackage);
