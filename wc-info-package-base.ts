@@ -9,11 +9,6 @@ import('ib-id/i-bid.js');
 import('if-diff/if-diff.js');
 
 const mainTemplate = html`
-<style>
-details{
-    margin-left: 20px;
-}
-</style>
 <template id=wc-info-module>
     <details>
         <summary>{{path}}</summary>
