@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "hypo-link": "0.0.31",
-    "xtal-element": "0.0.402",
+    "xtal-element": "0.0.405",
     "xtal-fetch": "0.0.89",
     "proxy-prop": "0.0.21",
     "pass-up": "0.0.5",

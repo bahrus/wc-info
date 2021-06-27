@@ -1,9 +1,6 @@
 import {html} from 'xtal-element/lib/html.js';
-import {xc, ReactiveSurface, IReactor, PropAction, PropDef, PropDefMap} from 'xtal-element/lib/XtalCore.js';
 import {WCInfoPackageProps} from './types.d.js';
-import {xp} from 'xtal-element/lib/XtalPattern.js';
-import {define} from 'xtal-element/lib/define.js';
-import { DOMKeyPE } from 'xtal-element/lib/DOMKeyPE.js';
+import {X} from 'xtal-element/lib/X.js';
 import('proxy-prop/proxy-prop.js');
 import('xtal-fetch/xtal-fetch-get.js');
 import('pass-down/p-d.js');
@@ -99,7 +96,7 @@ details{
 <template id=wc-info-parameter>
     <hr>
     <div>Parameter Name: {{name}}</div>
-    
+
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
 
@@ -111,52 +108,18 @@ details{
     <wc-info-module></wc-info-module>
 </i-bid>
 `;
-export class WCInfoPackage extends HTMLElement implements ReactiveSurface, WCInfoPackageProps{
-    static is = 'wc-info-package';
-    self = this;
-    propActions = propActions;
-    clonedTemplate: DocumentFragment | undefined; domCache: any;
-    reactor: IReactor = new xp.RxSuppl(this, [{
-        rhsType: Array,
-        ctor: DOMKeyPE
-    }]);
-    mainTemplate = mainTemplate;
-    connectedCallback(){
-        xc.mergeProps(this, slicedPropDefs);
-    }
-    onPropChange(n: string, prop: PropDef, nv: any){
-        this.reactor.addToQueue(prop, nv);
-    }
 
 
-}
+export class WcInfoPackage extends X implements WCInfoPackageProps{}
 
-
-
-const propActions = [
-    xp.manageMainTemplate,
-    xp.createShadow
-] as PropAction[];
-const baseProp: PropDef = {
-    async: true,
-    dry: true,
-};
-const strProp1: PropDef = {
-    ...baseProp,
-    type: String
-};
-const objProp1: PropDef = {
-    ...baseProp,
-    type: Object,
-};
-const nnObjProp: PropDef = {
-    ...objProp1,
-    stopReactionsIfFalsy: true,
-}
-const propDefMap: PropDefMap<WCInfoPackageProps> = {
-    ...xp.props,
-    href: strProp1,
-};
-const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
-xc.letThereBeProps(WCInfoPackage, slicedPropDefs, 'onPropChange');
-define(WCInfoPackage);
+X.tend({
+    name: 'wc-info-package',
+    class: WcInfoPackage as {new(): X},
+    propDefs: {
+        href:{
+            dry: true,
+            type: String,
+        }
+    },
+    mainTemplate,
+});

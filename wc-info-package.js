@@ -1,8 +1,5 @@
 import { html } from 'xtal-element/lib/html.js';
-import { xc } from 'xtal-element/lib/XtalCore.js';
-import { xp } from 'xtal-element/lib/XtalPattern.js';
-import { define } from 'xtal-element/lib/define.js';
-import { DOMKeyPE } from 'xtal-element/lib/DOMKeyPE.js';
+import { X } from 'xtal-element/lib/X.js';
 import('proxy-prop/proxy-prop.js');
 import('xtal-fetch/xtal-fetch-get.js');
 import('pass-down/p-d.js');
@@ -97,7 +94,7 @@ details{
 <template id=wc-info-parameter>
     <hr>
     <div>Parameter Name: {{name}}</div>
-    
+
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
 
@@ -109,48 +106,16 @@ details{
     <wc-info-module></wc-info-module>
 </i-bid>
 `;
-export class WCInfoPackage extends HTMLElement {
-    static is = 'wc-info-package';
-    self = this;
-    propActions = propActions;
-    clonedTemplate;
-    domCache;
-    reactor = new xp.RxSuppl(this, [{
-            rhsType: Array,
-            ctor: DOMKeyPE
-        }]);
-    mainTemplate = mainTemplate;
-    connectedCallback() {
-        xc.mergeProps(this, slicedPropDefs);
-    }
-    onPropChange(n, prop, nv) {
-        this.reactor.addToQueue(prop, nv);
-    }
+export class WcInfoPackage extends X {
 }
-const propActions = [
-    xp.manageMainTemplate,
-    xp.createShadow
-];
-const baseProp = {
-    async: true,
-    dry: true,
-};
-const strProp1 = {
-    ...baseProp,
-    type: String
-};
-const objProp1 = {
-    ...baseProp,
-    type: Object,
-};
-const nnObjProp = {
-    ...objProp1,
-    stopReactionsIfFalsy: true,
-};
-const propDefMap = {
-    ...xp.props,
-    href: strProp1,
-};
-const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
-xc.letThereBeProps(WCInfoPackage, slicedPropDefs, 'onPropChange');
-define(WCInfoPackage);
+X.tend({
+    name: 'wc-info-package',
+    class: WcInfoPackage,
+    propDefs: {
+        href: {
+            dry: true,
+            type: String,
+        }
+    },
+    mainTemplate,
+});
