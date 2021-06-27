@@ -1,14 +1,12 @@
-import {html} from 'xtal-element/lib/html.js';
-import {WCInfoPackageProps} from './types.d.js';
-import {X} from 'xtal-element/lib/X.js';
+import { html } from 'xtal-element/lib/html.js';
+import { X } from 'xtal-element/lib/X.js';
 import('proxy-prop/proxy-prop.js');
 import('xtal-fetch/xtal-fetch-get.js');
 import('pass-down/p-d.js');
 import('carbon-copy/c-c.js');
 import('ib-id/i-bid.js');
 import('if-diff/if-diff.js');
-
-const mainTemplate = html`
+const mainTemplate = html `
 <style>
 details{
     margin-left: 20px;
@@ -100,7 +98,7 @@ details{
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
 
-<p-p from-host observe-prop=href to=[-href] m=1></p-p>
+<p-p from-parent observe-prop=href to=[-href] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-d on=result-changed to=[-list] val-from-target=result.modules></p-d>
 <div>Modules</div>
@@ -108,18 +106,17 @@ details{
     <wc-info-module></wc-info-module>
 </i-bid>
 `;
-
-
-export class WcInfoPackage extends X implements WCInfoPackageProps{}
-
+export class WcInfoPackageBase extends X {
+}
 X.tend({
-    name: 'wc-info-package',
-    class: WcInfoPackage as {new(): X},
+    name: 'wc-info-package-base',
+    class: WcInfoPackageBase,
     propDefs: {
-        href:{
+        href: {
             dry: true,
             type: String,
         }
     },
     mainTemplate,
+    noShadow: true,
 });

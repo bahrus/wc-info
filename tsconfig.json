@@ -9,6 +9,6 @@
 		"watch": true
 	},
 	"files": [
-		"wc-info-package.ts",
+		"wc-info-package-base.ts",
 	],
 }
