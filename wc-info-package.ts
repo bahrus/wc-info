@@ -77,7 +77,8 @@ details{
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["members"]' noshadow></c-c>
 
 <template id=wc-info-member>
-    <div>{{name}}</div>
+    <hr>
+    <div>Name: {{name}}</div>
     <div>Description: {{description}}</div>
     <div>Kind: {{kind}}</div>
     <p-p from-upsearch=wc-info-member observe-prop=parameters to=[-iff] m=1></p-p>
@@ -85,6 +86,10 @@ details{
         <template>
             <details>
                 <summary>Parameters</summary>
+                <p-p from-upsearch=wc-info-member observe-prop=parameters to=[-list] m=1></p-p>
+                <i-bid -list>
+                    <wc-info-parameter></wc-info-parameter>
+                </i-bid>
             </details>
         </template>
     </if-diff>
@@ -92,6 +97,9 @@ details{
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
 
 <template id=wc-info-parameter>
+    <hr>
+    <div>Parameter Name: {{name}}</div>
+    
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
 
