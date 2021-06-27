@@ -98,7 +98,7 @@ details{
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
 
-<p-p from-parent observe-prop=href to=[-href] m=1></p-p>
+<p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-d on=result-changed to=[-list] val-from-target=result.modules></p-d>
 <div>Modules</div>
