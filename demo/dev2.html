@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        details{
+        details > :not(summary){
             margin-left: 20px;
+        }
+        [data-props-merged]{
+            display:block;
         }
     </style>
 </head>
@@ -30,7 +33,8 @@
             "@github/": "../node_modules/@github/",
             "ib-id/": "../node_modules/ib-id/",
             "if-diff/": "../node_modules/if-diff/",
-            "lazy-mt/": "../node_modules/lazy-mt/"
+            "lazy-mt/": "../node_modules/lazy-mt/",
+            "jsonpathesm/": "../node_modules/jsonpathesm/"
         }
     }
     </script>

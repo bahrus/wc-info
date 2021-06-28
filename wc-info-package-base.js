@@ -3,6 +3,7 @@ import { X } from 'xtal-element/lib/X.js';
 import('proxy-prop/proxy-prop.js');
 import('xtal-fetch/xtal-fetch-get.js');
 import('pass-down/p-d.js');
+import('pass-down/p-d-x.js');
 import('carbon-copy/c-c.js');
 import('ib-id/i-bid.js');
 import('if-diff/if-diff.js');
@@ -11,7 +12,7 @@ const mainTemplate = html `
     <details>
         <summary>{{path}}</summary>
         <div>Summary: {{summary}}</div>
-        <div>Kind: {{kind}}</div>
+        <div>Is a {{kind}}</div>
         <p-p from-upsearch=wc-info-module observe-prop=exports  to=[-iff] m=1></p-p>
         <if-diff -iff is-non-empty-array>
             <template>
@@ -41,16 +42,14 @@ const mainTemplate = html `
 <c-c copy from-prev-sibling string-props='["path", "summary", "kind"]' obj-props='["exports", "declarations"]' noshadow></c-c>
 
 <template id=wc-info-export>
-    <div>{{name}}</div>
+    <div>{{kind}} name: {{name}}</div>
     <div>Description: {{description}}</div>
-    <div>Kind: {{kind}}</div>
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]'  noshadow></c-c>
 
 <template id=wc-info-declaration>
-    <div>{{name}}</div>
+    <div>{{kind}} name: {{name}}</div>
     <div>Description: {{description}}</div>
-    <div>Kind: {{kind}}</div>
     <p-p from-upsearch=wc-info-declaration observe-prop=members to=[-iff] m=1></p-p>
     <if-diff -iff is-non-empty-array>
         <template>
@@ -68,9 +67,8 @@ const mainTemplate = html `
 
 <template id=wc-info-member>
     <hr>
-    <div>Name: {{name}}</div>
+    <div>{{kind}} name: {{name}}</div>
     <div>Description: {{description}}</div>
-    <div>Kind: {{kind}}</div>
     <p-p from-upsearch=wc-info-member observe-prop=parameters to=[-iff] m=1></p-p>
     <if-diff -iff is-non-empty-array>
         <template>
@@ -89,23 +87,23 @@ const mainTemplate = html `
 <template id=wc-info-parameter>
     <hr>
     <div>Parameter Name: {{name}}</div>
-
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
 
 <p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-d on=result-changed to=[-list] val-from-target=result.modules></p-d>
+<p-d-x on=result-changed to=[-fake] val=target.result val-filter=$.modules.[*].declarations[?(@.tagName)]></p-d-x>
 <div>Modules</div>
-<i-bid -list>
+<i-bid -list -fake>
     <wc-info-module></wc-info-module>
 </i-bid>
 `;
-export class WcInfoPackageBase extends X {
+export class WCInfoPackageBase extends X {
 }
 X.tend({
     name: 'wc-info-package-base',
-    class: WcInfoPackageBase,
+    class: WCInfoPackageBase,
     propDefs: {
         href: {
             dry: true,

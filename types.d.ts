@@ -1,5 +1,5 @@
-import {WCInfoPackage} from './wc-info-package';
+import {WCInfoPackageBase} from './wc-info-package-base.js';
 export interface WCInfoPackageProps{
   href?: string | undefined;
-  self: WCInfoPackage;
+  self: WCInfoPackageBase;
 }
