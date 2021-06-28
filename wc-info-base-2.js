@@ -1,6 +1,6 @@
 import { X } from 'xtal-element/lib/X.js';
 import { html } from 'xtal-element/lib/html.js';
-import('proxy-prop/proxy-prop.js');
+import('pass-prop/pass-prop.js');
 import('pass-down/p-d-x.js');
 import('carbon-copy/c-c.js');
 import('xtal-fetch/xtal-fetch-get.js');
