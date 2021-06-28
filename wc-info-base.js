@@ -115,11 +115,6 @@ const mainTemplate = T(/* html */ `
  *
  */
 export class WCInfoBase extends XtalViewElement {
-    constructor() {
-        super(...arguments);
-        this._href = null;
-        this._packageName = null;
-    }
     get initRenderContext() {
         const tags = this.viewModel.tags;
         return newRenderContext({
@@ -136,7 +131,7 @@ export class WCInfoBase extends XtalViewElement {
                         'hypo-link': item.description
                     },
                     "section[data-type='attributes']": x => {
-                        const attribs = item.attributes;
+                        const attribs = item.attribs;
                         if (attribs === undefined || attribs.length === 0)
                             return false;
                         return {
@@ -273,6 +268,7 @@ export class WCInfoBase extends XtalViewElement {
         }
         super.attributeChangedCallback(n, ov, nv);
     }
+    _href = null;
     get href() {
         return this._href;
     }
@@ -283,6 +279,7 @@ export class WCInfoBase extends XtalViewElement {
     set href(nv) {
         this.attr(href, nv);
     }
+    _packageName = null;
     get packageName() {
         return this._packageName;
     }

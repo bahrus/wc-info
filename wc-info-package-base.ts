@@ -4,7 +4,7 @@ import {X} from 'xtal-element/lib/X.js';
 import('proxy-prop/proxy-prop.js');
 import('xtal-fetch/xtal-fetch-get.js');
 import('pass-down/p-d.js');
-import('pass-down/p-d-x.js');
+
 import('carbon-copy/c-c.js');
 import('ib-id/i-bid.js');
 import('if-diff/if-diff.js');
@@ -95,9 +95,9 @@ const mainTemplate = html`
 <p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-d on=result-changed to=[-list] val-from-target=result.modules></p-d>
-<p-d-x on=result-changed to=[-fake] val=target.result val-filter=$.modules.[*].declarations[?(@.tagName)]></p-d-x>
+
 <div>Modules</div>
-<i-bid -list -fake>
+<i-bid -list>
     <wc-info-module></wc-info-module>
 </i-bid>
 `;
