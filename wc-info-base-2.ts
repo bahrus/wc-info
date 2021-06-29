@@ -11,9 +11,46 @@ import('if-diff/if-diff.js');
 
 const mainTemplate = html`
 <template id=custom-element-declaration>
+    <hr>
     <div>{{_tagName}}</div>
+    <div>{{description}}</div>
+    <p-p from-parent-or-host observe-prop=members to=[-iff] m=1></p-p>
+    <if-diff -iff is-non-empty-array>
+        <template>
+             <!-- <p-p from-parent-or-host observe-prop=members to=[-list] m=1></p-p>
+            <i-bid -list>
+
+            </i-bid> -->
+        </template>
+    </if-diff>
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members"]' noshadow></c-c>
+
+<template id=wc-info-member>
+    <hr>
+    <div>{{kind}} name: {{name}}</div>
+    <div>Description: {{description}}</div>
+    <!-- <p-p from-upsearch=wc-info-member observe-prop=parameters to=[-iff] m=1></p-p> -->
+    <!-- <if-diff -iff is-non-empty-array>
+        <template>
+            <details>
+                <summary>Parameters</summary>
+                <p-p from-upsearch=wc-info-member observe-prop=parameters to=[-list] m=1></p-p>
+                <i-bid -list>
+                    <wc-info-parameter></wc-info-parameter>
+                </i-bid>
+            </details>
+        </template>
+    </if-diff> -->
+</template>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
+
+<!-- <template id=wc-info-parameter>
+    <hr>
+    <div>Parameter Name: {{name}}</div>
+</template>
+<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c> -->
+
 <p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-d-x on=result-changed to=[-list] val=target.result val-filter=$.modules.[*].declarations[?(@.tagName)]></p-d-x>

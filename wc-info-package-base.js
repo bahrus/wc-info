@@ -87,7 +87,7 @@ const mainTemplate = html `
     <hr>
     <div>Parameter Name: {{name}}</div>
 </template>
-<c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
+<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c>
 
 <p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
