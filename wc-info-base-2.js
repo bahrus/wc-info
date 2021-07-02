@@ -11,7 +11,7 @@ const mainTemplate = html `
 <template id=custom-element-declaration>
     <hr>
     <div>{{_tagName}}</div>
-    <div>{{description}}</div>
+    <div data-desc="{{description}}">{{description}}</div>
     <p-p from-parent-or-host observe-prop=members to=[-iff] m=1></p-p>
     <p-p from-parent-or-host observe-prop=members to=[-list] m=1></p-p>
     <if-diff -iff is-non-empty-array>

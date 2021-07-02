@@ -18,7 +18,8 @@
     "pass-up": "0.0.5",
     "pass-down": "0.0.41",
     "carbon-copy": "0.1.66",
-    "ib-id": "0.0.41",
+    "ib-id": "0.0.43",
+    "lib-id": "0.0.2",
     "trans-render": "0.0.291",
     "if-diff": "0.0.73"
   },
