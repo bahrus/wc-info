@@ -15,6 +15,9 @@ const mainTemplate = html`
     <hr>
     <div>{{_tagName}}</div>
     <div data-desc="{{description}}">{{description}}</div>
+    <template id=class-member>
+        <td>{{name}}</td>
+    </template>
     <p-p from-parent-or-host observe-prop=members to=[-iff] m=1></p-p>
     <p-p from-parent-or-host observe-prop=members to=[-list] m=1></p-p>
     <if-diff -iff is-non-empty-array>
@@ -22,13 +25,7 @@ const mainTemplate = html`
             <!-- <i-bid -list>
                 <wc-info-member></wc-info-member>
             </i-bid> -->
-            <li-bid template-id=./class-member render-after=tbody -list>
-                <tr>
-                    <template id=class-member>
-                        <td>{{name}}</td>
-                    </template>
-                </tr>
-            </li-bid>
+            <li-bid template-id=./class-member render-after=tbody -list tag=tr></li-bid>
             <table>
                 <thead>
                     <th>Name</th>
@@ -40,7 +37,7 @@ const mainTemplate = html`
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members"]' noshadow></c-c>
 
-<template id=wc-info-member>
+<!-- <template id=wc-info-member>
     <hr>
     <div>{{kind}} name: {{name}}</div>
     <div>Description: {{description}}</div>
@@ -58,7 +55,7 @@ const mainTemplate = html`
         </template>
     </if-diff>
 </template>
-<c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c> -->
 
 <!-- <template id=wc-info-parameter>
     <hr>

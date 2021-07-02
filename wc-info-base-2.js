@@ -6,25 +6,36 @@ import('carbon-copy/c-c.js');
 import('xtal-fetch/xtal-fetch-get.js');
 import('carbon-copy/c-c.js');
 import('ib-id/i-bid.js');
+import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
 const mainTemplate = html `
 <template id=custom-element-declaration>
     <hr>
     <div>{{_tagName}}</div>
     <div data-desc="{{description}}">{{description}}</div>
+    <template id=class-member>
+        <td>{{name}}</td>
+    </template>
     <p-p from-parent-or-host observe-prop=members to=[-iff] m=1></p-p>
     <p-p from-parent-or-host observe-prop=members to=[-list] m=1></p-p>
     <if-diff -iff is-non-empty-array>
         <template>
-            <i-bid -list>
+            <!-- <i-bid -list>
                 <wc-info-member></wc-info-member>
-            </i-bid>
+            </i-bid> -->
+            <li-bid template-id=./class-member render-after=tbody -list tag=tr></li-bid>
+            <table>
+                <thead>
+                    <th>Name</th>
+                </thead>
+                <tbody></tbody>
+            </table>
         </template>
     </if-diff>
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members"]' noshadow></c-c>
 
-<template id=wc-info-member>
+<!-- <template id=wc-info-member>
     <hr>
     <div>{{kind}} name: {{name}}</div>
     <div>Description: {{description}}</div>
@@ -42,7 +53,7 @@ const mainTemplate = html `
         </template>
     </if-diff>
 </template>
-<c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind"]' obj-props='["parameters"]' noshadow></c-c> -->
 
 <!-- <template id=wc-info-parameter>
     <hr>
