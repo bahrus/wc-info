@@ -17,6 +17,7 @@ const mainTemplate = html`
     <div data-desc="{{description}}">{{description}}</div>
     <template id=class-member>
         <td>{{name}}</td>
+        <td>{{description}}</td>
     </template>
     <p-p from-parent-or-host observe-prop=members to=[-iff] m=1></p-p>
     <p-p from-parent-or-host observe-prop=members to=[-list] m=1></p-p>
@@ -29,6 +30,7 @@ const mainTemplate = html`
             <table>
                 <thead>
                     <th>Name</th>
+                    <th>Description</th>
                 </thead>
                 <tbody></tbody>
             </table>
