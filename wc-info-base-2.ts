@@ -26,13 +26,17 @@ const mainTemplate = html`
             <!-- <i-bid -list>
                 <wc-info-member></wc-info-member>
             </i-bid> -->
-            <li-bid template-id=./class-member render-after=tbody -list tag=tr></li-bid>
+            <li-bid template-id=./class-member render-after=[anchor] -list tag=tr></li-bid>
             <table>
                 <thead>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                    <tr anchor style=display:none></tr>
+                </tbody>
             </table>
         </template>
     </if-diff>
