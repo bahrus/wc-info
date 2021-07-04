@@ -24,7 +24,7 @@ const mainTemplate = html `
             <!-- <i-bid -list>
                 <wc-info-member></wc-info-member>
             </i-bid> -->
-            <li-bid template-id=./class-member render-after=[anchor] -list tag=tr></li-bid>
+            <li-bid template-id=./class-member render-at-start-of=tbody -list tag=tr></li-bid>
             <table>
                 <thead>
                     <tr>
@@ -33,7 +33,7 @@ const mainTemplate = html `
                     </tr>
                 </thead>
                 <tbody>
-                    <tr anchor style=display:none></tr>
+                    
                 </tbody>
             </table>
         </template>
