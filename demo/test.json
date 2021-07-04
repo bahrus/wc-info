@@ -13,8 +13,11 @@
             "members": [
               {
                 "kind": "field",
-                "name": "fromHost",
-                "description": "Observe property from ShadowRoot Host"
+                "name": "fromHostx",
+                "description": "Observe property from ShadowRoot Host",
+                "type": {
+                    "text": "string"
+                }
               },
               {
                 "kind": "field",
