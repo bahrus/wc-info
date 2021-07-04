@@ -10,7 +10,7 @@ import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
 import('nomodule/no-module.js');
 const mainTemplate = html `
-<template id=class-member>
+<template id=class-member-inner-row>
     <td>{{name}}</td>
     <td>{{description}}</td>
     <td>{{type.text}}</td>
@@ -28,7 +28,8 @@ const mainTemplate = html `
             <!-- <i-bid -list>
                 <wc-info-member></wc-info-member>
             </i-bid> -->
-            <li-bid template-id=./class-member render-at-start-of=tbody -list tag=tr>
+            <!-- TODO:  why can't we use li inside -->
+            <li-bid template-id=./class-member-inner-row render-at-start-of=tbody -list tag=tr>
             </li-bid>
             <table>
                 <thead>
