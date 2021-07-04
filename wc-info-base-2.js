@@ -9,14 +9,17 @@ import('ib-id/i-bid.js');
 import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
 const mainTemplate = html `
+<template id=class-member>
+    <td>{{name}}</td>
+    <td>{{description}}</td>
+    <td>{{type.text}}</td>
+</template>
+
 <template id=custom-element-declaration>
     <hr>
     <div>{{_tagName}}</div>
     <div data-desc="{{description}}">{{description}}</div>
-    <template id=class-member>
-        <td>{{name}}</td>
-        <td>{{description}}</td>
-    </template>
+
     <p-p from-parent-or-host observe-prop=members to=[-iff] m=1></p-p>
     <p-p from-parent-or-host observe-prop=members to=[-list] m=1></p-p>
     <if-diff -iff is-non-empty-array>
@@ -24,12 +27,14 @@ const mainTemplate = html `
             <!-- <i-bid -list>
                 <wc-info-member></wc-info-member>
             </i-bid> -->
-            <li-bid template-id=./class-member render-at-start-of=tbody -list tag=tr></li-bid>
+            <li-bid template-id=./class-member render-at-start-of=tbody -list tag=tr>
+            </li-bid>
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Type</th>
                     </tr>
                 </thead>
                 <tbody>
