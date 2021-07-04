@@ -16,18 +16,19 @@
     "xtal-fetch": "0.0.89",
     "pass-prop": "0.0.4",
     "pass-up": "0.0.5",
-    "pass-down": "0.0.41",
+    "pass-down": "0.0.44",
     "carbon-copy": "0.1.68",
     "ib-id": "0.0.48",
     "lib-id": "0.0.9",
     "trans-render": "0.0.291",
-    "if-diff": "0.0.73"
+    "if-diff": "0.0.74",
+    "nomodule": "0.0.13"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
     "xtal-test": "0.0.51",
     "custom-elements-manifest": "1.0.0",
-    "@custom-elements-manifest/analyzer": "0.4.8"
+    "@custom-elements-manifest/analyzer": "0.4.10"
   },
   "repository": {
     "type": "git",

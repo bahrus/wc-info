@@ -9,6 +9,7 @@ import('carbon-copy/c-c.js');
 import('ib-id/i-bid.js');
 import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
+import('nomodule/no-module.js');
 
 const mainTemplate = html`
 <template id=class-member>
@@ -73,10 +74,16 @@ const mainTemplate = html`
     <div>Parameter Name: {{name}}</div>
 </template>
 <c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c> -->
-
+<no-module></no-module>
+<script id=filter-out-less-typed-version nomodule=ish>
+    export const filter = (val) => {
+        console.log(val);
+        return val;
+    }
+</script>
 <p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
-<p-d-x on=result-changed to=[-list] val=target.result val-filter=$.modules.[*].declarations[?(@.tagName)]></p-d-x>
+<p-d-x on=result-changed to=[-list] val=target.result val-filter=$.modules.[*].declarations[?(@.tagName)] filter-id=filter-out-less-typed-version></p-d-x>
 <div>Custom Elements</div>
 <i-bid -list>
     <custom-element-declaration></custom-element-declaration>
