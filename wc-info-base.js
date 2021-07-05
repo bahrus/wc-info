@@ -19,11 +19,7 @@ const mainTemplate = html `
     <custom-element-declaration data-is-original></custom-element-declaration>
 </i-bid>
 
-<template id=class-member-inner-row>
-    <td>{{name}}</td>
-    <td>{{description}}</td>
-    <td>{{type.text}}</td>
-</template>
+
 
 <template id=custom-element-declaration>
     <hr>
@@ -35,7 +31,8 @@ const mainTemplate = html `
     <if-diff -iff is-non-empty-array>
         <template>
             <h3>Properties</h3>
-            <li-bid template-id=./class-member-inner-row render-at-start-of=tbody -list tag=tr>
+            <!-- TODO:  why can't we use tr inside -->
+            <li-bid template-id=./class-prop-inner-row render-at-start-of=tbody -list tag=tr>
             </li-bid>
             <table>
                 <thead>
@@ -43,10 +40,18 @@ const mainTemplate = html `
                         <th>Name</th>
                         <th>Description</th>
                         <th>Type</th>
+                        <th>Default</th>
+                        <th>Inherited From</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <template id=class-prop-inner-row>
+                        <td>{{name}}</td>
+                        <td>{{description}}</td>
+                        <td>{{type.text}}</td>
+                        <td>{{default}}</td>
+                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module}})</td>
+                    </template>                     
                 </tbody>
             </table>
         </template>
@@ -57,28 +62,31 @@ const mainTemplate = html `
     <if-diff -iff is-non-empty-array>
         <template>
             <h3>Methods</h3>
-            <!-- <i-bid -list>
-                <wc-info-member></wc-info-member>
-            </i-bid> -->
-            <!-- TODO:  why can't we use li inside -->
-            <li-bid template-id=./class-member-inner-row render-at-start-of=tbody -list tag=tr>
-            </li-bid>
+            <!-- TODO:  why can't we use tr inside -->
+            <li-bid template-id=./class-method-inner-row render-at-start-of=tbody -list tag=tr></li-bid>
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Type</th>
+                        <th>Default</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <template id=class-method-inner-row>
+                        <td>{{name}}</td>
+                        <td>{{description}}</td>
+                        <td>{{type.text}}</td>
+                    </template>                    
                 </tbody>
             </table>
         </template>
     </if-diff>
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members"]' noshadow></c-c>
+
+
 
 <!-- <template id=wc-info-parameter>
     <hr>
