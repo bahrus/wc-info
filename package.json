@@ -13,7 +13,7 @@
   "dependencies": {
     "hypo-link": "0.0.31",
     "xtal-element": "0.0.411",
-    "xtal-fetch": "0.0.89",
+    "xtal-fetch": "0.0.90",
     "pass-prop": "0.0.4",
     "pass-up": "0.0.5",
     "pass-down": "0.0.44",
