@@ -17,9 +17,9 @@
     "pass-prop": "0.0.9",
     "pass-up": "0.0.5",
     "pass-down": "0.0.45",
-    "carbon-copy": "0.1.68",
+    "carbon-copy": "0.1.72",
     "ib-id": "0.0.48",
-    "lib-id": "0.0.9",
+    "lib-id": "0.0.12",
     "trans-render": "0.0.291",
     "if-diff": "0.0.78",
     "nomodule": "0.0.13"

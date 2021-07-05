@@ -49,7 +49,7 @@ const mainTemplate = html `
                         <td>{{name}}</td>
                         <td>{{description}}</td>
                         <td>{{type.text}}</td>
-                        <td>{{default}}</td>
+                        <td>{{default ?? - }}</td>
                         <td>{{inheritedFrom.name}} ({{inheritedFrom.module}})</td>
                     </template>                     
                 </tbody>
