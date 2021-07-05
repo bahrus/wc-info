@@ -21,7 +21,7 @@
     "ib-id": "0.0.48",
     "lib-id": "0.0.9",
     "trans-render": "0.0.291",
-    "if-diff": "0.0.74",
+    "if-diff": "0.0.78",
     "nomodule": "0.0.13"
   },
   "devDependencies": {
