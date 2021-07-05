@@ -14,8 +14,15 @@
             {
               "kind": "field",
               "name": "is",
+              "type": {
+                "text": "string"
+              },
               "static": true,
-              "default": "p-p-x"
+              "default": "'p-p-x'",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
             },
             {
               "kind": "method",
@@ -29,8 +36,8 @@
                 }
               ],
               "inheritedFrom": {
-                "name": "PassPropExt",
-                "module": "pass-prop-ext.ts"
+                "name": "PassProp",
+                "module": "pass-prop.ts"
               }
             },
             {
@@ -72,6 +79,8 @@
             {
               "kind": "field",
               "name": "propActions",
+              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -80,6 +89,8 @@
             {
               "kind": "field",
               "name": "self",
+              "default": "this",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -91,6 +102,8 @@
               "type": {
                 "text": "IReactor"
               },
+              "default": "new xc.Rx(this)",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -202,7 +215,8 @@
             }
           ],
           "superclass": {
-            "name": "PassPropExt"
+            "name": "PassPropExt",
+            "module": "/pass-prop-ext.js"
           },
           "tagName": "p-p-x",
           "customElement": true,
@@ -321,8 +335,15 @@
             {
               "kind": "field",
               "name": "is",
+              "type": {
+                "text": "string"
+              },
               "static": true,
-              "default": "p-p-x"
+              "default": "'p-p-x'",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
             },
             {
               "kind": "method",
@@ -336,8 +357,8 @@
                 }
               ],
               "inheritedFrom": {
-                "name": "PassPropExt",
-                "module": "pass-prop-ext.ts"
+                "name": "PassProp",
+                "module": "pass-prop.ts"
               }
             },
             {
@@ -379,6 +400,8 @@
             {
               "kind": "field",
               "name": "propActions",
+              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -387,6 +410,8 @@
             {
               "kind": "field",
               "name": "self",
+              "default": "this",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -398,6 +423,8 @@
               "type": {
                 "text": "IReactor"
               },
+              "default": "new xc.Rx(this)",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -509,7 +536,8 @@
             }
           ],
           "superclass": {
-            "name": "PassPropExt"
+            "name": "PassPropExt",
+            "module": "/pass-prop-ext.js"
           },
           "tagName": "p-p-x",
           "customElement": true,
@@ -628,12 +656,21 @@
             {
               "kind": "field",
               "name": "is",
+              "type": {
+                "text": "string"
+              },
               "static": true,
-              "default": "p-p"
+              "default": "'p-p'",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
             },
             {
               "kind": "field",
               "name": "propActions",
+              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -642,6 +679,8 @@
             {
               "kind": "field",
               "name": "self",
+              "default": "this",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -653,6 +692,8 @@
               "type": {
                 "text": "IReactor"
               },
+              "default": "new xc.Rx(this)",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -780,7 +821,8 @@
             }
           ],
           "superclass": {
-            "name": "PassProp"
+            "name": "PassProp",
+            "module": "/pass-prop.js"
           },
           "tagName": "p-p",
           "customElement": true,
@@ -866,12 +908,21 @@
             {
               "kind": "field",
               "name": "is",
+              "type": {
+                "text": "string"
+              },
               "static": true,
-              "default": "p-p"
+              "default": "'p-p'",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
             },
             {
               "kind": "field",
               "name": "propActions",
+              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -880,6 +931,8 @@
             {
               "kind": "field",
               "name": "self",
+              "default": "this",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -891,6 +944,8 @@
               "type": {
                 "text": "IReactor"
               },
+              "default": "new xc.Rx(this)",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1018,7 +1073,8 @@
             }
           ],
           "superclass": {
-            "name": "PassProp"
+            "name": "PassProp",
+            "module": "/pass-prop.js"
           },
           "tagName": "p-p",
           "customElement": true,
@@ -1104,8 +1160,15 @@
             {
               "kind": "field",
               "name": "is",
+              "type": {
+                "text": "string"
+              },
               "static": true,
-              "default": "pass-prop-ext"
+              "default": "'pass-prop-ext'",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
             },
             {
               "kind": "method",
@@ -1114,7 +1177,11 @@
                 {
                   "name": "val"
                 }
-              ]
+              ],
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
             },
             {
               "type": {
@@ -1143,6 +1210,8 @@
             {
               "kind": "field",
               "name": "propActions",
+              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1151,6 +1220,8 @@
             {
               "kind": "field",
               "name": "self",
+              "default": "this",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1162,6 +1233,8 @@
               "type": {
                 "text": "IReactor"
               },
+              "default": "new xc.Rx(this)",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1351,7 +1424,8 @@
             }
           ],
           "superclass": {
-            "name": "PassProp"
+            "name": "PassProp",
+            "module": "/pass-prop.js"
           },
           "tagName": "pass-prop-ext",
           "customElement": true
@@ -1380,8 +1454,15 @@
             {
               "kind": "field",
               "name": "is",
+              "type": {
+                "text": "string"
+              },
               "static": true,
-              "default": "pass-prop-ext"
+              "default": "'pass-prop-ext'",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
             },
             {
               "kind": "method",
@@ -1393,7 +1474,11 @@
                     "text": "any"
                   }
                 }
-              ]
+              ],
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
             },
             {
               "type": {
@@ -1422,6 +1507,8 @@
             {
               "kind": "field",
               "name": "propActions",
+              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1430,6 +1517,8 @@
             {
               "kind": "field",
               "name": "self",
+              "default": "this",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1441,6 +1530,8 @@
               "type": {
                 "text": "IReactor"
               },
+              "default": "new xc.Rx(this)",
+              "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1630,7 +1721,8 @@
             }
           ],
           "superclass": {
-            "name": "PassProp"
+            "name": "PassProp",
+            "module": "/pass-prop.js"
           },
           "tagName": "pass-prop-ext",
           "customElement": true
@@ -1659,20 +1751,32 @@
             {
               "kind": "field",
               "name": "is",
+              "type": {
+                "text": "string"
+              },
               "static": true,
-              "default": "pass-prop"
+              "default": "'pass-prop'"
             },
             {
               "kind": "field",
-              "name": "propActions"
+              "name": "propActions",
+              "default": "[\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\n]",
+              "privacy": "private",
+              "type": {
+                "text": "array"
+              }
             },
             {
               "kind": "field",
-              "name": "self"
+              "name": "self",
+              "default": "this",
+              "privacy": "private"
             },
             {
               "kind": "field",
-              "name": "reactor"
+              "name": "reactor",
+              "default": "new xc.Rx(this)",
+              "privacy": "private"
             },
             {
               "kind": "method",
@@ -1835,23 +1939,32 @@
             {
               "kind": "field",
               "name": "is",
+              "type": {
+                "text": "string"
+              },
               "static": true,
-              "default": "pass-prop"
+              "default": "'pass-prop'"
             },
             {
               "kind": "field",
-              "name": "propActions"
+              "name": "propActions",
+              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "privacy": "private"
             },
             {
               "kind": "field",
-              "name": "self"
+              "name": "self",
+              "default": "this",
+              "privacy": "private"
             },
             {
               "kind": "field",
               "name": "reactor",
               "type": {
                 "text": "IReactor"
-              }
+              },
+              "default": "new xc.Rx(this)",
+              "privacy": "private"
             },
             {
               "kind": "method",

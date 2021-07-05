@@ -28,10 +28,10 @@ const mainTemplate = html `
 <template id=custom-element-declaration>
     <hr>
     <h2>{{_tagName}}</h2>
-    <div data-desc="{{description}}">{{description}}</div>
+    <dfn>{{description}}</dfn>
     
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field')]" to=[-iff] m=1></p-p-x>
-    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field')]" to=[-list] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private')]" to=[-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array>
         <template>
             <h3>Properties</h3>
