@@ -77,9 +77,26 @@ const mainTemplate = html`
 <c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c> -->
 <no-module></no-module>
 <script id=filter-out-less-typed-version nomodule=ish>
-    export const filter = (val) => {
-        console.log(val);
-        return val;
+    export const filter = (declarations) => {
+        const tagNameToDeclaration = {};
+        function countTypes(declaration){
+            let count = 0;
+            for(const member of declaration.members){
+                if(member.type !== undefined) count++;
+            }
+            return count;
+        }
+        for(const declaration of declarations){
+            const tagName = declaration.tagName;
+            if(tagNameToDeclaration[tagName] !== undefined){
+                if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName])){
+                    tagNameToDeclaration[tagName] = declaration;
+                }
+            }else{
+                tagNameToDeclaration[tagName] = declaration;
+            }
+        }
+        return Object.values(tagNameToDeclaration);
     }
 </script>
 <p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
