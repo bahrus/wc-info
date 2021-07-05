@@ -30,8 +30,8 @@ const mainTemplate = html `
     <h2>{{_tagName}}</h2>
     <dfn>{{description}}</dfn>
     
-    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field')]" to=[-iff] m=1></p-p-x>
-    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private')]" to=[-list] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array>
         <template>
             <h3>Properties</h3>
