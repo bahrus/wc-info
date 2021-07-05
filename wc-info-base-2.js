@@ -99,7 +99,7 @@ const mainTemplate = html `
 </script>
 <p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
-<p-d-x on=result-changed to=[-list] val=target.result val-filter=$.modules.[*].declarations[?(@.tagName)] filter-id=filter-out-less-typed-version></p-d-x>
+<p-d-x on=result-changed to=[-list] val=target.result val-filter=$.modules.[*].declarations[?(@.tagName)] val-filter-script-id=filter-out-less-typed-version></p-d-x>
 <div>Custom Elements</div>
 <i-bid -list>
     <custom-element-declaration></custom-element-declaration>
