@@ -34,7 +34,14 @@ const mainTemplate = html`
         <template>
             <h3>Properties</h3>
             <!-- TODO:  why can't we use tr inside -->
-            <li-bid template-id=./class-prop-inner-row render-at-start-of=tbody -list tag=tr>
+            <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
+                <template>
+                    <td>{{name}}</td>
+                    <td>{{description}}</td>
+                    <td>{{type.text}}</td>
+                    <td>{{default ?? - }}</td>
+                    <td>{{inheritedFrom.name}} ({{inheritedFrom.module}})</td>
+                </template>  
             </li-bid>
             <table>
                 <thead>
@@ -47,13 +54,7 @@ const mainTemplate = html`
                     </tr>
                 </thead>
                 <tbody>
-                    <template id=class-prop-inner-row>
-                        <td>{{name}}</td>
-                        <td>{{description}}</td>
-                        <td>{{type.text}}</td>
-                        <td>{{default ?? - }}</td>
-                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module}})</td>
-                    </template>                     
+                   
                 </tbody>
             </table>
         </template>
