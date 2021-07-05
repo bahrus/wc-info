@@ -1,323 +1,130 @@
-import { define } from "trans-render/define.js";
-import { createTemplate as T} from "trans-render/createTemplate.js";
-import { XtalViewElement } from "xtal-element/xtal-view-element.js";
-import { newRenderContext } from "xtal-element/newRenderContext.js";
-import { TransformRules, RenderOptions, RenderContext, TransformFn } from "trans-render/init.d.js";
-import { repeat } from "trans-render/repeat.js";
-//import  {HypoLink} from "hypo-link/hypo-link.js";
-import { WCSuiteInfo, WCInfo, AttribInfo, CustomEventInfo, PropertyInfo, SlotInfo } from "types.d.js";
-const package_name = "package-name";
-const href = 'href';
+import {X} from 'xtal-element/lib/X.js';
+import {WCInfoBaseProps} from './types.js';
+import {html} from 'xtal-element/lib/html.js';
+import('pass-prop/p-p.js');
+import('pass-prop/p-p-x.js');
+import('pass-down/p-d-x.js');
+import('carbon-copy/c-c.js');
+import('xtal-fetch/xtal-fetch-get.js');
+import('carbon-copy/c-c.js');
+import('ib-id/i-bid.js');
+import('lib-id/li-bid.js');
+import('if-diff/if-diff.js');
+import('nomodule/no-module.js');
 
-const definitionItemTemplate = T(/* html */ `
-    <dt></dt><dd></dd>
-`);
+const mainTemplate = html`
+<p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
+<xtal-fetch-get fetch -href></xtal-fetch-get>
+<p-d-x on=result-changed to=[-list] val=target.result val-filter=$.modules.[*].declarations[?(@.tagName)] val-filter-script-id=filter-out-less-typed-version></p-d-x>
+<h1>Custom Elements</h1>
+<i-bid -list>
+    <custom-element-declaration data-is-original></custom-element-declaration>
+</i-bid>
 
-const propertyItemTemplate = T(/* html */ `
-  <dt>🏠 <dfn data-bind=name></dfn></dt>
-  <dd>
-    <hypo-link data-bind=description></hypo-link>
-  </dd>
-`);
+<template id=class-member-inner-row>
+    <td>{{name}}</td>
+    <td>{{description}}</td>
+    <td>{{type.text}}</td>
+</template>
 
-const attributeItemTemplate = T(/* html */ `
-  <dt>💠 <dfn data-bind=name></dfn></dt>
-  <dd>
-    <hypo-link data-bind=description></hypo-link>
-    <details>
-      <summary part=allowedValuesLabel></summary>
-      <dl></dl>
-    </details>
-  </dd>
-`);
-
-const eventItemTemplate = T(/* html */ `
-<dt>⚡ <dfn data-bind=name></dfn></dt>
-<dd>
-  <hypo-link data-bind=description></hypo-link>
-  <details>
-    <summary part="detailLabel"></summary>
-    <dl></dl>
-  </details>
-  
-
-</dd>
-`);
-
-const slotItemTemplate = T(/* html */`
-<dt>🎰 <dfn data-bind=name></dfn></dt>
-<dd>
-  <hypo-link data-bind=description></hypo-link>
-  <details>
-    <summary part="slotLabel"></summary>
-    <dl></dl>
-  </details>
-</dd>
-`);
-
-const WCInfoTemplate = T(/* html */ `
-<section class="WCInfo card">
-    <header>
-        <div class="WCName"><span>⚛️</span><dfn data-bind="name"></dfn></div>
-        <hypo-link class=WCDesc></hypo-link>
-    </header>
-    <section data-type=attributes>
-      <details>
-          <summary part=attributesLabel></summary>
-          <dl></dl>
-      </details>
-    </section>
-    <section data-type=properties>
-      <details>
-        <summary part=propertiesLabel></summary>
-        <dl></dl>
-      </details>
-    </section>
-    <section data-type=events>
-      <details>
-          <summary part=eventsLabel></summary>
-          <dl></dl>
-      </details>
-    </section>
-    <section data-type=slots>
-      <details>
-        <summary part=slotsLabel></summary>
-        <dl></dl>
-      </details>
-    </section>
-</section>`);
-
-//https://medium.com/datadriveninvestor/internationalize-your-css-media-queries-64c749eb00c
-const mainTemplate = T(/* html */ `
-<style role=i11n>      
-  [part=attributesLabel]::after{
-    content: "⚙️attributes"
-  }
-  [part=propertiesLabel]::after{
-    content: "🏘️properties"
-  }
-  [part=eventsLabel]::after{
-    content: "🌩️events"
-  }
-  [part=detailLabel]::after{
-    content: "🔬detail"
-  }
-  [part=allowedValuesLabel]::after{
-    content: "Allowed Values"
-  }
-  [part=slotsLabel]::after{
-    content: "🎰 slots"
-  }
-  .logo{
-    height:32px;
-  }
-</style>
-<header>
-  <h3></h3>
-  <a target="_blank"><img class="logo" alt="JSON" src="https://json-schema.org/assets/logo.svg"></a>
-</header>
-<main></main>
-`);
-
-/**
- * Non-styled.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.
- * @element wc-info-base
- * @slot test - this is just a slot for testing purposes.
- * 
- */
-export class WCInfoBase extends XtalViewElement<WCSuiteInfo> {
-  
-  get initRenderContext() {
-      const tags = this.viewModel.tags;
-      return newRenderContext({
-        header: {
-          h3: this.packageName,
-          a: [{}, {}, {href: this._href}] 
-        },
-        main: ({ target, ctx }) => repeat(WCInfoTemplate, ctx, tags, target, {
-            section: ({ item } : {item: WCInfo}) =>
-              ({
-                header: {
-                  ".WCName":{
-                    dfn: item.name,
-                  },
-                  'hypo-link': item.description
-                },
-                "section[data-type='attributes']": x => {
-                  const attribs = item.attribs;
-                  if (attribs === undefined || attribs.length === 0) return false;
-                  return {
-                    details: {
-                      dl: ({ target, ctx}) => repeat(attributeItemTemplate, ctx, attribs, target, {
-                          dt: ({ item }: {item: AttribInfo}) => ({
-                            dfn: item.name
-                          }),
-                          dd: ({ item }: {item: AttribInfo}) => ({
-                            'hypo-link': item.description,
-                            details: x => {
-                              const vals = item.values;
-                              if(vals === undefined) return false;
-                              return{
-                                dl: ({target, ctx}) => repeat(definitionItemTemplate, ctx, vals.length, target, {
-                                    dt: ({idx}) => vals[Math.floor(idx / 2)].name,
-                                    dd: ({idx}) => vals[Math.floor(idx / 2)].description
-                                })
-                              }
-                            }
-                          }) 
-                        } as TransformRules)
-                    }
-                  }
-                },
-                "section[data-type='events']": x =>{
-                  const events = item.events;
-                  if(events === undefined || events.length === 0) return false;
-                  return {
-                    details:{
-                      dl:({target, ctx}) => repeat(eventItemTemplate, ctx, events, target, {
-                          dt: ({ item } : {item: CustomEventInfo}) => ({
-                            dfn: item.name
-                          }),
-                          dd: ({ item } : { item: CustomEventInfo }) => ({
-                            'hypo-link': item.description,
-                            details: ({target}) =>{
-                              const detail = item.detail;
-                              if(detail === undefined) return false;
-                              return({
-                                dl:({target, ctx}) =>{
-
-                                  return repeat(definitionItemTemplate, ctx, detail.length, target, {
-                                    dt: ({ idx }) => detail[Math.floor(idx / 2)].name,
-                                    dd: ({ idx }) => detail[Math.floor(idx / 2)].description
-                                  });
-                                }                                
-                              } as TransformRules)
-
-                            }
-                              
-                          })
-                        } as TransformRules)
-                    }
-                  }
-                },
-                "section[data-type='properties']": x =>{
-                  const props = item.properties;
-                  if (props === undefined || props.length === 0) return false;
-                  return {
-                    details: {
-                      dl: ({ target, ctx}) => repeat(propertyItemTemplate, ctx, props, target, {
-                          dt: ({ item } : {item: PropertyInfo}) => ({
-                            dfn: item.name
-                          }),
-                          dd: ({ item } : {item: PropertyInfo}) => item.description
-                      } as TransformRules)
-                    }              
-                  }
-                },
-                "section[data-type='slots']": x =>{
-                  const slots = item.slots;
-                  if(slots === undefined || slots.length === 0) return false;
-                  return {
-                    details:{
-                      dl: ({ target, ctx}) => repeat(slotItemTemplate, ctx, slots, target, {
-                        dt: ({ item }: {item: SlotInfo}) => ({
-                          dfn: item.name
-                        }),
-                        dd: ({ item } : {item: SlotInfo}) => item.description
-                      })
-                    }
-                  }
-                }
+<template id=custom-element-declaration>
+    <hr>
+    <h2>{{_tagName}}</h2>
+    <dfn>{{description}}</dfn>
     
-              } as TransformRules)
-        }),
-      } as TransformRules);
-  }
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
+    <if-diff -iff is-non-empty-array>
+        <template>
+            <h3>Properties</h3>
+            <li-bid template-id=./class-member-inner-row render-at-start-of=tbody -list tag=tr>
+            </li-bid>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </template>
+    </if-diff>
+    
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-list] m=1></p-p-x>
+    <if-diff -iff is-non-empty-array>
+        <template>
+            <h3>Methods</h3>
+            <!-- <i-bid -list>
+                <wc-info-member></wc-info-member>
+            </i-bid> -->
+            <!-- TODO:  why can't we use li inside -->
+            <li-bid template-id=./class-member-inner-row render-at-start-of=tbody -list tag=tr>
+            </li-bid>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </template>
+    </if-diff>
+</template>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members"]' noshadow></c-c>
 
-  afterInitRenderCallback(){
-    import('hypo-link/hypo-link.js');
-  }
-
-  static get is() {
-    return "wc-info-base";
-  }
-
-  get noShadow() {
-    return true;
-  }
-
-  get readyToInit() {
-    return this._href !== undefined && this._packageName !== undefined;
-  }
-
-  init() {
-    return new Promise<WCSuiteInfo>(resolve => {
-      fetch(this._href!).then(resp => {
-        resp.json().then(info => {
-          resolve(info as WCSuiteInfo);
-        });
-      });
-    });
-  }
-
-  update() {
-    return this.init();
-  }
-
-  onPropsChange() {
-    this._initialized = false;
-    this.root.innerHTML = "";
-    return super.onPropsChange();
-  }
-
-  get mainTemplate() {
-    return mainTemplate;
-  }
-
-  static get observedAttributes() {
-    return super.observedAttributes.concat([href, package_name]);
-  }
-
-  attributeChangedCallback(n: string, ov: string, nv: string) {
-    switch (n) {
-      case href:
-        this._href = nv;
-        break;
-      case package_name:
-        this._packageName = nv;
-        break;
+<!-- <template id=wc-info-parameter>
+    <hr>
+    <div>Parameter Name: {{name}}</div>
+</template>
+<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c> -->
+<no-module></no-module>
+<script id=filter-out-less-typed-version nomodule=ish>
+    export const filter = (declarations) => {
+        const tagNameToDeclaration = {};
+        function countTypes(declaration){
+            let count = 0;
+            for(const member of declaration.members){
+                if(member.type !== undefined) count++;
+            }
+            return count;
+        }
+        for(const declaration of declarations){
+            const tagName = declaration.tagName;
+            if(tagNameToDeclaration[tagName] !== undefined){
+                if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName])){
+                    tagNameToDeclaration[tagName] = declaration;
+                }
+            }else{
+                tagNameToDeclaration[tagName] = declaration;
+            }
+        }
+        return Object.values(tagNameToDeclaration);
     }
-    super.attributeChangedCallback(n, ov, nv);
-  }
+</script>
 
-  _href: string | null = null;
-  get href() {
-    return this._href;
-  }
-  /**
-   * Url where Web Component Information is contained.
-   * @attr
-   */
-  set href(nv) {
-    this.attr(href, nv!);
-  }
+`;
 
-  _packageName: string | null = null;
-  get packageName() {
-    return this._packageName;
-  }
-  /**
-   * Name of Package.
-   * @attr package-name
-   */
-  set packageName(nv) {
-    this.attr(package_name, nv!);
-  }
-  //_c = false;
-  connectedCallback() {
-    this.propUp([href, "packageName"]);
-    super.connectedCallback();
-  }
-}
+export class WCInfoBase extends X implements WCInfoBaseProps{}
 
-define(WCInfoBase);
+X.tend({
+    name: 'wc-info-base',
+    class: WCInfoBase as {new(): X},
+    propDefs: {
+        href:{
+            dry: true,
+            type: String,
+        }
+    },
+    mainTemplate,
+    noShadow: true,
+});

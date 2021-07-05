@@ -10,6 +10,6 @@
 	},
 	"files": [
 		"wc-info-package-base.ts",
-		"wc-info-base-2.ts"
+		"wc-info-base.ts"
 	]
 }
