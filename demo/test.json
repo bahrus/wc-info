@@ -70,6 +70,7 @@
               },
               "description": "Property path from the script tag, where custom filter function can be obtained.",
               "name": "valFilterScriptPropPath",
+              "default": "_modExport.filter",
               "kind": "field",
               "inheritedFrom": {
                 "name": "PassPropExt",
@@ -79,7 +80,7 @@
             {
               "kind": "field",
               "name": "propActions",
-              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "default": "[\r\n    onFromRootNodeHost, \r\n    onHostToObserve, \r\n    onLastVal, \r\n    onFromUpsearch, \r\n    onFromParent, \r\n    onFromParentOrHost, \r\n    onFromUpShadowSearch\r\n]",
               "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
@@ -193,6 +194,30 @@
               "type": {
                 "text": "string"
               },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "fromUpsearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "fromUpShadowSearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
               "description": "Name of property to observe",
               "name": "observeProp",
               "kind": "field",
@@ -248,7 +273,7 @@
                 "text": "string"
               },
               "description": "Property path from the script tag, where custom filter function can be obtained.",
-              "name": "valFilterScriptPropPath",
+              "name": "val-filter-script-prop-path",
               "inheritedFrom": {
                 "name": "PassPropExt",
                 "module": "pass-prop-ext.ts"
@@ -282,6 +307,28 @@
               },
               "description": "Observe property fro parent element if available, otherwise from host.",
               "name": "from-parent-or-host",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "from-upsearch",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "from-up-shadow-search",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -391,6 +438,7 @@
               },
               "description": "Property path from the script tag, where custom filter function can be obtained.",
               "name": "valFilterScriptPropPath",
+              "default": "_modExport.filter",
               "kind": "field",
               "inheritedFrom": {
                 "name": "PassPropExt",
@@ -400,7 +448,7 @@
             {
               "kind": "field",
               "name": "propActions",
-              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "default": "[\r\n    onFromRootNodeHost, \r\n    onHostToObserve, \r\n    onLastVal, \r\n    onFromUpsearch, \r\n    onFromParent, \r\n    onFromParentOrHost, \r\n    onFromUpShadowSearch\r\n]",
               "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
@@ -514,6 +562,30 @@
               "type": {
                 "text": "string"
               },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "fromUpsearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "fromUpShadowSearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
               "description": "Name of property to observe",
               "name": "observeProp",
               "kind": "field",
@@ -569,7 +641,7 @@
                 "text": "string"
               },
               "description": "Property path from the script tag, where custom filter function can be obtained.",
-              "name": "valFilterScriptPropPath",
+              "name": "val-filter-script-prop-path",
               "inheritedFrom": {
                 "name": "PassPropExt",
                 "module": "pass-prop-ext.ts"
@@ -603,6 +675,28 @@
               },
               "description": "Observe property fro parent element if available, otherwise from host.",
               "name": "from-parent-or-host",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "from-upsearch",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "from-up-shadow-search",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -669,7 +763,7 @@
             {
               "kind": "field",
               "name": "propActions",
-              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "default": "[\r\n    onFromRootNodeHost, \r\n    onHostToObserve, \r\n    onLastVal, \r\n    onFromUpsearch, \r\n    onFromParent, \r\n    onFromParentOrHost, \r\n    onFromUpShadowSearch\r\n]",
               "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
@@ -799,6 +893,30 @@
               "type": {
                 "text": "string"
               },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "fromUpsearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "fromUpShadowSearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
               "description": "Name of property to observe",
               "name": "observeProp",
               "kind": "field",
@@ -855,6 +973,28 @@
               },
               "description": "Observe property fro parent element if available, otherwise from host.",
               "name": "from-parent-or-host",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "from-upsearch",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "from-up-shadow-search",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -921,7 +1061,7 @@
             {
               "kind": "field",
               "name": "propActions",
-              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "default": "[\r\n    onFromRootNodeHost, \r\n    onHostToObserve, \r\n    onLastVal, \r\n    onFromUpsearch, \r\n    onFromParent, \r\n    onFromParentOrHost, \r\n    onFromUpShadowSearch\r\n]",
               "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
@@ -1051,6 +1191,30 @@
               "type": {
                 "text": "string"
               },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "fromUpsearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "fromUpShadowSearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
               "description": "Name of property to observe",
               "name": "observeProp",
               "kind": "field",
@@ -1107,6 +1271,28 @@
               },
               "description": "Observe property fro parent element if available, otherwise from host.",
               "name": "from-parent-or-host",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "from-upsearch",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "from-up-shadow-search",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1205,12 +1391,13 @@
               },
               "description": "Property path from the script tag, where custom filter function can be obtained.",
               "name": "valFilterScriptPropPath",
+              "default": "_modExport.filter",
               "kind": "field"
             },
             {
               "kind": "field",
               "name": "propActions",
-              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "default": "[\r\n    onFromRootNodeHost, \r\n    onHostToObserve, \r\n    onLastVal, \r\n    onFromUpsearch, \r\n    onFromParent, \r\n    onFromParentOrHost, \r\n    onFromUpShadowSearch\r\n]",
               "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
@@ -1324,6 +1511,30 @@
               "type": {
                 "text": "string"
               },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "fromUpsearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "fromUpShadowSearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
               "description": "Name of property to observe",
               "name": "observeProp",
               "kind": "field",
@@ -1365,7 +1576,7 @@
                 "text": "string"
               },
               "description": "Property path from the script tag, where custom filter function can be obtained.",
-              "name": "valFilterScriptPropPath"
+              "name": "val-filter-script-prop-path"
             },
             {
               "type": {
@@ -1395,6 +1606,28 @@
               },
               "description": "Observe property fro parent element if available, otherwise from host.",
               "name": "from-parent-or-host",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "from-upsearch",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "from-up-shadow-search",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1502,12 +1735,13 @@
               },
               "description": "Property path from the script tag, where custom filter function can be obtained.",
               "name": "valFilterScriptPropPath",
+              "default": "_modExport.filter",
               "kind": "field"
             },
             {
               "kind": "field",
               "name": "propActions",
-              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "default": "[\r\n    onFromRootNodeHost, \r\n    onHostToObserve, \r\n    onLastVal, \r\n    onFromUpsearch, \r\n    onFromParent, \r\n    onFromParentOrHost, \r\n    onFromUpShadowSearch\r\n]",
               "privacy": "private",
               "inheritedFrom": {
                 "name": "PassProp",
@@ -1621,6 +1855,30 @@
               "type": {
                 "text": "string"
               },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "fromUpsearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "fromUpShadowSearch",
+              "kind": "field",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
               "description": "Name of property to observe",
               "name": "observeProp",
               "kind": "field",
@@ -1662,7 +1920,7 @@
                 "text": "string"
               },
               "description": "Property path from the script tag, where custom filter function can be obtained.",
-              "name": "valFilterScriptPropPath"
+              "name": "val-filter-script-prop-path"
             },
             {
               "type": {
@@ -1692,6 +1950,28 @@
               },
               "description": "Observe property fro parent element if available, otherwise from host.",
               "name": "from-parent-or-host",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "from-upsearch",
+              "inheritedFrom": {
+                "name": "PassProp",
+                "module": "pass-prop.ts"
+              }
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "from-up-shadow-search",
               "inheritedFrom": {
                 "name": "PassProp",
                 "module": "pass-prop.ts"
@@ -1760,7 +2040,7 @@
             {
               "kind": "field",
               "name": "propActions",
-              "default": "[\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\n]",
+              "default": "[\n    onFromRootNodeHost,\n    onHostToObserve,\n    onLastVal,\n    onFromUpsearch,\n    onFromParent,\n    onFromParentOrHost,\n    onFromUpShadowSearch\n]",
               "privacy": "private",
               "type": {
                 "text": "array"
@@ -1839,6 +2119,22 @@
               "type": {
                 "text": "string"
               },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "fromUpsearch",
+              "kind": "field"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "fromUpShadowSearch",
+              "kind": "field"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
               "description": "Name of property to observe",
               "name": "observeProp",
               "kind": "field"
@@ -1873,6 +2169,20 @@
               },
               "description": "Observe property fro parent element if available, otherwise from host.",
               "name": "from-parent-or-host"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "from-upsearch"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "from-up-shadow-search"
             },
             {
               "type": {
@@ -1948,7 +2258,7 @@
             {
               "kind": "field",
               "name": "propActions",
-              "default": "[\r\n    onFromRootNodeHost, onHostToObserve, onLastVal, onFromUpsearch, onFromParent, onFromParentOrHost\r\n]",
+              "default": "[\r\n    onFromRootNodeHost, \r\n    onHostToObserve, \r\n    onLastVal, \r\n    onFromUpsearch, \r\n    onFromParent, \r\n    onFromParentOrHost, \r\n    onFromUpShadowSearch\r\n]",
               "privacy": "private"
             },
             {
@@ -2042,6 +2352,22 @@
               "type": {
                 "text": "string"
               },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "fromUpsearch",
+              "kind": "field"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "fromUpShadowSearch",
+              "kind": "field"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
               "description": "Name of property to observe",
               "name": "observeProp",
               "kind": "field"
@@ -2076,6 +2402,20 @@
               },
               "description": "Observe property fro parent element if available, otherwise from host.",
               "name": "from-parent-or-host"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Upsearch up the DOM Node Tree for an element matching this css selector",
+              "name": "from-upsearch"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Search by ID within the Shadow DOM realm of the element, or search up the ShadowDOM hierarchy, if the path starts with paths like ../../myElementId",
+              "name": "from-up-shadow-search"
             },
             {
               "type": {

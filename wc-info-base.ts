@@ -35,7 +35,7 @@ const mainTemplate = html`
             <h3>Properties</h3>
             <!-- TODO:  why can't we use tr inside -->
             <!-- Answer:  because tr is not a valid stand alone tag outside a table -->
-            <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
+            <li-bid stamp template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
                 <template>
                     <td>{{name}}</td>
                     <td>{{description}}</td>
@@ -79,6 +79,7 @@ const mainTemplate = html`
                         <th>Description</th>
                         <th>Type</th>
                         <th>Inherited From</th>
+                        <th>Parameters</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,6 +99,7 @@ const mainTemplate = html`
                         <td>{{description}}</td>
                         <td>{{type.text}}</td>
                         <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? NA}})</td>
+                        <td></td>
                 </template>
             </li-bid>
             <table>
@@ -119,11 +121,11 @@ const mainTemplate = html`
 
 
 
-<!-- <template id=wc-info-parameter>
+<template id=wc-info-parameter>
     <hr>
     <div>Parameter Name: {{name}}</div>
 </template>
-<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c> -->
+<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c>
 <no-module></no-module>
 <script id=filter-out-less-typed-version nomodule=ish>
     export const filter = (declarations) => {
