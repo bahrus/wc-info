@@ -41,7 +41,7 @@ const mainTemplate = html`
                     <td>{{description}}</td>
                     <td>{{type.text}}</td>
                     <td>{{default ?? - }}</td>
-                    <td>{{inheritedFrom.name}} ({{inheritedFrom.module}})</td>
+                    <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? NA}})</td>
                 </template>
             </li-bid>
             <table>
@@ -64,13 +64,12 @@ const mainTemplate = html`
     <if-diff -iff is-non-empty-array>
         <template>
             <h3>Methods</h3>
-            <!-- TODO:  why can't we use tr inside -->
             <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
                 <template>
                         <td>{{name}}</td>
                         <td>{{description}}</td>
                         <td>{{type.text}}</td>
-                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module}})</td>
+                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? NA}})</td>
                 </template>
             </li-bid>
             <table>
@@ -87,8 +86,36 @@ const mainTemplate = html`
             </table>
         </template>
     </if-diff>
+
+    <p-p-x from-parent-or-host observe-prop=attributes to=[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=attributes to=[-list] m=1></p-p-x>
+    <if-diff iff is-non-empty-array>
+        <template>
+            <h3>Attributes</h3>
+            <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
+                <template>
+                        <td>{{name}}</td>
+                        <td>{{description}}</td>
+                        <td>{{type.text}}</td>
+                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? NA}})</td>
+                </template>
+            </li-bid>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Inherited From</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </template>
+    </if-diff> 
 </template>
-<c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members"]' noshadow></c-c>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "attributes"]' noshadow></c-c>
 
 
 
