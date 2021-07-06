@@ -34,6 +34,7 @@ const mainTemplate = html`
         <template>
             <h3>Properties</h3>
             <!-- TODO:  why can't we use tr inside -->
+            <!-- Answer:  because tr is not a valid stand alone tag outside a table -->
             <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
                 <template>
                     <td>{{name}}</td>
@@ -41,7 +42,7 @@ const mainTemplate = html`
                     <td>{{type.text}}</td>
                     <td>{{default ?? - }}</td>
                     <td>{{inheritedFrom.name}} ({{inheritedFrom.module}})</td>
-                </template>  
+                </template>
             </li-bid>
             <table>
                 <thead>
@@ -53,9 +54,7 @@ const mainTemplate = html`
                         <th>Inherited From</th>
                     </tr>
                 </thead>
-                <tbody>
-                   
-                </tbody>
+                <tbody></tbody>
             </table>
         </template>
     </if-diff>
@@ -66,22 +65,24 @@ const mainTemplate = html`
         <template>
             <h3>Methods</h3>
             <!-- TODO:  why can't we use tr inside -->
-            <li-bid template-id=./class-method-inner-row render-at-start-of=tbody -list tag=tr></li-bid>
+            <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
+                <template>
+                        <td>{{name}}</td>
+                        <td>{{description}}</td>
+                        <td>{{type.text}}</td>
+                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module}})</td>
+                </template>
+            </li-bid>
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Type</th>
-                        <th>Default</th>
+                        <th>Inherited From</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <template id=class-method-inner-row>
-                        <td>{{name}}</td>
-                        <td>{{description}}</td>
-                        <td>{{type.text}}</td>
-                    </template>                    
                 </tbody>
             </table>
         </template>
