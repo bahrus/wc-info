@@ -30,7 +30,6 @@ const mainTemplate = html `
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array>
         <template>
-            <h3>Properties</h3>
             <!-- TODO:  why can't we use tr inside -->
             <!-- Answer:  because tr is not a valid stand alone tag outside a table -->
             <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
@@ -43,6 +42,7 @@ const mainTemplate = html `
                 </template>
             </li-bid>
             <table>
+                <caption>Properties</caption>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -61,7 +61,6 @@ const mainTemplate = html `
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array>
         <template>
-            <h3>Methods</h3>
             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
                 <template>
                         <td>{{name}}</td>
@@ -85,6 +84,7 @@ const mainTemplate = html `
                 </template>
             </li-bid>
             <table>
+                <caption>Methods</caption>
                 <thead>
                     <tr>
                         <th>Name</th>
