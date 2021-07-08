@@ -74,12 +74,25 @@ const mainTemplate = html `
                                 on=weak-map-changed 
                                 to=[-list] 
                                 val-from-target=weakMap 
-                                val-filter="$.parameters[*]" m=1></p-d-x>
-                            <li-bid template-id=innerTemplate -list tag=div>
+                                val-filter="$.parameters[*]" m=1>
+                            </p-d-x>
+                            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
                                 <template>
-                                    iah
+                                    <td>{{name}}</td>
+                                    <td>{{type.text ?? -}}
                                 </template>
                             </li-bid>
+                            <table>
+                                <caption>Parameters</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
                         </td>
                 </template>
             </li-bid>
