@@ -119,7 +119,7 @@ const mainTemplate = html`
     <p-p-x from-parent-or-host observe-prop=attributes to=[-list] m=1></p-p-x>
     <if-diff iff is-non-empty-array>
         <template>
-            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
+            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
                 <template>
                         <td>{{name}}</td>
                         <td>{{description}}</td>
@@ -138,7 +138,7 @@ const mainTemplate = html`
                         <th>Inherited From</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody -repeat>
                 </tbody>
             </table>
         </template>
