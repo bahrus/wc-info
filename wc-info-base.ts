@@ -34,7 +34,7 @@ const mainTemplate = html`
         <template>
             <!-- TODO:  why can't we use tr inside -->
             <!-- Answer:  because tr is not a valid stand alone tag outside a table -->
-            <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
+            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
                 <template>
                     <td>{{name}}</td>
                     <td>{{description}}</td>
@@ -106,7 +106,7 @@ const mainTemplate = html`
     <p-p-x from-parent-or-host observe-prop=attributes to=[-list] m=1></p-p-x>
     <if-diff iff is-non-empty-array>
         <template>
-            <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
+            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
                 <template>
                         <td>{{name}}</td>
                         <td>{{description}}</td>
