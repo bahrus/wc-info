@@ -117,23 +117,23 @@ const mainTemplate = html`
     <p-p-x from-parent-or-host observe-prop=attributes to=[-list] m=1></p-p-x>
     <if-diff iff is-non-empty-array>
         <template>
-            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
+            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
                 <template>
-                        <td>{{name}}</td>
-                        <td>{{description}}</td>
-                        <td>{{type.text}}</td>
-                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
+                        <td part=ceai-name-value class=name>{{name}}</td>
+                        <td part=ceai-description-value class=description>{{description}}</td>
+                        <td part=ceai-type-value class=type>{{type.text}}</td>
+                        <td part=ceai-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                         <td></td>
                 </template>
             </li-bid>
-            <table>
-                <caption>Attributes</caption>
+            <table part=ce-attributes class=attributes>
+                <caption part=cea-title class=title>Attributes</caption>
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Type</th>
-                        <th>Inherited From</th>
+                    <tr part=cea-header class=header>
+                        <th part=ceah-name-label class=name>Name</th>
+                        <th part=ceah-description-label class=description>Description</th>
+                        <th part=ceah-type-label class=type>Type</th>
+                        <th part=ceah-inherited-from-label class=inherited-from>Inherited From</th>
                     </tr>
                 </thead>
                 <tbody -repeat>
