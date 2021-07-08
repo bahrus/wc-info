@@ -4,3 +4,8 @@
 tr:nth-child(2n) {
     background-color: #f8f8f8;
 }
+* {
+    -webkit-font-smoothing: antialiased;
+    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;;
+}
+
