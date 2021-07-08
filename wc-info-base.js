@@ -32,7 +32,7 @@ const mainTemplate = html `
         <template>
             <!-- TODO:  why can't we use tr inside -->
             <!-- Answer:  because tr is not a valid stand alone tag outside a table -->
-            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
+            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
                 <template>
                     <td>{{name}}</td>
                     <td>{{description}}</td>
@@ -52,7 +52,7 @@ const mainTemplate = html `
                         <th>Inherited From</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody -repeat></tbody>
             </table>
         </template>
     </if-diff>
