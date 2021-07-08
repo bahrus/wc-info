@@ -106,7 +106,6 @@ const mainTemplate = html`
     <p-p-x from-parent-or-host observe-prop=attributes to=[-list] m=1></p-p-x>
     <if-diff iff is-non-empty-array>
         <template>
-            <h3>Attributes</h3>
             <li-bid template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
                 <template>
                         <td>{{name}}</td>
@@ -117,6 +116,7 @@ const mainTemplate = html`
                 </template>
             </li-bid>
             <table>
+                <caption>Attributes</caption>
                 <thead>
                     <tr>
                         <th>Name</th>
