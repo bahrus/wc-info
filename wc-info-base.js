@@ -76,7 +76,7 @@ const mainTemplate = html `
                                 val-from-target=weakMap 
                                 val-filter="$.parameters[*]" m=1>
                             </p-d-x>
-                            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
+                            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
                                 <template>
                                     <td>{{name}}</td>
                                     <td>{{type.text ?? '-'}}
@@ -90,7 +90,7 @@ const mainTemplate = html `
                                         <th>Type</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody -repeat>
                                 </tbody>
                             </table>
                         </td>
