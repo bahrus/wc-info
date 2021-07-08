@@ -14,7 +14,7 @@ const mainTemplate = html `
 <p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-d-x on=result-changed to=[-list] val=target.result val-filter=$.modules.[*].declarations[?(@.tagName)] val-filter-script-id=filter-out-less-typed-version></p-d-x>
-<h1>Custom Elements</h1>
+<h1 part=title>Custom Elements</h1>
 <i-bid -list>
     <custom-element-declaration data-is-original></custom-element-declaration>
 </i-bid>
@@ -23,33 +23,31 @@ const mainTemplate = html `
 
 <template id=custom-element-declaration>
     <hr>
-    <h2>{{_tagName}}</h2>
-    <dfn>{{description}}</dfn>
+    <h2 part=tag-name class=tag-name>{{_tagName}}</h2>
+    <dfn part=ce-description class=description>{{description}}</dfn>
     
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array>
         <template>
-            <!-- TODO:  why can't we use tr inside -->
-            <!-- Answer:  because tr is not a valid stand alone tag outside a table -->
-            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
+            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='["part":"cep-item", "class": "item"]'>
                 <template>
-                    <td>{{name}}</td>
-                    <td>{{description}}</td>
-                    <td>{{type.text}}</td>
-                    <td>{{default ?? '-' }}</td>
-                    <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
+                    <td part=cepi-name-value class=name>{{name}}</td>
+                    <td part=cepi-description-value class=description>{{description}}</td>
+                    <td part=cepi-type-text-value class=type-text>{{type.text}}</td>
+                    <td part=cepi-default-value class=default>{{default ?? '-' }}</td>
+                    <td part=cepi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                 </template>
             </li-bid>
-            <table>
-                <caption>Properties</caption>
+            <table part=ce-properties class=properties part=properties>
+                <caption part=cep-title class=title>Properties</caption>
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Type</th>
-                        <th>Default</th>
-                        <th>Inherited From</th>
+                    <tr part=cep-header class=header>
+                        <th part=ceph-name-label class=name>Name</th>
+                        <th part=ceph-description-label class=description>Description</th>
+                        <th part=ceph-type-label class=type>Type</th>
+                        <th part=ceph-default-label class=default>Default</th>
+                        <th part=ceph-inherited-from-label class=inherited-from>Inherited From</th>
                     </tr>
                 </thead>
                 <tbody -repeat></tbody>
@@ -63,7 +61,7 @@ const mainTemplate = html `
         <template>
             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
                 <template>
-                        <td>{{name}}</td>
+                        <td >{{name}}</td>
                         <td>{{description}}</td>
                         <td>{{type.text}}</td>
                         <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
