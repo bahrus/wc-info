@@ -37,8 +37,8 @@ const mainTemplate = html `
                     <td>{{name}}</td>
                     <td>{{description}}</td>
                     <td>{{type.text}}</td>
-                    <td>{{default ?? - }}</td>
-                    <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? NA}})</td>
+                    <td>{{default ?? '-' }}</td>
+                    <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                 </template>
             </li-bid>
             <table>
@@ -66,7 +66,7 @@ const mainTemplate = html `
                         <td>{{name}}</td>
                         <td>{{description}}</td>
                         <td>{{type.text}}</td>
-                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? NA}})</td>
+                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                         <td>
                             <p-d-x 
                                 observe=li-bid 
@@ -79,7 +79,7 @@ const mainTemplate = html `
                             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=tbody -list tag=tr>
                                 <template>
                                     <td>{{name}}</td>
-                                    <td>{{type.text ?? -}}
+                                    <td>{{type.text ?? '-'}}
                                 </template>
                             </li-bid>
                             <table>
@@ -122,7 +122,7 @@ const mainTemplate = html `
                         <td>{{name}}</td>
                         <td>{{description}}</td>
                         <td>{{type.text}}</td>
-                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? NA}})</td>
+                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                         <td></td>
                 </template>
             </li-bid>

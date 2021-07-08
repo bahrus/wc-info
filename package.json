@@ -23,7 +23,8 @@
     "trans-render": "0.0.291",
     "if-diff": "0.0.78",
     "nomodule": "0.0.13",
-    "on-to-me": "0.0.26"
+    "on-to-me": "0.0.26",
+    "templ-arts": "0.0.6"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
