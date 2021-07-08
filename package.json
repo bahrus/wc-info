@@ -17,14 +17,13 @@
     "pass-prop": "0.0.10",
     "pass-up": "0.0.5",
     "pass-down": "0.0.53",
-    "carbon-copy": "0.1.72",
+    "carbon-copy": "0.1.73",
     "ib-id": "0.0.55",
-    "lib-id": "0.0.16",
+    "lib-id": "0.0.17",
     "trans-render": "0.0.291",
     "if-diff": "0.0.78",
     "nomodule": "0.0.13",
-    "on-to-me": "0.0.26",
-    "templ-arts": "0.0.6"
+    "on-to-me": "0.0.26"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",

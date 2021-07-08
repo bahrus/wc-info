@@ -32,7 +32,7 @@ const mainTemplate = html`
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array>
         <template>
-            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='["part":"cep-item", "class": "item"]'>
+            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <template>
                     <td part=cepi-name-value class=name>{{name}}</td>
                     <td part=cepi-description-value class=description>{{description}}</td>
