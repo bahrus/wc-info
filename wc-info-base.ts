@@ -61,13 +61,13 @@ const mainTemplate = html`
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array>
         <template>
-            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
+            <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cem-item", "class": "item"}'>
                 <template>
-                        <td >{{name}}</td>
-                        <td>{{description}}</td>
-                        <td>{{type.text}}</td>
-                        <td>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
-                        <td>
+                        <td part=cemi-name-value class=name>{{name}}</td>
+                        <td part=cemi-description-value class=description>{{description}}</td>
+                        <td part=cemi-type-text-value class=text>{{type.text}}</td>
+                        <td part=cemi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
+                        <td part=cemi-parameters-value class=parameters>
                             <p-d-x 
                                 observe=li-bid 
                                 closest-weak-map-key=tr 
@@ -82,12 +82,12 @@ const mainTemplate = html`
                                     <td>{{type.text ?? '-'}}
                                 </template>
                             </li-bid>
-                            <table>
-                                <caption>Parameters</caption>
+                            <table part=cemipv-details class=details>
+                                <caption part=cemipvd-title class=title>Parameters</caption>
                                 <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
+                                    <tr part=cemipvd-header class=header>
+                                        <th part=cemipvdh-name-label class=name>Name</th>
+                                        <th part=cemipvdh-type-label class=type>Type</th>
                                     </tr>
                                 </thead>
                                 <tbody -repeat>
@@ -96,15 +96,15 @@ const mainTemplate = html`
                         </td>
                 </template>
             </li-bid>
-            <table>
-                <caption>Methods</caption>
+            <table part=ce-methods class=methods>
+                <caption part=cem-title class=title>Methods</caption>
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Type</th>
-                        <th>Inherited From</th>
-                        <th>Parameters</th>
+                    <tr part=cem-header class=header>
+                        <th part=cemh-name-label class=name>Name</th>
+                        <th part=cemh-description-label class=description>Description</th>
+                        <th part=cemh-type-label class=description>Type</th>
+                        <th part=cemh-inherited-from-label class=inherited-from>Inherited From</th>
+                        <th part=cemh-parameters-label class=parameters>Parameters</th>
                     </tr>
                 </thead>
                 <tbody -repeat>
