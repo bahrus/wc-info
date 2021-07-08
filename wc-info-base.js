@@ -75,7 +75,7 @@ const mainTemplate = html `
                                 on=weak-map-changed 
                                 to=[-list] 
                                 val-from-target=weakMap 
-                                val-filter="$.parameters.[*]" m=1></p-d-x>
+                                val-filter="$.parameters[*]" m=1></p-d-x>
                             <li-bid template-id=innerTemplate -list tag=div>
                                 <template>
                                     iah
