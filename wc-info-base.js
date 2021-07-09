@@ -28,7 +28,7 @@ const mainTemplate = html `
     
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
-    <if-diff -iff is-non-empty-array>
+    <if-diff -iff is-non-empty-array lazy-delayx=2000>
         <template>
             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <template>
@@ -57,7 +57,7 @@ const mainTemplate = html `
     
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-list] m=1></p-p-x>
-    <if-diff -iff is-non-empty-array>
+    <if-diff -iff is-non-empty-array lazy-delayx=2000>
         <template>
             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cem-item", "class": "item"}'>
                 <template>
@@ -113,7 +113,7 @@ const mainTemplate = html `
 
     <p-p-x from-parent-or-host observe-prop=attributes to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=attributes to=[-list] m=1></p-p-x>
-    <if-diff iff is-non-empty-array>
+    <if-diff iff is-non-empty-array lazy-delayx=2000>
         <template>
             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
                 <template>
