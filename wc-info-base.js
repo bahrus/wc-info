@@ -35,7 +35,7 @@ const mainTemplate = html `
                 <template>
                     <td part=cepi-name-value class=name>{{name}}</td>
                     <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}">{{description ?? '-'}}</td>
-                    <td part=cepi-type-text-value class=type-text data-type="{{type.text ?? 'unknown'}}">{{type.text ?? -}}</td>
+                    <td part=cepi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}">{{type.text ?? -}}</td>
                     <td part=cepi-default-value class=default data-len="{{default.length ?? '0'}}">{{default ?? '-' }}</td>
                     <td part=cepi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                 </template>
@@ -64,7 +64,7 @@ const mainTemplate = html `
                 <template>
                         <td part=cemi-name-value class=name>{{name}}</td>
                         <td part=cemi-description-value class=description  data-len="{{description.length ?? '0'}}">{{description ?? '-'}}</td>
-                        <td part=cemi-type-text-value class=text>{{type.text ?? '-'}}</td>
+                        <td part=cemi-type-text-value class=text data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
                         <td part=cemi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                         <td part=cemi-parameters-value class=parameters>
                             <p-d-x 
@@ -78,7 +78,7 @@ const mainTemplate = html `
                             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
                                 <template>
                                     <td>{{name}}</td>
-                                    <td>{{type.text ?? '-'}}
+                                    <td data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}
                                 </template>
                             </li-bid>
                             <table part=cemipv-details class=details>
@@ -101,7 +101,7 @@ const mainTemplate = html `
                     <tr part=cem-header class=header>
                         <th part=cemh-name-label class=name>Method</th>
                         <th part=cemh-description-label class=description>Description</th>
-                        <th part=cemh-type-label class=description>Type</th>
+                        <th part=cemh-type-label class=description data-len="{{type.text.length ?? '0'}}">Type</th>
                         <th part=cemh-inherited-from-label class=inherited-from>Inherited From</th>
                         <th part=cemh-parameters-label class=parameters>Parameters</th>
                     </tr>
@@ -120,7 +120,7 @@ const mainTemplate = html `
                 <template>
                         <td part=ceai-name-value class=name>{{name}}</td>
                         <td part=ceai-description-value class=description>{{description ?? '-'}}</td>
-                        <td part=ceai-type-value class=type>{{type.text ?? '-'}}</td>
+                        <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
                         <td part=ceai-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                         <td></td>
                 </template>
@@ -145,11 +145,11 @@ const mainTemplate = html `
 
 
 
-<template id=wc-info-parameter>
+<!-- <template id=wc-info-parameter>
     <hr>
     <div>Parameter Name: {{name}}</div>
 </template>
-<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c>
+<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c> -->
 <no-module></no-module>
 <script id=filter-out-less-typed-version nomodule=ish>
     export const filter = (declarations) => {
