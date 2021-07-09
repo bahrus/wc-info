@@ -1,7 +1,7 @@
 import {html} from 'xtal-element/lib/html.js';
 import {WCInfoPackageProps} from './types.js';
 import {X} from 'xtal-element/lib/X.js';
-import('pass-prop/pass-prop.js');
+import('pass-prop/p-p.js');
 import('xtal-fetch/xtal-fetch-get.js');
 import('pass-down/p-d.js');
 
@@ -10,6 +10,13 @@ import('ib-id/i-bid.js');
 import('if-diff/if-diff.js');
 
 const mainTemplate = html`
+<p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
+<xtal-fetch-get fetch -href></xtal-fetch-get>
+<p-d on=result-changed to=[-list] val-from-target=result.modules></p-d>
+<div>Modules</div>
+<i-bid -list>
+    <wc-info-module></wc-info-module>
+</i-bid>
 <template id=wc-info-module>
     <details>
         <summary>{{path}}</summary>
@@ -92,14 +99,9 @@ const mainTemplate = html`
 </template>
 <c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c>
 
-<p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
-<xtal-fetch-get fetch -href></xtal-fetch-get>
-<p-d on=result-changed to=[-list] val-from-target=result.modules></p-d>
 
-<div>Modules</div>
-<i-bid -list>
-    <wc-info-module></wc-info-module>
-</i-bid>
+
+
 `;
 
 
