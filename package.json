@@ -1,6 +1,6 @@
 {
   "name": "wc-info",
-  "version": "0.0.82",
+  "version": "0.0.83",
   "description": "Display Web Component Information based on [custom element manifest file](https://github.com/webcomponents/custom-elements-manifest).",
   "main": "wc-info.js",
   "module": "wc-info.js",
