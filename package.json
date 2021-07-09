@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "hypo-link": "0.0.31",
-    "xtal-element": "0.0.411",
+    "xtal-element": "0.0.413",
     "xtal-fetch": "0.0.90",
     "pass-prop": "0.0.10",
     "pass-up": "0.0.5",
