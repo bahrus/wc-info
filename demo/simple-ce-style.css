@@ -1,11 +1,28 @@
+
 .inherited-from{
     display: none;
 }
 tr:nth-child(2n) {
-    background-color: #f8f8f8;
+    background-color: var(--even-row-bg-color, #f8f8f8);
 }
 * {
     -webkit-font-smoothing: antialiased;
-    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;;
+    font-family: var(--main-font, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace);
+}
+table caption.title{
+    text-align: left;
+    font-size: 24px;
+    font-weight: 400;
+}
+table{
+    width: 100%;
+    margin-bottom:24px;
+}
+table.details caption.title{
+    font-size: 14px;
+}
+wc-info-base{
+    padding-left: 15px;
+    display:block;
 }
 

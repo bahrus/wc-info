@@ -45,7 +45,7 @@ const mainTemplate = html`
                 <caption part=cep-title class=title>Properties</caption>
                 <thead>
                     <tr part=cep-header class=header>
-                        <th part=ceph-name-label class=name>Name</th>
+                        <th part=ceph-name-label class=name>Property</th>
                         <th part=ceph-description-label class=description>Description</th>
                         <th part=ceph-type-label class=type>Type</th>
                         <th part=ceph-default-label class=default>Default</th>
@@ -86,7 +86,7 @@ const mainTemplate = html`
                                 <caption part=cemipvd-title class=title>Parameters</caption>
                                 <thead>
                                     <tr part=cemipvd-header class=header>
-                                        <th part=cemipvdh-name-label class=name>Name</th>
+                                        <th part=cemipvdh-name-label class=name>Parameter</th>
                                         <th part=cemipvdh-type-label class=type>Type</th>
                                     </tr>
                                 </thead>
@@ -100,7 +100,7 @@ const mainTemplate = html`
                 <caption part=cem-title class=title>Methods</caption>
                 <thead>
                     <tr part=cem-header class=header>
-                        <th part=cemh-name-label class=name>Name</th>
+                        <th part=cemh-name-label class=name>Method</th>
                         <th part=cemh-description-label class=description>Description</th>
                         <th part=cemh-type-label class=description>Type</th>
                         <th part=cemh-inherited-from-label class=inherited-from>Inherited From</th>
@@ -130,7 +130,7 @@ const mainTemplate = html`
                 <caption part=cea-title class=title>Attributes</caption>
                 <thead>
                     <tr part=cea-header class=header>
-                        <th part=ceah-name-label class=name>Name</th>
+                        <th part=ceah-name-label class=name>Attribute</th>
                         <th part=ceah-description-label class=description>Description</th>
                         <th part=ceah-type-label class=type>Type</th>
                         <th part=ceah-inherited-from-label class=inherited-from>Inherited From</th>
