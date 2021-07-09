@@ -4,10 +4,25 @@
   "description": "Display Web Component Information based on [custom element manifest file](https://github.com/webcomponents/custom-elements-manifest).",
   "main": "wc-info.js",
   "module": "wc-info.js",
+  "exports": {
+    ".": "./wc-info-base.js",
+    "./wc-info-base.js": "./wc-info-base.js"
+  },
+  "keywords": [
+    "web-components",
+    "custom-elements",
+    "custom-elements-manifest"
+  ],
+  "files": [
+    "wc*.*",
+    "types.d.ts",
+    "custom-elements.json"
+  ],
   "types": "types.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node node_modules/xtal-test/serve.js",
+    "package-check": "package-check",
     "doc": "custom-elements-manifest analyze"
   },
   "dependencies": {
@@ -40,5 +55,6 @@
   "bugs": {
     "url": "https://github.com/bahrus/wc-info/issues"
   },
-  "homepage": "https://github.com/bahrus/wc-info#readme"
+  "homepage": "https://github.com/bahrus/wc-info#readme",
+  "customElements": "custom-elements.json"
 }

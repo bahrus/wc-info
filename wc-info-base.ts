@@ -84,7 +84,7 @@ const mainTemplate = html`
                                 </template>
                             </li-bid>
                             <table part=cemipv-details class=details>
-                                <caption part=cemipvd-title class=title>Parameters</caption>
+                                <!-- <caption part=cemipvd-title class=title>Parameters</caption> -->
                                 <thead>
                                     <tr part=cemipvd-header class=header>
                                         <th part=cemipvdh-name-label class=name>Parameter</th>

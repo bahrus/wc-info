@@ -1,89 +1,212 @@
 {
-  "version": "experimental",
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "wc-info-base",
-      "path": "./wc-info-base.js",
-      "description": "Non-themed.  Display Web Component Information based on <a href='https://code.visualstudio.com/updates/v1_30#_html-custom-tags-attributes-support' target='_blank'>web-components.json file</a>.",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "types.d.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "wc-info-base.js",
+      "declarations": [
         {
-          "name": "href",
-          "description": "Url where Web Component Information is contained."
-        },
-        {
-          "name": "package-name",
-          "description": "Name of Package."
-        },
-        {
-          "name": "disabled",
-          "description": "Any component that emits events should not do so if it is disabled.\r\nNote that this is not enforced, but the disabled property is made available.\r\nUsers of this mix-in should ensure not to call \"de\" if this property is set to true.",
-          "type": "boolean"
+          "kind": "class",
+          "description": "",
+          "name": "WCInfoBase",
+          "superclass": {
+            "name": "X",
+            "package": "xtal-element/lib/X.js"
+          }
         }
       ],
-      "properties": [
+      "exports": [
         {
-          "name": "href",
-          "attribute": "href",
-          "description": "Url where Web Component Information is contained."
-        },
+          "kind": "js",
+          "name": "WCInfoBase",
+          "declaration": {
+            "name": "WCInfoBase",
+            "module": "wc-info-base.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "wc-info-base.ts",
+      "declarations": [
         {
-          "name": "packageName",
-          "attribute": "package-name",
-          "description": "Name of Package."
-        },
-        {
-          "name": "viewModel",
-          "type": "ViewModel"
-        },
-        {
-          "name": "noShadow",
-          "type": "boolean"
-        },
-        {
-          "name": "renderOptions",
-          "type": "RenderOptions"
-        },
-        {
-          "name": "mainTemplate",
-          "type": "HTMLTemplateElement"
-        },
-        {
-          "name": "readyToInit",
-          "type": "boolean"
-        },
-        {
-          "name": "initRenderContext",
-          "type": "RenderContext"
-        },
-        {
-          "name": "updateRenderContext",
-          "type": "RenderContext | null"
-        },
-        {
-          "name": "eventContext",
-          "type": "EventContext | null"
-        },
-        {
-          "name": "root",
-          "type": "HTMLElement | ShadowRoot"
-        },
-        {
-          "name": "evCount",
-          "description": "Tracks how many times each event type was called.",
-          "type": "{ [key: string]: number; }",
-          "default": "{}"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "Any component that emits events should not do so if it is disabled.\r\nNote that this is not enforced, but the disabled property is made available.\r\nUsers of this mix-in should ensure not to call \"de\" if this property is set to true.",
-          "type": "boolean"
+          "kind": "class",
+          "description": "",
+          "name": "WCInfoBase",
+          "superclass": {
+            "name": "X",
+            "package": "xtal-element/lib/X.js"
+          }
         }
       ],
-      "slots": [
+      "exports": [
         {
-          "name": "test",
-          "description": "this is just a slot for testing purposes."
+          "kind": "js",
+          "name": "WCInfoBase",
+          "declaration": {
+            "name": "WCInfoBase",
+            "module": "wc-info-base.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "wc-info-package-base.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WCInfoPackageBase",
+          "superclass": {
+            "name": "X",
+            "package": "xtal-element/lib/X.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WCInfoPackageBase",
+          "declaration": {
+            "name": "WCInfoPackageBase",
+            "module": "wc-info-package-base.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "wc-info-package-base.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WCInfoPackageBase",
+          "superclass": {
+            "name": "X",
+            "package": "xtal-element/lib/X.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WCInfoPackageBase",
+          "declaration": {
+            "name": "WCInfoPackageBase",
+            "module": "wc-info-package-base.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "wc-info.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WCInfo",
+          "members": [
+            {
+              "kind": "field",
+              "name": "is",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "noShadow"
+            },
+            {
+              "kind": "method",
+              "name": "initRenderCallback",
+              "parameters": [
+                {
+                  "name": "ctx"
+                },
+                {
+                  "name": "target"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WCInfoBase",
+            "module": "/wc-info-base.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WCInfo",
+          "declaration": {
+            "name": "WCInfo",
+            "module": "wc-info.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "wc-info.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WCInfo",
+          "members": [
+            {
+              "kind": "field",
+              "name": "is",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "noShadow"
+            },
+            {
+              "kind": "method",
+              "name": "initRenderCallback",
+              "parameters": [
+                {
+                  "name": "ctx",
+                  "type": {
+                    "text": "RenderContext"
+                  }
+                },
+                {
+                  "name": "target",
+                  "type": {
+                    "text": "HTMLElement | DocumentFragment"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "WCInfoBase",
+            "module": "/wc-info-base.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WCInfo",
+          "declaration": {
+            "name": "WCInfo",
+            "module": "wc-info.ts"
+          }
         }
       ]
     }
