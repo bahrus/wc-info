@@ -25,7 +25,7 @@ const mainTemplate = html`
 
 <template id=custom-element-declaration>
     <hr>
-    <h2 part=tag-name class=tag-name>{{_tagName}}</h2>
+    <h2 part=tag-name class=tag-name id={{_tagName}}><a href="#{{_tagName}}">{{_tagName}}</a></h2>
     <dfn part=ce-description class=description>{{description}}</dfn>
     
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=1></p-p-x>
