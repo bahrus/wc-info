@@ -33,9 +33,9 @@ const mainTemplate = html `
             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <template>
                     <td part=cepi-name-value class=name>{{name}}</td>
-                    <td part=cepi-description-value class=description>{{description ?? '-'}}</td>
-                    <td part=cepi-type-text-value class=type-text>{{type.text ?? -}}</td>
-                    <td part=cepi-default-value class=default>{{default ?? '-' }}</td>
+                    <td part=cepi-description-value class=description data-len={{description.length}}>{{description ?? '-'}}</td>
+                    <td part=cepi-type-text-value class=type-text data-type="{{type.text ?? 'unknown'}}">{{type.text ?? -}}</td>
+                    <td part=cepi-default-value class=default data-len="{{default.length ?? '0'}}">{{default ?? '-' }}</td>
                     <td part=cepi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                 </template>
             </li-bid>

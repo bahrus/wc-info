@@ -26,4 +26,7 @@ wc-info-base{
     padding-right: 15px;
     display:block;
 }
+[data-len="0"]{
+    text-align: center;
+}
 
