@@ -37,7 +37,7 @@ const mainTemplate = html`
                 <template>
                     <td part=cepi-name-value class=name>{{name}}</td>
                     <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}">{{description ?? '-'}}</td>
-                    <td part=cepi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}">{{type.text ?? -}}</td>
+                    <td part=cepi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
                     <td part=cepi-default-value class=default data-len="{{default.length ?? '0'}}">{{default ?? '-' }}</td>
                     <td part=cepi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                 </template>

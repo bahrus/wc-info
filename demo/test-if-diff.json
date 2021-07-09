@@ -1,0 +1,1469 @@
+{
+    "schemaVersion": "1.0.0",
+    "readme": "",
+    "modules": [
+      {
+        "kind": "javascript-module",
+        "path": "compare.js",
+        "declarations": [
+          {
+            "kind": "function",
+            "name": "compare",
+            "parameters": [
+              {
+                "name": "obj1"
+              },
+              {
+                "name": "obj2"
+              }
+            ]
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "compare",
+            "declaration": {
+              "name": "compare",
+              "module": "compare.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "compare.ts",
+        "declarations": [
+          {
+            "kind": "function",
+            "name": "compare",
+            "parameters": [
+              {
+                "name": "obj1",
+                "type": {
+                  "text": "any"
+                }
+              },
+              {
+                "name": "obj2",
+                "type": {
+                  "text": "any"
+                }
+              }
+            ]
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "compare",
+            "declaration": {
+              "name": "compare",
+              "module": "compare.ts"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "if-diff-then-stiff.js",
+        "declarations": [
+          {
+            "kind": "class",
+            "description": "Alternative to Polymer's dom-if element that allows comparison between two operands, as well as progressive enhancement.\nDOM deletion takes place on non matching elements.",
+            "name": "IfDiffThenStiff",
+            "members": [
+              {
+                "kind": "field",
+                "name": "is",
+                "type": {
+                  "text": "string"
+                },
+                "static": true,
+                "default": "'if-diff-then-stiff'",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "addStyle",
+                "parameters": [
+                  {
+                    "name": "self"
+                  }
+                ],
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "configureLazyMt",
+                "parameters": [
+                  {
+                    "name": "lazyMT"
+                  }
+                ],
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "self",
+                "default": "this",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "propActions",
+                "default": "[\r\n    linkValue, toggleMt, onAndMediaMatches\r\n]",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "reactor",
+                "type": {
+                  "text": "IReactor"
+                },
+                "default": "new xc.Rx(this)",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "_mql",
+                "type": {
+                  "text": "MediaQueryList | undefined"
+                },
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "isLocked",
+                "type": {
+                  "text": "boolean"
+                },
+                "static": true,
+                "default": "false",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "mediaQueryHandler",
+                "default": "(e: MediaQueryListEvent) => {\r\n        (<any>this)[slicedPropDefs.propLookup.matchesMediaQuery!.alias!] = e.matches;\r\n    }",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "disconnect",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "cleanupIfNoParentElement",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "ownedRange",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "_doNotCleanUp",
+                "type": {
+                  "text": "boolean"
+                },
+                "default": "false",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "extractContents",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "nextUnownedSibling",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "onPropChange",
+                "parameters": [
+                  {
+                    "name": "n",
+                    "type": {
+                      "text": "string"
+                    }
+                  },
+                  {
+                    "name": "propDef",
+                    "type": {
+                      "text": "PropDef"
+                    }
+                  },
+                  {
+                    "name": "newVal",
+                    "type": {
+                      "text": "any"
+                    }
+                  }
+                ],
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Must be true to pass test(s). Can also be an object.  Condition is based on the property being truthy.",
+                "name": "iff",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "LHS Operand.",
+                "name": "lhs",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Iff property has to be a non empty array.",
+                "name": "isNonEmptyArray",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "RHS Operand.",
+                "name": "rhs",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "lhs must equal rhs to pass tests.",
+                "name": "equals",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Do not evaluate expression until disabled setting is removed.",
+                "name": "disabled",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "number"
+                },
+                "description": "If content is rendered by the server, the server can indicate which nodes that it rendered can be hidden / displayed by if-diff on the client.",
+                "name": "ownedSiblingCount",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "string"
+                },
+                "description": "Specify exact manner in which non visible content should be hidden.",
+                "name": "hiddenStyle",
+                "default": "display:none",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              }
+            ],
+            "superclass": {
+              "name": "IfDiff",
+              "module": "/if-diff.js"
+            },
+            "tagName": "if-diff-then-stiff",
+            "customElement": true,
+            "attributes": [
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Must be true (exists) to pass test(s)",
+                "name": "iff",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "LHS Operand.  Is JSON parsed.",
+                "name": "lhs",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Iff property has to be a non empty array.",
+                "name": "is-non-empty-array",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "RHS Operand.  Is JSON parsed.",
+                "name": "rhs",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "lhs must equal rhs to pass tests.",
+                "name": "equals",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Do not evaluate expression until disabled setting is removed.",
+                "name": "disabled",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              }
+            ]
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "IfDiffThenStiff",
+            "declaration": {
+              "name": "IfDiffThenStiff",
+              "module": "if-diff-then-stiff.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "if-diff-then-stiff.ts",
+        "declarations": [
+          {
+            "kind": "class",
+            "description": "Alternative to Polymer's dom-if element that allows comparison between two operands, as well as progressive enhancement.\r\nDOM deletion takes place on non matching elements.",
+            "name": "IfDiffThenStiff",
+            "members": [
+              {
+                "kind": "field",
+                "name": "is",
+                "type": {
+                  "text": "string"
+                },
+                "static": true,
+                "default": "'if-diff-then-stiff'",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "addStyle",
+                "parameters": [
+                  {
+                    "name": "self",
+                    "type": {
+                      "text": "IfDiff"
+                    }
+                  }
+                ],
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "configureLazyMt",
+                "parameters": [
+                  {
+                    "name": "lazyMT",
+                    "type": {
+                      "text": "LazyMTProps"
+                    }
+                  }
+                ],
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "self",
+                "default": "this",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "propActions",
+                "default": "[\r\n    linkValue, toggleMt, onAndMediaMatches\r\n]",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "reactor",
+                "type": {
+                  "text": "IReactor"
+                },
+                "default": "new xc.Rx(this)",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "_mql",
+                "type": {
+                  "text": "MediaQueryList | undefined"
+                },
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "isLocked",
+                "type": {
+                  "text": "boolean"
+                },
+                "static": true,
+                "default": "false",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "mediaQueryHandler",
+                "default": "(e: MediaQueryListEvent) => {\r\n        (<any>this)[slicedPropDefs.propLookup.matchesMediaQuery!.alias!] = e.matches;\r\n    }",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "disconnect",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "cleanupIfNoParentElement",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "ownedRange",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "_doNotCleanUp",
+                "type": {
+                  "text": "boolean"
+                },
+                "default": "false",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "extractContents",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "nextUnownedSibling",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "kind": "method",
+                "name": "onPropChange",
+                "parameters": [
+                  {
+                    "name": "n",
+                    "type": {
+                      "text": "string"
+                    }
+                  },
+                  {
+                    "name": "propDef",
+                    "type": {
+                      "text": "PropDef"
+                    }
+                  },
+                  {
+                    "name": "newVal",
+                    "type": {
+                      "text": "any"
+                    }
+                  }
+                ],
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Must be true to pass test(s). Can also be an object.  Condition is based on the property being truthy.",
+                "name": "iff",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "LHS Operand.",
+                "name": "lhs",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Iff property has to be a non empty array.",
+                "name": "isNonEmptyArray",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "RHS Operand.",
+                "name": "rhs",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "lhs must equal rhs to pass tests.",
+                "name": "equals",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Do not evaluate expression until disabled setting is removed.",
+                "name": "disabled",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "number"
+                },
+                "description": "If content is rendered by the server, the server can indicate which nodes that it rendered can be hidden / displayed by if-diff on the client.",
+                "name": "ownedSiblingCount",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "string"
+                },
+                "description": "Specify exact manner in which non visible content should be hidden.",
+                "name": "hiddenStyle",
+                "default": "display:none",
+                "kind": "field",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              }
+            ],
+            "superclass": {
+              "name": "IfDiff",
+              "module": "/if-diff.js"
+            },
+            "tagName": "if-diff-then-stiff",
+            "customElement": true,
+            "attributes": [
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Must be true (exists) to pass test(s)",
+                "name": "iff",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "LHS Operand.  Is JSON parsed.",
+                "name": "lhs",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Iff property has to be a non empty array.",
+                "name": "is-non-empty-array",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "RHS Operand.  Is JSON parsed.",
+                "name": "rhs",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "lhs must equal rhs to pass tests.",
+                "name": "equals",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Do not evaluate expression until disabled setting is removed.",
+                "name": "disabled",
+                "inheritedFrom": {
+                  "name": "IfDiff",
+                  "module": "if-diff.ts"
+                }
+              }
+            ]
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "IfDiffThenStiff",
+            "declaration": {
+              "name": "IfDiffThenStiff",
+              "module": "if-diff-then-stiff.ts"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "if-diff.js",
+        "declarations": [
+          {
+            "kind": "class",
+            "description": "",
+            "name": "IfDiff",
+            "members": [
+              {
+                "kind": "field",
+                "name": "is",
+                "type": {
+                  "text": "string"
+                },
+                "static": true,
+                "default": "'if-diff'"
+              },
+              {
+                "kind": "field",
+                "name": "self",
+                "default": "this"
+              },
+              {
+                "kind": "field",
+                "name": "propActions",
+                "default": "[\n    linkValue, toggleMt, onAndMediaMatches\n]",
+                "type": {
+                  "text": "array"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "reactor",
+                "default": "new xc.Rx(this)"
+              },
+              {
+                "kind": "field",
+                "name": "_mql"
+              },
+              {
+                "kind": "field",
+                "name": "isLocked",
+                "type": {
+                  "text": "boolean"
+                },
+                "static": true,
+                "default": "false"
+              },
+              {
+                "kind": "field",
+                "name": "mediaQueryHandler",
+                "default": "(e) => {\n        this[slicedPropDefs.propLookup.matchesMediaQuery.alias] = e.matches;\n    }"
+              },
+              {
+                "kind": "method",
+                "name": "disconnect"
+              },
+              {
+                "kind": "method",
+                "name": "cleanupIfNoParentElement"
+              },
+              {
+                "kind": "field",
+                "name": "ownedRange"
+              },
+              {
+                "kind": "field",
+                "name": "_doNotCleanUp",
+                "type": {
+                  "text": "boolean"
+                },
+                "default": "false"
+              },
+              {
+                "kind": "method",
+                "name": "extractContents"
+              },
+              {
+                "kind": "field",
+                "name": "nextUnownedSibling"
+              },
+              {
+                "kind": "method",
+                "name": "onPropChange",
+                "parameters": [
+                  {
+                    "name": "n"
+                  },
+                  {
+                    "name": "propDef"
+                  },
+                  {
+                    "name": "newVal"
+                  }
+                ]
+              },
+              {
+                "kind": "method",
+                "name": "addStyle",
+                "parameters": [
+                  {
+                    "name": "self"
+                  }
+                ]
+              },
+              {
+                "kind": "method",
+                "name": "configureLazyMt",
+                "parameters": [
+                  {
+                    "name": "lazyMT"
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Must be true to pass test(s). Can also be an object.  Condition is based on the property being truthy.",
+                "name": "iff",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "LHS Operand.",
+                "name": "lhs",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Iff property has to be a non empty array.",
+                "name": "isNonEmptyArray",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "RHS Operand.",
+                "name": "rhs",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "lhs must equal rhs to pass tests.",
+                "name": "equals",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Do not evaluate expression until disabled setting is removed.",
+                "name": "disabled",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "number"
+                },
+                "description": "If content is rendered by the server, the server can indicate which nodes that it rendered can be hidden / displayed by if-diff on the client.",
+                "name": "ownedSiblingCount",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "string"
+                },
+                "description": "Specify exact manner in which non visible content should be hidden.",
+                "name": "hiddenStyle",
+                "default": "display:none",
+                "kind": "field"
+              }
+            ],
+            "attributes": [
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Must be true (exists) to pass test(s)",
+                "name": "iff"
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "LHS Operand.  Is JSON parsed.",
+                "name": "lhs"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Iff property has to be a non empty array.",
+                "name": "is-non-empty-array"
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "RHS Operand.  Is JSON parsed.",
+                "name": "rhs"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "lhs must equal rhs to pass tests.",
+                "name": "equals"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Do not evaluate expression until disabled setting is removed.",
+                "name": "disabled"
+              }
+            ],
+            "superclass": {
+              "name": "HTMLElement"
+            },
+            "tagName": "if-diff",
+            "customElement": true
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "IfDiff",
+            "declaration": {
+              "name": "IfDiff",
+              "module": "if-diff.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "if-diff.ts",
+        "declarations": [
+          {
+            "kind": "class",
+            "description": "",
+            "name": "IfDiff",
+            "members": [
+              {
+                "kind": "field",
+                "name": "is",
+                "type": {
+                  "text": "string"
+                },
+                "static": true,
+                "default": "'if-diff'"
+              },
+              {
+                "kind": "field",
+                "name": "self",
+                "default": "this"
+              },
+              {
+                "kind": "field",
+                "name": "propActions",
+                "default": "[\r\n    linkValue, toggleMt, onAndMediaMatches\r\n]"
+              },
+              {
+                "kind": "field",
+                "name": "reactor",
+                "type": {
+                  "text": "IReactor"
+                },
+                "default": "new xc.Rx(this)"
+              },
+              {
+                "kind": "field",
+                "name": "_mql",
+                "type": {
+                  "text": "MediaQueryList | undefined"
+                }
+              },
+              {
+                "kind": "field",
+                "name": "isLocked",
+                "type": {
+                  "text": "boolean"
+                },
+                "static": true,
+                "default": "false"
+              },
+              {
+                "kind": "field",
+                "name": "mediaQueryHandler",
+                "default": "(e: MediaQueryListEvent) => {\r\n        (<any>this)[slicedPropDefs.propLookup.matchesMediaQuery!.alias!] = e.matches;\r\n    }"
+              },
+              {
+                "kind": "method",
+                "name": "disconnect"
+              },
+              {
+                "kind": "method",
+                "name": "cleanupIfNoParentElement"
+              },
+              {
+                "kind": "field",
+                "name": "ownedRange"
+              },
+              {
+                "kind": "field",
+                "name": "_doNotCleanUp",
+                "type": {
+                  "text": "boolean"
+                },
+                "default": "false"
+              },
+              {
+                "kind": "method",
+                "name": "extractContents"
+              },
+              {
+                "kind": "field",
+                "name": "nextUnownedSibling"
+              },
+              {
+                "kind": "method",
+                "name": "onPropChange",
+                "parameters": [
+                  {
+                    "name": "n",
+                    "type": {
+                      "text": "string"
+                    }
+                  },
+                  {
+                    "name": "propDef",
+                    "type": {
+                      "text": "PropDef"
+                    }
+                  },
+                  {
+                    "name": "newVal",
+                    "type": {
+                      "text": "any"
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "method",
+                "name": "addStyle",
+                "parameters": [
+                  {
+                    "name": "self",
+                    "type": {
+                      "text": "IfDiffProps"
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "method",
+                "name": "configureLazyMt",
+                "parameters": [
+                  {
+                    "name": "lazyMT",
+                    "type": {
+                      "text": "LazyMTProps"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Must be true to pass test(s). Can also be an object.  Condition is based on the property being truthy.",
+                "name": "iff",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "LHS Operand.",
+                "name": "lhs",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Iff property has to be a non empty array.",
+                "name": "isNonEmptyArray",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "RHS Operand.",
+                "name": "rhs",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "lhs must equal rhs to pass tests.",
+                "name": "equals",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Do not evaluate expression until disabled setting is removed.",
+                "name": "disabled",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "number"
+                },
+                "description": "If content is rendered by the server, the server can indicate which nodes that it rendered can be hidden / displayed by if-diff on the client.",
+                "name": "ownedSiblingCount",
+                "kind": "field"
+              },
+              {
+                "type": {
+                  "text": "string"
+                },
+                "description": "Specify exact manner in which non visible content should be hidden.",
+                "name": "hiddenStyle",
+                "default": "display:none",
+                "kind": "field"
+              }
+            ],
+            "attributes": [
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Must be true (exists) to pass test(s)",
+                "name": "iff"
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "LHS Operand.  Is JSON parsed.",
+                "name": "lhs"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Iff property has to be a non empty array.",
+                "name": "is-non-empty-array"
+              },
+              {
+                "type": {
+                  "text": "boolean | string | number | object"
+                },
+                "description": "RHS Operand.  Is JSON parsed.",
+                "name": "rhs"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "lhs must equal rhs to pass tests.",
+                "name": "equals"
+              },
+              {
+                "type": {
+                  "text": "boolean"
+                },
+                "description": "Do not evaluate expression until disabled setting is removed.",
+                "name": "disabled"
+              }
+            ],
+            "superclass": {
+              "name": "HTMLElement"
+            },
+            "tagName": "if-diff",
+            "customElement": true
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "IfDiff",
+            "declaration": {
+              "name": "IfDiff",
+              "module": "if-diff.ts"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "includes.js",
+        "declarations": [
+          {
+            "kind": "function",
+            "name": "includes",
+            "parameters": [
+              {
+                "name": "lhs"
+              },
+              {
+                "name": "rhs"
+              }
+            ]
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "includes",
+            "declaration": {
+              "name": "includes",
+              "module": "includes.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "includes.ts",
+        "declarations": [
+          {
+            "kind": "function",
+            "name": "includes",
+            "parameters": [
+              {
+                "name": "lhs",
+                "type": {
+                  "text": "any"
+                }
+              },
+              {
+                "name": "rhs",
+                "type": {
+                  "text": "any"
+                }
+              }
+            ]
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "includes",
+            "declaration": {
+              "name": "includes",
+              "module": "includes.ts"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "types.d.ts",
+        "declarations": [],
+        "exports": []
+      },
+      {
+        "kind": "javascript-module",
+        "path": "test/test-all.js",
+        "declarations": [],
+        "exports": []
+      },
+      {
+        "kind": "javascript-module",
+        "path": "build/ES5/if-diff.js",
+        "declarations": [
+          {
+            "kind": "variable",
+            "name": "IfDiff"
+          },
+          {
+            "kind": "function",
+            "name": "IfDiff"
+          }
+        ],
+        "exports": [
+          {
+            "kind": "js",
+            "name": "IfDiff",
+            "declaration": {
+              "name": "IfDiff",
+              "module": "build/ES5/if-diff.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "build/ES5/dist/combo.iife.js",
+        "declarations": [
+          {
+            "kind": "variable",
+            "name": "tagName"
+          }
+        ],
+        "exports": [
+          {
+            "kind": "custom-element-definition",
+            "name": "tagName",
+            "declaration": {
+              "name": "custEl",
+              "module": "build/ES5/dist/combo.iife.js"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "javascript-module",
+        "path": "build/ES5/dist/if-diff.iife.js",
+        "declarations": [
+          {
+            "kind": "variable",
+            "name": "tagName"
+          }
+        ],
+        "exports": [
+          {
+            "kind": "custom-element-definition",
+            "name": "tagName",
+            "declaration": {
+              "name": "custEl",
+              "module": "build/ES5/dist/if-diff.iife.js"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
