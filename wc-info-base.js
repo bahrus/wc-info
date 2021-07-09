@@ -33,8 +33,8 @@ const mainTemplate = html `
             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <template>
                     <td part=cepi-name-value class=name>{{name}}</td>
-                    <td part=cepi-description-value class=description>{{description}}</td>
-                    <td part=cepi-type-text-value class=type-text>{{type.text}}</td>
+                    <td part=cepi-description-value class=description>{{description ?? '-'}}</td>
+                    <td part=cepi-type-text-value class=type-text>{{type.text ?? -}}</td>
                     <td part=cepi-default-value class=default>{{default ?? '-' }}</td>
                     <td part=cepi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                 </template>
@@ -62,8 +62,8 @@ const mainTemplate = html `
             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cem-item", "class": "item"}'>
                 <template>
                         <td part=cemi-name-value class=name>{{name}}</td>
-                        <td part=cemi-description-value class=description>{{description}}</td>
-                        <td part=cemi-type-text-value class=text>{{type.text}}</td>
+                        <td part=cemi-description-value class=description>{{description ?? '-'}}</td>
+                        <td part=cemi-type-text-value class=text>{{type.text ?? '-'}}</td>
                         <td part=cemi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                         <td part=cemi-parameters-value class=parameters>
                             <p-d-x 
@@ -118,8 +118,8 @@ const mainTemplate = html `
             <li-bid use-weak-map template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
                 <template>
                         <td part=ceai-name-value class=name>{{name}}</td>
-                        <td part=ceai-description-value class=description>{{description}}</td>
-                        <td part=ceai-type-value class=type>{{type.text}}</td>
+                        <td part=ceai-description-value class=description>{{description ?? '-'}}</td>
+                        <td part=ceai-type-value class=type>{{type.text ?? '-'}}</td>
                         <td part=ceai-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                         <td></td>
                 </template>
