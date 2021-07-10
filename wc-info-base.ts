@@ -143,9 +143,9 @@ const mainTemplate = html`
     </if-diff> 
 
     <!-- properties -->
-    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=2></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=if-diff.props[-iff] m=2></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=li-bid.props[-list] m=1></p-p-x>
-    <if-diff -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
+    <if-diff class=props -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
         <template>
             <li-bid class=props bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <!-- property values -->
@@ -172,7 +172,7 @@ const mainTemplate = html`
             </table>
         </template>
     </if-diff>
-    <if-diff -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+    <if-diff class=props -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
         <template>
             <li-bid class=props bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <!-- property values -->
