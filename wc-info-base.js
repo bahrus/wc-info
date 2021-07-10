@@ -197,6 +197,32 @@ const mainTemplate = html `
             </table>
         </template>
     </if-diff>
+
+    <!-- slots -->
+    <p-p-x from-parent-or-host observe-prop=slots to=[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=slots to=[-list] m=1></p-p-x>
+    <if-diff iff is-non-empty-array lazy-delayx=2000>
+        <template>
+            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
+                <template>
+                        <td part=cesi-name-value class=name>{{name}}</td>
+                        <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
+                        <td part=cesi-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
+                </template>
+            </li-bid>
+            <table part=ce-slots class=slots>
+                <caption part=ces-title class=title>Slots</caption>
+                <thead>
+                    <tr part=ces-header class=header>
+                        <th part=cesh-slot-label class=name>Slot</th>
+                        <th part=cesh-description-label class=description>Description</th>
+                    </tr>
+                </thead>
+                <tbody -repeat>
+                </tbody>
+            </table>
+        </template>
+    </if-diff>
     
     <!-- methods -->
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-iff] m=1></p-p-x>
@@ -279,7 +305,7 @@ const mainTemplate = html `
 
 
 </template>
-<c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "attributes"]' noshadow></c-c>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "attributes", "events", "slots"]' noshadow></c-c>
 
 
 
