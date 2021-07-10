@@ -85,6 +85,63 @@ const mainTemplate = html`
         </template>
     </if-diff> 
 
+    <!-- Events -->
+    <p-p-x from-parent-or-host observe-prop=events to=[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=events to=[-list] m=1></p-p-x>
+    <if-diff iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
+        <template>
+            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cee-item", "class": "item"}'>
+                <template>
+                        <td part=ceei-name-value class=name>{{name}}</td>
+                        <td part=ceei-description-value class=description>{{description ?? '-'}}</td>
+                        <td part=ceei-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
+                        <td part=ceei-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
+                        <td></td>
+                </template>
+            </li-bid>
+            <table part=ce-events class=events>
+                <caption part=cee-title class=title>Events</caption>
+                <thead>
+                    <tr part=cee-header class=header>
+                        <th part=ceeh-name-label class=name>Event</th>
+                        <th part=ceeh-description-label class=description>Description</th>
+                        <th part=ceeh-type-label class=type>Type</th>
+                        <th part=ceeh-inherited-from-label class=inherited-from>Inherited From</th>
+                    </tr>
+                </thead>
+                <tbody -repeat>
+                </tbody>
+            </table>
+        </template>
+    </if-diff>
+    <if-diff iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+        <template>
+            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cee-item", "class": "item"}'>
+                <template>
+                        <td part=ceei-name-type-default-values class=name-type-default>
+                            <hr part=ceeintdv-event-line>
+                            <div part=ceeintdv-event-value class=attr-value>Event: <strong>{{name}}</strong></div>
+                            <hr part=ceeintdv-type-line>
+                            <div part=ceeintdv-type-value class=type-value>Type: {{type.text ?? '-'}}</div>
+                            <!-- <hr part=ceeintdv-default-line>
+                            <div part=ceeintdv-default-value class=default-value>Default: {{default ?? '-' }}</div> -->
+                        </td>
+                        <td part=ceei-description-value class=description>
+                            <hr>
+                            <div part=ceeidv-label class=description-label>Description</div>
+                            {{description ?? '-'}}
+                        </td>
+                        
+                </template>
+            </li-bid>
+            <table part=ce-events class="narrow events">
+                <caption part=cee-title class=title>Events</caption>
+                <tbody -repeat>
+                </tbody>
+            </table>
+        </template>
+    </if-diff> 
+
     <!-- properties -->
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
@@ -143,6 +200,7 @@ const mainTemplate = html`
         </template>
     </if-diff>
     
+    <!-- methods -->
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
