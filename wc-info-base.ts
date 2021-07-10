@@ -63,6 +63,7 @@ const mainTemplate = html`
                 <!-- property values -->
                 <template>
                     <td part=cepi-name-type-default-values class=name-type-default>
+                        <hr>
                         <div>Property: <strong>{{name}}</strong></div>
                         <hr>
                         <div>Type: {{type.text ?? '-'}}</div>
@@ -70,21 +71,25 @@ const mainTemplate = html`
                         <div>Default: {{default ?? '-' }}</div>
                         <hr>
                     </td>
-                    <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}">{{description ?? '-'}}</td>
+                    <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}">
+                        <hr>
+                            <div class=description-label>Description</div>
+                        {{description ?? '-'}}
+                    </td>
                 </template>
             </li-bid>
-            <table part=ce-properties class=properties part=properties>
+            <table part=ce-properties class="narrow properties" part=properties>
                 <caption part=cep-title class=title>Properties</caption>
-                <thead>
+                <!-- <thead>
                     <tr part=cep-header class=header>
                         <th part=ceph-name-label class=name>
-                            <!-- <div>Property</div>
+                            <div>Property</div>
                             <div>Type</div>
-                            <div>Default</div> -->
+                            <div>Default</div> 
                         </th>
                         <th part=ceph-description-label class=description>Description</th>
                     </tr>
-                </thead>
+                </thead> -->
                 <tbody -repeat></tbody>
             </table>
         </template>

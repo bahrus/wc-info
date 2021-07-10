@@ -29,4 +29,10 @@ wc-info-base{
 [data-len="0"]{
     text-align: center;
 }
+.description-label{
+    text-align:center;
+}
+table.narrow td{
+    vertical-align: top;
+}
 
