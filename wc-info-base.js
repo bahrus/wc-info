@@ -25,7 +25,65 @@ const mainTemplate = html `
     <hr>
     <h2 part=tag-name class=tag-name id={{_tagName}}><a href="#{{_tagName}}">{{_tagName}}</a></h2>
     <dfn part=ce-description class=description>{{description}}</dfn>
-    
+
+    <!-- Attributes -->
+    <p-p-x from-parent-or-host observe-prop=attributes to=[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=attributes to=[-list] m=1></p-p-x>
+    <if-diff iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
+        <template>
+            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
+                <template>
+                        <td part=ceai-name-value class=name>{{name}}</td>
+                        <td part=ceai-description-value class=description>{{description ?? '-'}}</td>
+                        <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
+                        <td part=ceai-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
+                        <td></td>
+                </template>
+            </li-bid>
+            <table part=ce-attributes class=attributes>
+                <caption part=cea-title class=title>Attributes</caption>
+                <thead>
+                    <tr part=cea-header class=header>
+                        <th part=ceah-name-label class=name>Attribute</th>
+                        <th part=ceah-description-label class=description>Description</th>
+                        <th part=ceah-type-label class=type>Type</th>
+                        <th part=ceah-inherited-from-label class=inherited-from>Inherited From</th>
+                    </tr>
+                </thead>
+                <tbody -repeat>
+                </tbody>
+            </table>
+        </template>
+    </if-diff>
+    <if-diff iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+        <template>
+            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
+                <template>
+                        <td part=cenai-name-type-default-values class=name-type-default>
+                            <hr part=cenaintdv-attr-line>
+                            <div part=cenaintdv-attr-value class=attr-value>Attribute: <strong>{{name}}</strong></div>
+                            <hr part=cenaintdv-type-line>
+                            <div part=cenaintdv-type-value class=type-value>Type: {{type.text ?? '-'}}</div>
+                            <hr part=cenaintdv-default-line>
+                            <div part=cenaintdv-default-value class=default-value>Default: {{default ?? '-' }}</div>
+                        </td>
+                        <td part=cenai-description-value class=description>
+                            <hr>
+                            <div part=cenaidv-label class=description-label>Description</div>
+                            {{description ?? '-'}}
+                        </td>
+                        
+                </template>
+            </li-bid>
+            <table part=ce-attributes class="narrow attributes">
+                <caption part=cea-title class=title>Attributes</caption>
+                <tbody -repeat>
+                </tbody>
+            </table>
+        </template>
+    </if-diff> 
+
+    <!-- properties -->
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
@@ -161,61 +219,7 @@ const mainTemplate = html `
         </template>
     </if-diff>    
 
-    <p-p-x from-parent-or-host observe-prop=attributes to=[-iff] m=1></p-p-x>
-    <p-p-x from-parent-or-host observe-prop=attributes to=[-list] m=1></p-p-x>
-    <if-diff iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
-        <template>
-            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
-                <template>
-                        <td part=ceai-name-value class=name>{{name}}</td>
-                        <td part=ceai-description-value class=description>{{description ?? '-'}}</td>
-                        <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
-                        <td part=ceai-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
-                        <td></td>
-                </template>
-            </li-bid>
-            <table part=ce-attributes class=attributes>
-                <caption part=cea-title class=title>Attributes</caption>
-                <thead>
-                    <tr part=cea-header class=header>
-                        <th part=ceah-name-label class=name>Attribute</th>
-                        <th part=ceah-description-label class=description>Description</th>
-                        <th part=ceah-type-label class=type>Type</th>
-                        <th part=ceah-inherited-from-label class=inherited-from>Inherited From</th>
-                    </tr>
-                </thead>
-                <tbody -repeat>
-                </tbody>
-            </table>
-        </template>
-    </if-diff>
-    <if-diff iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
-        <template>
-            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
-                <template>
-                        <td part=cenai-name-type-default-values class=name-type-default>
-                            <hr part=cenaintdv-attr-line>
-                            <div part=cenaintdv-attr-value class=attr-value>Attribute: <strong>{{name}}</strong></div>
-                            <hr part=cenaintdv-type-line>
-                            <div part=cenaintdv-type-value class=type-value>Type: {{type.text ?? '-'}}</div>
-                            <hr part=cenaintdv-default-line>
-                            <div part=cenaintdv-default-value class=default-value>Default: {{default ?? '-' }}</div>
-                        </td>
-                        <td part=cenai-description-value class=description>
-                            <hr>
-                            <div part=cenaidv-label class=description-label>Description</div>
-                            {{description ?? '-'}}
-                        </td>
-                        
-                </template>
-            </li-bid>
-            <table part=ce-attributes class="narrow attributes">
-                <caption part=cea-title class=title>Attributes</caption>
-                <tbody -repeat>
-                </tbody>
-            </table>
-        </template>
-    </if-diff> 
+
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "attributes"]' noshadow></c-c>
 
