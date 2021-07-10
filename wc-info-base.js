@@ -28,7 +28,7 @@ const mainTemplate = html `
     
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
-    <if-diff -iff is-non-empty-array lazy-delayx=2000>
+    <if-diff -iff is-non-empty-array and-media-matches="(max-width: 800px)" lazy-delayx=2000>
         <template>
             <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <!-- property values -->
