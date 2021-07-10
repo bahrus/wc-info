@@ -142,7 +142,7 @@ const mainTemplate = html `
 
     <!-- properties -->
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-iff] m=2></p-p-x>
-    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[-list] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=[data-props][-list] m=1></p-p-x>
     <if-diff -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
         <template>
             <li-bid data-props bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
