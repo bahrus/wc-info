@@ -60,24 +60,24 @@ const mainTemplate = html `
             <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <!-- property values -->
                 <template>
-                    <td part=cepi-name-type-default-values class=name-type-default>
-                        <hr>
-                        <div>Property: <strong>{{name}}</strong></div>
-                        <hr>
-                        <div>Type: {{type.text ?? '-'}}</div>
-                        <hr>
-                        <div>Default: {{default ?? '-' }}</div>
+                    <td part=cenpi-name-type-default-values class=name-type-default>
+                        <hr part=cenpintdv-prop-line>
+                        <div part=cenpintdv-property-value class=property-value>Property: <strong>{{name}}</strong></div>
+                        <hr part=cenpintdv-type-line>
+                        <div part=cenpintdv-type-value class=type-value>Type: {{type.text ?? '-'}}</div>
+                        <hr part=cenpintdv-default-line>
+                        <div part=cenpintdv-default-value class=default-value>Default: {{default ?? '-' }}</div>
                         <hr>
                     </td>
-                    <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}">
+                    <td part=cenpi-description-value class=description data-len="{{description.length ?? '0'}}">
                         <hr>
-                            <div class=description-label>Description</div>
+                            <div part=cenpidv class=description-label>Description</div>
                         {{description ?? '-'}}
                     </td>
                 </template>
             </li-bid>
-            <table part=ce-properties class="narrow properties" part=properties>
-                <caption part=cep-title class=title>Properties</caption>
+            <table part=ce-narrow-properties class="narrow properties" part=properties>
+                <caption part=cenp-title class=title>Properties</caption>
                 <tbody -repeat></tbody>
             </table>
         </template>
@@ -140,49 +140,21 @@ const mainTemplate = html `
     </if-diff>
     <if-diff -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
         <template>
-            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cem-item", "class": "item"}'>
+            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cenm-item", "class": "item"}'>
                 <template>
-                        <td part=cemi-name-type-default-values class=name-type-default>
+                        <td part=cenmi-name-type-default-values class=name-type-default>
                             <hr>
                             <div>Method: <strong>{{name}}</strong></div>
                         </td>
-                        <td part=cemi-description-value class=description  data-len="{{description.length ?? '0'}}">
+                        <td part=cenmi-description-value class=description  data-len="{{description.length ?? '0'}}">
                             <hr>
                             <div class=description-label>Description</div>
                             {{description ?? '-'}}
                         </td>
-                        <!-- <td part=cemi-type-text-value class=text data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
-                        <td part=cemi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td> -->
-                        <!-- <td part=cemi-parameters-value class=parameters>
-                            <p-d-x 
-                                observe=li-bid 
-                                closest-weak-map-key=tr 
-                                on=weak-map-changed 
-                                to=[-list] 
-                                val-from-target=weakMap 
-                                val-filter="$.parameters[*]" m=1>
-                            </p-d-x>
-                            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
-                                <template>
-                                    <td>{{name}}</td>
-                                    <td data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}
-                                </template>
-                            </li-bid>
-                            <table part=cemipv-details class=details>
-                                <thead>
-                                    <tr part=cemipvd-header class=header>
-                                        <th part=cemipvdh-name-label class=name>Parameter</th>
-                                        <th part=cemipvdh-type-label class=type>Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody -repeat>
-                                </tbody>
-                            </table>
-                        </td> -->
                 </template>
             </li-bid>
-            <table part=ce-methods class="narrow methods">
-                <caption part=cem-title class=title>Methods</caption>
+            <table part=ce-narrow-methods class="narrow methods">
+                <caption part=cenm-title class=title>Methods</caption>
                 <tbody -repeat>
                 </tbody>
             </table>

@@ -35,10 +35,8 @@
     "carbon-copy": "0.1.75",
     "ib-id": "0.0.57",
     "lib-id": "0.0.21",
-    "trans-render": "0.0.291",
     "if-diff": "0.0.87",
-    "nomodule": "0.0.14",
-    "on-to-me": "0.0.26"
+    "nomodule": "0.0.14"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
