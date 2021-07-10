@@ -78,16 +78,6 @@ const mainTemplate = html `
             </li-bid>
             <table part=ce-properties class="narrow properties" part=properties>
                 <caption part=cep-title class=title>Properties</caption>
-                <!-- <thead>
-                    <tr part=cep-header class=header>
-                        <th part=ceph-name-label class=name>
-                            <div>Property</div>
-                            <div>Type</div>
-                            <div>Default</div> 
-                        </th>
-                        <th part=ceph-description-label class=description>Description</th>
-                    </tr>
-                </thead> -->
                 <tbody -repeat></tbody>
             </table>
         </template>
@@ -148,6 +138,56 @@ const mainTemplate = html `
             </table>
         </template>
     </if-diff>
+    <if-diff -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+        <template>
+            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cem-item", "class": "item"}'>
+                <template>
+                        <td part=cemi-name-type-default-values class=name-type-default>
+                            <hr>
+                            <div>Method: <strong>{{name}}</strong></div>
+                        </td>
+                        <td part=cemi-description-value class=description  data-len="{{description.length ?? '0'}}">
+                            <hr>
+                            <div class=description-label>Description</div>
+                            {{description ?? '-'}}
+                        </td>
+                        <!-- <td part=cemi-type-text-value class=text data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
+                        <td part=cemi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td> -->
+                        <!-- <td part=cemi-parameters-value class=parameters>
+                            <p-d-x 
+                                observe=li-bid 
+                                closest-weak-map-key=tr 
+                                on=weak-map-changed 
+                                to=[-list] 
+                                val-from-target=weakMap 
+                                val-filter="$.parameters[*]" m=1>
+                            </p-d-x>
+                            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
+                                <template>
+                                    <td>{{name}}</td>
+                                    <td data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}
+                                </template>
+                            </li-bid>
+                            <table part=cemipv-details class=details>
+                                <thead>
+                                    <tr part=cemipvd-header class=header>
+                                        <th part=cemipvdh-name-label class=name>Parameter</th>
+                                        <th part=cemipvdh-type-label class=type>Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody -repeat>
+                                </tbody>
+                            </table>
+                        </td> -->
+                </template>
+            </li-bid>
+            <table part=ce-methods class="narrow methods">
+                <caption part=cem-title class=title>Methods</caption>
+                <tbody -repeat>
+                </tbody>
+            </table>
+        </template>
+    </if-diff>    
 
     <p-p-x from-parent-or-host observe-prop=attributes to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=attributes to=[-list] m=1></p-p-x>
