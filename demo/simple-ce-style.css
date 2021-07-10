@@ -35,4 +35,7 @@ wc-info-base{
 table.narrow td{
     vertical-align: top;
 }
+table.narrow .description-label{
+    text-decoration: underline;
+}
 
