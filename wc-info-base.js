@@ -55,6 +55,35 @@ const mainTemplate = html `
             </table>
         </template>
     </if-diff>
+    <if-diff -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+        <template>
+            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
+                <!-- property values -->
+                <template>
+                    <td part=cepi-name-type-default-values class=name-type-default>
+                        <div>Property: <strong>{{name}}</strong></div>
+                        <div>Type: {{type.text ?? '-'}}</div>
+                        <div>Default: {{default ?? '-' }}</div>
+                    </td>
+                    <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}">{{description ?? '-'}}</td>
+                </template>
+            </li-bid>
+            <table part=ce-properties class=properties part=properties>
+                <caption part=cep-title class=title>Properties</caption>
+                <thead>
+                    <tr part=cep-header class=header>
+                        <th part=ceph-name-label class=name>
+                            <!-- <div>Property</div>
+                            <div>Type</div>
+                            <div>Default</div> -->
+                        </th>
+                        <th part=ceph-description-label class=description>Description</th>
+                    </tr>
+                </thead>
+                <tbody -repeat></tbody>
+            </table>
+        </template>
+    </if-diff>
     
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-list] m=1></p-p-x>
