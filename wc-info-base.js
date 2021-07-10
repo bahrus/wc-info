@@ -71,7 +71,7 @@ const mainTemplate = html `
                     </td>
                     <td part=cenpi-description-value class=description data-len="{{description.length ?? '0'}}">
                         <hr>
-                            <div part=cenpidv class=description-label>Description</div>
+                            <div part=cenpidv-label class=description-label>Description</div>
                         {{description ?? '-'}}
                     </td>
                 </template>
@@ -142,7 +142,7 @@ const mainTemplate = html `
         <template>
             <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cenm-item", "class": "item"}'>
                 <template>
-                        <td part=cenmi-name-type-default-values class=name-type-default>
+                        <td part=cenmi-name-value class=name-value>
                             <hr>
                             <div>Method: <strong>{{name}}</strong></div>
                         </td>
@@ -184,6 +184,33 @@ const mainTemplate = html `
                         <th part=ceah-inherited-from-label class=inherited-from>Inherited From</th>
                     </tr>
                 </thead>
+                <tbody -repeat>
+                </tbody>
+            </table>
+        </template>
+    </if-diff>
+    <if-diff iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+        <template>
+            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
+                <template>
+                        <td part=cenai-name-type-default-values class=name-type-default>
+                            <hr part=cenaintdv-attr-line>
+                            <div part=cenaintdv-attr-value class=attr-value>Attribute: <strong>{{name}}</strong></div>
+                            <hr part=cenaintdv-type-line>
+                            <div part=cenaintdv-type-value class=type-value>Type: {{type.text ?? '-'}}</div>
+                            <hr part=cenaintdv-default-line>
+                            <div part=cenaintdv-default-value class=default-value>Default: {{default ?? '-' }}</div>
+                        </td>
+                        <td part=cenai-description-value class=description>
+                            <hr>
+                            <div part=cenaidv-label class=description-label>Description</div>
+                            {{description ?? '-'}}
+                        </td>
+                        
+                </template>
+            </li-bid>
+            <table part=ce-attributes class="narrow attributes">
+                <caption part=cea-title class=title>Attributes</caption>
                 <tbody -repeat>
                 </tbody>
             </table>
