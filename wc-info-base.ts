@@ -64,8 +64,11 @@ const mainTemplate = html`
                 <template>
                     <td part=cepi-name-type-default-values class=name-type-default>
                         <div>Property: <strong>{{name}}</strong></div>
+                        <hr>
                         <div>Type: {{type.text ?? '-'}}</div>
+                        <hr>
                         <div>Default: {{default ?? '-' }}</div>
+                        <hr>
                     </td>
                     <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}">{{description ?? '-'}}</td>
                 </template>
