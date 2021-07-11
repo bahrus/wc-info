@@ -209,7 +209,6 @@ const mainTemplate = html`
                 <template>
                         <td part=cesi-name-value class=name>{{name}}</td>
                         <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
-                        <td part=cesi-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
                 </template>
             </li-bid>
             <table part=ce-slots class=slots>
@@ -225,11 +224,37 @@ const mainTemplate = html`
             </table>
         </template>
     </if-diff>
+
+    <!-- CSS Props -->
+    <p-p-x from-parent-or-host observe-prop=cssProperties to=if-diff.css-props[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=cssProperties to=li-bid.css-props[-list] m=1></p-p-x>
+    <if-diff class=css-props -iff is-non-empty-array lazy-delayx=2000>
+        <template>
+            <li-bid class=css-props bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
+                <template>
+                        <td part=cesi-name-value class=name>{{name}}</td>
+                        <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
+                </template>
+            </li-bid>
+            <table part=ce-css-props class=css-props>
+                <caption part=cecp-title class=title>CSS Properties</caption>
+                <thead>
+                    <tr part=cecp-header class=header>
+                        <th part=cecph-css-prop-label class=name>CSS Property</th>
+                        <th part=cecph-description-label class=description>Description</th>
+                    </tr>
+                </thead>
+                <tbody -repeat>
+                </tbody>
+            </table>
+        </template>
+    </if-diff>
+
     
     <!-- methods -->
-    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=if-diff.methods[-iff] m=1></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=li-bid.methods[-list] m=1></p-p-x>
-    <if-diff -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
+    <if-diff class=methods -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
         <template>
             <li-bid class=methods bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cem-item", "class": "item"}'>
                 <template>
@@ -307,7 +332,7 @@ const mainTemplate = html`
 
 
 </template>
-<c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots"]' noshadow></c-c>
+<c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow></c-c>
 
 
 
