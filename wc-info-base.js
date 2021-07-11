@@ -15,9 +15,7 @@ const mainTemplate = html `
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-d-x on=result-changed to=[-list] val-from-target=result val-filter=$.modules.[*].declarations[?(@.tagName)] val-filter-script-id=filter-out-less-typed-version></p-d-x>
 <h1 part=title>Custom Elements</h1>
-<i-bid -list>
-    <custom-element-declaration data-is-original></custom-element-declaration>
-</i-bid>
+<i-bid -list tag=custom-element-declaration></i-bid>
 
 
 
