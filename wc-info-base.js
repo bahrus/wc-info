@@ -37,7 +37,6 @@ const mainTemplate = html `
                         <td part=ceai-description-value class=description>{{description ?? '-'}}</td>
                         <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
                         <td part=ceai-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
-                        <td></td>
                 </template>
             </li-bid>
             <table part=ce-attributes class=attributes>

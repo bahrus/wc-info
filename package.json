@@ -26,16 +26,15 @@
     "doc": "custom-elements-manifest analyze"
   },
   "dependencies": {
-    "hypo-link": "0.0.31",
     "xtal-element": "0.0.414",
-    "xtal-fetch": "0.0.91",
-    "pass-prop": "0.0.14",
+    "xtal-fetch": "0.0.92",
     "pass-down": "0.0.57",
+    "pass-prop": "0.0.14",
     "carbon-copy": "0.1.75",
-    "ib-id": "0.0.57",
-    "lib-id": "0.0.21",
-    "if-diff": "0.0.94",
-    "nomodule": "0.0.14"
+    "ib-id": "0.0.58",
+    "lib-id": "0.0.22",
+    "if-diff": "0.0.95",
+    "nomodule": "0.0.15"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
