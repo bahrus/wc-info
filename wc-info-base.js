@@ -330,12 +330,6 @@ const mainTemplate = html `
 <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow></c-c>
 
 
-
-<!-- <template id=wc-info-parameter>
-    <hr>
-    <div>Parameter Name: {{name}}</div>
-</template>
-<c-c copy from-prev-sibling string-props='["name"]' noshadow></c-c> -->
 <no-module></no-module>
 <script id=filter-out-less-typed-version nomodule=ish>
     export const filter = (declarations) => {
