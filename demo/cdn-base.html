@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Custom Elements</title>
     <link rel=stylesheet href=simple-ce-style.css>
     <link rel=preconnect href=https://cdn.skypack.dev>
-    <link rel=preconnect href=https://unpkg.com>
+    <link rel=preconnect href=https://unkpkg.com>
 </head>
 <body>
-    <!-- <wc-info-base href=https://unpkg.com/if-diff@0.0.74/custom-elements.json></wc-info-base> -->
-    <wc-info-base href=test.json></wc-info-base>
+    <wc-info-base id=wcInfo></wc-info-base>
 
     <script type=module>
-        import 'https://cdn.skypack.dev/wc-info@0.0.88?min'
+        import 'https://cdn.skypack.dev/wc-info@0.0.98?min'
     </script>
     <script>
         setTimeout(() => {
@@ -24,7 +23,14 @@
                 location.hash = originalHash;
             }
         }, 1000);
-
+        const searchParams  = new URLSearchParams(location.search);
+        const package = searchParams.get('npmPackage');
+        document.title = "Custom Elements API - " + package;
+        const jsonPath = searchParams.get('jsonPath') || 'custom-elements.json';
+        if(package){   
+            wcInfo.href =  `https://unpkg.com/${package}/${jsonPath}`;
+            wcInfo.package = package;
+        }
     </script>
 </body>
 </html>
