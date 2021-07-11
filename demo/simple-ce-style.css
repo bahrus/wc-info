@@ -16,7 +16,8 @@ table caption.title{
 }
 table{
     width: 100%;
-    margin-bottom:24px;
+    margin-bottom:12px;
+    margin-top:12px;
 }
 table.details caption.title{
     font-size: 14px;
@@ -37,5 +38,9 @@ table.narrow td{
 }
 table.narrow .description-label{
     text-decoration: underline;
+}
+if-diff[lazy-delay]{
+    min-height:1000px;
+    display:block;
 }
 
