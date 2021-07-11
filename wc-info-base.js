@@ -11,12 +11,12 @@ import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
 import('nomodule/no-module.js');
 const mainTemplate = html `
-<p-p from-parent-or-host observe-prop=href to=[-href] m=1></p-p>
+<p-p from-parent-or-host observe-prop=href to=[-href] m=2></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-d-x on=result-changed to=[-list] val-from-target=result val-filter=$.modules.[*].declarations[?(@.tagName)] val-filter-script-id=filter-out-less-typed-version></p-d-x>
 <h1 part=title>Custom Elements</h1>
 <i-bid -list tag=custom-element-declaration></i-bid>
-
+<a -href>See Raw JSON</a>
 
 
 <template id=custom-element-declaration>
@@ -325,8 +325,6 @@ const mainTemplate = html `
             </table>
         </template>
     </if-diff>    
-    <hr>
-
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow></c-c>
 
