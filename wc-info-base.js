@@ -27,7 +27,7 @@ const mainTemplate = html `
     <!-- Attributes -->
     <p-p-x from-parent-or-host observe-prop=_attributes to=if-diff.attribs[-iff] m=2></p-p-x>
     <p-p-x from-parent-or-host observe-prop=_attributes to=li-bid.attribs[-list] m=1></p-p-x>
-    <if-diff class=attribs -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
+    <if-diff class=attribs -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-display>
         <template>
             <li-bid class=attribs bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
                 <template>
@@ -53,7 +53,7 @@ const mainTemplate = html `
             </table>
         </template>
     </if-diff>
-    <if-diff class=attribs -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+    <if-diff class=attribs -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-display>
         <template>
             <li-bid class=attribs bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
                 <template>
@@ -84,7 +84,7 @@ const mainTemplate = html `
     <!-- Events -->
     <p-p-x from-parent-or-host observe-prop=events to=if-diff.events[-iff] m=2></p-p-x>
     <p-p-x from-parent-or-host observe-prop=events to=li-bid.events[-list] m=1></p-p-x>
-    <if-diff class=events -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
+    <if-diff class=events -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-display>
         <template>
             <li-bid class=events bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cee-item", "class": "item"}'>
                 <template>
@@ -110,7 +110,7 @@ const mainTemplate = html `
             </table>
         </template>
     </if-diff>
-    <if-diff class=events -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+    <if-diff class=events -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-display>
         <template>
             <li-bid class=events bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cee-item", "class": "item"}'>
                 <template>
@@ -141,7 +141,7 @@ const mainTemplate = html `
     <!-- properties -->
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=if-diff.props[-iff] m=2></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=li-bid.props[-list] m=1></p-p-x>
-    <if-diff class=props -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
+    <if-diff class=props -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-display>
         <template>
             <li-bid class=props bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <!-- property values -->
@@ -168,7 +168,7 @@ const mainTemplate = html `
             </table>
         </template>
     </if-diff>
-    <if-diff class=props -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+    <if-diff class=props -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-display>
         <template>
             <li-bid class=props bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <!-- property values -->
@@ -248,9 +248,9 @@ const mainTemplate = html `
 
     
     <!-- methods -->
-    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=if-diff.methods[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=if-diff.methods[-iff] m=2></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=li-bid.methods[-list] m=1></p-p-x>
-    <if-diff class=methods -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-delayx=2000>
+    <if-diff class=methods -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-display>
         <template>
             <li-bid class=methods bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cem-item", "class": "item"}'>
                 <template>
@@ -303,7 +303,7 @@ const mainTemplate = html `
             </table>
         </template>
     </if-diff>
-    <if-diff -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-delayx=2000>
+    <if-diff class=methods -iff is-non-empty-array and-media-matches="(max-width: 599px)" lazy-display>
         <template>
             <li-bid class=methods bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cenm-item", "class": "item"}'>
                 <template>
