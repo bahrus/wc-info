@@ -12,9 +12,11 @@ import('if-diff/if-diff.js');
 import('nomodule/no-module.js');
 const mainTemplate = html `
 <p-p from-parent-or-host observe-prop=href to=[-href] m=2></p-p>
+<p-p from-parent-or-host observe-prop=package to=h2 care-of=label[-text-content] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
 <p-d-x on=result-changed to=[-list] val-from-target=result val-filter=$.modules.[*].declarations[?(@.tagName)] val-filter-script-id=filter-out-less-typed-version></p-d-x>
-<h1 part=title>Custom Elements</h1>
+<h1 part=title>Custom Elements API</h1>
+<h2 part=package>Package: <label -text-content></label></h2>
 <i-bid -list tag=custom-element-declaration></i-bid>
 <a -href>See Raw JSON</a>
 
@@ -368,6 +370,10 @@ X.tend({
     class: WCInfoBase,
     propDefs: {
         href: {
+            dry: true,
+            type: String,
+        },
+        package: {
             dry: true,
             type: String,
         }
