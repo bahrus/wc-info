@@ -384,6 +384,7 @@ mainTemplate.id = 'wc-info-base';
 Object.assign(cc, {
     stringProps: ['href'],
     templateToClone: mainTemplate,
+    noshadow: true,
     //id: 'wc-info',
     //copy: true
 } as CCProps);
