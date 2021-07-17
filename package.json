@@ -34,7 +34,7 @@
     "ib-id": "0.0.58",
     "lib-id": "0.0.22",
     "if-diff": "0.0.95",
-    "aggregator-fn": "0.0.28"
+    "aggregator-fn": "0.0.29"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
