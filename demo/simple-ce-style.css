@@ -25,7 +25,12 @@ table.details caption.title{
 wc-info-base{
     padding-left: 15px;
     padding-right: 15px;
+    max-width:740px;
     display:block;
+    margin: auto;
+}
+h1{
+    text-align: center;
 }
 [data-len="0"]{
     text-align: center;
