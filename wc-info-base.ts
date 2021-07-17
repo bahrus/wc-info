@@ -19,7 +19,6 @@ const mainTemplate = html`
 <p-d-x on=result-changed to=[-declarations] val-from-target=result val-filter=$.modules.[*].declarations[?(@.tagName)]></p-d-x>
 <ag-fn -declarations><script nomodule>
     ({declarations}) => {
-        console.log(declarations);
         const tagNameToDeclaration = {};
         function countTypes(declaration){
             let count = 0;
