@@ -33,7 +33,7 @@
     "carbon-copy": "0.1.78",
     "ib-id": "0.0.58",
     "lib-id": "0.0.22",
-    "if-diff": "0.0.98",
+    "if-diff": "0.0.99",
     "aggregator-fn": "0.0.29"
   },
   "devDependencies": {
