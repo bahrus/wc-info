@@ -1,13 +1,10 @@
-import {X} from 'xtal-element/lib/X.js';
-import {WCInfoBaseProps} from './types.js';
 import {html} from 'xtal-element/lib/html.js';
 import {CCProps} from 'carbon-copy/types.d.js';
+import('carbon-copy/c-c.js');
 import('pass-prop/p-p.js');
 import('pass-prop/p-p-x.js');
 import('pass-down/p-d-x.js');
-import('carbon-copy/c-c.js');
 import('xtal-fetch/xtal-fetch-get.js');
-import('carbon-copy/c-c.js');
 import('ib-id/i-bid.js');
 import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
