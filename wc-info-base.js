@@ -7,12 +7,38 @@ import('xtal-fetch/xtal-fetch-get.js');
 import('ib-id/i-bid.js');
 import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
-import('nomodule/no-module.js');
+import('aggregator-fn/ag-fn.js');
+//import('nomodule/no-module.js');
 const mainTemplate = html `
 <p-p from-parent-or-host observe-prop=href to=[-href] m=2></p-p>
 <p-p from-parent-or-host observe-prop=package to=h2 care-of=label[-text-content] m=1></p-p>
 <xtal-fetch-get fetch -href></xtal-fetch-get>
-<p-d-x on=result-changed to=[-list] val-from-target=result val-filter=$.modules.[*].declarations[?(@.tagName)] val-filter-script-id=filter-out-less-typed-version></p-d-x>
+<p-d-x on=result-changed to=[-declarations] val-from-target=result val-filter=$.modules.[*].declarations[?(@.tagName)]></p-d-x>
+<ag-fn -declarations><script nomodule>
+    ({declarations}) => {
+        console.log(declarations);
+        const tagNameToDeclaration = {};
+        function countTypes(declaration){
+            let count = 0;
+            for(const member of declaration.members){
+                if(member.type !== undefined) count++;
+            }
+            return count;
+        }
+        for(const declaration of declarations){
+            const tagName = declaration.tagName;
+            if(tagNameToDeclaration[tagName] !== undefined){
+                if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName])){
+                    tagNameToDeclaration[tagName] = declaration;
+                }
+            }else{
+                tagNameToDeclaration[tagName] = declaration;
+            }
+        }
+        return Object.values(tagNameToDeclaration);
+    }
+</script></ag-fn>
+<p-d on=value-changed to=[-list] val-from-target=value></p-d>
 <h1 part=title>Custom Elements API</h1>
 <h2 part=package>Package: <label -text-content></label></h2>
 <i-bid -list tag=custom-element-declaration></i-bid>
@@ -325,32 +351,6 @@ const mainTemplate = html `
     </if-diff>    
 </template>
 <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow></c-c>
-
-
-<no-module></no-module>
-<script id=filter-out-less-typed-version nomodule=ish>
-    export const filter = (declarations) => {
-        const tagNameToDeclaration = {};
-        function countTypes(declaration){
-            let count = 0;
-            for(const member of declaration.members){
-                if(member.type !== undefined) count++;
-            }
-            return count;
-        }
-        for(const declaration of declarations){
-            const tagName = declaration.tagName;
-            if(tagNameToDeclaration[tagName] !== undefined){
-                if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName])){
-                    tagNameToDeclaration[tagName] = declaration;
-                }
-            }else{
-                tagNameToDeclaration[tagName] = declaration;
-            }
-        }
-        return Object.values(tagNameToDeclaration);
-    }
-</script>
 
 `;
 define('wc-info-base', mainTemplate, {

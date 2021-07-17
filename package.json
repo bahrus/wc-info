@@ -26,7 +26,7 @@
     "doc": "custom-elements-manifest analyze"
   },
   "dependencies": {
-    "xtal-element": "0.0.414",
+    "xtal-element": "0.0.415",
     "xtal-fetch": "0.0.92",
     "pass-down": "0.0.59",
     "pass-prop": "0.0.15",
@@ -34,7 +34,7 @@
     "ib-id": "0.0.58",
     "lib-id": "0.0.22",
     "if-diff": "0.0.95",
-    "nomodule": "0.0.15"
+    "aggregator-fn": "0.0.28"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
