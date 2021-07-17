@@ -28,7 +28,7 @@
   "dependencies": {
     "xtal-element": "0.0.415",
     "xtal-fetch": "0.0.92",
-    "pass-down": "0.0.59",
+    "pass-down": "0.0.61",
     "pass-prop": "0.0.15",
     "carbon-copy": "0.1.78",
     "ib-id": "0.0.58",

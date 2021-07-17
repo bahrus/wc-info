@@ -13,9 +13,7 @@ import('aggregator-fn/ag-fn.js');
 //import('nomodule/no-module.js');
 
 const mainTemplate = html`
-<p-p from-parent-or-host observe-prop=href to=[-href] m=2></p-p>
-<p-p from-parent-or-host observe-prop=package to=h2 care-of=label[-text-content] m=1></p-p>
-<xtal-fetch-get fetch -href></xtal-fetch-get>
+<xtal-fetch-get fetch href={{href}}></xtal-fetch-get>
 <p-d-x on=result-changed to=[-declarations] val-from-target=result val-filter=$.modules.[*].declarations[?(@.tagName)]></p-d-x>
 <ag-fn -declarations><script nomodule>
     ({declarations}) => {
@@ -42,9 +40,9 @@ const mainTemplate = html`
 </script></ag-fn>
 <p-d on=value-changed to=[-list] val-from-target=value></p-d>
 <h1 part=title>Custom Elements API</h1>
-<h2 part=package>Package: <label -text-content></label></h2>
+<h2 part=package>Package: <label>{{package}}</label></h2>
 <i-bid -list tag=custom-element-declaration></i-bid>
-<a -href>See Raw JSON</a>
+<a href={{href}}>See Raw JSON</a>
 
 
 <template id=custom-element-declaration>
