@@ -1,6 +1,7 @@
 import {X} from 'xtal-element/lib/X.js';
 import {WCInfoBaseProps} from './types.js';
 import {html} from 'xtal-element/lib/html.js';
+import {CCProps} from 'carbon-copy/types.d.js';
 import('pass-prop/p-p.js');
 import('pass-prop/p-p-x.js');
 import('pass-down/p-d-x.js');
@@ -34,12 +35,6 @@ const mainTemplate = html`
     <if-diff class=attribs -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
         <template>
             <li-bid class=attribs bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
-                <template>
-                        <td part=ceai-name-value class=name>{{name}}</td>
-                        <td part=ceai-description-value class=description>{{description ?? '-'}}</td>
-                        <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
-                        <td part=ceai-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
-                </template>
             </li-bid>
             <table part=ce-attributes class=attributes>
                 <caption part=cea-title class=title>Attributes</caption>
@@ -52,6 +47,12 @@ const mainTemplate = html`
                     </tr>
                 </thead>
                 <tbody -repeat>
+                    <template>
+                        <td part=ceai-name-value class=name>{{name}}</td>
+                        <td part=ceai-description-value class=description>{{description ?? '-'}}</td>
+                        <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
+                        <td part=ceai-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
+                    </template>
                 </tbody>
             </table>
         </template>
@@ -152,7 +153,7 @@ const mainTemplate = html`
                     <td part=cepi-name-value class=name>{{name}}</td>
                     <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}">{{description ?? '-'}}</td>
                     <td part=cepi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
-                    <td part=cepi-default-value class=default data-len="{{default.length ?? '0'}}">{{default ?? '-' }}</td>
+                    <td part=cepi-default-value class=default data-len="{{default.length ?? '0'}}"><code>{{default ?? '-' }}</code></td></td>
                     <td part=cepi-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
                 </template>
             </li-bid>
@@ -359,21 +360,31 @@ const mainTemplate = html`
 
 `;
 
-export class WCInfoBase extends X implements WCInfoBaseProps{}
+// export class WCInfoBase extends X implements WCInfoBaseProps{}
 
-X.tend({
-    name: 'wc-info-base',
-    class: WCInfoBase as {new(): X},
-    propDefs: {
-        href:{
-            dry: true,
-            type: String,
-        },
-        package:{
-            dry: true,
-            type: String,
-        }
-    },
-    mainTemplate,
-    noShadow: true,
-});
+// X.tend({
+//     name: 'wc-info-base',
+//     class: WCInfoBase as {new(): X},
+//     propDefs: {
+//         href:{
+//             dry: true,
+//             type: String,
+//         },
+//         package:{
+//             dry: true,
+//             type: String,
+//         }
+//     },
+//     mainTemplate,
+//     noShadow: true,
+// });
+
+const cc = document.createElement('c-c') as CCProps;
+mainTemplate.id = 'wc-info-base';
+Object.assign(cc, {
+    stringProps: ['href'],
+    templateToClone: mainTemplate,
+    //id: 'wc-info',
+    //copy: true
+} as CCProps);
+document.head.appendChild(cc);
