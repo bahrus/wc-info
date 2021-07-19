@@ -267,7 +267,7 @@ const mainTemplate = html `
                 <caption part=cecp-title class=title>CSS Properties</caption>
                 <thead>
                     <tr part=cecp-header class=header>
-                        <th part=cecph-css-prop-label class=name>CSS Property</th>
+                        <th part=cecph-css-prop-label class=name>Property</th>
                         <th part=cecph-description-label class=description>Description</th>
                     </tr>
                 </thead>
@@ -277,7 +277,31 @@ const mainTemplate = html `
         </template>
     </if-diff>
 
-    
+    <!-- CSS Parts -->
+    <p-p-x from-parent-or-host observe-prop=cssParts to=if-diff.css-parts[-iff] m=1></p-p-x>
+    <p-p-x from-parent-or-host observe-prop=cssParts to=li-bid.css-parts[-list] m=1></p-p-x>
+    <if-diff class=css-parts -iff is-non-empty-array lazy-display lazy-delay=200>
+        <template>
+            <li-bid class=css-parts bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
+                <template>
+                        <td part=cesi-name-value class=name>{{name}}</td>
+                        <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
+                </template>
+            </li-bid>
+            <table part=ce-css-props class=css-props>
+                <caption part=cecp-title class=title>CSS Parts</caption>
+                <thead>
+                    <tr part=cecp-header class=header>
+                        <th part=cecph-css-prop-label class=name>Part</th>
+                        <th part=cecph-description-label class=description>Description</th>
+                    </tr>
+                </thead>
+                <tbody -repeat>
+                </tbody>
+            </table>
+        </template>
+    </if-diff>
+
     <!-- methods -->
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=if-diff.methods[-iff] m=2></p-p-x>
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=li-bid.methods[-list] m=1></p-p-x>
