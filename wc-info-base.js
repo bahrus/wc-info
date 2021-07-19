@@ -11,10 +11,9 @@ import('aggregator-fn/ag-fn.js');
 //import('nomodule/no-module.js');
 const mainTemplate = html `
 <xtal-fetch-get fetch href={{href}}></xtal-fetch-get>
-<p-d-x on=result-changed to=[-declarations] val-from-target=result val-filter=$.modules.[*].declarations[?(@.tagName)]></p-d-x>
-<ag-fn -declarations><script nomodule>
-    ({declarations}) => {
-        const tagNameToDeclaration = {};
+<p-d  vft=result to=[-pack] m=1></p-d>
+<ag-fn -pack><script nomodule>
+    ({pack}) => {
         function countTypes(declaration){
             let count = 0;
             for(const member of declaration.members){
@@ -22,16 +21,27 @@ const mainTemplate = html `
             }
             return count;
         }
-        for(const declaration of declarations){
-            const tagName = declaration.tagName;
-            if(tagNameToDeclaration[tagName] !== undefined){
-                if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName])){
+        if(pack === undefined) return;
+        const mods = pack.modules;
+        if(mods === undefined) return;
+        const tagNameToDeclaration = {};
+        for(const mod of mods){
+            const declarations = mod.declarations;
+            if(declarations === undefined) continue;
+            const tagDeclarations = declarations.filter(x => x.tagName !== undefined);
+            
+            for(const declaration of tagDeclarations){
+                const tagName = declaration.tagName;
+                if(tagNameToDeclaration[tagName] !== undefined){
+                    if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName])){
+                        tagNameToDeclaration[tagName] = declaration;
+                    }
+                }else{
                     tagNameToDeclaration[tagName] = declaration;
                 }
-            }else{
-                tagNameToDeclaration[tagName] = declaration;
             }
         }
+
         return Object.values(tagNameToDeclaration);
     }
 </script></ag-fn>
@@ -48,8 +58,8 @@ const mainTemplate = html `
     <dfn part=ce-description class=description>{{description}}</dfn>
 
     <!-- Attributes -->
-    <p-p-x from-parent-or-host observe-prop=_attributes to=if-diff.attribs[-iff] m=2></p-p-x>
-    <p-p-x from-parent-or-host observe-prop=_attributes to=li-bid.attribs[-list] m=1></p-p-x>
+    <p-p from-parent-or-host observe-prop=_attributes to=if-diff.attribs[-iff] m=2></p-p>
+    <p-p from-parent-or-host observe-prop=_attributes to=li-bid.attribs[-list] m=1></p-p>
     <if-diff class=attribs -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
         <template>
             <li-bid class=attribs bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
