@@ -113,8 +113,8 @@ const mainTemplate = html `
     </if-diff> 
 
     <!-- Events -->
-    <p-p-x from-parent-or-host observe-prop=events to=if-diff.events[-iff] m=2></p-p-x>
-    <p-p-x from-parent-or-host observe-prop=events to=li-bid.events[-list] m=1></p-p-x>
+    <p-p from-parent-or-host observe-prop=events to=if-diff.events[-iff] m=2></p-p>
+    <p-p from-parent-or-host observe-prop=events to=li-bid.events[-list] m=1></p-p>
     <if-diff class=events -iff is-non-empty-array and-media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
         <template>
             <li-bid class=events bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cee-item", "class": "item"}'>
@@ -228,8 +228,8 @@ const mainTemplate = html `
     </if-diff>
 
     <!-- slots -->
-    <p-p-x from-parent-or-host observe-prop=slots to=if-diff.slots[-iff] m=1></p-p-x>
-    <p-p-x from-parent-or-host observe-prop=slots to=li-bid.slots[-list] m=1></p-p-x>
+    <p-p from-parent-or-host observe-prop=slots to=if-diff.slots[-iff] m=1></p-p>
+    <p-p from-parent-or-host observe-prop=slots to=li-bid.slots[-list] m=1></p-p>
     <if-diff class=slots -iff is-non-empty-array lazy-display lazy-delay=200>
         <template>
             <li-bid class=slots bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
