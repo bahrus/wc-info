@@ -26,15 +26,15 @@
     "doc": "custom-elements-manifest analyze"
   },
   "dependencies": {
-    "xtal-element": "0.0.416",
+    "xtal-element": "0.0.418",
     "xtal-fetch": "0.0.92",
-    "pass-down": "0.0.71",
+    "pass-down": "0.0.72",
     "pass-prop": "0.0.19",
-    "carbon-copy": "0.1.78",
+    "carbon-copy": "0.1.92",
     "ib-id": "0.0.58",
     "lib-id": "0.0.22",
     "if-diff": "0.0.101",
-    "aggregator-fn": "0.0.35"
+    "aggregator-fn": "0.0.37"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",

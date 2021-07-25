@@ -9,7 +9,7 @@ import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
 import('aggregator-fn/ag-fn.js');
 //import('nomodule/no-module.js');
-const mainTemplate = html `
+export const mainTemplate = html `
 <xtal-fetch-get fetch href={{href}}></xtal-fetch-get>
 <p-d  vft=result to=[-pack] m=1></p-d>
 <ag-fn -pack><script nomodule>

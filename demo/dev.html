@@ -2,40 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>wc-info Dev</title>
+    <title>Document</title>
 </head>
 <body>
-    <div>
-        <wc-info package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.49/html.json">
-        </wc-info>
-        <wc-info package-name="npm.xtal-fetch" href="https://unpkg.com/xtal-fetch@0.0.75/custom-elements.json">
-        </wc-info>
-        <wc-info package-name="npm.xtal-frappe-chart" href="https://unpkg.com/xtal-frappe-chart@0.0.47/custom-elements.json"></wc-info>
-        <wc-info package-name="npm.if-diff" href="https://unpkg.com/if-diff@0.0.34/html.json">
-        </wc-info>
-        <wc-info package-name="npm.p-et-alia" href="https://unpkg.com/p-et-alia@0.0.47/custom-elements.json">
-        </wc-info>
-        <wc-info package-name="npm.pre-render-tron" href="https://unpkg.com/pre-render-tron@0.0.6/html.json">
-        </wc-info>
-        <wc-info package-name="npm.hypo-link" href="https://unpkg.com/hypo-link@0.0.15/html.json">
-        </wc-info>
-
-        <script defer src="https://cdn.jsdelivr.net/npm/es-module-shims@0.2.7/dist/es-module-shims.js"></script>
-        <script type="importmap-shim">
-        {
-            "imports": {
-                "xtal-element/": "../node_modules/xtal-element/",
-                "trans-render/": "../node_modules/trans-render/",
-                "hypo-link/": "https://cdn.jsdelivr.net/npm/hypo-link@0.0.14/"
-                
-            }
+    <!-- <wc-info-base href=https://unpkg.com/if-diff/custom-elements.json package=if-diff></wc-info-base> -->
+    <!-- <wc-info-base href=test-if-diff.json></wc-info-base> -->
+    <!--<wc-info-base href=test.json></wc-info-base>-->
+    <wc-info href=https://cdn.skypack.dev/xtal-editor/custom-elements.json></wc-info>
+    <!-- <wc-info-base href="https://unpkg.com/xtal-frappe-chart@0.0.82/custom-elements.json"></wc-info-base> -->
+    <script type=importmap>
+    {
+        "imports":{
+            "xtal-element/": "../node_modules/xtal-element/",
+            "trans-render/": "../node_modules/trans-render/",
+            "hypo-link/": "../node_modules/hypo-link/",
+            "pass-prop/": "../node_modules/pass-prop/",
+            "xtal-fetch/": "../node_modules/xtal-fetch/",
+            "on-to-me/": "../node_modules/on-to-me/",
+            "pass-down/": "../node_modules/pass-down/",
+            "mut-obs/": "../node_modules/mut-obs/",
+            "pass-up/": "../node_modules/pass-up/",
+            "carbon-copy/": "../node_modules/carbon-copy/",
+            "templ-arts/": "../node_modules/templ-arts/",
+            "ib-id/": "../node_modules/ib-id/",
+            "lib-id/": "../node_modules/lib-id/",
+            "if-diff/": "../node_modules/if-diff/",
+            "lazy-mt/": "../node_modules/lazy-mt/",
+            "jsonpathesm/": "../node_modules/jsonpathesm/",
+            "aggregator-fn/": "../node_modules/aggregator-fn/"
         }
-        </script>
-        <script  type="module-shim">
-            import "../wc-info.js";
-        </script>
-    </div>
+    }
+    </script>
+    <script type=module>
+        import '../wc-info.js';
+    </script>
+
 </body>
 </html>
