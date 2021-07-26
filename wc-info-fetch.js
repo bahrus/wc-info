@@ -2,9 +2,12 @@ import { XtalFetchGet, linkResult, str1, obj1 } from 'xtal-fetch/xtal-fetch-get.
 export { linkResult, str1, obj1 } from 'xtal-fetch/xtal-fetch-get.js';
 import { xc } from 'xtal-element/lib/XtalCore.js';
 export class WCInfoFetch extends XtalFetchGet {
-    static is = 'wc-info-fetch';
-    propActions = propActions;
+    constructor() {
+        super(...arguments);
+        this.propActions = propActions;
+    }
 }
+WCInfoFetch.is = 'wc-info-fetch';
 export const linkTagToDeclarationMapping = ({ result, self }) => {
     const tagNameToDeclaration = {};
     const pack = result;

@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "xtal-element": "0.0.418",
-    "xtal-fetch": "0.0.94",
+    "xtal-fetch": "0.0.95",
     "pass-down": "0.0.72",
     "pass-prop": "0.0.19",
     "carbon-copy": "0.1.92",
