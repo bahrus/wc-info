@@ -1,10 +1,11 @@
 import { XtalFetchGet, linkResult, str1, obj1 } from 'xtal-fetch/xtal-fetch-get.js';
+export { linkResult, str1, obj1 } from 'xtal-fetch/xtal-fetch-get.js';
 import { xc } from 'xtal-element/lib/XtalCore.js';
 export class WCInfoFetch extends XtalFetchGet {
     static is = 'wc-info-fetch';
     propActions = propActions;
 }
-const linkTagToDeclarationMapping = ({ result, self }) => {
+export const linkTagToDeclarationMapping = ({ result, self }) => {
     const tagNameToDeclaration = {};
     const pack = result;
     if (pack === undefined)
@@ -35,7 +36,7 @@ const linkTagToDeclarationMapping = ({ result, self }) => {
     self.tagNameToDeclaration = tagNameToDeclaration;
     self.declarations = Object.values(tagNameToDeclaration);
 };
-const linkFields = ({ tag, tagNameToDeclaration, self }) => {
+export const linkFields = ({ tag, tagNameToDeclaration, self }) => {
     const ce = tagNameToDeclaration[tag];
     if (ce === undefined || ce.members === undefined)
         return;
@@ -101,8 +102,8 @@ export function countTypes(declaration) {
     }
     return count;
 }
-const propActions = [linkResult, linkTagToDeclarationMapping, linkFields];
-const obj2 = {
+export const propActions = [linkResult, linkTagToDeclarationMapping, linkFields];
+export const obj2 = {
     ...obj1,
     stopReactionsIfFalsy: true,
 };

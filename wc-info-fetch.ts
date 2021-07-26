@@ -1,4 +1,5 @@
 import {XtalFetchGet, linkResult,  str1, obj1} from 'xtal-fetch/xtal-fetch-get.js';
+export {linkResult, str1, obj1} from 'xtal-fetch/xtal-fetch-get.js';
 import { xc, PropAction, PropDef, PropDefMap } from 'xtal-element/lib/XtalCore.js';
 import {WCInfoFetchProps, EnhancedClassField} from './types.d.js';
 import { Declaration, CustomElementDeclaration, CustomElement, Package, ClassDeclaration, ClassField } from 'node_modules/custom-elements-manifest/schema.d.js';
@@ -10,7 +11,7 @@ export class WCInfoFetch extends XtalFetchGet{
 export interface WCInfoFetch extends WCInfoFetchProps{}
 type W = WCInfoFetch;
 
-const linkTagToDeclarationMapping = ({result, self}: W) => {
+export const linkTagToDeclarationMapping = ({result, self}: W) => {
     const tagNameToDeclaration: {[key: string]: CustomElementDeclaration} = {};
     const pack = result as Package;
     if(pack === undefined) return tagNameToDeclaration;
@@ -40,7 +41,7 @@ const linkTagToDeclarationMapping = ({result, self}: W) => {
     self.declarations = Object.values(tagNameToDeclaration);
 }
 
-const linkFields = ({tag, tagNameToDeclaration, self}: W) => {
+export const linkFields = ({tag, tagNameToDeclaration, self}: W) => {
     const ce = tagNameToDeclaration[tag!] as CustomElementDeclaration;
     if(ce === undefined || ce.members === undefined) return;
     //const declaration = ce as Declaration;
@@ -106,8 +107,8 @@ export function countTypes(declaration: Declaration){
     return count;
 }
 
-const propActions = [linkResult, linkTagToDeclarationMapping, linkFields] as PropAction[];
-const obj2: PropDef = {
+export const propActions = [linkResult, linkTagToDeclarationMapping, linkFields] as PropAction[];
+export const obj2: PropDef = {
     ...obj1, 
     stopReactionsIfFalsy: true,
 }
