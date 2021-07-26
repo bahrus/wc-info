@@ -1,3 +1,4 @@
+import { ClassField, Declaration } from 'node_modules/custom-elements-manifest/schema.d.js';
 import {WCInfoPackageBase} from './wc-info-package-base.js';
 export interface WCInfoPackageProps{
   href?: string | undefined;
@@ -7,4 +8,15 @@ export interface WCInfoPackageProps{
 export interface WCInfoBaseProps{
   href?: string | undefined;
   self: WCInfoBaseProps;
+}
+
+export interface WCInfoFetchProps extends HTMLElement {
+  tag: string | undefined;
+  tagNameToDeclaration: {[key: string]: Declaration};
+  declarations: Declaration[];
+  fields: EnhancedClassField[] | undefined;
+}
+
+export interface EnhancedClassField extends ClassField{
+  val: any;
 }

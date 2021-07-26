@@ -11,6 +11,7 @@
 	"files": [
 		"wc-info-package-base.ts",
 		"wc-info-base.ts",
+		"wc-info-fetch.ts",
 		"wc-info.ts"
 	]
 }

@@ -3,49 +3,15 @@ import { define } from 'carbon-copy/c-c.js';
 import('pass-prop/p-p.js');
 import('pass-prop/p-p-x.js');
 import('pass-down/p-d-x.js');
-import('xtal-fetch/xtal-fetch-get.js');
+import('./wc-info-fetch.js');
 import('ib-id/i-bid.js');
 import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
 import('aggregator-fn/ag-fn.js');
 //import('nomodule/no-module.js');
 export const mainTemplate = html `
-<xtal-fetch-get fetch href={{href}}></xtal-fetch-get>
-<p-d  vft=result to=[-pack] m=1></p-d>
-<ag-fn -pack><script nomodule>
-    ({pack}) => {
-        function countTypes(declaration){
-            let count = 0;
-            for(const member of declaration.members){
-                if(member.type !== undefined) count++;
-            }
-            return count;
-        }
-        if(pack === undefined) return;
-        const mods = pack.modules;
-        if(mods === undefined) return;
-        const tagNameToDeclaration = {};
-        for(const mod of mods){
-            const declarations = mod.declarations;
-            if(declarations === undefined) continue;
-            const tagDeclarations = declarations.filter(x => x.tagName !== undefined);
-            
-            for(const declaration of tagDeclarations){
-                const tagName = declaration.tagName;
-                if(tagNameToDeclaration[tagName] !== undefined){
-                    if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName])){
-                        tagNameToDeclaration[tagName] = declaration;
-                    }
-                }else{
-                    tagNameToDeclaration[tagName] = declaration;
-                }
-            }
-        }
-
-        return Object.values(tagNameToDeclaration);
-    }
-</script></ag-fn>
-<p-d on=value-changed to=[-list] val-from-target=value></p-d>
+<wc-info-fetch fetch href={{href}}></wc-info-fetch>
+<p-d  vft=declarations to=[-list] m=1></p-d>
 <h1 part=title>Custom Elements API</h1>
 <h2 part=package>Package: <label>{{package}}</label></h2>
 <i-bid -list tag=custom-element-declaration></i-bid>

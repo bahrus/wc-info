@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "xtal-element": "0.0.418",
-    "xtal-fetch": "0.0.92",
+    "xtal-fetch": "0.0.94",
     "pass-down": "0.0.72",
     "pass-prop": "0.0.19",
     "carbon-copy": "0.1.92",
@@ -40,7 +40,7 @@
     "@skypack/package-check": "0.2.2",
     "xtal-test": "0.0.51",
     "custom-elements-manifest": "1.0.0",
-    "@custom-elements-manifest/analyzer": "0.4.12"
+    "@custom-elements-manifest/analyzer": "0.4.13"
   },
   "repository": {
     "type": "git",
