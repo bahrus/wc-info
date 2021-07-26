@@ -8,7 +8,6 @@ import('./wc-info-fetch.js');
 import('ib-id/i-bid.js');
 import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
-import('aggregator-fn/ag-fn.js');
 
 //import('nomodule/no-module.js');
 

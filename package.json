@@ -33,8 +33,7 @@
     "carbon-copy": "0.1.92",
     "ib-id": "0.0.58",
     "lib-id": "0.0.22",
-    "if-diff": "0.0.103",
-    "aggregator-fn": "0.0.37"
+    "if-diff": "0.0.103"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
