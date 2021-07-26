@@ -6,7 +6,9 @@
   "module": "wc-info.js",
   "exports": {
     ".": "./wc-info-base.js",
-    "./wc-info-base.js": "./wc-info-base.js"
+    "./wc-info-base.js": "./wc-info-base.js",
+    "./wc-info-fetch.js": "./wc-info-fetch.js",
+    "./wc-info-package-base.js": "./wc-info-package-base.js"
   },
   "keywords": [
     "web-components",
