@@ -58,7 +58,9 @@ export const linkFields = ({tag, tagNameToDeclaration, self}: W) => {
                         break;
                     case 'string':
                     case 'object':
-                        val = eval('(' + val + ')'); //yikes
+                        try{
+                            val = eval('(' + val + ')'); //yikes
+                        }catch(e){}
                         break;
                 }
             }
