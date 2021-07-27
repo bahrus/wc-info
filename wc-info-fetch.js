@@ -43,7 +43,27 @@ export const linkFields = ({ tag, tagNameToDeclaration, self }) => {
     //const declaration = ce as Declaration;
     const fields = ce.members.filter(x => x.kind === 'field' && !x.static && !(x.privacy === 'private'));
     //const propVals = {};
-    for (const field of fields) {
+    // for(const field of fields){
+    //     if(field.default !== undefined){
+    //         let val = field.default;
+    //         if(field.type !== undefined && field.type.text !== undefined){
+    //             switch(field.type.text){
+    //                 case 'boolean':
+    //                 case 'number':
+    //                     val = JSON.parse(val);
+    //                     break;
+    //                 case 'string':
+    //                 case 'object':
+    //                     try{
+    //                         val = eval('(' + val + ')'); //yikes
+    //                     }catch(e){}
+    //                     break;
+    //             }
+    //         }
+    //         (<any>field).val = val;
+    //     } 
+    // }
+    self.fields = fields.map(field => {
         if (field.default !== undefined) {
             let val = field.default;
             if (field.type !== undefined && field.type.text !== undefined) {
@@ -58,24 +78,6 @@ export const linkFields = ({ tag, tagNameToDeclaration, self }) => {
                             val = eval('(' + val + ')'); //yikes
                         }
                         catch (e) { }
-                        break;
-                }
-            }
-            field.val = val;
-        }
-    }
-    self.fields = fields.map(field => {
-        if (field.default !== undefined) {
-            let val = field.default;
-            if (field.type !== undefined && field.type.text !== undefined) {
-                switch (field.type.text) {
-                    case 'boolean':
-                    case 'number':
-                        val = JSON.parse(val);
-                        break;
-                    case 'string':
-                    case 'object':
-                        val = eval('(' + val + ')'); //yikes
                         break;
                 }
             }
