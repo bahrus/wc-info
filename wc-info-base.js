@@ -1,5 +1,5 @@
 import { html } from 'xtal-element/lib/html.js';
-import { define } from 'carbon-copy/c-c.js';
+import { def } from 'd-fine/def.js';
 import('pass-prop/p-p.js');
 import('pass-prop/p-p-x.js');
 import('pass-down/p-d-x.js');
@@ -7,7 +7,7 @@ import('./wc-info-fetch.js');
 import('ib-id/i-bid.js');
 import('lib-id/li-bid.js');
 import('if-diff/if-diff.js');
-//import('nomodule/no-module.js');
+import('d-fine/d-fine.js');
 export const mainTemplate = html `
 <wc-info-fetch fetch href={{href}}></wc-info-fetch>
 <p-d  vft=declarations to=[-list] m=1></p-d>
@@ -17,7 +17,7 @@ export const mainTemplate = html `
 <a href={{href}}>See Raw JSON</a>
 
 
-<template id=custom-element-declaration>
+<template>
     <hr>
     <h2 part=tag-name class=tag-name id={{_tagName}}><a href="#{{_tagName}}">{{_tagName}}</a></h2>
     <dfn part=ce-description class=description>{{description}}</dfn>
@@ -346,10 +346,16 @@ export const mainTemplate = html `
         </template>
     </if-diff>    
 </template>
-<c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow></c-c>
+<d-fine fps as=custom-element-declaration sp='["name", "description", "kind", "_tagName"]' op='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow></d-fine>
+<!-- <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow></c-c> -->
 
 `;
-define('wc-info-base', mainTemplate, {
-    stringProps: ['href'],
+// define('wc-info-base', mainTemplate, {
+//     stringProps: ['href'],
+//     noshadow: true,
+// } as CCProps);
+def(mainTemplate, {
+    as: 'wc-info-base',
+    strProps: ['href'],
     noshadow: true,
 });
