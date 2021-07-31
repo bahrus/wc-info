@@ -1,9 +1,34 @@
 import { XtalFetchGet, linkResult, str1, obj1 } from 'xtal-fetch/xtal-fetch-get.js';
 export { linkResult, str1, obj1 } from 'xtal-fetch/xtal-fetch-get.js';
 import { xc } from 'xtal-element/lib/XtalCore.js';
+import { passAttrToProp } from 'xtal-element/lib/passAttrToProp.js';
+export const obj2 = {
+    ...obj1,
+    stopReactionsIfFalsy: true,
+};
+const propDefMap = {
+    tag: str1,
+    tagNameToDeclaration: obj2,
+    fields: obj2,
+    declarations: obj2,
+};
+const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
+/**
+ * @element wc-info-fetch
+ * @tag wc-info-fetch
+ */
 export class WCInfoFetch extends XtalFetchGet {
     static is = 'wc-info-fetch';
     propActions = propActions;
+    static observedAttributes = XtalFetchGet.observedAttributes.concat(slicedPropDefs.strNames);
+    attributeChangedCallback(n, ov, nv) {
+        super.attributeChangedCallback(n, ov, nv);
+        passAttrToProp(this, slicedPropDefs, n, ov, nv);
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        xc.mergeProps(this, slicedPropDefs);
+    }
 }
 export const linkTagToDeclarationMapping = ({ result, self }) => {
     const tagNameToDeclaration = {};
@@ -40,29 +65,7 @@ export const linkFields = ({ tag, tagNameToDeclaration, self }) => {
     const ce = tagNameToDeclaration[tag];
     if (ce === undefined || ce.members === undefined)
         return;
-    //const declaration = ce as Declaration;
     const fields = ce.members.filter(x => x.kind === 'field' && !x.static && !(x.privacy === 'private'));
-    //const propVals = {};
-    // for(const field of fields){
-    //     if(field.default !== undefined){
-    //         let val = field.default;
-    //         if(field.type !== undefined && field.type.text !== undefined){
-    //             switch(field.type.text){
-    //                 case 'boolean':
-    //                 case 'number':
-    //                     val = JSON.parse(val);
-    //                     break;
-    //                 case 'string':
-    //                 case 'object':
-    //                     try{
-    //                         val = eval('(' + val + ')'); //yikes
-    //                     }catch(e){}
-    //                     break;
-    //             }
-    //         }
-    //         (<any>field).val = val;
-    //     } 
-    // }
     self.fields = fields.map(field => {
         if (field.default !== undefined) {
             let val = field.default;
@@ -108,16 +111,5 @@ export function countTypes(declaration) {
     return count;
 }
 export const propActions = [linkResult, linkTagToDeclarationMapping, linkFields];
-export const obj2 = {
-    ...obj1,
-    stopReactionsIfFalsy: true,
-};
-const propDefMap = {
-    tag: str1,
-    tagNameToDeclaration: obj2,
-    fields: obj2,
-    declarations: obj2,
-};
-const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
 xc.letThereBeProps(WCInfoFetch, slicedPropDefs, 'onPropChange');
 xc.define(WCInfoFetch);
