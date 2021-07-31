@@ -28,20 +28,20 @@
     "doc": "custom-elements-manifest analyze"
   },
   "dependencies": {
-    "xtal-element": "0.0.418",
-    "xtal-fetch": "0.0.95",
-    "pass-down": "0.0.72",
+    "xtal-element": "0.0.419",
+    "xtal-fetch": "0.0.96",
+    "pass-down": "0.0.74",
     "pass-prop": "0.0.19",
-    "ib-id": "0.0.58",
+    "ib-id": "0.0.59",
     "lib-id": "0.0.22",
-    "if-diff": "0.0.103",
-    "d-fine": "0.0.2"
+    "if-diff": "0.0.104",
+    "d-fine": "0.0.8"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
     "xtal-test": "0.0.51",
     "custom-elements-manifest": "1.0.0",
-    "@custom-elements-manifest/analyzer": "0.4.13"
+    "@custom-elements-manifest/analyzer": "0.4.16"
   },
   "repository": {
     "type": "git",
