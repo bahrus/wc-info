@@ -15,6 +15,7 @@ const propDefMap: PropDefMap<W> = {
     tagNameToDeclaration: obj2,
     fields: obj2,
     declarations: obj2,
+    customElement: obj2,
 };
 const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
 //#endregion
@@ -70,6 +71,7 @@ export const linkTagToDeclarationMapping = ({result, self}: W) => {
 
 export const linkFields = ({tag, tagNameToDeclaration, self}: W) => {
     const ce = tagNameToDeclaration[tag!] as CustomElementDeclaration;
+    self.customElement = ce as any as CustomElement;
     if(ce === undefined || ce.members === undefined) return;
     const fields = ce.members.filter(x=> x.kind ==='field' && !x.static && !(x.privacy==='private')) as ClassField[];
 
