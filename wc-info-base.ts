@@ -19,7 +19,7 @@ export const mainTemplate = html`
 <i-bid -list tag=custom-element-declaration></i-bid>
 <a href={{href}}>See Raw JSON</a>
 
-
+<d-fine fct as=custom-element-declaration sp='["name", "description", "kind", "_tagName"]' op='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow>
 <template>
     <hr>
     <h2 part=tag-name class=tag-name id={{_tagName}}><a href="#{{_tagName}}">{{_tagName}}</a></h2>
@@ -349,15 +349,8 @@ export const mainTemplate = html`
         </template>
     </if-diff>    
 </template>
-<d-fine fps as=custom-element-declaration sp='["name", "description", "kind", "_tagName"]' op='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow></d-fine>
-<!-- <c-c copy from-prev-sibling string-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow></c-c> -->
+</d-fine>`;
 
-`;
-
-// define('wc-info-base', mainTemplate, {
-//     stringProps: ['href'],
-//     noshadow: true,
-// } as CCProps);
 
 def(mainTemplate, {
     as: 'wc-info-base',
