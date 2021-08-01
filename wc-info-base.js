@@ -347,7 +347,7 @@ export const mainTemplate = html `
     </if-diff>    
 </template>
 </d-fine>`;
-def(mainTemplate, {
+const WCInfoBase = def(mainTemplate, {
     as: 'wc-info-base',
     strProps: ['href'],
     noshadow: true,

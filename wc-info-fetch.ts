@@ -5,6 +5,7 @@ import {WCInfoFetchProps, EnhancedClassField} from './types.d.js';
 import { Declaration, CustomElementDeclaration, CustomElement, Package, ClassDeclaration, ClassField } from 'node_modules/custom-elements-manifest/schema.d.js';
 import {passAttrToProp} from 'xtal-element/lib/passAttrToProp.js';
 
+//#region props
 export const obj2: PropDef = {
     ...obj1, 
     stopReactionsIfFalsy: true,
@@ -16,6 +17,7 @@ const propDefMap: PropDefMap<W> = {
     declarations: obj2,
 };
 const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
+//#endregion
 /**
  * @element wc-info-fetch
  * @tag wc-info-fetch
@@ -23,7 +25,7 @@ const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
 export class WCInfoFetch extends XtalFetchGet{
     static is = 'wc-info-fetch';
     propActions = propActions;
-    static observedAttributes = XtalFetchGet.observedAttributes.concat(slicedPropDefs.strNames)
+    static observedAttributes = [...XtalFetchGet.observedAttributes, ...slicedPropDefs.strNames];
     attributeChangedCallback(n: string, ov: string, nv: string){
         super.attributeChangedCallback(n, ov, nv);
         passAttrToProp(this, slicedPropDefs, n, ov, nv);
@@ -119,3 +121,9 @@ export const propActions = [linkResult, linkTagToDeclarationMapping, linkFields]
 
 xc.letThereBeProps(WCInfoFetch, slicedPropDefs, 'onPropChange');
 xc.define(WCInfoFetch);
+
+declare global {
+    interface HTMLElementTagNameMap {
+        "wc-info-fetch": WCInfoFetch,
+    }
+}

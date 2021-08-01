@@ -2,6 +2,7 @@ import { XtalFetchGet, linkResult, str1, obj1 } from 'xtal-fetch/xtal-fetch-get.
 export { linkResult, str1, obj1 } from 'xtal-fetch/xtal-fetch-get.js';
 import { xc } from 'xtal-element/lib/XtalCore.js';
 import { passAttrToProp } from 'xtal-element/lib/passAttrToProp.js';
+//#region props
 export const obj2 = {
     ...obj1,
     stopReactionsIfFalsy: true,
@@ -13,6 +14,7 @@ const propDefMap = {
     declarations: obj2,
 };
 const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
+//#endregion
 /**
  * @element wc-info-fetch
  * @tag wc-info-fetch
@@ -20,7 +22,7 @@ const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
 export class WCInfoFetch extends XtalFetchGet {
     static is = 'wc-info-fetch';
     propActions = propActions;
-    static observedAttributes = XtalFetchGet.observedAttributes.concat(slicedPropDefs.strNames);
+    static observedAttributes = [...XtalFetchGet.observedAttributes, ...slicedPropDefs.strNames];
     attributeChangedCallback(n, ov, nv) {
         super.attributeChangedCallback(n, ov, nv);
         passAttrToProp(this, slicedPropDefs, n, ov, nv);

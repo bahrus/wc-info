@@ -1,5 +1,5 @@
 import { html } from 'xtal-element/lib/html.js';
-import { define } from 'carbon-copy/c-c.js';
+import { def } from 'd-fine/def.js';
 import { mainTemplate } from './wc-info-base.js';
 const styleTemplate = html `
 <style>
@@ -48,7 +48,8 @@ if-diff[lazy-delay]{
 
 </style>
 `;
-define('wc-info', mainTemplate, {
-    stringProps: ['href'],
+def(mainTemplate, {
+    as: 'wc-info',
+    strProps: ['href'],
     styleTemplate: styleTemplate,
 });

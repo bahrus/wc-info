@@ -1,7 +1,8 @@
 import {html} from 'xtal-element/lib/html.js';
-import {CCProps} from 'carbon-copy/types.d.js';
-import {define} from 'carbon-copy/c-c.js';
+import {def} from 'd-fine/def.js';
 import {mainTemplate} from './wc-info-base.js';
+import {WCInfoBaseProps} from './types.d.js';
+
 const styleTemplate = html `
 <style>
 .inherited-from{
@@ -50,7 +51,8 @@ if-diff[lazy-delay]{
 </style>
 `;
 
-define('wc-info', mainTemplate, {
-    stringProps: ['href'],
+def<WCInfoBaseProps>(mainTemplate, {
+    as: 'wc-info',
+    strProps: ['href'],
     styleTemplate: styleTemplate,
-} as CCProps);
+});

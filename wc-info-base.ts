@@ -1,5 +1,6 @@
 import {html} from 'xtal-element/lib/html.js';
 import {def} from 'd-fine/def.js';
+import { WCInfoBaseProps } from './types.js';
 
 import('pass-prop/p-p.js');
 import('pass-prop/p-p-x.js');
@@ -352,9 +353,17 @@ export const mainTemplate = html`
 </d-fine>`;
 
 
-def(mainTemplate, {
+const WCInfoBase = def(mainTemplate, {
     as: 'wc-info-base',
     strProps: ['href'],
     noshadow: true,
 });
+
+export interface WCInfoBase extends WCInfoBaseProps{}
+
+declare global {
+    interface HTMLElementTagNameMap {
+        'wc-info-base': WCInfoBase,
+    }
+}
 
