@@ -32,10 +32,10 @@
     "xtal-fetch": "0.0.96",
     "pass-down": "0.0.74",
     "pass-prop": "0.0.19",
-    "ib-id": "0.0.59",
-    "lib-id": "0.0.22",
+    "ib-id": "0.0.60",
+    "lib-id": "0.0.23",
     "if-diff": "0.0.104",
-    "d-fine": "0.0.8"
+    "d-fine": "0.0.9"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",

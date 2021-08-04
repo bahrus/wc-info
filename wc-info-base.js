@@ -10,13 +10,13 @@ import('if-diff/if-diff.js');
 import('d-fine/d-fine.js');
 export const mainTemplate = html `
 <wc-info-fetch fetch href={{href}}></wc-info-fetch>
-<p-d  vft=declarations to=[-list] m=1></p-d>
+<p-d vft=declarations to=[-list] m=1></p-d>
 <h1 part=title>Custom Elements API</h1>
 <h2 part=package>Package: <label>{{package}}</label></h2>
 <i-bid -list tag=custom-element-declaration></i-bid>
 <a href={{href}}>See Raw JSON</a>
 
-<d-fine fct as=custom-element-declaration sp='["name", "description", "kind", "_tagName"]' op='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow>
+<d-fine templ-child as=custom-element-declaration str-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow>
 <template>
     <hr>
     <h2 part=tag-name class=tag-name id={{_tagName}}><a href="#{{_tagName}}">{{_tagName}}</a></h2>
@@ -27,7 +27,7 @@ export const mainTemplate = html `
     <p-p from-parent-or-host observe-prop=_attributes to=li-bid.attribs[-list] m=1></p-p>
     <if-diff class=attribs -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
         <template>
-            <li-bid class=attribs bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
+            <li-bid class=attribs bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
                 <template>
                     <td part=ceai-name-value class=name>{{name}}</td>
                     <td part=ceai-description-value class=description>{{description ?? '-'}}</td>
@@ -51,7 +51,7 @@ export const mainTemplate = html `
     </if-diff>
     <if-diff class=attribs -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
         <template>
-            <li-bid class=attribs bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
+            <li-bid class=attribs bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cea-item", "class": "item"}'>
                 <template>
                         <td part=cenai-name-type-default-values class=name-type-default>
                             <hr part=cenaintdv-attr-line>
@@ -82,7 +82,7 @@ export const mainTemplate = html `
     <p-p from-parent-or-host observe-prop=events to=li-bid.events[-list] m=1></p-p>
     <if-diff class=events -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
         <template>
-            <li-bid class=events bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cee-item", "class": "item"}'>
+            <li-bid class=events bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cee-item", "class": "item"}'>
                 <template>
                         <td part=ceei-name-value class=name>{{name}}</td>
                         <td part=ceei-description-value class=description>{{description ?? '-'}}</td>
@@ -108,7 +108,7 @@ export const mainTemplate = html `
     </if-diff>
     <if-diff class=events -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
         <template>
-            <li-bid class=events bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cee-item", "class": "item"}'>
+            <li-bid class=events bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cee-item", "class": "item"}'>
                 <template>
                         <td part=ceei-name-type-default-values class=name-type-default>
                             <hr part=ceeintdv-event-line>
@@ -139,7 +139,7 @@ export const mainTemplate = html `
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='field' && @.privacy!='private' && @.static!=true)]" to=li-bid.props[-list] m=1></p-p-x>
     <if-diff class=props -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
         <template>
-            <li-bid class=props bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
+            <li-bid class=props bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <!-- property values -->
                 <template>
                     <td part=cepi-name-value class=name>{{name}}</td>
@@ -166,7 +166,7 @@ export const mainTemplate = html `
     </if-diff>
     <if-diff class=props -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
         <template>
-            <li-bid class=props bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
+            <li-bid class=props bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cep-item", "class": "item"}'>
                 <!-- property values -->
                 <template>
                     <td part=cenpi-name-type-default-values class=name-type-default>
@@ -197,7 +197,7 @@ export const mainTemplate = html `
     <p-p from-parent-or-host observe-prop=slots to=li-bid.slots[-list] m=1></p-p>
     <if-diff class=slots -iff is-non-empty-array lazy-display lazy-delay=200>
         <template>
-            <li-bid class=slots bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
+            <li-bid class=slots bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
                 <template>
                         <td part=cesi-name-value class=name>{{name}}</td>
                         <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
@@ -222,7 +222,7 @@ export const mainTemplate = html `
     <p-p-x from-parent-or-host observe-prop=cssProperties to=li-bid.css-props[-list] m=1></p-p-x>
     <if-diff class=css-props -iff is-non-empty-array lazy-display lazy-delay=200>
         <template>
-            <li-bid class=css-props bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
+            <li-bid class=css-props bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
                 <template>
                         <td part=cesi-name-value class=name>{{name}}</td>
                         <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
@@ -247,7 +247,7 @@ export const mainTemplate = html `
     <p-p-x from-parent-or-host observe-prop=cssParts to=li-bid.css-parts[-list] m=1></p-p-x>
     <if-diff class=css-parts -iff is-non-empty-array lazy-display lazy-delay=200>
         <template>
-            <li-bid class=css-parts bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
+            <li-bid class=css-parts bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
                 <template>
                         <td part=cesi-name-value class=name>{{name}}</td>
                         <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
@@ -272,7 +272,7 @@ export const mainTemplate = html `
     <p-p-x from-parent-or-host observe-prop=members val-filter="$[?(@.kind=='method')]" to=li-bid.methods[-list] m=1></p-p-x>
     <if-diff class=methods -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
         <template>
-            <li-bid class=methods bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cem-item", "class": "item"}'>
+            <li-bid class=methods bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cem-item", "class": "item"}'>
                 <template>
                         <td part=cemi-name-value class=name>{{name}}</td>
                         <td part=cemi-description-value class=description  data-len="{{description.length ?? '0'}}">{{description ?? '-'}}</td>
@@ -287,7 +287,7 @@ export const mainTemplate = html `
                                 val-from-target=weakMap 
                                 val-filter="$.parameters[*]" m=1>
                             </p-d-x>
-                            <li-bid bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr>
+                            <li-bid bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr>
                                 <template>
                                     <td>{{name}}</td>
                                     <td data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}
@@ -325,7 +325,7 @@ export const mainTemplate = html `
     </if-diff>
     <if-diff class=methods -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
         <template>
-            <li-bid class=methods bind-to-tag-virtually template-id=innerTemplate render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cenm-item", "class": "item"}'>
+            <li-bid class=methods bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"cenm-item", "class": "item"}'>
                 <template>
                         <td part=cenmi-name-value class=name-value>
                             <hr>
