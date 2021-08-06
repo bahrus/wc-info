@@ -13,7 +13,7 @@ export const mainTemplate = html `
 <p-d vft=declarations to=[-list] m=1></p-d>
 <h1 part=title>Custom Elements API</h1>
 <h2 part=package>Package: <label>{{package}}</label></h2>
-<i-bid -list tag=custom-element-declaration></i-bid>
+<i-bid -list><custom-element-declaration></custom-element-declaration></i-bid>
 <a href={{href}}>See Raw JSON</a>
 
 <d-fine templ-child as=custom-element-declaration str-props='["name", "description", "kind", "_tagName"]' obj-props='["members", "_attributes", "events", "slots", "cssProperties"]' noshadow>
