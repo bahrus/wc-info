@@ -81,6 +81,7 @@ export const mainTemplate = html `
                 <table part=ce-attributes class="narrow attributes">
                     <caption part=cea-title class=title>Attributes</caption>
                     <tbody>
+                        <template>
                         <tr part=cea-item class=item>
                             <td part=cenai-name-type-default-values class=name-type-default>
                                 <hr part=cenaintdv-attr-line>
@@ -96,6 +97,7 @@ export const mainTemplate = html `
                                 <div class=description></div>
                             </td>
                         </tr>
+                        </template>
                     </tbody>
                 </table>
                 <p-p observe-host vft=attr to=[-list] m=1></p-p>
