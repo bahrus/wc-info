@@ -31,7 +31,7 @@ export const mainTemplate = html `
         "h2": [{"id": ["tn"]}],
         "a": [{"href": ["#", "tn"], "textContent": ["tn"]}],
         "dfn": ["description"],
-        "if-diff.attribs":[{"iff": ["attr"]}],
+        "if-diff.attr":[{"iff": ["attr"]}],
         "i-bid":[{"list": ["attr"]}]
     }'
     noshadow
@@ -69,10 +69,10 @@ export const mainTemplate = html `
                 </template> 
             </tbody>
         </table>
-        <i-bid class=attribs from-previous=table search-for=template transform='{
+        <i-bid updatable class=attr from-previous=table search-for=template transform='{
             ".name": ["name"],
             ".description": ["description"],
-            ".type": ["type"],
+            ".type": ["type.text"],
             ".inherited-from": ["", "inheritedFrom.name", " ", "inheritedFrom.module"]
         }'></i-bid>
     </template>
