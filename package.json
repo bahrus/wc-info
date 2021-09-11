@@ -29,11 +29,11 @@
   },
   "dependencies": {
     "xtal-element": "0.0.442",
-    "trans-render": "0.0.399",
+    "trans-render": "0.0.401",
     "xtal-fetch": "0.0.108",
     "pass-down": "0.0.107",
     "pass-prop": "0.0.31",
-    "ib-id": "0.0.64",
+    "ib-id": "0.0.65",
     "if-diff": "0.0.105",
     "d-fine": "0.0.15"
   },
