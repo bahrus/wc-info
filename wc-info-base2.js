@@ -32,7 +32,7 @@ export const mainTemplate = html `
         "a": [{"href": ["#", "tn"], "textContent": "tn"}],
         "dfn": "description",
         "if-diff.attr":[{"iff": "attr"}],
-        "i-bid":[{"list": "attr"}]
+        "i-bid.attr":[{"list": "attr"}]
     }'
     noshadow
 >
@@ -44,37 +44,39 @@ export const mainTemplate = html `
         <dfn part=ce-description class=description></dfn>
 
         <!-- Attributes -->
-        
-        <!-- <if-diff class=attribs -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
-            <template>I am here</template>
-        </if-diff> -->
-        <table part=ce-attributes class=attributes>
-            <caption part=cea-title class=title>Attributes</caption>
-            <thead>
-                <tr part=cea-header class=header>
-                    <th part=ceah-name-label class=name>Attribute</th>
-                    <th part=ceah-description-label class=description>Description</th>
-                    <th part=ceah-type-label class=type>Type</th>
-                    <th part=ceah-inherited-from-label class=inherited-from>Inherited From</th>
-                </tr>
-            </thead>
-            <tbody>
-                <template>
-                    <tr part=cea-item class=item>
-                        <td part=ceai-name-value class=name></td>
-                        <td part=ceai-description-value class=description></td>
-                        <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}"></td>
-                        <td part=ceai-inherited-from-value class=inherited-from></td>
-                    </tr>
-                </template> 
-            </tbody>
-        </table>
-        <i-bid updatable class=attr from-previous=table search-for=template transform='{
-            ".name": ".name ?? - ",
-            ".description": ".description ?? - ",
-            ".type": ".type.text ?? - ",
-            ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
-        }'></i-bid>
+        <if-diff class=attr -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+            <template>
+                <table part=ce-attributes class=attributes>
+                    <caption part=cea-title class=title>Attributes</caption>
+                    <thead>
+                        <tr part=cea-header class=header>
+                            <th part=ceah-name-label class=name>Attribute</th>
+                            <th part=ceah-description-label class=description>Description</th>
+                            <th part=ceah-type-label class=type>Type</th>
+                            <th part=ceah-inherited-from-label class=inherited-from>Inherited From</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template>
+                            <tr part=cea-item class=item>
+                                <td part=ceai-name-value class=name></td>
+                                <td part=ceai-description-value class=description></td>
+                                <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}"></td>
+                                <td part=ceai-inherited-from-value class=inherited-from></td>
+                            </tr>
+                        </template> 
+                    </tbody>
+                </table>
+                <p-p observe-host vft=attr to=[-list] m=1></p-p>
+                <i-bid -list updatable class=attr from-previous=table search-for=template transform='{
+                    ".name": ".name ?? - ",
+                    ".description": ".description ?? - ",
+                    ".type": ".type.text ?? - ",
+                    ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
+                }'></i-bid>                
+            </template>
+        </if-diff>
+
     </template>
 </d-fine>
 `;

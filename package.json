@@ -34,7 +34,7 @@
     "pass-down": "0.0.107",
     "pass-prop": "0.0.31",
     "ib-id": "0.0.65",
-    "if-diff": "0.0.105",
+    "if-diff": "0.0.107",
     "d-fine": "0.0.15"
   },
   "devDependencies": {
