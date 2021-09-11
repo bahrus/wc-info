@@ -15,10 +15,10 @@ export const mainTemplate = html `
 <i-bid -list id=cust-el-declarations
     transform='{
         "customElementDeclarationElements": [{
-            "name": ["name"],
-            "tn": ["tagName"],
-            "description": ["description"],
-            "attr": ["attributes"]
+            "name": "name",
+            "tn": "tagName",
+            "description": "description",
+            "attr": "attributes"
         }]
     }'
 ></i-bid>
@@ -28,11 +28,11 @@ export const mainTemplate = html `
 <d-fine templ-child as=custom-element-declaration
     prop-defaults='{"name":"", "tn":"", "description":"", "attr":[]}'
     transform='{
-        "h2": [{"id": ["tn"]}],
-        "a": [{"href": ["#", "tn"], "textContent": ["tn"]}],
-        "dfn": ["description"],
-        "if-diff.attr":[{"iff": ["attr"]}],
-        "i-bid":[{"list": ["attr"]}]
+        "h2": [{"id": "tn"}],
+        "a": [{"href": ["#", "tn"], "textContent": "tn"}],
+        "dfn": "description",
+        "if-diff.attr":[{"iff": "attr"}],
+        "i-bid":[{"list": "attr"}]
     }'
     noshadow
 >
@@ -70,17 +70,17 @@ export const mainTemplate = html `
             </tbody>
         </table>
         <i-bid updatable class=attr from-previous=table search-for=template transform='{
-            ".name": ["name"],
-            ".description": ["description"],
-            ".type": ["type.text"],
-            ".inherited-from": ["", "inheritedFrom.name", " ", "inheritedFrom.module"]
+            ".name": ".name ?? - ",
+            ".description": ".description ?? - ",
+            ".type": ".type.text ?? - ",
+            ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
         }'></i-bid>
     </template>
 </d-fine>
 `;
 const WCInfoBase = def(mainTemplate, [], {
-    label: ['package'],
-    wcInfoFetchElements: [{ href: ['href'] }]
+    label: 'package',
+    wcInfoFetchElements: [{ href: 'href' }]
 }, true, {
     config: {
         tagName: 'wc-info-base',

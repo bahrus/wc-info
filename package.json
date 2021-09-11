@@ -28,8 +28,8 @@
     "doc": "custom-elements-manifest analyze"
   },
   "dependencies": {
-    "xtal-element": "0.0.441",
-    "trans-render": "0.0.396",
+    "xtal-element": "0.0.442",
+    "trans-render": "0.0.399",
     "xtal-fetch": "0.0.108",
     "pass-down": "0.0.107",
     "pass-prop": "0.0.31",
