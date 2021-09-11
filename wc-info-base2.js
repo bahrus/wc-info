@@ -89,7 +89,7 @@ export const mainTemplate = html `
                                 <hr part=cenaintdv-type-line>
                                 <div part=cenaintdv-type-value class=type-value></div>
                                 <hr part=cenaintdv-default-line>
-                                <div part=cenaintdv-default-value class=default-value>Default: {{default ?? '-' }}</div>
+                                <div part=cenaintdv-default-value class=default-value></div>
                             </td>
                             <td part=cenai-description-value class=description>
                                 <hr>
@@ -105,6 +105,7 @@ export const mainTemplate = html `
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
                     ".type-value": ["Type: ", ".type.text ?? - "],
+                    ".default-value": ["Default: ", ".default ?? -"],
                     ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
                 }'></i-bid> 
 
