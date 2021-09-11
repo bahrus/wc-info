@@ -35,7 +35,7 @@
     "pass-prop": "0.0.29",
     "ib-id": "0.0.63",
     "if-diff": "0.0.105",
-    "d-fine": "0.0.14"
+    "d-fine": "0.0.15"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",

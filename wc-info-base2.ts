@@ -17,7 +17,8 @@ export const mainTemplate = html`
     transform='{
         "customElementDeclarationElements": [{
             "name": ["name"],
-            "tn": ["tagName"]
+            "tn": ["tagName"],
+            "description": ["description"]
         }]
     }'
 ></i-bid>
@@ -25,17 +26,20 @@ export const mainTemplate = html`
     <custom-element-declaration ></custom-element-declaration>
 </template>
 <d-fine templ-child as=custom-element-declaration
-    prop-defaults='{"name":"", "tn":""}'
+    prop-defaults='{"name":"", "tn":"", "description":""}'
     transform='{
         "h2": [{"id": ["tn"]}],
-        "a": [{"href": ["#", "tn"], "textContent": ["tn"]}]
+        "a": [{"href": ["#", "tn"], "textContent": ["tn"]}],
+        "dfn": ["description"]
     }'
+    noshadow
 >
     <template>
         <hr>
         <h2 part=tag-name class=tag-name>
             <a></a>
         </h2>
+        <dfn part=ce-description class=description></dfn>
     </template>
 </d-fine>
 `;
@@ -44,6 +48,7 @@ const WCInfoBase = def(mainTemplate, [], {
     label: ['package'],
     wcInfoFetchElements: [{href: ['href']}]
 }, 
+true,
 {
     config:{
         tagName: 'wc-info-base',
