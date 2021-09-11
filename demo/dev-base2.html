@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel=stylesheet href=simple-ce-style.css>
+</head>
+<body>
+    <!-- <wc-info-base href=https://unpkg.com/if-diff/custom-elements.json package=if-diff></wc-info-base> -->
+    <!-- <wc-info-base href=test-if-diff.json></wc-info-base> -->
+    <!--<wc-info-base href=test.json></wc-info-base>-->
+    <wc-info-base href=https://cdn.skypack.dev/xtal-editor/custom-elements.json></wc-info-base>
+    <!-- <wc-info-base href="https://unpkg.com/xtal-frappe-chart@0.0.82/custom-elements.json"></wc-info-base> -->
+    <script type=importmap>
+    {
+        "imports":{
+            "xtal-element/": "../node_modules/xtal-element/",
+            "trans-render/": "../node_modules/trans-render/",
+            "hypo-link/": "../node_modules/hypo-link/",
+            "pass-prop/": "../node_modules/pass-prop/",
+            "xtal-fetch/": "../node_modules/xtal-fetch/",
+            "on-to-me/": "../node_modules/on-to-me/",
+            "pass-down/": "../node_modules/pass-down/",
+            "mut-obs/": "../node_modules/mut-obs/",
+            "pass-up/": "../node_modules/pass-up/",
+            "carbon-copy/": "../node_modules/carbon-copy/",
+            "d-fine/": "../node_modules/d-fine/",
+            "templ-arts/": "../node_modules/templ-arts/",
+            "ib-id/": "../node_modules/ib-id/",
+            "lib-id/": "../node_modules/lib-id/",
+            "if-diff/": "../node_modules/if-diff/",
+            "lazy-mt/": "../node_modules/lazy-mt/",
+            "jsonpathesm/": "../node_modules/jsonpathesm/",
+            "aggregator-fn/": "../node_modules/aggregator-fn/",
+            "xodus/": "../node_modules/xodus/"
+        }
+    }
+    </script>
+    <script type=module>
+        import '../wc-info-base2.js';
+    </script>
+    <script>
+        setTimeout(() => {
+            const originalHash = location.hash.substr(1);
+            if(originalHash){
+                location.hash = '';
+                location.hash = originalHash;
+            }
+        }, 1000);
+
+    </script>
+</body>
+</html>

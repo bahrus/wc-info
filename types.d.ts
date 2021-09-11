@@ -1,5 +1,6 @@
 import { ClassField, CustomElementDeclaration, Declaration , CustomElement} from 'node_modules/custom-elements-manifest/schema.d.js';
 import {WCInfoPackageBase} from './wc-info-package-base.js';
+import {XtalFetchLiteProps} from 'xtal-fetch/types';
 export interface WCInfoPackageProps{
   href?: string | undefined;
   self: WCInfoPackageBase;
@@ -10,12 +11,23 @@ export interface WCInfoBaseProps{
   self: WCInfoBaseProps;
 }
 
-export interface WCInfoFetchProps extends HTMLElement {
+export interface WCInfoFetchProps{
   tag: string | undefined;
-  tagNameToDeclaration: {[key: string]: Declaration};
+  tagNameToDeclaration: {[key: string]: CustomElementDeclaration};
   declarations: Declaration[];
   customElement: CustomElement;
-  fields: EnhancedClassField[] | undefined;
+  fields: EnhancedClassField[];
+}
+
+export interface WCInfoFetchActions{
+  getTagNameToDeclaration(self: this): {
+    tagNameToDeclaration: {[key: string]: CustomElementDeclaration},
+    declarations: Declaration[];
+  } | undefined;
+  getFields(self: this): {
+    fields: EnhancedClassField[],
+    customElement: CustomElement,
+  } | undefined;
 }
 
 export interface EnhancedClassField extends ClassField{

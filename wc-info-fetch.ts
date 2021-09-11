@@ -1,5 +1,5 @@
-import {XtalFetchGet, linkResult,  str1, obj1} from 'xtal-fetch/xtal-fetch-get.js';
-export {linkResult, str1, obj1} from 'xtal-fetch/xtal-fetch-get.js';
+import {XtalFetchLite, linkResult,  str1, obj1} from 'xtal-fetch/xtal-fetch-lite.js';
+export {linkResult, str1, obj1} from 'xtal-fetch/xtal-fetch-lite.js';
 import { xc, PropAction, PropDef, PropDefMap } from 'xtal-element/lib/XtalCore.js';
 import {WCInfoFetchProps, EnhancedClassField} from './types.d.js';
 import { Declaration, CustomElementDeclaration, CustomElement, Package, ClassDeclaration, ClassField } from 'node_modules/custom-elements-manifest/schema.d.js';
@@ -23,7 +23,7 @@ const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
  * @element wc-info-fetch
  * @tag wc-info-fetch
  */
-export class WCInfoFetch extends XtalFetchGet{
+export class WCInfoFetch extends XtalFetchLite{
     static is = 'wc-info-fetch';
     propActions = propActions;
     static observedAttributes = [...XtalFetchGet.observedAttributes, ...slicedPropDefs.strNames];
