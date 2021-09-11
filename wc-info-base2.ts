@@ -69,7 +69,7 @@ export const mainTemplate = html`
                     </tbody>
                 </table>
                 <p-p observe-host vft=attr to=[-list] m=1></p-p>
-                <i-bid -list updatable class=attr from-previous=table search-for=template transform='{
+                <i-bid -list updatable from-previous=table search-for=template transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
                     ".type": ".type.text ?? - ",
@@ -77,7 +77,38 @@ export const mainTemplate = html`
                 }'></i-bid>                
             </template>
         </if-diff>
+        <if-diff class=attr -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+            <template>
+                <table part=ce-attributes class="narrow attributes">
+                    <caption part=cea-title class=title>Attributes</caption>
+                    <tbody>
+                        <tr part=cea-item class=item>
+                            <td part=cenai-name-type-default-values class=name-type-default>
+                                <hr part=cenaintdv-attr-line>
+                                <div part=cenaintdv-attr-value class=attr-value>Attribute: <strong class=name></strong></div>
+                                <hr part=cenaintdv-type-line>
+                                <div part=cenaintdv-type-value class=type-value></div>
+                                <hr part=cenaintdv-default-line>
+                                <div part=cenaintdv-default-value class=default-value>Default: {{default ?? '-' }}</div>
+                            </td>
+                            <td part=cenai-description-value class=description>
+                                <hr>
+                                <div part=cenaidv-label class=description-label>Description</div>
+                                <div class=description></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p-p observe-host vft=attr to=[-list] m=1></p-p>
+                <i-bid -list updatable from-previous=table search-for=template transform='{
+                    ".name": ".name ?? - ",
+                    ".description": ".description ?? - ",
+                    ".type-value": ["Type: ", ".type.text ?? - "],
+                    ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
+                }'></i-bid> 
 
+            </template>
+        </if-diff>
     </template>
 </d-fine>
 `;
