@@ -1,7 +1,7 @@
 import { html } from 'xtal-element/lib/html.js';
 import { def } from 'd-fine/def.js';
 import('./wc-info-fetch2.js');
-//import('pass-prop/pass-prop.js');
+import('pass-prop/p-p.js');
 import('pass-down/p-d.js');
 import('ib-id/i-bid.js');
 import('d-fine/d-fine.js');
@@ -16,7 +16,8 @@ export const mainTemplate = html `
         "customElementDeclarationElements": [{
             "name": ["name"],
             "tn": ["tagName"],
-            "description": ["description"]
+            "description": ["description"],
+            "attr": ["attributes"]
         }]
     }'
 ></i-bid>
@@ -24,11 +25,12 @@ export const mainTemplate = html `
     <custom-element-declaration ></custom-element-declaration>
 </template>
 <d-fine templ-child as=custom-element-declaration
-    prop-defaults='{"name":"", "tn":"", "description":""}'
+    prop-defaults='{"name":"", "tn":"", "description":"", "attr":[]}'
     transform='{
         "h2": [{"id": ["tn"]}],
         "a": [{"href": ["#", "tn"], "textContent": ["tn"]}],
-        "dfn": ["description"]
+        "dfn": ["description"],
+        "if-diff":[{"iff": ["attr"]}]
     }'
     noshadow
 >
@@ -38,6 +40,13 @@ export const mainTemplate = html `
             <a></a>
         </h2>
         <dfn part=ce-description class=description></dfn>
+
+        <!-- Attributes -->
+        <!-- <p-p observe-host vft=attr to=if-diff.attribs[-iff] m=2></p-p>
+        <p-p observe-host vft=attr to=li-bid.attribs[-list] m=1></p-p> -->
+        <if-diff class=attribs -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+
+        </if-diff>
     </template>
 </d-fine>
 `;
