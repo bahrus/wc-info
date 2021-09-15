@@ -29,13 +29,13 @@
   },
   "dependencies": {
     "xtal-element": "0.0.442",
-    "trans-render": "0.0.401",
+    "trans-render": "0.0.406",
     "xtal-fetch": "0.0.108",
-    "pass-down": "0.0.107",
-    "pass-prop": "0.0.31",
-    "ib-id": "0.0.66",
+    "pass-down": "0.0.110",
+    "pass-prop": "0.0.33",
+    "ib-id": "0.0.67",
     "if-diff": "0.0.108",
-    "d-fine": "0.0.15"
+    "d-fine": "0.0.16"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",

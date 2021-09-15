@@ -32,7 +32,9 @@ export const mainTemplate = html `
         "a": [{"href": ["#", "tn"], "textContent": "tn"}],
         "dfn": "description",
         "if-diff.attr":[{"iff": "attr"}],
-        "i-bid.attr":[{"list": "attr"}]
+        "i-bid.attr":[{"list": "attr"}],
+        "i-bid.evnts":[{"list": "evnts"}]
+
     }'
     noshadow
 >
@@ -110,6 +112,35 @@ export const mainTemplate = html `
                 }'></i-bid> 
 
             </template>
+        </if-diff>
+
+        <!-- Events -->
+        <if-diff class=evnts -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+            <template>
+                <table part=ce-events class=events>
+                    <caption part=cee-title class=title>Events</caption>
+                    <thead>
+                        <tr part=cee-header class=header>
+                            <th part=ceeh-name-label class=name>Event</th>
+                            <th part=ceeh-description-label class=description>Description</th>
+                            <th part=ceeh-type-label class=type>Type</th>
+                            <th part=ceeh-inherited-from-label class=inherited-from>Inherited From</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr part=cee-item class=item>
+                        <td part=ceei-name-value class=name>{{name}}</td>
+                        <td part=ceei-description-value class=description>{{description ?? '-'}}</td>
+                        <td part=ceei-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
+                        <td part=ceei-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
+                        <td></td>                        
+                        </tr>
+                    </tbody>
+                </table>                
+            </template>
+        </if-diff>
+        <if-diff class=evnts -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+
         </if-diff>
     </template>
 </d-fine>
