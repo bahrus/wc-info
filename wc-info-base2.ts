@@ -19,7 +19,8 @@ export const mainTemplate = html`
             "name": "name",
             "tn": "tagName",
             "description": "description",
-            "attr": "attributes"
+            "attr": "attributes",
+            "evnts": "events"
         }]
     }'
 ></i-bid>
@@ -27,15 +28,13 @@ export const mainTemplate = html`
     <custom-element-declaration ></custom-element-declaration>
 </template>
 <d-fine templ-child as=custom-element-declaration
-    prop-defaults='{"name":"", "tn":"", "description":"", "attr":[]}'
+    prop-defaults='{"name":"", "tn":"", "description":"", "attr":[], "evnts":[]}'
     transform='{
         "h2": [{"id": "tn"}],
         "a": [{"href": ["#", "tn"], "textContent": "tn"}],
         "dfn": "description",
         "if-diff.attr":[{"iff": "attr"}],
-        "i-bid.attr":[{"list": "attr"}],
-        "i-bid.evnts":[{"list": "evnts"}]
-
+        "if-diff.evnts":[{"iff": "evnts"}]
     }'
     noshadow
 >
@@ -137,7 +136,14 @@ export const mainTemplate = html`
                         <td></td>                        
                         </tr>
                     </tbody>
-                </table>                
+                </table>
+                <p-p observe-host vft=evnts to=[-list] m=1></p-p>
+                <i-bid -list updatable from-previous=table search-for=template transform='{
+                    ".name": ".name ?? - ",
+                    ".description": ".description ?? - ",
+                    ".type": ".type.text ?? - ",
+                    ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
+                }'></i-bid>                  
             </template>
         </if-diff>
         <if-diff class=evnts -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
