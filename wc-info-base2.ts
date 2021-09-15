@@ -128,13 +128,16 @@ export const mainTemplate = html`
                         </tr>
                     </thead>
                     <tbody>
-                        <tr part=cee-item class=item>
-                        <td part=ceei-name-value class=name>{{name}}</td>
-                        <td part=ceei-description-value class=description>{{description ?? '-'}}</td>
-                        <td part=ceei-type-value class=type data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}</td>
-                        <td part=ceei-inherited-from-value class=inherited-from>{{inheritedFrom.name}} ({{inheritedFrom.module ?? 'NA'}})</td>
-                        <td></td>                        
-                        </tr>
+                        <template>
+                            <tr part=cee-item class=item>
+                                <td part=ceei-name-value class=name></td>
+                                <td part=ceei-description-value class=description></td>
+                                <td part=ceei-type-value class=type data-len="{{type.text.length ?? '0'}}"></td>
+                                <td part=ceei-inherited-from-value class=inherited-from></td>
+                                <td></td>                        
+                            </tr>
+                        </template>
+
                     </tbody>
                 </table>
                 <p-p observe-host vft=evnts to=[-list] m=1></p-p>
