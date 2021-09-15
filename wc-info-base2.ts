@@ -150,7 +150,28 @@ export const mainTemplate = html`
             </template>
         </if-diff>
         <if-diff class=evnts -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
-
+            <template>
+                <table part=ce-events class="narrow events">
+                    <caption part=cee-title class=title>Events</caption>
+                    <tbody>
+                        <tr part=cee-item class=item>
+                            <td part=ceei-name-type-default-values class=name-type-default>
+                                <hr part=ceeintdv-event-line>
+                                <div part=ceeintdv-event-value class=attr-value>Event: <strong>{{name}}</strong></div>
+                                <hr part=ceeintdv-type-line>
+                                <div part=ceeintdv-type-value class=type-value>Type: {{type.text ?? '-'}}</div>
+                                <!-- <hr part=ceeintdv-default-line>
+                                <div part=ceeintdv-default-value class=default-value>Default: {{default ?? '-' }}</div> -->
+                            </td>
+                            <td part=ceei-description-value class=description>
+                                <hr>
+                                <div part=ceeidv-label class=description-label>Description</div>
+                                {{description ?? '-'}}
+                            </td>                            
+                        </tr>
+                    </tbody>
+                </table>                
+            </template>
         </if-diff>
     </template>
 </d-fine>
