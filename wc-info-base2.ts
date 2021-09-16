@@ -36,7 +36,7 @@ export const mainTemplate = html`
         "dfn": "description",
         "if-diff.attr":[{"iff": "attr"}],
         "if-diff.evnts":[{"iff": "evnts"}],
-        "if-diff.properties":[{"iff": "props"}]
+        "if-diff.props":[{"iff": "props"}]
     }'
     noshadow
 >
@@ -187,7 +187,7 @@ export const mainTemplate = html`
         </if-diff>
 
         <!-- props -->
-        <if-diff class=properties -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+        <if-diff class=props -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
             <template>
                 <table part=ce-properties class=properties part=properties>
                     <caption part=cep-title class=title>Properties</caption>
@@ -224,7 +224,7 @@ export const mainTemplate = html`
             </template>
         </if-diff>
 
-        <if-diff class=properties -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+        <if-diff class=props -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
             <template>
                 iah
             </template>
