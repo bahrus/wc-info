@@ -19,7 +19,8 @@ export const mainTemplate = html `
             "tn": "tagName",
             "description": "description",
             "attr": "attributes",
-            "evnts": "events"
+            "evnts": "events",
+            "props": "unevaluatedNonStaticPublicFields"
         }]
     }'
 ></i-bid>
@@ -27,13 +28,14 @@ export const mainTemplate = html `
     <custom-element-declaration ></custom-element-declaration>
 </template>
 <d-fine templ-child as=custom-element-declaration
-    prop-defaults='{"name":"", "tn":"", "description":"", "attr":[], "evnts":[]}'
+    prop-defaults='{"name":"", "tn":"", "description":"", "attr":[], "evnts":[], "props":[]}'
     transform='{
         "h2": [{"id": "tn"}],
         "a": [{"href": ["#", "tn"], "textContent": "tn"}],
         "dfn": "description",
         "if-diff.attr":[{"iff": "attr"}],
-        "if-diff.evnts":[{"iff": "evnts"}]
+        "if-diff.evnts":[{"iff": "evnts"}],
+        "if-diff.properties":[{"iff": "props"}]
     }'
     noshadow
 >
@@ -180,6 +182,50 @@ export const mainTemplate = html `
                     ".type-value":["Type: ", ".type.text ?? - "],
                     ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
                 }'></i-bid>                 
+            </template>
+        </if-diff>
+
+        <!-- props -->
+        <if-diff class=properties -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+            <template>
+                <table part=ce-properties class=properties part=properties>
+                    <caption part=cep-title class=title>Properties</caption>
+                    <thead>
+                        <tr part=cep-header class=header>
+                            <th part=ceph-name-label class=name>Property</th>
+                            <th part=ceph-description-label class=description>Description</th>
+                            <th part=ceph-type-label class=type>Type</th>
+                            <th part=ceph-default-label class=default>Default</th>
+                            <th part=ceph-inherited-from-label class=inherited-from>Inherited From</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template>
+                            <tr part=cep-item class=item>
+                                <td part=cepi-name-value class=name></td>
+                                <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}"></td>
+                                <td part=cepi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}"></td>
+                                <td part=cepi-default-value class=default data-len="{{default.length ?? '0'}}"><code></code></td></td>
+                                <td part=cepi-inherited-from-value class=inherited-from></td>
+                            </tr>
+                        </template>
+
+                    </tbody>
+                </table>
+                <p-p observe-host vft=props to=[-list] m=1></p-p>
+                <i-bid -list updatable from-previous=table search-for=template transform='{
+                    ".name": ".name ?? - ",
+                    ".description": ".description ?? - ",
+                    ".type-text": ".type.text ?? - ",
+                    "code": ".default ?? - ",
+                    ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
+                }'></i-bid>                   
+            </template>
+        </if-diff>
+
+        <if-diff class=properties -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+            <template>
+                iah
             </template>
         </if-diff>
     </template>

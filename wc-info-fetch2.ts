@@ -23,7 +23,10 @@ export class WCInfoFetchCore extends XtalFetchLite implements WCInfoFetchActions
             
             for(const declaration of tagDeclarations){
                 const ce = declaration as CustomElementDeclaration;
+                
                 const tagName = (declaration as CustomElement).tagName!;
+                
+                
                 if(tagName === undefined) continue;
                 if(tagNameToDeclaration[tagName] !== undefined){
                     if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName] as Declaration)){
@@ -32,6 +35,7 @@ export class WCInfoFetchCore extends XtalFetchLite implements WCInfoFetchActions
                 }else{
                     tagNameToDeclaration[tagName] = ce;
                 }
+                (<any>ce).unevaluatedNonStaticPublicFields = this.getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce);
             }
     
         }
@@ -39,11 +43,16 @@ export class WCInfoFetchCore extends XtalFetchLite implements WCInfoFetchActions
         return {tagNameToDeclaration, declarations};       
     }
 
+    getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce: CustomElementDeclaration){
+        if(ce === undefined || ce.members === undefined) return [];
+        return ce.members.filter(x=> x.kind ==='field' && !x.static && !(x.privacy==='private')) as ClassField[];
+    }
+
     getFields({tagNameToDeclaration, tag}: this){
         const ce = tagNameToDeclaration[tag!] as CustomElementDeclaration;
         const customElement = ce as any as CustomElement;
         if(ce === undefined || ce.members === undefined) return;
-        const unevaluatedFields = ce.members.filter(x=> x.kind ==='field' && !x.static && !(x.privacy==='private')) as ClassField[];
+        const unevaluatedFields = this.getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce);
     
         const fields = unevaluatedFields.map(field => {
             if(field.default !== undefined){

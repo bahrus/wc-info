@@ -31,17 +31,23 @@ export class WCInfoFetchCore extends XtalFetchLite {
                 else {
                     tagNameToDeclaration[tagName] = ce;
                 }
+                ce.unevaluatedNonStaticPublicFields = this.getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce);
             }
         }
         const declarations = Object.values(tagNameToDeclaration);
         return { tagNameToDeclaration, declarations };
+    }
+    getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce) {
+        if (ce === undefined || ce.members === undefined)
+            return [];
+        return ce.members.filter(x => x.kind === 'field' && !x.static && !(x.privacy === 'private'));
     }
     getFields({ tagNameToDeclaration, tag }) {
         const ce = tagNameToDeclaration[tag];
         const customElement = ce;
         if (ce === undefined || ce.members === undefined)
             return;
-        const unevaluatedFields = ce.members.filter(x => x.kind === 'field' && !x.static && !(x.privacy === 'private'));
+        const unevaluatedFields = this.getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce);
         const fields = unevaluatedFields.map(field => {
             if (field.default !== undefined) {
                 let val = field.default;
