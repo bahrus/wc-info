@@ -21,7 +21,8 @@ export const mainTemplate = html `
             "attr": "attributes",
             "events": "events",
             "props": "unevaluatedNonStaticPublicFields",
-            "slots": "slots"
+            "slots": "slots",
+            "cssProperties": "cssProperties"
         }]
     }'
 ></i-bid>
@@ -30,7 +31,8 @@ export const mainTemplate = html `
 </template>
 <d-fine templ-child as=custom-element-declaration
     prop-defaults='{
-        "name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[], "slots":[]
+        "name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[], "slots":[],
+        "cssProperties": []
     }'
     transform='{
         "h2[-id]": "tn",
@@ -40,7 +42,8 @@ export const mainTemplate = html `
         ".attr[-iff]":"attr",
         ".events[-iff]": "events",
         ".props[-iff]": "props",
-        ".slots[-iff]": "slots"
+        ".slots[-iff]": "slots",
+        ".css-props[-iff]": "cssProperties"
     }'
     noshadow
 >
@@ -268,6 +271,37 @@ export const mainTemplate = html `
                     </tbody>
                 </table>
                 <p-p observe-host vft=slots to=[-list] m=1></p-p>
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
+                    ".name": ".name ?? - ",
+                    ".description": ".description ?? - "
+                }'></i-bid>  
+            </template>
+        </if-diff>
+
+        <!-- CSS Props -->
+        <if-diff class=css-props -iff is-non-empty-array lazy-display lazy-delay=200>
+            <template>
+                <li-bid class=css-props bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
+                    <template>
+                            
+                    </template>
+                </li-bid>
+                <table part=ce-css-props class=css-props>
+                    <caption part=cecp-title class=title>CSS Properties</caption>
+                    <thead>
+                        <tr part=cecp-header class=header>
+                            <th part=cecph-css-prop-label class=name>Property</th>
+                            <th part=cecph-description-label class=description>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr part=ces-item class=item>
+                            <td part=cesi-name-value class=name>{{name}}</td>
+                            <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p-p observe-host vft=cssProperties to=[-list] m=1></p-p>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - "
