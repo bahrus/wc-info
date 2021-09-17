@@ -349,44 +349,40 @@ export const mainTemplate = html `
                         </tr>
                     </thead>
                     <tbody>
-                        <tr part=cem-item class=item>
-                            <td part=cemi-name-value class=name></td>
-                            <td part=cemi-description-value class=description  data-len="{{description.length ?? '0'}}"></td>
-                            <td part=cemi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}"></td>
-                            <td part=cemi-inherited-from-value class=inherited-from></td>
-                            <td part=cemi-parameters-value class=parameters>
-                                <!-- <p-d-x 
-                                    observe=li-bid 
-                                    closest-weak-map-key=tr 
-                                    on=weak-map-changed 
-                                    to=[-list] 
-                                    val-from-target=weakMap 
-                                    val-filter="$.parameters[*]" m=1>
-                                </p-d-x>
-                                <li-bid bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr>
-                                    <template>
-                                        <td>{{name}}</td>
-                                        <td data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}
-                                    </template>
-                                </li-bid> -->
-                                <table part=cemipv-details class=details>
-                                    <!-- <caption part=cemipvd-title class=title>Parameters</caption> -->
-                                    <thead>
-                                        <tr part=cemipvd-header class=header>
-                                            <th part=cemipvdh-name-label class=name>Parameter</th>
-                                            <th part=cemipvdh-type-label class=type>Type</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody -repeat>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-
+                        <template>
+                            <tr part=cem-item class=item>
+                                <td part=cemi-name-value class=name></td>
+                                <td part=cemi-description-value class=description  data-len="{{description.length ?? '0'}}"></td>
+                                <td part=cemi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}"></td>
+                                <td part=cemi-inherited-from-value class=inherited-from></td>
+                                <td part=cemi-parameters-value class=parameters>
+                                    <table part=cemipv-details class=details>
+                                        <!-- <caption part=cemipvd-title class=title>Parameters</caption> -->
+                                        <thead>
+                                            <tr part=cemipvd-header class=header>
+                                                <th part=cemipvdh-param-name-label class=param-name-label>Parameter</th>
+                                                <th part=cemipvdh-param-type-label class=param-typetype-label>Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class=param-item>
+                                                <td class=param-name></td>
+                                                <td class=param-type></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p-d observe=template[data-ref][data-idx] vft=dataset to=[-list-src] m=1></p-d>
+                                    <i-bid -list-src list-prop=parameters from-previous=table search-for=.param-item transform='{
+                                        ".param-name": ".name ?? -",
+                                        ".param-type": ".type.text ?? -"
+                                    }'></i-bid>
+                                </td>
+                            </tr>
+                        </template>
                     </tbody>
                 </table>
                 <p-p observe-host vft=methods to=[-list] m=1></p-p>
-                <i-bid -list updatable from-previous=table search-for=.item transform='{
+                <i-bid -list updatable from-previous=table search-for=template transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
                     ".type-text": ".type.text ?? - ",
