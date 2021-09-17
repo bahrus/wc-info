@@ -22,7 +22,8 @@ export const mainTemplate = html `
             "events": "events",
             "props": "unevaluatedNonStaticPublicFields",
             "slots": "slots",
-            "cssProperties": "cssProperties"
+            "cssProperties": "cssProperties",
+            "cssParts": "cssParts"
         }]
     }'
 ></i-bid>
@@ -32,7 +33,7 @@ export const mainTemplate = html `
 <d-fine templ-child as=custom-element-declaration
     prop-defaults='{
         "name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[], "slots":[],
-        "cssProperties": []
+        "cssProperties": [], "cssParts": []
     }'
     transform='{
         "h2[-id]": "tn",
@@ -43,7 +44,8 @@ export const mainTemplate = html `
         ".events[-iff]": "events",
         ".props[-iff]": "props",
         ".slots[-iff]": "slots",
-        ".css-props[-iff]": "cssProperties"
+        ".css-props[-iff]": "cssProperties",
+        ".css-parts[-iff]": "cssParts"
     }'
     noshadow
 >
@@ -281,11 +283,6 @@ export const mainTemplate = html `
         <!-- CSS Props -->
         <if-diff class=css-props -iff is-non-empty-array lazy-display lazy-delay=200>
             <template>
-                <li-bid class=css-props bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
-                    <template>
-                            
-                    </template>
-                </li-bid>
                 <table part=ce-css-props class=css-props>
                     <caption part=cecp-title class=title>CSS Properties</caption>
                     <thead>
@@ -302,6 +299,32 @@ export const mainTemplate = html `
                     </tbody>
                 </table>
                 <p-p observe-host vft=cssProperties to=[-list] m=1></p-p>
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
+                    ".name": ".name ?? - ",
+                    ".description": ".description ?? - "
+                }'></i-bid>  
+            </template>
+        </if-diff>
+
+        <!-- CSS Parts -->
+        <if-diff class=css-parts -iff is-non-empty-array lazy-display lazy-delay=200>
+            <template>
+
+                <table part=ce-css-props class=css-props>
+                    <caption part=cecp-title class=title>CSS Parts</caption>
+                    <thead>
+                        <tr part=cecp-header class=header>
+                            <th part=cecph-css-prop-label class=name>Part</th>
+                            <th part=cecph-description-label class=description>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr part=ces-item class=item>
+                            <td part=cesi-name-value class=name></td>
+                            <td part=cesi-description-value class=description></td>                           
+                        </tr>
+                    </tbody>
+                </table>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - "
