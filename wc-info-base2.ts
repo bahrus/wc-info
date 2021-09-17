@@ -24,7 +24,8 @@ export const mainTemplate = html`
             "props": "unevaluatedNonStaticPublicFields",
             "slots": "slots",
             "cssProperties": "cssProperties",
-            "cssParts": "cssParts"
+            "cssParts": "cssParts",
+            "methods": "methods"
         }]
     }'
 ></i-bid>
@@ -34,7 +35,7 @@ export const mainTemplate = html`
 <d-fine templ-child as=custom-element-declaration
     prop-defaults='{
         "name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[], "slots":[],
-        "cssProperties": [], "cssParts": []
+        "cssProperties": [], "cssParts": [], "methods":[]
     }'
     transform='{
         "h2[-id]": "tn",
@@ -46,7 +47,8 @@ export const mainTemplate = html`
         ".props[-iff]": "props",
         ".slots[-iff]": "slots",
         ".css-props[-iff]": "cssProperties",
-        ".css-parts[-iff]": "cssParts"
+        ".css-parts[-iff]": "cssParts",
+        ".methods[-iff]": "methods"
     }'
     noshadow
 >
@@ -332,6 +334,90 @@ export const mainTemplate = html`
                 }'></i-bid>  
             </template>
         </if-diff>
+
+        <!-- methods -->
+        <if-diff class=methods -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+            <template>
+                <table part=ce-methods class=methods>
+                    <caption part=cem-title class=title>Methods</caption>
+                    <thead>
+                        <tr part=cem-header class=header>
+                            <th part=cemh-name-label class=name>Method</th>
+                            <th part=cemh-description-label class=description>Description</th>
+                            <th part=cemh-type-label class=description data-len="{{type.text.length ?? '0'}}">Type</th>
+                            <th part=cemh-inherited-from-label class=inherited-from>Inherited From</th>
+                            <th part=cemh-parameters-label class=parameters>Parameters</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr part=cem-item class=item>
+                            <td part=cemi-name-value class=name></td>
+                            <td part=cemi-description-value class=description  data-len="{{description.length ?? '0'}}"></td>
+                            <td part=cemi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}"></td>
+                            <td part=cemi-inherited-from-value class=inherited-from></td>
+                            <td part=cemi-parameters-value class=parameters>
+                                <!-- <p-d-x 
+                                    observe=li-bid 
+                                    closest-weak-map-key=tr 
+                                    on=weak-map-changed 
+                                    to=[-list] 
+                                    val-from-target=weakMap 
+                                    val-filter="$.parameters[*]" m=1>
+                                </p-d-x>
+                                <li-bid bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr>
+                                    <template>
+                                        <td>{{name}}</td>
+                                        <td data-len="{{type.text.length ?? '0'}}">{{type.text ?? '-'}}
+                                    </template>
+                                </li-bid> -->
+                                <table part=cemipv-details class=details>
+                                    <!-- <caption part=cemipvd-title class=title>Parameters</caption> -->
+                                    <thead>
+                                        <tr part=cemipvd-header class=header>
+                                            <th part=cemipvdh-name-label class=name>Parameter</th>
+                                            <th part=cemipvdh-type-label class=type>Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody -repeat>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <p-p observe-host vft=methods to=[-list] m=1></p-p>
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
+                    ".name": ".name ?? - ",
+                    ".description": ".description ?? - ",
+                    ".type-text": ".type.text ?? - ",
+                    "code": ".default ?? - ",
+                    ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
+                }'></i-bid>  
+            </template>
+        </if-diff>
+        <if-diff class=methods -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+            <template>
+                <table part=ce-narrow-methods class="narrow methods">
+                    <caption part=cenm-title class=title>Methods</caption>
+                    <tbody>
+                        <tr part=cenm-item class=item>
+                            <td part=cenmi-name-value class=name-value>
+                                <hr>
+                                <div>Method: <strong>{{name}}</strong></div>
+                            </td>
+                            <td part=cenmi-description-value class=description  data-len="{{description.length ?? '0'}}">
+                                <hr>
+                                <div class=description-label>Description</div>
+                                {{description ?? '-'}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </template>
+        </if-diff>    
+      
     </template>
 </d-fine>
 `;

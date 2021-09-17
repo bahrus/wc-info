@@ -32,6 +32,7 @@ export class WCInfoFetchCore extends XtalFetchLite {
                     tagNameToDeclaration[tagName] = ce;
                 }
                 ce.unevaluatedNonStaticPublicFields = this.getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce);
+                ce.methods = this.getMethodsFromDeclaration(ce);
             }
         }
         const declarations = Object.values(tagNameToDeclaration);
@@ -79,6 +80,11 @@ export class WCInfoFetchCore extends XtalFetchLite {
         });
         return { fields, customElement };
     }
+    getMethodsFromDeclaration(ce) {
+        if (ce === undefined || ce.members === undefined)
+            return [];
+        return ce.members.filter(x => x.kind === 'method');
+    }
 }
 export function countTypes(declaration) {
     let count = 0;
@@ -102,7 +108,7 @@ const ce = new XE({
                 notify: {
                     dispatch: true,
                 }
-            }
+            },
         },
         actions: {
             getTagNameToDeclaration: {

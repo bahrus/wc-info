@@ -2,7 +2,7 @@ import { XtalFetchLite } from "xtal-fetch/xtal-fetch-lite.js";
 import { XtalFetchLiteProps } from 'xtal-fetch/types';
 import { XE } from 'xtal-element/src/XE.js';
 import { WCInfoFetchActions, WCInfoFetchProps, EnhancedClassField } from './types';
-import { Declaration, CustomElementDeclaration, CustomElement, Package, ClassDeclaration, ClassField } from 'node_modules/custom-elements-manifest/schema.d.js';
+import { Declaration, CustomElementDeclaration, CustomElement, Package, ClassDeclaration, ClassField, ClassMethod } from 'node_modules/custom-elements-manifest/schema.d.js';
 
 /**
  * @element wc-info-fetch
@@ -36,6 +36,7 @@ export class WCInfoFetchCore extends XtalFetchLite implements WCInfoFetchActions
                     tagNameToDeclaration[tagName] = ce;
                 }
                 (<any>ce).unevaluatedNonStaticPublicFields = this.getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce);
+                (<any>ce).methods = this.getMethodsFromDeclaration(ce);
             }
     
         }
@@ -84,6 +85,11 @@ export class WCInfoFetchCore extends XtalFetchLite implements WCInfoFetchActions
         });
         return {fields, customElement};
     }
+
+    getMethodsFromDeclaration(ce: CustomElementDeclaration): ClassMethod[]{
+        if(ce === undefined || ce.members === undefined) return [];
+        return ce.members.filter(x => x.kind === 'method') as ClassMethod[];
+    }
 }
 
 export function countTypes(declaration: Declaration){
@@ -108,7 +114,7 @@ const ce = new XE<WCInfoFetchProps & XtalFetchLiteProps, WCInfoFetchActions>({
                 notify:{
                     dispatch: true,
                 }
-            }
+            },
         },
         actions:{
             getTagNameToDeclaration: {

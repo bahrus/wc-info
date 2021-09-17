@@ -1,4 +1,4 @@
-import { ClassField, CustomElementDeclaration, Declaration , CustomElement} from 'node_modules/custom-elements-manifest/schema.d.js';
+import { ClassField, CustomElementDeclaration, Declaration , CustomElement, CssCustomProperty, CssPart, ClassMember} from 'node_modules/custom-elements-manifest/schema.d.js';
 import {WCInfoPackageBase} from './wc-info-package-base.js';
 import {XtalFetchLiteProps} from 'xtal-fetch/types';
 export interface WCInfoPackageProps{
@@ -17,6 +17,9 @@ export interface WCInfoFetchProps{
   declarations: Declaration[];
   customElement: CustomElement;
   fields: EnhancedClassField[];
+  cssProps: CssCustomProperty[];
+  cssParts: CssPart[];
+  methods: ClassMember[];
 }
 
 export interface WCInfoFetchActions{
@@ -28,6 +31,7 @@ export interface WCInfoFetchActions{
     fields: EnhancedClassField[],
     customElement: CustomElement,
   } | undefined;
+
 }
 
 export interface EnhancedClassField extends ClassField{
