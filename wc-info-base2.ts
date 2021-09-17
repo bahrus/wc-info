@@ -20,7 +20,7 @@ export const mainTemplate = html`
             "tn": "tagName",
             "description": "description",
             "attr": "attributes",
-            "evnts": "events",
+            "events": "events",
             "props": "unevaluatedNonStaticPublicFields"
         }]
     }'
@@ -29,14 +29,14 @@ export const mainTemplate = html`
     <custom-element-declaration ></custom-element-declaration>
 </template>
 <d-fine templ-child as=custom-element-declaration
-    prop-defaults='{"name":"", "tn":"", "description":"", "attr":[], "evnts":[], "props":[]}'
+    prop-defaults='{"name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[]}'
     transform='{
         "h2[-id]": "tn",
         "a[-href]": ["#", "tn"],
         "a": "tn",
         "dfn": "description",
         ".attr[-iff]":"attr",
-        ".evnts[-iff]": "evnts",
+        ".events[-iff]": "events",
         ".props[-iff]": "props"
     }'
     noshadow
@@ -114,7 +114,7 @@ export const mainTemplate = html`
         </if-diff>
 
         <!-- Events -->
-        <if-diff class=evnts -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+        <if-diff class=events -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
             <template>
                 <table part=ce-events class=events>
                     <caption part=cee-title class=title>Events</caption>
@@ -136,7 +136,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-host vft=evnts to=[-list] m=1></p-p>
+                <p-p observe-host vft=events to=[-list] m=1></p-p>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
@@ -145,7 +145,7 @@ export const mainTemplate = html`
                 }'></i-bid>                  
             </template>
         </if-diff>
-        <if-diff class=evnts -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+        <if-diff class=events -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
             <template>
                 <table part=ce-events class="narrow events">
                     <caption part=cee-title class=title>Events</caption>
@@ -167,7 +167,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-host vft=evnts to=[-list] m=1></p-p>
+                <p-p observe-host vft=events to=[-list] m=1></p-p>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description-value": ".description ?? - ",
