@@ -399,18 +399,22 @@ export const mainTemplate = html `
                         <tr part=cenm-item class=item>
                             <td part=cenmi-name-value class=name-value>
                                 <hr>
-                                <div>Method: <strong>{{name}}</strong></div>
+                                <div>Method: <strong class=name></strong></div>
                             </td>
                             <td part=cenmi-description-value class=description  data-len="{{description.length ?? '0'}}">
                                 <hr>
                                 <div class=description-label>Description</div>
-                                {{description ?? '-'}}
+                                <div class=description-value></div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                
-            </template>
+                <p-p observe-host vft=methods to=[-list] m=1></p-p>
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
+                    ".name": "name",
+                    ".description-value": ".description ?? -"
+                }'></i-bid>
+            </template>   
         </if-diff>    
       
     </template>
