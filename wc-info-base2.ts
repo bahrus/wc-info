@@ -21,7 +21,8 @@ export const mainTemplate = html`
             "description": "description",
             "attr": "attributes",
             "events": "events",
-            "props": "unevaluatedNonStaticPublicFields"
+            "props": "unevaluatedNonStaticPublicFields",
+            "slots": "slots"
         }]
     }'
 ></i-bid>
@@ -29,7 +30,9 @@ export const mainTemplate = html`
     <custom-element-declaration ></custom-element-declaration>
 </template>
 <d-fine templ-child as=custom-element-declaration
-    prop-defaults='{"name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[]}'
+    prop-defaults='{
+        "name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[], "slots":[]
+    }'
     transform='{
         "h2[-id]": "tn",
         "a[-href]": ["#", "tn"],
@@ -37,7 +40,8 @@ export const mainTemplate = html`
         "dfn": "description",
         ".attr[-iff]":"attr",
         ".events[-iff]": "events",
-        ".props[-iff]": "props"
+        ".props[-iff]": "props",
+        ".slots[-iff]": "slots"
     }'
     noshadow
 >
@@ -249,12 +253,6 @@ export const mainTemplate = html`
         <!-- slots -->
         <if-diff class=slots -iff is-non-empty-array lazy-display lazy-delay=200>
             <template>
-                <li-bid class=slots bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
-                    <template>
-                            <td part=cesi-name-value class=name>{{name}}</td>
-                            <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
-                    </template>
-                </li-bid>
                 <table part=ce-slots class=slots>
                     <caption part=ces-title class=title>Slots</caption>
                     <thead>
@@ -263,9 +261,18 @@ export const mainTemplate = html`
                             <th part=cesh-description-label class=description>Description</th>
                         </tr>
                     </thead>
-                    <tbody -repeat>
+                    <tbody>
+                        <tr part=ces-item class=item>
+                            <td part=cesi-name-value class=name></td>
+                            <td part=cesi-description-value class=description></td>
+                        </tr>
                     </tbody>
                 </table>
+                <p-p observe-host vft=slots to=[-list] m=1></p-p>
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
+                    ".name": ".name ?? - ",
+                    ".description": ".description ?? - "
+                }'></i-bid>  
             </template>
         </if-diff>
     </template>
