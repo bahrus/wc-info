@@ -83,7 +83,6 @@ export const mainTemplate = html`
                 <table part=ce-attributes class="narrow attributes">
                     <caption part=cea-title class=title>Attributes</caption>
                     <tbody>
-                        <template>
                         <tr part=cea-item class=item>
                             <td part=cenai-name-type-default-values class=name-type-default>
                                 <hr part=cenaintdv-attr-line>
@@ -99,11 +98,10 @@ export const mainTemplate = html`
                                 <div class=description-value></div>
                             </td>
                         </tr>
-                        </template>
                     </tbody>
                 </table>
                 <p-p observe-host vft=attr to=[-list] m=1></p-p>
-                <i-bid -list updatable from-previous=table search-for=template transform='{
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description-value": ".description ?? - ",
                     ".type-value": ["Type: ", ".type.text ?? - "],
@@ -128,20 +126,17 @@ export const mainTemplate = html`
                         </tr>
                     </thead>
                     <tbody>
-                        <template>
-                            <tr part=cee-item class=item>
-                                <td part=ceei-name-value class=name></td>
-                                <td part=ceei-description-value class=description></td>
-                                <td part=ceei-type-value class=type data-len="{{type.text.length ?? '0'}}"></td>
-                                <td part=ceei-inherited-from-value class=inherited-from></td>
-                                <td></td>                        
-                            </tr>
-                        </template>
-
+                        <tr part=cee-item class=item>
+                            <td part=ceei-name-value class=name></td>
+                            <td part=ceei-description-value class=description></td>
+                            <td part=ceei-type-value class=type data-len="{{type.text.length ?? '0'}}"></td>
+                            <td part=ceei-inherited-from-value class=inherited-from></td>
+                            <td></td>                        
+                        </tr>
                     </tbody>
                 </table>
                 <p-p observe-host vft=evnts to=[-list] m=1></p-p>
-                <i-bid -list updatable from-previous=table search-for=template transform='{
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
                     ".type": ".type.text ?? - ",
@@ -154,28 +149,25 @@ export const mainTemplate = html`
                 <table part=ce-events class="narrow events">
                     <caption part=cee-title class=title>Events</caption>
                     <tbody>
-                        <template>
-                            <tr part=cee-item class=item>
-                                <td part=ceei-name-type-default-values class=name-type-default>
-                                    <hr part=ceeintdv-event-line>
-                                    <div part=ceeintdv-event-value class=attr-value>Event: <strong .name></strong></div>
-                                    <hr part=ceeintdv-type-line>
-                                    <div part=ceeintdv-type-value class=type-value></div>
-                                    <!-- <hr part=ceeintdv-default-line>
-                                    <div part=ceeintdv-default-value class=default-value>Default: {{default ?? '-' }}</div> -->
-                                </td>
-                                <td part=ceei-description-value class=description>
-                                    <hr>
-                                    <div part=ceeidv-label class=description-label>Description</div>
-                                    <div class=description-value></div>
-                                </td>                            
-                            </tr>
-                        </template>
-
+                        <tr part=cee-item class=item>
+                            <td part=ceei-name-type-default-values class=name-type-default>
+                                <hr part=ceeintdv-event-line>
+                                <div part=ceeintdv-event-value class=attr-value>Event: <strong .name></strong></div>
+                                <hr part=ceeintdv-type-line>
+                                <div part=ceeintdv-type-value class=type-value></div>
+                                <!-- <hr part=ceeintdv-default-line>
+                                <div part=ceeintdv-default-value class=default-value>Default: {{default ?? '-' }}</div> -->
+                            </td>
+                            <td part=ceei-description-value class=description>
+                                <hr>
+                                <div part=ceeidv-label class=description-label>Description</div>
+                                <div class=description-value></div>
+                            </td>                            
+                        </tr>
                     </tbody>
                 </table>
                 <p-p observe-host vft=evnts to=[-list] m=1></p-p>
-                <i-bid -list updatable from-previous=table search-for=template transform='{
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description-value": ".description ?? - ",
                     ".type-value":["Type: ", ".type.text ?? - "],
@@ -199,20 +191,17 @@ export const mainTemplate = html`
                         </tr>
                     </thead>
                     <tbody>
-                        <template>
-                            <tr part=cep-item class=item>
-                                <td part=cepi-name-value class=name></td>
-                                <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}"></td>
-                                <td part=cepi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}"></td>
-                                <td part=cepi-default-value class=default data-len="{{default.length ?? '0'}}"><code></code></td></td>
-                                <td part=cepi-inherited-from-value class=inherited-from></td>
-                            </tr>
-                        </template>
-
+                        <tr part=cep-item class=item>
+                            <td part=cepi-name-value class=name></td>
+                            <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}"></td>
+                            <td part=cepi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}"></td>
+                            <td part=cepi-default-value class=default data-len="{{default.length ?? '0'}}"><code></code></td></td>
+                            <td part=cepi-inherited-from-value class=inherited-from></td>
+                        </tr>
                     </tbody>
                 </table>
                 <p-p observe-host vft=props to=[-list] m=1></p-p>
-                <i-bid -list updatable from-previous=table search-for=template transform='{
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
                     ".type-text": ".type.text ?? - ",
