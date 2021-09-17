@@ -8,7 +8,7 @@ import('d-fine/d-fine.js');
 import('if-diff/if-diff.js');
 export const mainTemplate = html `
 <h1 part=title>Custom Elements API</h1>
-<h2 part=package>Package: <label>{{package}}</label></h2>
+<h2 part=package>Package: <label></label></h2>
 <!-- <pass-prop observe-host on=href vft=href to=[-href] m=1></pass-prop> -->
 <wc-info-fetch fetch -href></wc-info-fetch>
 <p-d vft=declarations to=[-list] m=1></p-d>
@@ -151,7 +151,7 @@ export const mainTemplate = html `
                         <tr part=cee-item class=item>
                             <td part=ceei-name-type-default-values class=name-type-default>
                                 <hr part=ceeintdv-event-line>
-                                <div part=ceeintdv-event-value class=attr-value>Event: <strong .name></strong></div>
+                                <div part=ceeintdv-event-value class=attr-value>Event: <strong class=name></strong></div>
                                 <hr part=ceeintdv-type-line>
                                 <div part=ceeintdv-type-value class=type-value></div>
                                 <!-- <hr part=ceeintdv-default-line>
@@ -212,7 +212,35 @@ export const mainTemplate = html `
 
         <if-diff class=props -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
             <template>
-                iah
+                <table part=ce-narrow-properties class="narrow properties" part=properties>
+                    <caption part=cenp-title class=title>Properties</caption>
+                    <tbody>
+                        <tr part=cep-item class=item>
+                            <td part=cenpi-name-type-default-values class=name-type-default>
+                                <hr part=cenpintdv-prop-line>
+                                <div part=cenpintdv-property-value class=property-value>Property: <strong class=name></strong></div>
+                                <hr part=cenpintdv-type-line>
+                                <div part=cenpintdv-type-value class=type-value></div>
+                                <hr part=cenpintdv-default-line>
+                                <div part=cenpintdv-default-value class=default-value>Default: <code></code></div>
+                                <hr>
+                            </td>
+                            <td part=cenpi-description-value class=description data-len="{{description.length ?? '0'}}">
+                                <hr>
+                                <div part=cenpidv-label class=description-label>Description</div>
+                                <div part=cenpidv-description class=description-value></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p-p observe-host vft=props to=[-list] m=1></p-p>
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
+                    ".name": ".name ?? - ",
+                    ".description-value": ".description ?? - ",
+                    ".type-value": ["Type: ", ".type.text ?? - "],
+                    "code": ".default ?? - ",
+                    ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
+                }'></i-bid>  
             </template>
         </if-diff>
     </template>
