@@ -31,8 +31,9 @@ export const mainTemplate = html`
 <d-fine templ-child as=custom-element-declaration
     prop-defaults='{"name":"", "tn":"", "description":"", "attr":[], "evnts":[], "props":[]}'
     transform='{
-        "h2": [{"id": "tn"}],
-        "a": [{"href": ["#", "tn"], "textContent": "tn"}],
+        "h2[-id]": "tn",
+        "a[-href]": ["#", "tn"],
+        "a": "tn",
         "dfn": "description",
         ".attr[-iff]":"attr",
         ".evnts[-iff]": "evnts",
@@ -42,8 +43,8 @@ export const mainTemplate = html`
 >
     <template>
         <hr>
-        <h2 part=tag-name class=tag-name>
-            <a></a>
+        <h2 -id part=tag-name class=tag-name>
+            <a -href -text-content></a>
         </h2>
         <dfn part=ce-description class=description></dfn>
 
