@@ -34,9 +34,9 @@ export const mainTemplate = html`
         "h2": [{"id": "tn"}],
         "a": [{"href": ["#", "tn"], "textContent": "tn"}],
         "dfn": "description",
-        "if-diff.attr":[{"iff": "attr"}],
-        "if-diff.evnts":[{"iff": "evnts"}],
-        "if-diff.props":[{"iff": "props"}]
+        ".attr[-iff]":"attr",
+        ".evnts[-iff]": "evnts",
+        ".props[-iff]": "props"
     }'
     noshadow
 >
@@ -242,6 +242,29 @@ export const mainTemplate = html`
                     "code": ".default ?? - ",
                     ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]
                 }'></i-bid>  
+            </template>
+        </if-diff>
+
+        <!-- slots -->
+        <if-diff class=slots -iff is-non-empty-array lazy-display lazy-delay=200>
+            <template>
+                <li-bid class=slots bind-to-tag-virtually from-child-template render-at-start-of=[-repeat] -list tag=tr tag-attr='{"part":"ces-item", "class": "item"}'>
+                    <template>
+                            <td part=cesi-name-value class=name>{{name}}</td>
+                            <td part=cesi-description-value class=description>{{description ?? '-'}}</td>
+                    </template>
+                </li-bid>
+                <table part=ce-slots class=slots>
+                    <caption part=ces-title class=title>Slots</caption>
+                    <thead>
+                        <tr part=ces-header class=header>
+                            <th part=cesh-slot-label class=name>Slot</th>
+                            <th part=cesh-description-label class=description>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody -repeat>
+                    </tbody>
+                </table>
             </template>
         </if-diff>
     </template>
