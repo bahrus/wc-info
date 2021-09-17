@@ -60,18 +60,16 @@ export const mainTemplate = html `
                         </tr>
                     </thead>
                     <tbody>
-                        <template>
-                            <tr part=cea-item class=item>
-                                <td part=ceai-name-value class=name></td>
-                                <td part=ceai-description-value class=description></td>
-                                <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}"></td>
-                                <td part=ceai-inherited-from-value class=inherited-from></td>
-                            </tr>
-                        </template> 
+                        <tr part=cea-item class=item>
+                            <td part=ceai-name-value class=name></td>
+                            <td part=ceai-description-value class=description></td>
+                            <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}"></td>
+                            <td part=ceai-inherited-from-value class=inherited-from></td>
+                        </tr>
                     </tbody>
                 </table>
                 <p-p observe-host vft=attr to=[-list] m=1></p-p>
-                <i-bid -list updatable from-previous=table search-for=template transform='{
+                <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
                     ".type": ".type.text ?? - ",
