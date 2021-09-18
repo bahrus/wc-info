@@ -1,111 +1,96 @@
-import {XtalFetchLite, linkResult,  str1, obj1} from 'xtal-fetch/xtal-fetch-lite.js';
-export {linkResult, str1, obj1} from 'xtal-fetch/xtal-fetch-lite.js';
-import { xc, PropAction, PropDef, PropDefMap } from 'xtal-element/lib/XtalCore.js';
-import {WCInfoFetchProps, EnhancedClassField} from './types.d.js';
-import { Declaration, CustomElementDeclaration, CustomElement, Package, ClassDeclaration, ClassField } from 'node_modules/custom-elements-manifest/schema.d.js';
-import {passAttrToProp} from 'xtal-element/lib/passAttrToProp.js';
+import { XtalFetchLite } from "xtal-fetch/xtal-fetch-lite.js";
+import { XtalFetchLiteProps } from 'xtal-fetch/types';
+import { XE } from 'xtal-element/src/XE.js';
+import { WCInfoFetchActions, WCInfoFetchProps, EnhancedClassField } from './types';
+import { Declaration, CustomElementDeclaration, CustomElement, Package, ClassDeclaration, ClassField, ClassMethod } from 'node_modules/custom-elements-manifest/schema.d.js';
 
-//#region props
-export const obj2: PropDef = {
-    ...obj1, 
-    stopReactionsIfFalsy: true,
-}
-const propDefMap: PropDefMap<W> = {
-    tag: str1,
-    tagNameToDeclaration: obj2,
-    fields: obj2,
-    declarations: obj2,
-    customElement: obj2,
-};
-const slicedPropDefs = xc.getSlicedPropDefs(propDefMap);
-//#endregion
 /**
  * @element wc-info-fetch
  * @tag wc-info-fetch
  */
-export class WCInfoFetch extends XtalFetchLite{
-    static is = 'wc-info-fetch';
-    propActions = propActions;
-    static observedAttributes = [...XtalFetchGet.observedAttributes, ...slicedPropDefs.strNames];
-    attributeChangedCallback(n: string, ov: string, nv: string){
-        super.attributeChangedCallback(n, ov, nv);
-        passAttrToProp(this, slicedPropDefs, n, ov, nv);
-    }
-    connectedCallback(){
-        super.connectedCallback();
-        xc.mergeProps(this, slicedPropDefs);
-    }
-}
-export interface WCInfoFetch extends WCInfoFetchProps{}
-type W = WCInfoFetch;
-
-export const linkTagToDeclarationMapping = ({result, self}: W) => {
-    const tagNameToDeclaration: {[key: string]: CustomElementDeclaration} = {};
-    const pack = result as Package;
-    if(pack === undefined) return tagNameToDeclaration;
-    const mods = pack.modules;
-    if(mods === undefined) tagNameToDeclaration;
-    
-    for(const mod of mods){
-        const declarations = mod.declarations;
-        if(declarations === undefined) continue;
-        const tagDeclarations = declarations.filter(x => (x as CustomElement).tagName !== undefined);
+export class WCInfoFetchCore extends XtalFetchLite implements WCInfoFetchActions {
+    getTagNameToDeclaration({result}: this){
+        const tagNameToDeclaration: {[key: string]: CustomElementDeclaration} = {};
+        const pack = result as Package;
+        if(pack === undefined) return;
+        const mods = pack.modules;
+        if(mods === undefined) tagNameToDeclaration;
         
-        for(const declaration of tagDeclarations){
-            const ce = declaration as CustomElementDeclaration;
-            const tagName = (declaration as CustomElement).tagName!;
-            if(tagName === undefined) continue;
-            if(tagNameToDeclaration[tagName] !== undefined){
-                if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName] as Declaration)){
+        for(const mod of mods){
+            const declarations = mod.declarations;
+            if(declarations === undefined) continue;
+            const tagDeclarations = declarations.filter(x => (x as CustomElement).tagName !== undefined);
+            
+            for(const declaration of tagDeclarations){
+                const ce = declaration as CustomElementDeclaration;
+                
+                const tagName = (declaration as CustomElement).tagName!;
+                
+                
+                if(tagName === undefined) continue;
+                if(tagNameToDeclaration[tagName] !== undefined){
+                    if(countTypes(declaration) >  countTypes(tagNameToDeclaration[tagName] as Declaration)){
+                        tagNameToDeclaration[tagName] = ce;
+                    }
+                }else{
                     tagNameToDeclaration[tagName] = ce;
                 }
-            }else{
-                tagNameToDeclaration[tagName] = ce;
+                (<any>ce).unevaluatedNonStaticPublicFields = this.getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce);
+                (<any>ce).methods = this.getMethodsFromDeclaration(ce);
             }
+    
         }
-
+        const declarations = Object.values(tagNameToDeclaration) as Declaration[];
+        return {tagNameToDeclaration, declarations};       
     }
-    self.tagNameToDeclaration = tagNameToDeclaration;
-    self.declarations = Object.values(tagNameToDeclaration);
-}
 
-export const linkFields = ({tag, tagNameToDeclaration, self}: W) => {
-    const ce = tagNameToDeclaration[tag!] as CustomElementDeclaration;
-    self.customElement = ce as any as CustomElement;
-    if(ce === undefined || ce.members === undefined) return;
-    const fields = ce.members.filter(x=> x.kind ==='field' && !x.static && !(x.privacy==='private')) as ClassField[];
+    getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce: CustomElementDeclaration){
+        if(ce === undefined || ce.members === undefined) return [];
+        return ce.members.filter(x=> x.kind ==='field' && !x.static && !(x.privacy==='private')) as ClassField[];
+    }
 
-    self.fields = fields.map(field => {
-        if(field.default !== undefined){
-            let val = field.default;
-            if(field.type !== undefined && field.type.text !== undefined){
-                switch(field.type.text){
-                    case 'boolean':
-                    case 'number':
-                        val = JSON.parse(val);
-                        break;
-                    case 'string':
-                    case 'object':
-                        try{
-                            val = eval('(' + val + ')'); //yikes
-                        }catch(e){}
-                        
-                        break;
+    getFields({tagNameToDeclaration, tag}: this){
+        const ce = tagNameToDeclaration[tag!] as CustomElementDeclaration;
+        const customElement = ce as any as CustomElement;
+        if(ce === undefined || ce.members === undefined) return;
+        const unevaluatedFields = this.getUnevaluatedNonStaticPublicFieldsFromDeclaration(ce);
+    
+        const fields = unevaluatedFields.map(field => {
+            if(field.default !== undefined){
+                let val = field.default;
+                if(field.type !== undefined && field.type.text !== undefined){
+                    switch(field.type.text){
+                        case 'boolean':
+                        case 'number':
+                            val = JSON.parse(val);
+                            break;
+                        case 'string':
+                        case 'object':
+                            try{
+                                val = eval('(' + val + ')'); //yikes
+                            }catch(e){}
+                            
+                            break;
+                    }
                 }
-            }
-            return {
-                ...field,
-                val: val,
-            };
-        }else{
-            return {
-                ...field
-            } as EnhancedClassField;
-        }            
-    })
+                return {
+                    ...field,
+                    val: val,
+                };
+            }else{
+                return {
+                    ...field
+                } as EnhancedClassField;
+            }            
+        });
+        return {fields, customElement};
+    }
+
+    getMethodsFromDeclaration(ce: CustomElementDeclaration): ClassMethod[]{
+        if(ce === undefined || ce.members === undefined) return [];
+        return ce.members.filter(x => x.kind === 'method') as ClassMethod[];
+    }
 }
-
-
 
 export function countTypes(declaration: Declaration){
     let count = 0;
@@ -119,13 +104,28 @@ export function countTypes(declaration: Declaration){
     return count;
 }
 
-export const propActions = [linkResult, linkTagToDeclarationMapping, linkFields] as PropAction[];
+export interface WCInfoFetchCore extends WCInfoFetchProps{}
 
-xc.letThereBeProps(WCInfoFetch, slicedPropDefs, 'onPropChange');
-xc.define(WCInfoFetch);
+const ce = new XE<WCInfoFetchProps & XtalFetchLiteProps, WCInfoFetchActions>({
+    config:{
+        tagName: 'wc-info-fetch',
+        propInfo:{
+            declarations:{
+                notify:{
+                    dispatch: true,
+                }
+            },
+        },
+        actions:{
+            getTagNameToDeclaration: {
+                ifAllOf:['result'],
+            },
+            getFields:{
+                ifAllOf: ['tag', 'tagNameToDeclaration']
+            }
+        }
+    },
+    superclass: WCInfoFetchCore
+});
 
-declare global {
-    interface HTMLElementTagNameMap {
-        "wc-info-fetch": WCInfoFetch,
-    }
-}
+export const WCInfoFetch = ce.classDef!;

@@ -39,7 +39,7 @@
     }
     </script>
     <script type=module>
-        import '../wc-info-base2.js';
+        import '../wc-info-base.js';
     </script>
     <script>
         setTimeout(() => {
