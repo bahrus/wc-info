@@ -59,7 +59,7 @@ export const mainTemplate = html `
         <dfn part=ce-description class=description></dfn>
 
         <!-- Attributes -->
-        <if-diff class=attr -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+        <if-diff class=attr -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=20>
             <template>
                 <table part=ce-attributes class=attributes>
                     <caption part=cea-title class=title>Attributes</caption>
@@ -89,7 +89,7 @@ export const mainTemplate = html `
                 }'></i-bid>                
             </template>
         </if-diff>
-        <if-diff class=attr -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+        <if-diff class=attr -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=20>
             <template>
                 <table part=ce-attributes class="narrow attributes">
                     <caption part=cea-title class=title>Attributes</caption>
@@ -124,7 +124,7 @@ export const mainTemplate = html `
         </if-diff>
 
         <!-- Events -->
-        <if-diff class=events -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+        <if-diff class=events -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=20>
             <template>
                 <table part=ce-events class=events>
                     <caption part=cee-title class=title>Events</caption>
@@ -155,7 +155,7 @@ export const mainTemplate = html `
                 }'></i-bid>                  
             </template>
         </if-diff>
-        <if-diff class=events -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+        <if-diff class=events -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=20>
             <template>
                 <table part=ce-events class="narrow events">
                     <caption part=cee-title class=title>Events</caption>
@@ -188,7 +188,7 @@ export const mainTemplate = html `
         </if-diff>
 
         <!-- props -->
-        <if-diff class=props -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+        <if-diff class=props -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=20>
             <template>
                 <table part=ce-properties class=properties part=properties>
                     <caption part=cep-title class=title>Properties</caption>
@@ -222,7 +222,7 @@ export const mainTemplate = html `
             </template>
         </if-diff>
 
-        <if-diff class=props -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+        <if-diff class=props -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=20>
             <template>
                 <table part=ce-narrow-properties class="narrow properties" part=properties>
                     <caption part=cenp-title class=title>Properties</caption>
@@ -257,7 +257,7 @@ export const mainTemplate = html `
         </if-diff>
 
         <!-- slots -->
-        <if-diff class=slots -iff is-non-empty-array lazy-display lazy-delay=200>
+        <if-diff class=slots -iff is-non-empty-array lazy-display lazy-delay=20>
             <template>
                 <table part=ce-slots class=slots>
                     <caption part=ces-title class=title>Slots</caption>
@@ -283,7 +283,7 @@ export const mainTemplate = html `
         </if-diff>
 
         <!-- CSS Props -->
-        <if-diff class=css-props -iff is-non-empty-array lazy-display lazy-delay=200>
+        <if-diff class=css-props -iff is-non-empty-array lazy-display lazy-delay=20>
             <template>
                 <table part=ce-css-props class=css-props>
                     <caption part=cecp-title class=title>CSS Properties</caption>
@@ -309,7 +309,7 @@ export const mainTemplate = html `
         </if-diff>
 
         <!-- CSS Parts -->
-        <if-diff class=css-parts -iff is-non-empty-array lazy-display lazy-delay=200>
+        <if-diff class=css-parts -iff is-non-empty-array lazy-display lazy-delay=20>
             <template>
 
                 <table part=ce-css-props class=css-props>
@@ -335,7 +335,7 @@ export const mainTemplate = html `
         </if-diff>
 
         <!-- methods -->
-        <if-diff class=methods -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=200>
+        <if-diff class=methods -iff is-non-empty-array and media-matches="(min-width: 600px)" lazy-display lazy-delay=20>
             <template>
                 <table part=ce-methods class=methods>
                     <caption part=cem-title class=title>Methods</caption>
@@ -391,7 +391,7 @@ export const mainTemplate = html `
                 }'></i-bid>  
             </template>
         </if-diff>
-        <if-diff class=methods -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=200>
+        <if-diff class=methods -iff is-non-empty-array and media-matches="(max-width: 599px)" lazy-display lazy-delay=20>
             <template>
                 <table part=ce-narrow-methods class="narrow methods">
                     <caption part=cenm-title class=title>Methods</caption>

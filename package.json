@@ -34,7 +34,7 @@
     "pass-down": "0.0.110",
     "pass-prop": "0.0.33",
     "ib-id": "0.0.78",
-    "if-diff": "0.0.109",
+    "if-diff": "0.0.114",
     "d-fine": "0.0.17"
   },
   "devDependencies": {
@@ -47,7 +47,7 @@
     "type": "git",
     "url": "git+https://github.com/bahrus/wc-info.git"
   },
-  "author": "",
+  "author": "anderson.bruce.b@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bahrus/wc-info/issues"
