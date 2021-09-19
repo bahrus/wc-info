@@ -1,10 +1,9 @@
 import { ClassField, CustomElementDeclaration, Declaration , CustomElement, CssCustomProperty, CssPart, ClassMember} from 'node_modules/custom-elements-manifest/schema.d.js';
-import {WCInfoPackageBase} from './wc-info-package-base.js';
 import {XtalFetchLiteProps} from 'xtal-fetch/types';
-export interface WCInfoPackageProps{
-  href?: string | undefined;
-  self: WCInfoPackageBase;
-}
+// export interface WCInfoPackageProps{
+//   href?: string | undefined;
+//   self: WCInfoPackageBase;
+// }
 
 export interface WCInfoBaseProps{
   href?: string | undefined;

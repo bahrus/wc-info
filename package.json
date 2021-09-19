@@ -31,11 +31,11 @@
     "xtal-element": "0.0.442",
     "trans-render": "0.0.409",
     "xtal-fetch": "0.0.108",
-    "pass-down": "0.0.110",
-    "pass-prop": "0.0.33",
+    "pass-down": "0.0.111",
+    "pass-prop": "0.0.34",
     "ib-id": "0.0.78",
     "if-diff": "0.0.114",
-    "d-fine": "0.0.17"
+    "d-fine": "0.0.19"
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
