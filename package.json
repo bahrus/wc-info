@@ -17,6 +17,7 @@
   ],
   "files": [
     "wc*.*",
+    "*.css",
     "types.d.ts",
     "custom-elements.json"
   ],
