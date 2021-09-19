@@ -372,8 +372,7 @@ export const mainTemplate = html `
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <p-d observe=template[data-ref][data-idx] vft=dataset to=[-list-src] m=1></p-d>
-                                    <i-bid -list-src list-prop=parameters from-previous=table search-for=.param-item transform='{
+                                    <i-bid -list-src auto-nest list-prop=parameters from-previous=table search-for=.param-item transform='{
                                         ".param-name": ".name ?? -",
                                         ".param-type": ".type.text ?? -"
                                     }'></i-bid>
