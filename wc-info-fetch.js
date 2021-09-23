@@ -109,6 +109,11 @@ const ce = new XE({
                     dispatch: true,
                 }
             },
+            customElement: {
+                notify: {
+                    dispatch: true,
+                }
+            }
         },
         actions: {
             getTagNameToDeclaration: {

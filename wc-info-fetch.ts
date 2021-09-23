@@ -115,6 +115,11 @@ const ce = new XE<WCInfoFetchProps & XtalFetchLiteProps, WCInfoFetchActions>({
                     dispatch: true,
                 }
             },
+            customElement:{
+                notify:{
+                    dispatch: true,
+                }
+            }
         },
         actions:{
             getTagNameToDeclaration: {
