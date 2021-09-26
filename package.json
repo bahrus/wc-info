@@ -30,12 +30,11 @@
   },
   "dependencies": {
     "xtal-element": "0.0.442",
-    "trans-render": "0.0.411",
+    "trans-render": "0.0.413",
     "xtal-fetch": "0.0.108",
-    "pass-down": "0.0.112",
-    "pass-prop": "0.0.35",
+    "pass-down": "0.0.117",
     "ib-id": "0.0.79",
-    "if-diff": "0.0.114",
+    "if-diff": "0.0.117",
     "d-fine": "0.0.19"
   },
   "devDependencies": {

@@ -2,7 +2,6 @@ import {html} from 'xtal-element/lib/html.js';
 import {def} from 'd-fine/def.js';
 import { WCInfoBaseProps } from './types.js';
 import('./wc-info-fetch.js');
-import('pass-prop/p-p.js');
 import('pass-down/p-d.js');
 import('ib-id/i-bid.js');
 import('d-fine/d-fine.js');
@@ -81,7 +80,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=attr to=[-list] m=1></p-p>
+                <p-d on-prop=attr observe-closest="custom-element-declaration" vft=attr to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
@@ -112,7 +111,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=attr to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" on-prop=attr vft=attr to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description-value": ".description ?? - ",
@@ -147,7 +146,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=events to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" on-prop=events vft=events to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
@@ -178,7 +177,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=events to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" on-prop=events vft=events to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description-value": ".description ?? - ",
@@ -212,7 +211,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=props to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" on-prop=props vft=props to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
@@ -246,7 +245,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=props to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" on-prop=props vft=props to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description-value": ".description ?? - ",
@@ -275,7 +274,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=slots to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" vft=slots to=[-list] on-prop=slots m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - "
@@ -301,7 +300,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=cssProperties to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" vft=cssProperties on-prop=cssProperties to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - "
@@ -328,7 +327,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=cssParts to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" vft=cssParts on-prop=cssParts to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - "
@@ -382,7 +381,7 @@ export const mainTemplate = html`
                         </template>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=methods to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" vft=methods on-prop=methods to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=template transform='{
                     ".name": ".name ?? - ",
                     ".description": ".description ?? - ",
@@ -410,7 +409,7 @@ export const mainTemplate = html`
                         </tr>
                     </tbody>
                 </table>
-                <p-p observe-closest="custom-element-declaration" vft=methods to=[-list] m=1></p-p>
+                <p-d observe-closest="custom-element-declaration" on-prop=methods vft=methods to=[-list] m=1></p-d>
                 <i-bid -list updatable from-previous=table search-for=.item transform='{
                     ".name": "name",
                     ".description-value": ".description ?? -"
