@@ -11,6 +11,6 @@
 	"files": [
 		"wc-info-base2.ts",
 		"wc-info.ts",
-		"wc-info-fetch.ts"
+		"be-reformable-as-wc-info.ts"
 	]
 }

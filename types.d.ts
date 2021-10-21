@@ -36,3 +36,12 @@ export interface WCInfoFetchActions{
 export interface EnhancedClassField extends ClassField{
   val: any;
 }
+
+export interface BeReformableAsWCInfoVirtualProps extends WCInfoFetchProps{
+  
+}
+
+export interface BeReformableAsWCInfoActions{
+  getTagNameToDeclaration(self: this): void;
+  getFields(self: this): void;
+}
