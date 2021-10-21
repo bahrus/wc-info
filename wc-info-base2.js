@@ -17,17 +17,39 @@ const mainTemplate = html `
     "url": {
         "onSet": "href",
         "vft": "href"
-    },
-    "debug": true
+    }
 }'></form>
 <template be-repeated='{
     "transform": {
 
     },
-    "list": {"observe": "form", "vft": "declarations", "fromProxy": "reformable-as-wc-info"},
-    "debug": true
+    "list": {"observe": "form", "vft": "declarations", "fromProxy": "reformable-as-wc-info"}
 }'>
     <custom-element-declaration></custom-element-declaration>
+</template>
+<template be-definitive='{
+    "config":{
+        "tagName": "custom-element-declaration",
+        "propDefaults":{
+            "name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[], "slots":[],
+            "cssProperties": [], "cssParts": [], "methods":[],
+            "updateTransform":{
+                "h2[-id]": "tn",
+                "a[-href]": ["#", "tn"],
+                "a": "tn",
+                "dfn": "description",
+                ".attr[-iff]":"attr",
+                ".events[-iff]": "events",
+                ".props[-iff]": "props",
+                ".slots[-iff]": "slots",
+                ".css-props[-iff]": "cssProperties",
+                ".css-parts[-iff]": "cssParts",
+                ".methods[-iff]": "methods"                
+            }           
+        }
+    }
+}'>
+I am here
 </template>
 <be-hive></be-hive>
 `;
