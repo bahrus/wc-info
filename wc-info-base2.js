@@ -21,7 +21,18 @@ const mainTemplate = html `
 }'></form>
 <template be-repeated='{
     "transform": {
-
+        "custom-element-declaration": [{
+            "name": "name",
+            "tn": "tagName",
+            "description": "description",
+            "attr": "attributes",
+            "events": "events",
+            "props": "unevaluatedNonStaticPublicFields",
+            "slots": "slots",
+            "cssProperties": "cssProperties",
+            "cssParts": "cssParts",
+            "methods": "methods"
+        }]
     },
     "list": {"observe": "form", "vft": "declarations", "fromProxy": "reformable-as-wc-info"}
 }'>
@@ -49,7 +60,11 @@ const mainTemplate = html `
         }
     }
 }'>
-I am here
+    <hr>
+    <h2 -id part=tag-name class=tag-name>
+        <a -href -text-content></a>
+    </h2>
+    <dfn part=ce-description class=description></dfn>
 </template>
 <be-hive></be-hive>
 `;
