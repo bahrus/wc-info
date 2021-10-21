@@ -9,7 +9,7 @@
 		"watch": true
 	},
 	"files": [
-		"wc-info-base.ts",
+		"wc-info-base2.ts",
 		"wc-info.ts",
 		"wc-info-fetch.ts"
 	]
