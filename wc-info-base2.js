@@ -179,6 +179,42 @@ const mainTemplate = html `
         </table>
     </template>
 
+    <!-- Small Screen Events -->
+    <template be-switched='{
+        "if": true,
+        "ifNonEmptyArray": {"onSet": "events", "vft": "events"},
+        "ifMediaMatches": "(max-width: 599px)"
+    }'>
+        <table part=ce-events class="narrow events">
+            <caption part=cee-title class=title>Events</caption>
+            <tbody>
+                <tr part=cee-item class=item be-repeated='{
+                    "list": {"onSet": "events", "vft": "events"},
+                    "transform": {
+                        ".name": ".name ?? - ",
+                        ".description-value": ".description ?? - ",
+                        ".type-value":["Type: ", ".type.text ?? - "],
+                        ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]                        
+                    }
+                }'>
+                    <td part=ceei-name-type-default-values class=name-type-default>
+                        <hr part=ceeintdv-event-line>
+                        <div part=ceeintdv-event-value class=attr-value>Event: <strong class=name></strong></div>
+                        <hr part=ceeintdv-type-line>
+                        <div part=ceeintdv-type-value class=type-value></div>
+                        <!-- <hr part=ceeintdv-default-line>
+                        <div part=ceeintdv-default-value class=default-value>Default: {{default ?? '-' }}</div> -->
+                    </td>
+                    <td part=ceei-description-value class=description>
+                        <hr>
+                        <div part=ceeidv-label class=description-label>Description</div>
+                        <div class=description-value></div>
+                    </td>                            
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
     <be-hive></be-hive>
 </template>
 <be-hive></be-hive>
