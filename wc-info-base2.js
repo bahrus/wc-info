@@ -68,6 +68,8 @@ const mainTemplate = html `
     <dfn part=ce-description class=description></dfn>
 
     <!-- Attributes -->
+
+    <!-- Large Screen Attributes -->
     <template be-switched='{
         "if": true,
         "ifNonEmptyArray": {"onSet": "attr", "vft": "attr"},
@@ -101,6 +103,44 @@ const mainTemplate = html `
             </tbody>
         </table>
     </template>
+
+    <!-- Small Screen Attributes -->
+    <template be-switched='{
+        "if": true,
+        "ifNonEmptyArray": {"onSet": "attr", "vft": "attr"},
+        "ifMediaMatches": "(max-width: 599px)"
+    }'>
+        <table part=ce-attributes class="narrow attributes">
+            <caption part=cea-title class=title>Attributes</caption>
+            <tbody>
+                <tr part=cea-item class=item be-repeated='{
+                    "list": {"onSet": "attr", "vft": "attr"},
+                    "transform": {
+                        ".name": ".name ?? - ",
+                        ".description-value": ".description ?? - ",
+                        ".type-value": ["Type: ", ".type.text ?? - "],
+                        ".default-value": ["Default: ", ".default ?? -"],
+                        ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]                        
+                    }
+                }'>
+                    <td part=cenai-name-type-default-values class=name-type-default>
+                        <hr part=cenaintdv-attr-line>
+                        <div part=cenaintdv-attr-value class=attr-value>Attribute: <strong class=name></strong></div>
+                        <hr part=cenaintdv-type-line>
+                        <div part=cenaintdv-type-value class=type-value></div>
+                        <hr part=cenaintdv-default-line>
+                        <div part=cenaintdv-default-value class=default-value></div>
+                    </td>
+                    <td part=cenai-description-value class=description>
+                        <hr>
+                        <div part=cenaidv-label class=description-label>Description</div>
+                        <div class=description-value></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
     <be-hive></be-hive>
 </template>
 <be-hive></be-hive>
