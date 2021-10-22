@@ -5,6 +5,7 @@ import('be-observant/be-observant.js');
 import('./be-reformable-as-wc-info.js');
 import('be-hive/be-hive.js');
 import('be-repeated/be-repeated.js');
+import('be-switched/be-switched.js');
 if (document.querySelector('be-hive') === null) {
     document.body.appendChild(document.createElement('be-hive'));
 }
@@ -65,6 +66,25 @@ const mainTemplate = html `
         <a -href -text-content></a>
     </h2>
     <dfn part=ce-description class=description></dfn>
+
+    <!-- Attributes -->
+    <template be-switched='{
+        "if": true,
+        "ifNonEmptyArray": {"onSet": "attr", "vft": "attr"}
+    }'>
+        <table part=ce-attributes class=attributes>
+            <caption part=cea-title class=title>Attributes</caption>
+            <thead>
+                <tr part=cea-header class=header>
+                    <th part=ceah-name-label class=name>Attribute</th>
+                    <th part=ceah-description-label class=description>Description</th>
+                    <th part=ceah-type-label class=type>Type</th>
+                    <th part=ceah-inherited-from-label class=inherited-from>Inherited From</th>
+                </tr>
+            </thead>
+        </table>
+    </template>
+    <be-hive></be-hive>
 </template>
 <be-hive></be-hive>
 `;
