@@ -218,6 +218,46 @@ const mainTemplate = html`
         </table>
     </template>
 
+    <!-- props -->
+
+    <!-- Large Screen Props -->
+    <template be-switched='{
+        "if": true,
+        "ifNonEmptyArray": {"onSet": "props", "vft": "props"},
+        "ifMediaMatches": "(min-width: 600px)"
+    }'>
+        <table part=ce-properties class=properties part=properties>
+            <caption part=cep-title class=title>Properties</caption>
+            <thead>
+                <tr part=cep-header class=header>
+                    <th part=ceph-name-label class=name>Property</th>
+                    <th part=ceph-description-label class=description>Description</th>
+                    <th part=ceph-type-label class=type>Type</th>
+                    <th part=ceph-default-label class=default>Default</th>
+                    <th part=ceph-inherited-from-label class=inherited-from>Inherited From</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr part=cep-item class=item be-repeated='{
+                    "list": {"onSet": "props", "vft": "props"},
+                    "transform": {
+                        ".name": ".name ?? - ",
+                        ".description": ".description ?? - ",
+                        ".type-text": ".type.text ?? - ",
+                        "code": ".default ?? - ",
+                        ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]                        
+                    }
+                }'>
+                    <td part=cepi-name-value class=name></td>
+                    <td part=cepi-description-value class=description data-len="{{description.length ?? '0'}}"></td>
+                    <td part=cepi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}"></td>
+                    <td part=cepi-default-value class=default data-len="{{default.length ?? '0'}}"><code></code></td></td>
+                    <td part=cepi-inherited-from-value class=inherited-from></td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
     <be-hive></be-hive>
 </template>
 <be-hive></be-hive>
