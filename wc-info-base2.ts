@@ -144,6 +144,44 @@ const mainTemplate = html`
         </table>
     </template>
 
+    <!-- Events -->
+
+    <!-- Large Screen Events -->
+    <template be-switched='{
+        "if": true,
+        "ifNonEmptyArray": {"onSet": "events", "vft": "events"},
+        "ifMediaMatches": "(min-width: 600px)"
+    }'>
+        <table part=ce-events class=events>
+            <caption part=cee-title class=title>Events</caption>
+            <thead>
+                <tr part=cee-header class=header>
+                    <th part=ceeh-name-label class=name>Event</th>
+                    <th part=ceeh-description-label class=description>Description</th>
+                    <th part=ceeh-type-label class=type>Type</th>
+                    <th part=ceeh-inherited-from-label class=inherited-from>Inherited From</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr part=cee-item class=item be-repeated='{
+                    "list": {"onSet": "events", "vft": "events"},
+                    "transform": {
+                        ".name": ".name ?? - ",
+                        ".description": ".description ?? - ",
+                        ".type": ".type.text ?? - ",
+                        ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]                        
+                    }
+                }'>
+                    <td part=ceei-name-value class=name></td>
+                    <td part=ceei-description-value class=description></td>
+                    <td part=ceei-type-value class=type data-len="{{type.text.length ?? '0'}}"></td>
+                    <td part=ceei-inherited-from-value class=inherited-from></td>
+                    <td></td>                        
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
     <be-hive></be-hive>
 </template>
 <be-hive></be-hive>
