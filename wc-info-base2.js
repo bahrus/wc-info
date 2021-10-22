@@ -70,7 +70,8 @@ const mainTemplate = html `
     <!-- Attributes -->
     <template be-switched='{
         "if": true,
-        "ifNonEmptyArray": {"onSet": "attr", "vft": "attr"}
+        "ifNonEmptyArray": {"onSet": "attr", "vft": "attr"},
+        "ifMediaMatches": "(min-width: 600px)"
     }'>
         <table part=ce-attributes class=attributes>
             <caption part=cea-title class=title>Attributes</caption>
