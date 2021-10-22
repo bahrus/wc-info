@@ -85,6 +85,22 @@ const mainTemplate = html`
                     <th part=ceah-inherited-from-label class=inherited-from>Inherited From</th>
                 </tr>
             </thead>
+            <tbody>
+                <tr part=cea-item class=item be-repeated='{
+                    "list": {"onSet": "attr", "vft": "attr"},
+                    "transform": {
+                        ".name": ".name ?? - ",
+                        ".description": ".description ?? - ",
+                        ".type": ".type.text ?? - ",
+                        ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]                        
+                    }
+                }'>
+                    <td part=ceai-name-value class=name></td>
+                    <td part=ceai-description-value class=description></td>
+                    <td part=ceai-type-value class=type data-len="{{type.text.length ?? '0'}}"></td>
+                    <td part=ceai-inherited-from-value class=inherited-from></td>
+                </tr>
+            </tbody>
         </table>
     </template>
     <be-hive></be-hive>
