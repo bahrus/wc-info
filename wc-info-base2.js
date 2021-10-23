@@ -146,7 +146,7 @@ const mainTemplate = html `
     <!-- Large Screen Events -->
     <template be-switched='{
         "if": true,
-        "ifNonEmptyArray": {"onSet": "events", "vft": "events"},
+        "ifNonEmptyArray": ".events",
         "ifMediaMatches": "(min-width: 600px)"
     }'>
         <table part=ce-events class=events>
@@ -182,7 +182,7 @@ const mainTemplate = html `
     <!-- Small Screen Events -->
     <template be-switched='{
         "if": true,
-        "ifNonEmptyArray": {"onSet": "events", "vft": "events"},
+        "ifNonEmptyArray": ".events",
         "ifMediaMatches": "(max-width: 599px)"
     }'>
         <table part=ce-events class="narrow events">
@@ -220,7 +220,7 @@ const mainTemplate = html `
     <!-- Large Screen Props -->
     <template be-switched='{
         "if": true,
-        "ifNonEmptyArray": {"onSet": "props", "vft": "props"},
+        "ifNonEmptyArray": ".props",
         "ifMediaMatches": "(min-width: 600px)"
     }'>
         <table part=ce-properties class=properties part=properties>
@@ -258,7 +258,7 @@ const mainTemplate = html `
     <!-- Small Screen Props -->
     <template be-switched='{
         "if": true,
-        "ifNonEmptyArray": {"onSet": "props", "vft": "props"},
+        "ifNonEmptyArray": ".props",
         "ifMediaMatches": "(max-width: 599px)"
     }'>
         <table part=ce-narrow-properties class="narrow properties" part=properties>
@@ -296,7 +296,7 @@ const mainTemplate = html `
     <!-- slots -->
     <template be-switched='{
         "if": true,
-        "ifNonEmptyArray": {"onSet": "slots", "vft": "slots"}
+        "ifNonEmptyArray": ".slots"
     }'>
         <table part=ce-slots class=slots>
             <caption part=ces-title class=title>Slots</caption>
@@ -324,7 +324,7 @@ const mainTemplate = html `
     <!-- CSS Props -->
     <template be-switched='{
         "if": true,
-        "ifNonEmptyArray": {"onSet": "cssProperties", "vft": "cssProperties"}
+        "ifNonEmptyArray": ".cssProperties"
     }'>
         <table part=ce-css-props class=css-props>
             <caption part=cecp-title class=title>CSS Properties</caption>
@@ -352,7 +352,7 @@ const mainTemplate = html `
     <!-- CSS Parts -->
     <template be-switched='{
         "if": true,
-        "ifNonEmptyArray": {"onSet": "cssParts", "vft": "cssParts"}
+        "ifNonEmptyArray": ".cssParts"
     }'>
         <table part=ce-css-props class=css-props>
             <caption part=cecp-title class=title>CSS Parts</caption>
