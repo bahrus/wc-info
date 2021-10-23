@@ -87,7 +87,7 @@ const mainTemplate = html `
             </thead>
             <tbody>
                 <tr part=cea-item class=item be-repeated='{
-                    "list": {"onSet": "attr", "vft": "attr"},
+                    "list": ".attr",
                     "transform": {
                         ".name": ".name ?? - ",
                         ".description": ".description ?? - ",
@@ -114,7 +114,7 @@ const mainTemplate = html `
             <caption part=cea-title class=title>Attributes</caption>
             <tbody>
                 <tr part=cea-item class=item be-repeated='{
-                    "list": {"onSet": "attr", "vft": "attr"},
+                    "list": ".attr",
                     "transform": {
                         ".name": ".name ?? - ",
                         ".description-value": ".description ?? - ",
