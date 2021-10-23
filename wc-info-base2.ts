@@ -258,6 +258,44 @@ const mainTemplate = html`
         </table>
     </template>
 
+    <!-- Small Screen Props -->
+    <template be-switched='{
+        "if": true,
+        "ifNonEmptyArray": {"onSet": "props", "vft": "props"},
+        "ifMediaMatches": "(max-width: 599px)"
+    }'>
+        <table part=ce-narrow-properties class="narrow properties" part=properties>
+            <caption part=cenp-title class=title>Properties</caption>
+            <tbody>
+                <tr part=cep-item class=item be-repeated='{
+                    "list": {"onSet": "props", "vft": "props"},
+                    "transform": {
+                        ".name": ".name ?? - ",
+                        ".description-value": ".description ?? - ",
+                        ".type-value": ["Type: ", ".type.text ?? - "],
+                        "code": ".default ?? - ",
+                        ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]                        
+                    }
+                }'>
+                    <td part=cenpi-name-type-default-values class=name-type-default>
+                        <hr part=cenpintdv-prop-line>
+                        <div part=cenpintdv-property-value class=property-value>Property: <strong class=name></strong></div>
+                        <hr part=cenpintdv-type-line>
+                        <div part=cenpintdv-type-value class=type-value></div>
+                        <hr part=cenpintdv-default-line>
+                        <div part=cenpintdv-default-value class=default-value>Default: <code></code></div>
+                        <hr>
+                    </td>
+                    <td part=cenpi-description-value class=description>
+                        <hr>
+                        <div part=cenpidv-label class=description-label>Description</div>
+                        <div part=cenpidv-description class=description-value></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
     <be-hive></be-hive>
 </template>
 <be-hive></be-hive>
