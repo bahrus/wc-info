@@ -296,6 +296,34 @@ const mainTemplate = html`
         </table>
     </template>
 
+    <!-- slots -->
+    <template be-switched='{
+        "if": true,
+        "ifNonEmptyArray": {"onSet": "slots", "vft": "slots"}
+    }'>
+        <table part=ce-slots class=slots>
+            <caption part=ces-title class=title>Slots</caption>
+            <thead>
+                <tr part=ces-header class=header>
+                    <th part=cesh-slot-label class=name>Slot</th>
+                    <th part=cesh-description-label class=description>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr part=ces-item class=item be-repeated='{
+                    "list": {"onSet": "slots", "vft": "slots"},
+                    "transform":{
+                        ".name": ".name ?? - ",
+                        ".description": ".description ?? - "                        
+                    }
+                }'>
+                    <td part=cesi-name-value class=name></td>
+                    <td part=cesi-description-value class=description></td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
     <be-hive></be-hive>
 </template>
 <be-hive></be-hive>
