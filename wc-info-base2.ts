@@ -352,6 +352,36 @@ const mainTemplate = html`
         </table>
     </template>
 
+    <!-- CSS Parts -->
+    <template be-switched='{
+        "if": true,
+        "ifNonEmptyArray": {"onSet": "cssParts", "vft": "cssParts"}
+    }'>
+        <table part=ce-css-props class=css-props>
+            <caption part=cecp-title class=title>CSS Parts</caption>
+            <thead>
+                <tr part=cecp-header class=header>
+                    <th part=cecph-css-prop-label class=name>Part</th>
+                    <th part=cecph-description-label class=description>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr part=ces-item class=item be-repeated='{
+                    "list": {"onSet": "cssParts", "vft": "cssParts"},
+                    "transform": {
+                        ".name": ".name ?? - ",
+                        ".description": ".description ?? - "                        
+                    }
+                }'>
+                    <td part=cesi-name-value class=name></td>
+                    <td part=cesi-description-value class=description></td>                           
+                </tr>
+            </tbody>
+        </table>
+    </template>
+
+    <!-- Methods -->
+
     <be-hive></be-hive>
 </template>
 <be-hive></be-hive>
