@@ -164,7 +164,7 @@ const mainTemplate = html`
             </thead>
             <tbody>
                 <tr part=cee-item class=item be-repeated='{
-                    "list": {"onSet": "events", "vft": "events"},
+                    "list": ".events",
                     "transform": {
                         ".name": ".name ?? - ",
                         ".description": ".description ?? - ",
@@ -192,7 +192,7 @@ const mainTemplate = html`
             <caption part=cee-title class=title>Events</caption>
             <tbody>
                 <tr part=cee-item class=item be-repeated='{
-                    "list": {"onSet": "events", "vft": "events"},
+                    "list": ".events",
                     "transform": {
                         ".name": ".name ?? - ",
                         ".description-value": ".description ?? - ",
@@ -239,7 +239,7 @@ const mainTemplate = html`
             </thead>
             <tbody>
                 <tr part=cep-item class=item be-repeated='{
-                    "list": {"onSet": "props", "vft": "props"},
+                    "list": ".props",
                     "transform": {
                         ".name": ".name ?? - ",
                         ".description": ".description ?? - ",
@@ -268,7 +268,7 @@ const mainTemplate = html`
             <caption part=cenp-title class=title>Properties</caption>
             <tbody>
                 <tr part=cep-item class=item be-repeated='{
-                    "list": {"onSet": "props", "vft": "props"},
+                    "list": ".props",
                     "transform": {
                         ".name": ".name ?? - ",
                         ".description-value": ".description ?? - ",
@@ -311,7 +311,7 @@ const mainTemplate = html`
             </thead>
             <tbody>
                 <tr part=ces-item class=item be-repeated='{
-                    "list": {"onSet": "slots", "vft": "slots"},
+                    "list": ".slots",
                     "transform":{
                         ".name": ".name ?? - ",
                         ".description": ".description ?? - "                        
@@ -339,7 +339,7 @@ const mainTemplate = html`
             </thead>
             <tbody>
                 <tr part=ces-item class=item be-repeated='{
-                    "list": {"onSet": "cssProperties", "vft": "cssProperties"},
+                    "list": ".cssProperties",
                     "transform":{
                         ".name": ".name ?? - ",
                         ".description": ".description ?? - "                        
@@ -367,7 +367,7 @@ const mainTemplate = html`
             </thead>
             <tbody>
                 <tr part=ces-item class=item be-repeated='{
-                    "list": {"onSet": "cssParts", "vft": "cssParts"},
+                    "list": ".cssParts",
                     "transform": {
                         ".name": ".name ?? - ",
                         ".description": ".description ?? - "                        
@@ -385,7 +385,7 @@ const mainTemplate = html`
     <!-- Large Screen -->
     <template be-switched='{
         "if": true,
-        "ifNonEmptyArray": {"onSet": "methods", "vft": "methods"}
+        "ifNonEmptyArray": ".methods"
     }'>
         <table part=ce-methods class=methods>
             <caption part=cem-title class=title>Methods</caption>
