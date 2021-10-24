@@ -21,7 +21,7 @@ const mainTemplate = html `
         "vft": "href"
     }
 }'></form>
-<custom-element-declaration be-repeated='{
+<custom-element-declaration data-is-hostish be-repeated='{
     "transform": {
         "custom-element-declaration": [{
             "name": "name",
@@ -44,7 +44,7 @@ const mainTemplate = html `
         "tagName": "custom-element-declaration",
         "propDefaults":{
             "name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[], "slots":[],
-            "cssProperties": [], "cssParts": [], "methods":[], "cssHref": "https://unpkg.com/wc-info/simple-ce-style.css",
+            "cssProperties": [], "cssParts": [], "methods":[], "noshadow": true,
             "updateTransform":{
                 "h2[-id]": "tn",
                 "a[-href]": ["#", "tn"],
@@ -61,9 +61,6 @@ const mainTemplate = html `
         }
     }
 }'>
-    <link rel=stylesheet be-observant='{
-        "href": ".cssHref"
-    }'>
     <hr>
     <h2 -id part=tag-name class=tag-name>
         <a -href -text-content></a>
@@ -441,7 +438,7 @@ const mainTemplate = html `
         </table>
     </template>
 
-    <be-hive></be-hive>
+    <!-- <be-hive></be-hive> -->
 </template>
 <be-hive></be-hive>
 `;
