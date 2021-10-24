@@ -6,7 +6,8 @@
   "module": "wc-info.js",
   "exports": {
     ".": "./wc-info.js",
-    "./wc-info.js": "./wc-info.js"
+    "./wc-info.js": "./wc-info.js",
+    "./be-reformable-as-wc-info.js": "./be-reformable-as-wc-info.js"
   },
   "keywords": [
     "web-components",
