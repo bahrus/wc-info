@@ -445,7 +445,7 @@ const mainTemplate = html `
 `;
 const beDefinitiveProps = {
     config: {
-        tagName: 'wc-info-base',
+        tagName: 'wc-info',
         propDefaults: {
             href: '',
             cssHref: 'https://unpkg.com/wc-info/simple-ce-style.css'

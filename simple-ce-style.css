@@ -28,6 +28,7 @@ table.details caption.title{
     max-width:740px;
     display:block;
     margin: auto;
+    display:block;
 }
 h1{
     text-align: center;
