@@ -8,13 +8,9 @@
 
 **NB**  A great, more fully featured alternative to wc-info is the [api-viewer element](https://api-viewer-element.netlify.com/#api-viewer).
 
-UI for [VSCode's html data file](https://code.visualstudio.com/updates/v1_31#_html-and-css-custom-data-support) / [Web Component Analyzer](https://www.npmjs.com/package/web-component-analyzer) JSON format.
+wc-info provides a UI friendly view of the a [custom elements manifest file](https://github.com/open-wc/custom-elements-manifest).
 
-Schema for properties and events is based on the Web Component Analyzer format (subject to change), which extends the VSCode format. 
 
-An enhanced JSON schema file with this additional support for properties and custom events is provided:  [https://unpkg.com/wc-info@0.0.70/schema.json](https://unpkg.com/wc-info@0.0.70/schema.json).
-
-Additional experimental support for examples / test cases is also included in the schema.
 
 
 ## Basic in-built styling
@@ -55,7 +51,7 @@ Additional experimental support for examples / test cases is also included in th
 ```
 -->
 
-A web is available that allows you to pass in the package name via the query string, and it generates the syntax document:
+A website  is available that allows you to pass in the package name via the query string, and it generates the syntax document:
 
 https://bahrus.github.io/wc-info/syntax.html?npmPackage=[npm package name]
 
