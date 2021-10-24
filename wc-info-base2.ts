@@ -392,16 +392,25 @@ const mainTemplate = html`
                 <tr part=cem-header class=header>
                     <th part=cemh-name-label class=name>Method</th>
                     <th part=cemh-description-label class=description>Description</th>
-                    <th part=cemh-type-label class=description data-len="{{type.text.length ?? '0'}}">Type</th>
+                    <th part=cemh-type-label class=description>Type</th>
                     <th part=cemh-inherited-from-label class=inherited-from>Inherited From</th>
                     <th part=cemh-parameters-label class=parameters>Parameters</th>
                 </tr>
             </thead>
             <tbody>
-                <tr part=cem-item class=item>
+                <tr part=cem-item class=item be-repeated='{
+                    "list": ".methods",
+                    "transform":{
+                        ".name": ".name ?? - ",
+                        ".description": ".description ?? - ",
+                        ".type-text": ".type.text ?? - ",
+                        "code": ".default ?? - ",
+                        ".inherited-from": ["", ".inheritedFrom.name", " ", ".inheritedFrom.module"]                        
+                    }
+                }'>
                     <td part=cemi-name-value class=name></td>
-                    <td part=cemi-description-value class=description  data-len="{{description.length ?? '0'}}"></td>
-                    <td part=cemi-type-text-value class=type-text data-len="{{type.text.length ?? '0'}}"></td>
+                    <td part=cemi-description-value class=description></td>
+                    <td part=cemi-type-text-value class=type-text></td>
                     <td part=cemi-inherited-from-value class=inherited-from></td>
                     <td part=cemi-parameters-value class=parameters>
                         <table part=cemipv-details class=details>
@@ -413,16 +422,18 @@ const mainTemplate = html`
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class=param-item>
+                                <tr class=param-item be-repeated='{
+                                    "nestedListProp": "parameters",
+                                    "transform": {
+                                        ".param-name": ".name ?? -",
+                                        ".param-type": ".type.text ?? -"
+                                    }
+                                }'>
                                     <td class=param-name></td>
                                     <td class=param-type></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <i-bid -list-src auto-nest list-prop=parameters from-previous=table search-for=.param-item transform='{
-                            ".param-name": ".name ?? -",
-                            ".param-type": ".type.text ?? -"
-                        }'></i-bid>
                     </td>
                 </tr>
             </tbody>
