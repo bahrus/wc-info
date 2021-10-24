@@ -10,7 +10,9 @@ if (document.querySelector('be-hive') === null) {
     document.body.appendChild(document.createElement('be-hive'));
 }
 const mainTemplate = html `
-
+<link rel=stylesheet be-observant='{
+    "href": ".cssHref"
+}'>
 <h1 part=title>Custom Elements API</h1>
 <h2 part=package>Package: <label></label></h2>
 <form be-reformable-as-wc-info='{
@@ -438,7 +440,6 @@ const mainTemplate = html `
         </table>
     </template>
 
-    <!-- <be-hive></be-hive> -->
 </template>
 <be-hive></be-hive>
 `;
@@ -446,7 +447,8 @@ const beDefinitiveProps = {
     config: {
         tagName: 'wc-info-base',
         propDefaults: {
-            href: ''
+            href: '',
+            cssHref: 'https://unpkg.com/wc-info@0.0.126/simple-ce-style.css'
         }
     }
 };
