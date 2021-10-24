@@ -43,7 +43,7 @@ const mainTemplate = html `
         "tagName": "custom-element-declaration",
         "propDefaults":{
             "name":"", "tn":"", "description":"", "attr":[], "events":[], "props":[], "slots":[],
-            "cssProperties": [], "cssParts": [], "methods":[],
+            "cssProperties": [], "cssParts": [], "methods":[], "noshadow": true,
             "updateTransform":{
                 "h2[-id]": "tn",
                 "a[-href]": ["#", "tn"],
@@ -437,9 +437,8 @@ const mainTemplate = html `
         </table>
     </template>
 
-    <be-hive></be-hive>
+    <!-- <be-hive></be-hive> -->
 </template>
-<!-- <be-hive></be-hive> -->
 `;
 const beDefinitiveProps = {
     config: {
