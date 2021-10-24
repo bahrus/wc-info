@@ -420,7 +420,7 @@ const mainTemplate = html `
                             </thead>
                             <tbody>
                                 <tr class=param-item be-repeated='{
-                                    "nestedListProp": "parameters",
+                                    "nestedLoopProp": "parameters",
                                     "transform": {
                                         ".param-name": ".name ?? -",
                                         ".param-type": ".type.text ?? -"
