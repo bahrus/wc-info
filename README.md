@@ -15,41 +15,9 @@ wc-info provides a UI friendly view of the a [custom elements manifest file](htt
 
 ## Basic in-built styling
 
-[Demo](https://jsfiddle.net/bahrus/xzo0j6g2/4/)
+[Demo](https://codepen.io/bahrus/pen/LYjxKGo)
 
-<!--
-```
-<custom-element-demo>
-<template>
-  <div>
-    <div>
-      <wc-info package-name="npm.wc-info" href="https://unpkg.com/wc-info@0.0.69/custom-elements.json">
-      </wc-info>
-      <wc-info package-name="npm.xtal-fetch" href="https://unpkg.com/xtal-fetch@0.0.73/custom-elements.json">
-      </wc-info>
-      <wc-info package-name="npm.xtal-frappe-chart" href="https://unpkg.com/xtal-frappe-chart@0.0.47/custom-elements.json"></wc-info>
-      <wc-info package-name="npm.if-diff" href="https://unpkg.com/if-diff@0.0.34/html.json">
-      </wc-info>
-      <wc-info package-name="npm.p-et-alia" href="https://unpkg.com/p-et-alia@0.0.47/custom-elements.json">
-      </wc-info>
-      <wc-info package-name="npm.pre-render-tron" href="https://unpkg.com/pre-render-tron@0.0.6/html.json">
-      </wc-info>
-      <wc-info package-name="npm.hypo-link" href="https://unpkg.com/hypo-link@0.0.15/html.json">
-      </wc-info>
 
-    </div>
-    <style>
-      wc-info {
-        margin-top: 10px;
-      }
-    </style>
-    
-    <script type="module" src="https://unpkg.com/wc-info@0.0.70/wc-info.js?module"></script>
-  </div>
-</template>
-</custom-element-demo>
-```
--->
 
 A website  is available that allows you to pass in the package name via the query string, and it generates the syntax document:
 

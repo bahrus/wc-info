@@ -18,6 +18,7 @@ const mainTemplate = html `
 <form be-reformable-as-wc-info='{
     "autoSubmit": true,
     "emitEvents": ["declarations"],
+    "debug": true,
     "url": {
         "onSet": "href",
         "vft": "href"
@@ -38,6 +39,7 @@ const mainTemplate = html `
             "methods": "methods"
         }]
     },
+    "debug": true,
     "list": {"observe": "form", "vft": "declarations", "fromProxy": "reformable-as-wc-info"}
 }'
 ></custom-element-declaration>
