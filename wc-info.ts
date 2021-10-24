@@ -451,7 +451,7 @@ const beDefinitiveProps: DefineArgs = {
         tagName: 'wc-info-base',
         propDefaults: {
             href: '',
-            cssHref: 'https://unpkg.com/wc-info@0.0.126/simple-ce-style.css'
+            cssHref: 'https://unpkg.com/wc-info/simple-ce-style.css'
         }
     }
 }
