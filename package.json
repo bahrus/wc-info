@@ -15,10 +15,7 @@
     "custom-elements-manifest"
   ],
   "files": [
-    "wc*.*",
-    "*.css",
-    "types.d.ts",
-    "custom-elements.json"
+    "*.*"
   ],
   "types": "types.d.ts",
   "scripts": {
