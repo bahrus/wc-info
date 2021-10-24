@@ -23,7 +23,7 @@ const mainTemplate = html`
         "vft": "href"
     }
 }'></form>
-<template be-repeated='{
+<custom-element-declaration be-repeated='{
     "transform": {
         "custom-element-declaration": [{
             "name": "name",
@@ -39,9 +39,8 @@ const mainTemplate = html`
         }]
     },
     "list": {"observe": "form", "vft": "declarations", "fromProxy": "reformable-as-wc-info"}
-}'>
-    <custom-element-declaration></custom-element-declaration>
-</template>
+}'
+></custom-element-declaration>
 <template be-definitive='{
     "config":{
         "tagName": "custom-element-declaration",
