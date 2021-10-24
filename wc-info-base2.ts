@@ -442,13 +442,14 @@ const mainTemplate = html`
 
     <be-hive></be-hive>
 </template>
-<be-hive></be-hive>
+<!-- <be-hive></be-hive> -->
 `;
 const beDefinitiveProps: DefineArgs = {
     config:{
         tagName: 'wc-info-base',
         propDefaults: {
-            href: ''
+            href: '',
+            noshadow:true
         }
     }
 }
