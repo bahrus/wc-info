@@ -13,9 +13,9 @@ if(document.querySelector('be-hive')===null){
 }
 
 const mainTemplate = html`
-<link rel=stylesheet be-observant='{
+<!-- <link rel=stylesheet be-observant='{
     "href": ".cssHref"
-}'>
+}'> -->
 <h1 part=title>Custom Elements API</h1>
 <h2 part=package>Package: <label></label></h2>
 <form be-reformable-as-wc-info='{
@@ -56,14 +56,7 @@ const mainTemplate = html`
                 "h2[-id]": "tn",
                 "a[-href]": ["#", "tn"],
                 "a": "tn",
-                "dfn": "description",
-                ".attr[-iff]":"attr",
-                ".events[-iff]": "events",
-                ".props[-iff]": "props",
-                ".slots[-iff]": "slots",
-                ".css-props[-iff]": "cssProperties",
-                ".css-parts[-iff]": "cssParts",
-                ".methods[-iff]": "methods"                
+                "dfn": "description"             
             }           
         }
     }
@@ -80,6 +73,7 @@ const mainTemplate = html`
     <template be-switched='{
         "if": true,
         "ifNonEmptyArray": ".attr",
+        "debug": true,
         "ifMediaMatches": "(min-width: 600px)"
     }'>
         <table part=ce-attributes class=attributes>
