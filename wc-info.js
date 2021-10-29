@@ -10,6 +10,12 @@ if (document.querySelector('be-hive') === null) {
     document.body.appendChild(document.createElement('be-hive'));
 }
 const mainTemplate = html `
+<style>
+    .be-lazy-loaded{
+        min-height:1000px;
+        display:block;
+    }
+</style>
 <link rel=stylesheet be-observant='{
     "href": ".cssHref"
 }'>
@@ -56,6 +62,7 @@ const mainTemplate = html `
         }
     }
 }'>
+
     <hr>
     <h2 -id part=tag-name class=tag-name>
         <a -href -text-content></a>
@@ -65,10 +72,11 @@ const mainTemplate = html `
     <!-- Attributes -->
 
     <!-- Large Screen Attributes -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".attr",
-        "ifMediaMatches": "(min-width: 600px)"
+        "ifMediaMatches": "(min-width: 600px)",
+        "lazyDisplay": true
     }'>
         <table part=ce-attributes class=attributes>
             <caption part=cea-title class=title>Attributes</caption>
@@ -100,10 +108,11 @@ const mainTemplate = html `
     </template>
 
     <!-- Small Screen Attributes -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".attr",
-        "ifMediaMatches": "(max-width: 599px)"
+        "ifMediaMatches": "(max-width: 599px)",
+        "lazyDisplay": true
     }'>
         <table part=ce-attributes class="narrow attributes">
             <caption part=cea-title class=title>Attributes</caption>
@@ -139,10 +148,11 @@ const mainTemplate = html `
     <!-- Events -->
 
     <!-- Large Screen Events -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".events",
-        "ifMediaMatches": "(min-width: 600px)"
+        "ifMediaMatches": "(min-width: 600px)",
+        "lazyDisplay": true
     }'>
         <table part=ce-events class=events>
             <caption part=cee-title class=title>Events</caption>
@@ -175,10 +185,11 @@ const mainTemplate = html `
     </template>
 
     <!-- Small Screen Events -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".events",
-        "ifMediaMatches": "(max-width: 599px)"
+        "ifMediaMatches": "(max-width: 599px)",
+        "lazyDisplay": true
     }'>
         <table part=ce-events class="narrow events">
             <caption part=cee-title class=title>Events</caption>
@@ -213,10 +224,11 @@ const mainTemplate = html `
     <!-- props -->
 
     <!-- Large Screen Props -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".props",
-        "ifMediaMatches": "(min-width: 600px)"
+        "ifMediaMatches": "(min-width: 600px)",
+        "lazyDisplay": true
     }'>
         <table part=ce-properties class=properties part=properties>
             <caption part=cep-title class=title>Properties</caption>
@@ -251,10 +263,11 @@ const mainTemplate = html `
     </template>
 
     <!-- Small Screen Props -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".props",
-        "ifMediaMatches": "(max-width: 599px)"
+        "ifMediaMatches": "(max-width: 599px)",
+        "lazyDisplay": true
     }'>
         <table part=ce-narrow-properties class="narrow properties" part=properties>
             <caption part=cenp-title class=title>Properties</caption>
@@ -289,9 +302,10 @@ const mainTemplate = html `
     </template>
 
     <!-- slots -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
-        "ifNonEmptyArray": ".slots"
+        "ifNonEmptyArray": ".slots",
+        "lazyDisplay": true
     }'>
         <table part=ce-slots class=slots>
             <caption part=ces-title class=title>Slots</caption>
@@ -317,9 +331,10 @@ const mainTemplate = html `
     </template>
 
     <!-- CSS Props -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
-        "ifNonEmptyArray": ".cssProperties"
+        "ifNonEmptyArray": ".cssProperties",
+        "lazyDisplay": true
     }'>
         <table part=ce-css-props class=css-props>
             <caption part=cecp-title class=title>CSS Properties</caption>
@@ -345,9 +360,10 @@ const mainTemplate = html `
     </template>
 
     <!-- CSS Parts -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
-        "ifNonEmptyArray": ".cssParts"
+        "ifNonEmptyArray": ".cssParts",
+        "lazyDisplay": true
     }'>
         <table part=ce-css-props class=css-props>
             <caption part=cecp-title class=title>CSS Parts</caption>
@@ -375,9 +391,10 @@ const mainTemplate = html `
     <!-- Methods -->
 
     <!-- Large Screen -->
-    <template be-switched='{
+    <template class=be-lazy-loaded be-switched='{
         "if": true,
-        "ifNonEmptyArray": ".methods"
+        "ifNonEmptyArray": ".methods",
+        "lazyDisplay": true
     }'>
         <table part=ce-methods class=methods>
             <caption part=cem-title class=title>Methods</caption>

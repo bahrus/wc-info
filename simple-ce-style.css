@@ -45,8 +45,8 @@ table.narrow td{
 table.narrow .description-label{
     text-decoration: underline;
 }
-if-diff[lazy-delay]{
+/* if-diff[lazy-delay]{
     min-height:1000px;
     display:block;
-}
+} */
 
