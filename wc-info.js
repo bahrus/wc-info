@@ -16,6 +16,10 @@ const mainTemplate = html `
         top: -10000px;
         display:block;
     }
+    be-switched-filler{
+        display:block;
+        min-height:1000px;
+    }
 </style>
 <link rel=stylesheet be-observant='{
     "href": ".cssHref"
@@ -229,7 +233,8 @@ const mainTemplate = html `
         "if": true,
         "ifNonEmptyArray": ".props",
         "ifMediaMatches": "(min-width: 600px)",
-        "lazyDisplay": true, "lazyDelay": 40
+        "lazyDisplay": true, 
+        "lazyDelay": 40
     }'>
         <table part=ce-properties class=properties part=properties>
             <caption part=cep-title class=title>Properties</caption>
