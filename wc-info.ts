@@ -13,15 +13,14 @@ if(document.querySelector('be-hive')===null){
 }
 
 const mainTemplate = html`
-<!-- <link rel=stylesheet be-observant='{
+<link rel=stylesheet be-observant='{
     "href": ".cssHref"
-}'> -->
+}'>
 <h1 part=title>Custom Elements API</h1>
 <h2 part=package>Package: <label></label></h2>
 <form be-reformable-as-wc-info='{
     "autoSubmit": true,
     "emitEvents": ["declarations"],
-    "debug": true,
     "url": {
         "onSet": "href",
         "vft": "href"
@@ -42,7 +41,6 @@ const mainTemplate = html`
             "methods": "methods"
         }]
     },
-    "debug": true,
     "list": {"observe": "form", "vft": "declarations", "fromProxy": "reformable-as-wc-info"}
 }'
 ></custom-element-declaration>
@@ -73,7 +71,6 @@ const mainTemplate = html`
     <template be-switched='{
         "if": true,
         "ifNonEmptyArray": ".attr",
-        "debug": true,
         "ifMediaMatches": "(min-width: 600px)"
     }'>
         <table part=ce-attributes class=attributes>
