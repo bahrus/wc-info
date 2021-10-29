@@ -15,9 +15,8 @@ if(document.querySelector('be-hive')===null){
 const mainTemplate = html`
 <style>
     .be-lazy-loaded{
-        min-height:10000px;
         position:absolute;
-        top: 10000px;
+        top: -10000px;
         display:block;
     }
 </style>
