@@ -77,7 +77,7 @@ const mainTemplate = html `
         "if": true,
         "ifNonEmptyArray": ".attr",
         "ifMediaMatches": "(min-width: 600px)",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-attributes class=attributes>
             <caption part=cea-title class=title>Attributes</caption>
@@ -113,7 +113,7 @@ const mainTemplate = html `
         "if": true,
         "ifNonEmptyArray": ".attr",
         "ifMediaMatches": "(max-width: 599px)",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-attributes class="narrow attributes">
             <caption part=cea-title class=title>Attributes</caption>
@@ -153,7 +153,7 @@ const mainTemplate = html `
         "if": true,
         "ifNonEmptyArray": ".events",
         "ifMediaMatches": "(min-width: 600px)",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-events class=events>
             <caption part=cee-title class=title>Events</caption>
@@ -190,7 +190,7 @@ const mainTemplate = html `
         "if": true,
         "ifNonEmptyArray": ".events",
         "ifMediaMatches": "(max-width: 599px)",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-events class="narrow events">
             <caption part=cee-title class=title>Events</caption>
@@ -229,7 +229,7 @@ const mainTemplate = html `
         "if": true,
         "ifNonEmptyArray": ".props",
         "ifMediaMatches": "(min-width: 600px)",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-properties class=properties part=properties>
             <caption part=cep-title class=title>Properties</caption>
@@ -268,7 +268,7 @@ const mainTemplate = html `
         "if": true,
         "ifNonEmptyArray": ".props",
         "ifMediaMatches": "(max-width: 599px)",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-narrow-properties class="narrow properties" part=properties>
             <caption part=cenp-title class=title>Properties</caption>
@@ -306,7 +306,7 @@ const mainTemplate = html `
     <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".slots",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-slots class=slots>
             <caption part=ces-title class=title>Slots</caption>
@@ -335,7 +335,7 @@ const mainTemplate = html `
     <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".cssProperties",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-css-props class=css-props>
             <caption part=cecp-title class=title>CSS Properties</caption>
@@ -364,7 +364,7 @@ const mainTemplate = html `
     <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".cssParts",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-css-props class=css-props>
             <caption part=cecp-title class=title>CSS Parts</caption>
@@ -395,7 +395,7 @@ const mainTemplate = html `
     <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".methods",
-        "lazyDisplay": true, "lazyDelay": 1000
+        "lazyDisplay": true, "lazyDelay": 100
     }'>
         <table part=ce-methods class=methods>
             <caption part=cem-title class=title>Methods</caption>
