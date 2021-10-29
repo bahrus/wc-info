@@ -395,7 +395,9 @@ const mainTemplate = html `
     <template class=be-lazy-loaded be-switched='{
         "if": true,
         "ifNonEmptyArray": ".methods",
-        "lazyDisplay": true, "lazyDelay": 100
+        "ifMediaMatches": "(min-width: 600px)",
+        "lazyDisplay": true, 
+        "lazyDelay": 100
     }'>
         <table part=ce-methods class=methods>
             <caption part=cem-title class=title>Methods</caption>
@@ -451,6 +453,37 @@ const mainTemplate = html `
         </table>
     </template>
 
+    <!-- Small Screen -->
+    <template class=be-lazy-loaded be-switched='{
+        "if": true,
+        "ifNonEmptyArray": ".methods",
+        "ifMediaMatches": "(max-width: 599px)",
+        "lazyDisplay": true, 
+        "lazyDelay": 100
+    }'>
+        <table part=ce-narrow-methods class="narrow methods">
+            <caption part=cenm-title class=title>Methods</caption>
+            <tbody>
+                <tr part=cenm-item class=item be-repeated='{
+                    "list": ".methods",
+                    "transform":{
+                        ".name": "name",
+                        ".description-value": ".description ?? -"
+                    }
+                }'>
+                    <td part=cenmi-name-value class=name-value>
+                        <hr>
+                        <div>Method: <strong class=name></strong></div>
+                    </td>
+                    <td part=cenmi-description-value class=description>
+                        <hr>
+                        <div class=description-label>Description</div>
+                        <div class=description-value></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
 </template>
 <be-hive></be-hive>
 `;
