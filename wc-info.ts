@@ -37,24 +37,27 @@ const mainTemplate = html`
         "vft": "href"
     }
 }'></form>
-<custom-element-declaration data-is-hostish be-repeated='{
-    "transform": {
-        "custom-element-declaration": [{
-            "name": "name",
-            "tn": "tagName",
-            "description": "description",
-            "attr": "attributes",
-            "events": "events",
-            "props": "unevaluatedNonStaticPublicFields",
-            "slots": "slots",
-            "cssProperties": "cssProperties",
-            "cssParts": "cssParts",
-            "methods": "methods"
-        }]
-    },
-    "list": {"observe": "form", "vft": "declarations", "fromProxy": "reformable-as-wc-info"}
-}'
-></custom-element-declaration>
+<div>
+    <custom-element-declaration data-is-hostish be-repeated='{
+        "transform": {
+            "custom-element-declaration": [{
+                "name": "name",
+                "tn": "tagName",
+                "description": "description",
+                "attr": "attributes",
+                "events": "events",
+                "props": "unevaluatedNonStaticPublicFields",
+                "slots": "slots",
+                "cssProperties": "cssProperties",
+                "cssParts": "cssParts",
+                "methods": "methods"
+            }]
+        },
+        "list": {"observe": "form", "vft": "declarations", "fromProxy": "reformable-as-wc-info"}
+    }'
+    ></custom-element-declaration>
+</div>
+
 <template be-definitive='{
     "config":{
         "tagName": "custom-element-declaration",
