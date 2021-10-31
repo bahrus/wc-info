@@ -5,6 +5,7 @@ import('be-observant/be-observant.js');
 import('./be-reformable-as-wc-info.js');
 import('be-hive/be-hive.js');
 import('be-repeated/be-repeated.js');
+import('be-deslotted/be-deslotted.js');
 import('be-switched/be-switched.js');
 if (document.querySelector('be-hive') === null) {
     document.body.appendChild(document.createElement('be-hive'));
@@ -24,6 +25,7 @@ const mainTemplate = html `
 <link rel=stylesheet be-observant='{
     "href": ".cssHref"
 }'>
+<slot be-deslotted=href></slot>
 <h1 part=title>Custom Elements API</h1>
 <h2 part=package>Package: <label></label></h2>
 <form be-reformable-as-wc-info='{

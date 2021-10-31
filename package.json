@@ -27,12 +27,13 @@
   "dependencies": {
     "xtal-element": "0.0.452",
     "trans-render": "0.0.427",
-    "be-decorated": "0.0.36",
+    "be-decorated": "0.0.37",
     "be-definitive": "0.0.11",
+    "be-deslotted": "0.0.4",
     "be-hive": "0.0.8",
+    "be-observant": "0.0.48",
     "be-reformable": "0.0.17",
     "be-repeated": "0.0.28",
-    "be-observant": "0.0.48",
     "be-switched": "0.0.38",
     "on-to-me": "0.0.49"
   },
