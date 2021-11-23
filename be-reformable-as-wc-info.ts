@@ -104,6 +104,8 @@ mergeDeep(asWcInfo, {
         tagName,
         propDefaults:{
             ifWantsToBe,
+            virtualProps: [...asWcInfo.config.propDefaults?.virtualProps || [], 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
+            'fields', 'cssProps', 'cssParts', 'methods']
         }
     }
 });
@@ -113,10 +115,10 @@ const c = asWcInfo.config;
 const pd = c.propDefaults!;
 //pd.ifWantsToBe = ifWantsToBe;
 const upgrade = pd.upgrade!;
-pd.virtualProps = [
-    ...pd.virtualProps!, 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
-    'fields', 'cssProps', 'cssParts', 'methods'
-];
+// pd.virtualProps = [
+//     ...pd.virtualProps!, 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
+//     'fields', 'cssProps', 'cssParts', 'methods'
+// ];
 const a = c.actions!
 a['getTagNameToDeclaration'] = {
     ifAllOf: ['fetchResult']
