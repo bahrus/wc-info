@@ -1,5 +1,6 @@
 import { define } from 'be-decorated/be-decorated.js';
 import { BeReformableController, controllerConfig } from 'be-reformable/be-reformable.js';
+import { mergeDeep } from 'trans-render/lib/mergeDeep.js';
 export class BeReformableAsWCInfoController extends BeReformableController {
     getTagNameToDeclaration({ fetchResult }) {
         const tagNameToDeclaration = {};
@@ -85,8 +86,13 @@ export class BeReformableAsWCInfoController extends BeReformableController {
 export const asWcInfo = { ...controllerConfig };
 const ifWantsToBe = 'reformable-as-wc-info';
 const tagName = 'be-reformable-as-wc-info';
+mergeDeep(asWcInfo, {
+    config: {
+        tagName
+    }
+});
 const c = asWcInfo.config;
-c.tagName = tagName;
+//c.tagName = tagName;
 const pd = c.propDefaults;
 pd.ifWantsToBe = ifWantsToBe;
 const upgrade = pd.upgrade;

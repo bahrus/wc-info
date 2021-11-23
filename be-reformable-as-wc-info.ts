@@ -4,6 +4,7 @@ import {BeReformableActions, BeReformableProps} from 'be-reformable/types';
 import {BeReformableAsWCInfoActions, BeReformableAsWCInfoVirtualProps, EnhancedClassField} from './types';
 import {DefineArgs} from 'trans-render/lib/types';
 import { Declaration, CustomElementDeclaration, CustomElement, Package, ClassDeclaration, ClassField, ClassMethod } from 'node_modules/custom-elements-manifest/schema.d.js';
+import {mergeDeep} from 'trans-render/lib/mergeDeep.js';
 
 export class BeReformableAsWCInfoController extends BeReformableController implements BeReformableAsWCInfoActions{
     getTagNameToDeclaration({fetchResult}: this){
@@ -95,10 +96,17 @@ export const asWcInfo = {...controllerConfig} as DefineArgs<
     BeReformableProps & BeReformableAsWCInfoVirtualProps & BeDecoratedProps<BeReformableProps & BeReformableAsWCInfoVirtualProps, BeReformableActions & BeReformableAsWCInfoActions>, 
     BeReformableActions & BeReformableAsWCInfoActions
 >
+
 const ifWantsToBe = 'reformable-as-wc-info';
 const tagName = 'be-reformable-as-wc-info';
+mergeDeep(asWcInfo, {
+    config:{
+        tagName
+    }
+});
+
 const c = asWcInfo.config;
-c.tagName = tagName;
+//c.tagName = tagName;
 const pd = c.propDefaults!;
 pd.ifWantsToBe = ifWantsToBe;
 const upgrade = pd.upgrade!;
