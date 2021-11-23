@@ -88,13 +88,16 @@ const ifWantsToBe = 'reformable-as-wc-info';
 const tagName = 'be-reformable-as-wc-info';
 mergeDeep(asWcInfo, {
     config: {
-        tagName
+        tagName,
+        propDefaults: {
+            ifWantsToBe,
+        }
     }
 });
 const c = asWcInfo.config;
 //c.tagName = tagName;
 const pd = c.propDefaults;
-pd.ifWantsToBe = ifWantsToBe;
+//pd.ifWantsToBe = ifWantsToBe;
 const upgrade = pd.upgrade;
 pd.virtualProps = [
     ...pd.virtualProps, 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
