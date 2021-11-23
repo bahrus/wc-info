@@ -97,27 +97,17 @@ mergeDeep(asWcInfo, {
         actions: {
             getTagNameToDeclaration: {
                 ifAllOf: ['fetchResult']
+            },
+            getFields: {
+                ifAllOf: ['tagNameToDeclaration', 'tag']
             }
         }
+    },
+    complexPropDefaults: {
+        controller: BeReformableAsWCInfoController
     }
 });
-const c = asWcInfo.config;
-//c.tagName = tagName;
-const pd = c.propDefaults;
-//pd.ifWantsToBe = ifWantsToBe;
-const upgrade = pd.upgrade;
-// pd.virtualProps = [
-//     ...pd.virtualProps!, 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
-//     'fields', 'cssProps', 'cssParts', 'methods'
-// ];
-const a = c.actions;
-// a['getTagNameToDeclaration'] = {
-//     ifAllOf: ['fetchResult']
-// };
-a['getFields'] = {
-    ifAllOf: ['tag', 'tagNameToDeclaration']
-};
-asWcInfo.complexPropDefaults.controller = BeReformableAsWCInfoController;
+const upgrade = asWcInfo.config.propDefaults.upgrade;
 define(asWcInfo);
 export function countTypes(declaration) {
     let count = 0;
