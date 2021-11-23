@@ -1,5 +1,5 @@
 import {BeDecoratedProps, define} from 'be-decorated/be-decorated.js';
-import {BeReformableController, controllerConfig} from 'be-reformable/be-reformable.js';
+import {BeReformableController, controllerConfig, virtualProps, upgrade} from 'be-reformable/be-reformable.js';
 import {BeReformableActions, BeReformableProps} from 'be-reformable/types';
 import {BeReformableAsWCInfoActions, BeReformableAsWCInfoVirtualProps, EnhancedClassField} from './types';
 import {DefineArgs} from 'trans-render/lib/types';
@@ -105,7 +105,7 @@ mergeDeep(asWcInfo, {
         tagName,
         propDefaults:{
             ifWantsToBe,
-            virtualProps: [...asWcInfo.config.propDefaults?.virtualProps || [], 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
+            virtualProps: [...virtualProps || [], 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
             'fields', 'cssProps', 'cssParts', 'methods']
         },
         actions:{
@@ -121,9 +121,6 @@ mergeDeep(asWcInfo, {
         controller: BeReformableAsWCInfoController
     }
 });
-
-const upgrade = asWcInfo.config.propDefaults!.upgrade!;
-
 
 
 define(asWcInfo);

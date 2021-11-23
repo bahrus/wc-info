@@ -1,5 +1,5 @@
 import { define } from 'be-decorated/be-decorated.js';
-import { BeReformableController, controllerConfig } from 'be-reformable/be-reformable.js';
+import { BeReformableController, controllerConfig, virtualProps, upgrade } from 'be-reformable/be-reformable.js';
 import { mergeDeep } from 'trans-render/lib/mergeDeep.js';
 import { register } from 'be-hive/register.js';
 export class BeReformableAsWCInfoController extends BeReformableController {
@@ -92,7 +92,7 @@ mergeDeep(asWcInfo, {
         tagName,
         propDefaults: {
             ifWantsToBe,
-            virtualProps: [...asWcInfo.config.propDefaults?.virtualProps || [], 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
+            virtualProps: [...virtualProps || [], 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
                 'fields', 'cssProps', 'cssParts', 'methods']
         },
         actions: {
@@ -108,7 +108,6 @@ mergeDeep(asWcInfo, {
         controller: BeReformableAsWCInfoController
     }
 });
-const upgrade = asWcInfo.config.propDefaults.upgrade;
 define(asWcInfo);
 export function countTypes(declaration) {
     let count = 0;
