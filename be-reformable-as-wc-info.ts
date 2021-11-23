@@ -5,6 +5,7 @@ import {BeReformableAsWCInfoActions, BeReformableAsWCInfoVirtualProps, EnhancedC
 import {DefineArgs} from 'trans-render/lib/types';
 import { Declaration, CustomElementDeclaration, CustomElement, Package, ClassDeclaration, ClassField, ClassMethod } from 'node_modules/custom-elements-manifest/schema.d.js';
 import {mergeDeep} from 'trans-render/lib/mergeDeep.js';
+import {register} from 'be-hive/register.js';
 
 export class BeReformableAsWCInfoController extends BeReformableController implements BeReformableAsWCInfoActions{
     getTagNameToDeclaration({fetchResult}: this){
@@ -139,15 +140,4 @@ export function countTypes(declaration: Declaration){
     return count;
 }
 
-const beHive = document.querySelector('be-hive') as any;
-if(beHive !== null){
-    customElements.whenDefined(beHive.localName).then(() => {
-        beHive.register({
-            ifWantsToBe,
-            upgrade,
-            localName: tagName,
-        })
-    })
-}else{
-    document.head.appendChild(document.createElement(tagName));
-}
+register(ifWantsToBe, upgrade, tagName);

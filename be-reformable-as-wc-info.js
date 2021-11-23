@@ -1,6 +1,7 @@
 import { define } from 'be-decorated/be-decorated.js';
 import { BeReformableController, controllerConfig } from 'be-reformable/be-reformable.js';
 import { mergeDeep } from 'trans-render/lib/mergeDeep.js';
+import { register } from 'be-hive/register.js';
 export class BeReformableAsWCInfoController extends BeReformableController {
     getTagNameToDeclaration({ fetchResult }) {
         const tagNameToDeclaration = {};
@@ -123,16 +124,4 @@ export function countTypes(declaration) {
     }
     return count;
 }
-const beHive = document.querySelector('be-hive');
-if (beHive !== null) {
-    customElements.whenDefined(beHive.localName).then(() => {
-        beHive.register({
-            ifWantsToBe,
-            upgrade,
-            localName: tagName,
-        });
-    });
-}
-else {
-    document.head.appendChild(document.createElement(tagName));
-}
+register(ifWantsToBe, upgrade, tagName);
