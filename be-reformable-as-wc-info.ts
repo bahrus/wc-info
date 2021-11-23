@@ -106,6 +106,11 @@ mergeDeep(asWcInfo, {
             ifWantsToBe,
             virtualProps: [...asWcInfo.config.propDefaults?.virtualProps || [], 'tag', 'tagNameToDeclaration', 'declarations', 'customElement',
             'fields', 'cssProps', 'cssParts', 'methods']
+        },
+        actions:{
+            getTagNameToDeclaration:{
+                ifAllOf: ['fetchResult']
+            }
         }
     }
 });
@@ -120,9 +125,9 @@ const upgrade = pd.upgrade!;
 //     'fields', 'cssProps', 'cssParts', 'methods'
 // ];
 const a = c.actions!
-a['getTagNameToDeclaration'] = {
-    ifAllOf: ['fetchResult']
-};
+// a['getTagNameToDeclaration'] = {
+//     ifAllOf: ['fetchResult']
+// };
 a['getFields'] = {
     ifAllOf: ['tag', 'tagNameToDeclaration']
 };
