@@ -8,29 +8,24 @@
 
 **NB**  A great, more fully featured alternative to wc-info is the [api-viewer element](https://api-viewer-element.netlify.com/#api-viewer).
 
-wc-info provides a UI friendly view of the a [custom elements manifest file](https://github.com/open-wc/custom-elements-manifest).
+wc-info provides a UI friendly view of the [custom elements manifest file](https://github.com/open-wc/custom-elements-manifest).
 
 First, a reusable, high performing url can take as a query string parameter a link to a custom elements manifest file, and display it in HTML format:
 
 For example:  https://cf-sw.bahrus.workers.dev/?href=https://cdn.skypack.dev/xtal-editor/custom-elements.json
 
+Such links are iframeable.
 
-## Basic in-built styling
+To see the usage:   https://cf-sw.bahrus.workers.dev
 
-[Demo](https://codepen.io/bahrus/pen/LYjxKGo)
+To embed just the bare minimum html, allowing the consumer to style and/or adjust the output as needed:
+
+https://cf-sw.bahrus.workers.dev/?href=https://cdn.skypack.dev/xtal-editor/custom-elements.json&embedded=true
+
+Source code for worker:  https://github.com/bahrus/cf-sw
 
 
-
-A website  is available that allows you to pass in the package name via the query string, and it generates the syntax document:
-
-https://bahrus.github.io/wc-info/syntax.html?npmPackage=[npm package name]
-
-This assumes the package contains a "custom-elements.json" file in the root folder.
-
-For example:
-
-<a href="https://bahrus.github.io/wc-info/syntax.html?npmPackage=xtal-text-input-md">Syntax for xtal-text-input-md</a>
-
+<!--[Demo](https://codepen.io/bahrus/pen/LYjxKGo)-->
 
 
 ## Viewing Your Element (locally)
