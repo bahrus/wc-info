@@ -10,7 +10,9 @@
 
 wc-info provides a UI friendly view of the a [custom elements manifest file](https://github.com/open-wc/custom-elements-manifest).
 
+First, a reusable, high performing url can take as a query string parameter a link to a custom elements manifest file, and display it in HTML format:
 
+For example:  https://cf-sw.bahrus.workers.dev/?href=https://cdn.skypack.dev/xtal-editor/custom-elements.json
 
 
 ## Basic in-built styling

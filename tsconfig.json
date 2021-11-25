@@ -9,7 +9,6 @@
 		"watch": true
 	},
 	"files": [
-		"wc-info.ts",
-		"be-reformable-as-wc-info.ts"
+		"enhancements.ts"
 	]
 }
