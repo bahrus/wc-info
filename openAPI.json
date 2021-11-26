@@ -1,0 +1,55 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+        "title":"WC Info",
+        "version":"1.0"
+    },
+    "servers": [
+        {"url":"https://cf-sw.bahrus.workers.dev/"}
+    ],
+    "paths": {
+        "/": {
+            "description": "Reference View for Custom Element Manifest",
+            "get": {
+                "description": "Reference for Custom Element Manifest",
+                "parameters": [
+                    {
+                        "name": "href",
+                        "in": "query",
+                        "description": "Location of Custom Element Manifest file",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "stylesheet",
+                        "in": "query",
+                        "description": "Location of CSS File to include",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "embedded",
+                        "in": "query",
+                        "description": "If 'true', minimal html response provided without html/head/body tags",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/html":{}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
