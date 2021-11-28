@@ -45,8 +45,13 @@ table.narrow td{
 table.narrow .description-label{
     text-decoration: underline;
 }
-/* if-diff[lazy-delay]{
-    min-height:1000px;
-    display:block;
-} */
+@media (prefers-color-scheme: dark) {
+    body{
+        background-color: var(--dark-bg-color, #1d1f21);
+        color: var(--dark-fg-color, #f8f8f2);
+    }
+    tr:nth-child(2n) {
+        background-color: var(--even-row-bg-color, #2e2f31);
+    }
+}
 
