@@ -21,13 +21,13 @@ To see the usage:   https://cf-sw.bahrus.workers.dev
 OpenAPI spec:  https://unpkg.com/wc-info/openAPI.json
 
 
-To embed just the bare minimum html and apply custom, allowing the consumer to style and/or adjust the output as needed:
+To embed just the bare minimum html and apply customizations as needed:
 
 https://cf-sw.bahrus.workers.dev/?href=https://cdn.skypack.dev/@shoelace-style/shoelace/dist/custom-elements.json&embedded=true
 
 Source code for worker:  https://github.com/bahrus/cf-sw
 
-To embed this bare minimum html, one of the fastest ways to do this is with the k-fetch web component:
+To embed this bare minimum html in an existing parent html stream, one of the fastest ways to do this is with the k-fetch web component:
 
 ```html
 <k-fetch href="https://cf-sw.bahrus.workers.dev/?href=https://cdn.skypack.dev/@shoelace-style/shoelace/dist/custom-elements.json&embedded=true" as=html target=bra-ket-ui5><k-fetch>
@@ -35,7 +35,7 @@ To embed this bare minimum html, one of the fastest ways to do this is with the 
 
 Some web component libraries like ui-5 (and hopefully mwc (status is tbd)) provide support for providing more functionality over the bare-bones html elements this service provides.
 
-The bra-ket web component provides support for this scenario.  Display the initial output of the service based on out-of-the-box formatting browsers provide for table elements.  Then, once the dependencies of ui-5 are fully downloaded, only then does the initial output get transformed into the equivalent markup using ui-5 components.  The transition is almost unnoticeable in high performance scenarios, but makes the loading experience much better on slower devices / networks.
+The bra-ket web component provides support for this scenario.  Display the initial output of the service based on out-of-the-box formatting browsers provide for table elements.  Then, once the dependencies of ui-5 are fully downloaded, only then does the initial output get transformed (via xslt) into the equivalent markup using ui-5 components.  The transition is almost unnoticeable in high performance scenarios, but makes the loading experience much better on slower devices / networks.
 
 So now the markup looks as follows:
 
