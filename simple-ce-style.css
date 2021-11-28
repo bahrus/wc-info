@@ -13,6 +13,7 @@ table caption.title{
     text-align: left;
     font-size: 24px;
     font-weight: 400;
+    border-bottom-style: solid;
 }
 table{
     width: 100%;
