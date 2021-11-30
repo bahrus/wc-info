@@ -25,6 +25,8 @@ To embed just the bare minimum html and apply customizations as needed:
 
 https://cf-sw.bahrus.workers.dev/?href=https://cdn.skypack.dev/@shoelace-style/shoelace/dist/custom-elements.json&embedded=true
 
+Another parameter, "tags" can be used to filter the output, based on a comma delimited list of tags.
+
 Source code for worker:  https://github.com/bahrus/cf-sw
 
 To embed this bare minimum html in an existing parent html stream, one of the fastest ways to do this is with the k-fetch web component:
