@@ -1,3 +1,9 @@
+header{
+    position: absolute;
+    height: 50px;
+    top: 0px;
+    left: 0px;
+}
 
 .inherited-from{
     display: none;
@@ -24,12 +30,21 @@ table.details caption.title{
     font-size: 14px;
 }
 body{
-    padding-left: 15px;
-    padding-right: 15px;
-    max-width:1100px;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top: 50px;
+    
     display:block;
     margin: auto;
     display:block;
+    overflow: hidden;
+}
+main{
+    max-height: calc(100vh - 50px);
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width:1100px;
+    overflow: auto;
 }
 h1{
     text-align: center;
