@@ -21,6 +21,10 @@ table caption.title{
     font-weight: 400;
     border-bottom-style: solid;
 }
+table table caption.title{
+    font-size: 14px;
+    text-align: center;
+}
 table{
     width: 100%;
     margin-bottom:12px;
@@ -67,7 +71,7 @@ xtal-side-nav::part(close-btn){
 h1{
     text-align: center;
 }
-[data-len="0"]{
+/* [data-len="0"]{
     text-align: center;
 }
 .description-label{
@@ -78,7 +82,7 @@ table.narrow td{
 }
 table.narrow .description-label{
     text-decoration: underline;
-}
+} */
 @media (prefers-color-scheme: dark) {
     body{
         background-color: var(--dark-bg-color, #1d1f21);
@@ -103,5 +107,8 @@ table.narrow .description-label{
     th.reflects, td.reflects{
         display:none;
     }
+}
+th.parameters{
+    display:none;
 }
 
