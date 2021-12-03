@@ -93,3 +93,15 @@ table.narrow .description-label{
     
 }
 
+@media screen and (max-width: 900px) {
+    th.type, td.type{
+        display:none;
+    }
+    th.resolveInitializer, td.resolveInitializer{
+        display:none;
+    }
+    th.reflects, td.reflects{
+        display:none;
+    }
+}
+
