@@ -48,6 +48,24 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "ts",
+                        "in": "query",
+                        "description": "Timestamp.  Allow the server to cache the Manifest JSON file using this as a key",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tocXSLT",
+                        "in": "query",
+                        "description": "Path to XSLT file that generates links / table of contents",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
