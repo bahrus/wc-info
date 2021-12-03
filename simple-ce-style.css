@@ -87,5 +87,9 @@ table.narrow .description-label{
     tr:nth-child(2n) {
         background-color: var(--even-row-bg-color, #2e2f31);
     }
+    a{
+        color: var(--dark-link-color, rgb(29, 155, 240));
+    }
+    
 }
 
