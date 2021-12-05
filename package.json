@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@skypack/package-check": "0.2.2",
-    "xtal-test": "0.0.52",
+    "xtal-test": "0.0.54",
     "custom-elements-manifest": "1.0.0",
     "@custom-elements-manifest/analyzer": "0.5.7"
   },
