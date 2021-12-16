@@ -11,6 +11,7 @@ header.package-header {
     position: -webkit-sticky;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     height: 50px;
     top: 0px;
     left: 0px;
