@@ -26,6 +26,7 @@ main{
     padding-right: 15px;
     /* max-width:1100px; */
     overflow: auto;
+    z-index: -1;
 }
 
 h1.package{
