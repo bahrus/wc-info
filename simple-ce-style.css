@@ -12,14 +12,14 @@ header.package-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 50px;
+    height: 56px;
     top: 0px;
     left: 0px;
     width: 100%;
 }
 
 main{
-    max-height: calc(100vh - 50px);
+    max-height: calc(100vh - 56px);
     /* top:50px;
     position:absolute; */
     padding-left: 15px;
