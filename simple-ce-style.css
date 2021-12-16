@@ -1,5 +1,8 @@
 header.package-header {
-    position: absolute;
+    position: sticky;
+    position: -webkit-sticky;
+    display: flex;
+    flex-direction: row;
     height: 50px;
     top: 0px;
     left: 0px;
@@ -44,22 +47,22 @@ table.details caption.title{
 body{
     padding-left:0px;
     padding-right:0px;
-    padding-top: 50px;
-    
     display:block;
     margin: auto;
     display:block;
     overflow: hidden;
 }
-/* main{
+main{
     max-height: calc(100vh - 50px);
     padding-left: 15px;
     padding-right: 15px;
     /* max-width:1100px; */
     overflow: auto;
-} */
+}
 xtal-side-nav{
-    position: absolute;
+    /* position: sticky;
+    position: -webkit-sticky; */
+    top: 0px;
     /* height: 400px; */
     width:300px;
     overflow-y: auto;
@@ -73,8 +76,8 @@ xtal-side-nav::part(side-nav){
     display:none;
 } */
 xtal-side-nav::part(close-btn){
-    position:sticky;
-    position: -webkit-sticky;
+    position: sticky;
+    position: -webkit-sticky;    
     top:0px;
     width: 40px;
     right: 0px;
