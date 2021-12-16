@@ -12,7 +12,7 @@ wc-info provides some helper resources for a server-side html api that provides 
 
 First, a reusable, high performing url can take as a query string parameter a link to any custom elements manifest file, and display it in HTML format:
 
-For example:  https://cf-sw.bahrus.workers.dev/?href=https://cdn.skypack.dev/@shoelace-style/shoelace/dist/custom-elements.json
+For example:  https://cf-sw.bahrus.workers.dev/?href=https://cdn.skypack.dev/@shoelace-style/shoelace/dist/custom-elements.json&ts=1
 
 Such links are iframeable.
 
