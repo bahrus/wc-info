@@ -20,8 +20,8 @@ header.package-header {
 
 main{
     max-height: calc(100vh - 50px);
-    top:50px;
-    position:absolute;
+    /* top:50px;
+    position:absolute; */
     padding-left: 15px;
     padding-right: 15px;
     /* max-width:1100px; */
