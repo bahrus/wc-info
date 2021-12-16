@@ -1,3 +1,11 @@
+body{
+    padding-left:0px;
+    padding-right:0px;
+    display:block;
+    margin: auto;
+    display:block;
+    overflow: hidden;
+}
 header.package-header {
     position: sticky;
     position: -webkit-sticky;
@@ -7,6 +15,16 @@ header.package-header {
     top: 0px;
     left: 0px;
     width: 100%;
+}
+
+main{
+    max-height: calc(100vh - 50px);
+    top:50px;
+    position:absolute;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* max-width:1100px; */
+    overflow: auto;
 }
 
 h1.package{
@@ -44,21 +62,8 @@ table{
 table.details caption.title{
     font-size: 14px;
 }
-body{
-    padding-left:0px;
-    padding-right:0px;
-    display:block;
-    margin: auto;
-    display:block;
-    overflow: hidden;
-}
-main{
-    max-height: calc(100vh - 50px);
-    padding-left: 15px;
-    padding-right: 15px;
-    /* max-width:1100px; */
-    overflow: auto;
-}
+
+
 xtal-side-nav{
     /* position: sticky;
     position: -webkit-sticky; */
