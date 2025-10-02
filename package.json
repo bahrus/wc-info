@@ -20,17 +20,13 @@
   ],
   "types": "types.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "node node_modules/xtal-test/serve.js",
-    "package-check": "package-check",
-    "doc": "custom-elements-manifest analyze"
+    "update": "ncu -u && npm install"
   },
   "dependencies": {
-    
+    "typescript-json-schema": "0.65.1"
   },
   "devDependencies": {
-    "custom-elements-manifest": "1.0.0",
-    "@custom-elements-manifest/analyzer": "0.5.7"
+    "custom-elements-manifest": "2.1.0"
   },
   "repository": {
     "type": "git",

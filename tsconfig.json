@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module":"ESNext",
+		"moduleResolution": "node",
+		"sourceMap": false,
+		"experimentalDecorators": false,
+		"newLine": "LF",
+		"strict": true,
+	},
+	"files":[
+		"doc.ts",
+
+	],
+	"exclude":[
+		"node_modules"
+	]
+
+}
