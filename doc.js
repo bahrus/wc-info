@@ -17,6 +17,7 @@ export class CustomElementManifestGenerator {
         // optionally pass ts compiler options
         const compilerOptions = {
             strictNullChecks: true,
+            lib: ['ESNext', 'DOM'],
         };
         // optionally pass a base path
         const basePath = "./";

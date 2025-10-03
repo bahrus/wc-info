@@ -20,6 +20,7 @@ export class CustomElementManifestGenerator{
         // optionally pass ts compiler options
         const compilerOptions: TJS.CompilerOptions = {
             strictNullChecks: true,
+            lib: ['ESNext', 'DOM'],
         };
 
         // optionally pass a base path
