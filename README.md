@@ -6,6 +6,12 @@
 
 # wc-info
 
+wc-info provides a utility library for generating a custom element manifest, specifically tailored for HTML-based declarative custom elements that build on xtal-element.
+
+## Examples
+
+- [scratch-box](https://github.com/bahrus/scratch-box/blob/baseline/doc.mjs)
+
 wc-info provides some helper resources for a server-side html api that provides UI-friendly views of the [custom elements manifest file](https://github.com/open-wc/custom-elements-manifest). The web components it provides are currently deprecated.
 
 **NB**  A great, more fully featured alternative to wc-info is the [api-viewer element](https://api-viewer-element.netlify.com/#api-viewer).
