@@ -8,9 +8,39 @@
 
 wc-info provides a utility library for generating a custom element manifest, specifically tailored for HTML-based declarative custom elements that build on xtal-element.
 
+The three artifacts needed to generate the file:
+
+- doc.mjs -- a three line canned script file that points to the types.d.ts (typically) file that defines the properties with descriptions
+- A types.d.ts file that defines the "abstract class" and "package", for example, and points to the ".mjs" file that defines the definition of the html generator:
+
+```TypeScript
+import {SimpleWCInfo} from './ts-refs/wc-info/SimpleWCInfo';
+
+export interface EndUserProps{
+    ...
+}
+
+...
+export abstract class ScratchBoxInfo implements SimpleWCInfo {
+    src: './root.mjs';
+    tagName: 'scratch-box';
+    props: EndUserProps;
+
+}
+
+export type Package = [ScratchBoxInfo]
+```
+
+- A *.mjs file that is used to generate the *.html distributable (the generator is not maintained in this package).  The mjs file contains more information about the properties that are used in the generation of the manifest file, such as the corresponding attribute name (if applicable), read only status, etc. 
+
+
 ## Examples
 
-- [scratch-box](https://github.com/bahrus/scratch-box/blob/baseline/doc.mjs)
+###  [scratch-box](https://github.com/bahrus/scratch-box)]
+
+- [doc.mjs](https://github.com/bahrus/scratch-box/blob/baseline/doc.mjs)
+- [types](https://github.com/bahrus/scratch-box/blob/baseline/types.d.ts)
+- [root.mjs](https://github.com/bahrus/scratch-box/blob/baseline/root.mjs)
 
 wc-info provides some helper resources for a server-side html api that provides UI-friendly views of the [custom elements manifest file](https://github.com/open-wc/custom-elements-manifest). The web components it provides are currently deprecated.
 
