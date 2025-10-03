@@ -5,10 +5,7 @@
   "main": "wc-info.js",
   "module": "wc-info.js",
   "exports": {
-    ".": "./wc-info.js",
-    "./wc-info.js": "./wc-info.js",
-    "./be-reformable-as-wc-info.js": "./be-reformable-as-wc-info.js",
-    "./enhancements.js": "./enhancements.js"
+    "./doc.js": "./doc.js"
   },
   "keywords": [
     "web-components",
