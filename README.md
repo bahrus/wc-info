@@ -51,7 +51,7 @@ export type Package = [ScratchBoxInfo]
 - [types](https://github.com/bahrus/scratch-box/blob/baseline/types.d.ts)
 - [root.mjs](https://github.com/bahrus/scratch-box/blob/baseline/root.mjs)
 - [custom-elements.json](https://cdn.jsdelivr.net/npm/scratch-box@0.0.10/custom-elements.json)
-- [Documentation](https://wc-info.bahrus.workers.dev/?href=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fscratch-box%400.0.10%2Fcustom-elements.json&stylesheet=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fwc-info%2Fsimple-ce-style.css&embedded=false&tags=&ts=2025-10-05T22%3A21%3A38.762Z&intro=scratch-box+web+component)
+- [Documentation](https://wc-info.bahrus.workers.dev/?href=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fscratch-box%400.0.11%2Fcustom-elements.json&stylesheet=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fwc-info%2Fsimple-ce-style.css&embedded=false&tags=&ts=2025-10-05T22%3A21%3A38.762Z&intro=scratch-box+web+component)
 
 
 
