@@ -10,7 +10,7 @@ export interface SchemaDefinition{
 export interface SchemaProperty{
     $ref?: string;
     type?: 'string' | 'number' | 'boolean' | 'object' | 'array' | 'null' | 'any';
-    constant: string;
+    const: string;
     enum?: string[];
     description?: string;
     items?: SchemaItem[];

@@ -50,7 +50,10 @@ export type Package = [ScratchBoxInfo]
 - [doc.mjs](https://github.com/bahrus/scratch-box/blob/baseline/doc.mjs)
 - [types](https://github.com/bahrus/scratch-box/blob/baseline/types.d.ts)
 - [root.mjs](https://github.com/bahrus/scratch-box/blob/baseline/root.mjs)
-- [Documentation]
+- [custom-elements.json](https://cdn.jsdelivr.net/npm/scratch-box@0.0.10/custom-elements.json)
+- [Documentation](https://wc-info.bahrus.workers.dev/?href=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fscratch-box%400.0.10%2Fcustom-elements.json&stylesheet=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fwc-info%2Fsimple-ce-style.css&embedded=false&tags=&ts=2025-10-05T22%3A21%3A38.762Z&intro=scratch-box+web+component)
+
+
 
 wc-info provides some helper resources for a server-side html api that provides UI-friendly views of the [custom elements manifest file](https://github.com/open-wc/custom-elements-manifest). The web components it provides are currently deprecated.
 

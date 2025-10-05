@@ -39,7 +39,6 @@ export class CustomElementManifestGenerator{
         const modules: Module[] = [];
         const pkg: Package = {
             schemaVersion: '2.1.0',
-            
             readme: '',
             modules,
         }
@@ -64,7 +63,7 @@ export class CustomElementManifestGenerator{
             const {tagName, src} = properties;
             if(tagName === undefined) continue;
             //const enm = tagName.enum;
-            const name = tagName.constant;
+            const name = tagName.const;
             let path = '';
             if(src !== undefined){
                 const srcEnm = src.enum;
@@ -76,6 +75,7 @@ export class CustomElementManifestGenerator{
                 kind: 'javascript-module',
                 path,
                 declarations: declarations as Declaration[],
+                
             };
             this.generateDeclarations(def, name, properties, declarations);
             modules.push(module as any as Module);
