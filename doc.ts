@@ -38,7 +38,8 @@ export class CustomElementManifestGenerator{
     generatePackage(){
         const modules: Module[] = [];
         const pkg: Package = {
-            schemaVersion: '1.0.0',
+            schemaVersion: '2.1.0',
+            
             readme: '',
             modules,
         }
