@@ -28,7 +28,7 @@ export class CustomElementManifestGenerator {
     generatePackage() {
         const modules = [];
         const pkg = {
-            schemaVersion: '1.0.0',
+            schemaVersion: '2.1.0',
             readme: '',
             modules,
         };
@@ -56,7 +56,7 @@ export class CustomElementManifestGenerator {
             if (tagName === undefined)
                 continue;
             //const enm = tagName.enum;
-            const name = tagName.constant;
+            const name = tagName.const;
             let path = '';
             if (src !== undefined) {
                 const srcEnm = src.enum;
