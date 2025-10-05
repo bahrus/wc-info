@@ -6,7 +6,16 @@
 
 # wc-info
 
-wc-info provides a utility library for generating a custom element manifest, specifically tailored for HTML-based declarative custom elements that build on xtal-element.
+wc-info provides a utility library for generating a Custom Element Manifest (CEM), specifically tailored for HTML-based declarative custom elements that build on xtal-element.
+
+## Usefulness of Custom Element Manifest
+
+Just some existing tooling that builds on top of Custom Element Manifests:
+
+- [WC Language Server](https://github.com/wc-toolkit/wc-language-server)
+- [CEM Tools](https://github.com/break-stuff/cem-tools)
+- [Improved Debugging Support via Chrome Extension](https://chromewebstore.google.com/detail/web-component-devtools/gdniinfdlmmmjpnhgnkmfpffipenjljo?pli=1)
+- [Documentation Generation](https://wc-info.bahrus.workers.dev/)
 
 The three artifacts needed to generate the file:
 
