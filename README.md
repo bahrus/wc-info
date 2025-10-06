@@ -45,7 +45,7 @@ export type Package = [ScratchBoxInfo]
 
 ## Examples
 
-###  [scratch-box](https://github.com/bahrus/scratch-box)]
+###  [scratch-box](https://github.com/bahrus/scratch-box)
 
 - [doc.mjs](https://github.com/bahrus/scratch-box/blob/baseline/doc.mjs)
 - [types](https://github.com/bahrus/scratch-box/blob/baseline/types.d.ts)
