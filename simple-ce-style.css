@@ -28,7 +28,7 @@ h1.intro {
 }
 
 #hamburger::after {
-    content: '\&#9776;';
+    content: '\9776;';
 }
 
 
