@@ -31,6 +31,12 @@ h1.intro {
     content: '☰';
 }
 
+#navigation-popup{
+    position: absolute;
+    inset-block: anchor(top);
+    inset-inline: anchor(left);
+}
+
 
 
 main{
