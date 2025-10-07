@@ -184,8 +184,8 @@ export class CustomElementManifestGenerator {
             const properties = slots.properties;
             for (const propKey in properties) {
                 const prop = properties[propKey];
-                const enm = prop.enum;
-                const description = this.getStringVal(enm);
+                //const enm = prop.enum;
+                const description = prop.const;
                 const slot = {
                     name: camelToLisp(propKey),
                     description
