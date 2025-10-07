@@ -11,7 +11,7 @@ header.package-header {
     position: -webkit-sticky;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 56px;
     top: 0px;
     left: 0px;
@@ -66,30 +66,7 @@ table.details caption.title{
 }
 
 
-xtal-side-nav{
-    /* position: sticky;
-    position: -webkit-sticky; */
-    top: 0px;
-    /* height: 400px; */
-    width:300px;
-    overflow-y: auto;
-}
-xtal-side-nav::part(side-nav){
-    height: 400px;
-    
-    padding-top:0px;
-}
-/* xtal-side-nav a{
-    display:none;
-} */
-xtal-side-nav::part(close-btn){
-    position: sticky;
-    position: -webkit-sticky;    
-    top:0px;
-    width: 40px;
-    right: 0px;
-    margin-left:auto;
-}
+
 
 h1{
     text-align: center;
