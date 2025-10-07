@@ -18,6 +18,21 @@ header.package-header {
     width: 100%;
 }
 
+h1.intro {
+    margin-block-start: 0px;
+    margin-left: 5px;
+}
+
+#hamburger {
+    height: 30px;
+}
+
+#hamburger::after {
+    content: '&#9776;';
+}
+
+
+
 main{
     max-height: calc(100vh - 56px);
     /* top:50px;
