@@ -32,10 +32,11 @@ h1.intro {
 }
 
 #navigation-popup{
-    position: absolute;
-    inset-block: anchor(bottom);
+    position: fixed;
+    inset-block-start: anchor(end);
+    /* top: anchor(bottom); */
     inset-inline: anchor(right);
-    width: 600px;
+    width: fit-content;
 }
 
 
