@@ -126,8 +126,10 @@ export class CustomElementManifestGenerator{
                             kind: 'field',
                             name: prop,
                             description,
-                        
                         };
+                        if(type !== undefined){
+                            member.type = {text: type};
+                        }
                         members.push(member);
                         if(!attribExclusions.includes(prop)){
                             const attrib: Attribute = {
