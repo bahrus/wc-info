@@ -34,9 +34,8 @@ h1.intro {
 #navigation-popup{
     position: fixed;
     inset-block-start: anchor(end);
-    /* top: anchor(bottom); */
     inset-inline: anchor(right);
-    width: fit-content;
+    width: calc(50vw);
 }
 
 
