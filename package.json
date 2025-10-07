@@ -17,13 +17,21 @@
   ],
   "types": "types.d.ts",
   "scripts": {
-    "update": "ncu -u && npm install"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node ./node_modules/spa-ssi/serve.js",
+    "build-manifest": "node doc.mjs > custom-elements.json",
+    "update": "ncu -u && npm install",
+    "build-html": "powershell -command \"node build.mjs | out-file  -encoding  oem root.html\"",
+    "build": "npm run build-html & npm run build-manifest",
+    "safari": "npx playwright wk http://localhost:8000"
   },
   "dependencies": {
     "typescript-json-schema": "0.65.1"
   },
   "devDependencies": {
-    "custom-elements-manifest": "2.1.0"
+    "custom-elements-manifest": "2.1.0",
+    "spa-ssi": "0.0.23",
+    "@playwright/test": "1.56.0"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,90 @@
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="ts" content="2025-10-07T08:07:35.102Z">
+      <title>WC Info</title>
+      <link rel="stylesheet" href="/simple-ce-style.css">
+      <!-- <style>
+        template[be-lazy], template[is-lazy] {
+          height:  500px;
+          display: block;
+        }
+      </style> -->
+    </head>
+    <body>
+    <header class="package-header" part="package-header" itemscope itemtype="https://cdn.jsdelivr.net/npm/custom-elements-manifest@1.0.0/schema.json#definitions/Reference">
+      <button id=hamburger popovertarget=navigation-popup></button>
+      <dialog popover=auto id=navigation-popup>
+        <nav id=nav onclick=parentElement.hidePopover()></nav>
+      </dialog>  
+    <h1 itemprop="intro" class="intro" part="package-title">scratch-box custom element</h1>
+      
+    </header>
+    <main>
+    
+    <section itemscope id="scratch-box">
+        <hgroup>
+          <h1 itemprop="tagName" >scratch-box</h1>
+          <h2 itemprop="description"></h2>
+          <h3 itemprop="summary"></h3>
+        </hgroup>
+        
+  <table  part="table table-properties" class=properties>
+    <caption class="title">Properties</caption>
+    <thead >
+      <tr>
+    <th part="properties-name-header" class="name">name</th><th part="properties-description-header" class="description">description</th><th part="properties-type-header" class="type">type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr itemscope itemtype="https://cdn.jsdelivr.net/npm/custom-elements-manifest@1.0.0/schema.json#definitions/ClassField"><td  itemprop="name" part="cell properties-name-cell" class="name">value</td><td  itemprop="description" part="cell properties-description-cell" class="description">The value of the checkbox, that gets submitted with the form.</td><td  itemprop="type" part="cell properties-type-cell" class="type">boolean</td></tr><tr itemscope itemtype="https://cdn.jsdelivr.net/npm/custom-elements-manifest@1.0.0/schema.json#definitions/ClassField"><td  itemprop="name" part="cell properties-name-cell" class="name">name</td><td  itemprop="description" part="cell properties-description-cell" class="description">Name of the checkbox, that gets submitted with the form.</td><td  itemprop="type" part="cell properties-type-cell" class="type">string</td></tr>
+    </tbody>
+  </table>
+        
+  <table  part="table table-attributes" class=attributes>
+    <caption class="title">Attributes</caption>
+    <thead >
+      <tr>
+    <th part="attributes-name-header" class="name">name</th><th part="attributes-description-header" class="description">description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr itemscope itemtype="https://cdn.jsdelivr.net/npm/custom-elements-manifest@1.0.0/schema.json#definitions/Attribute"><td  itemprop="name" part="cell attributes-name-cell" class="name">value</td><td  itemprop="description" part="cell attributes-description-cell" class="description">The value of the checkbox, that gets submitted with the form.</td></tr><tr itemscope itemtype="https://cdn.jsdelivr.net/npm/custom-elements-manifest@1.0.0/schema.json#definitions/Attribute"><td  itemprop="name" part="cell attributes-name-cell" class="name">name</td><td  itemprop="description" part="cell attributes-description-cell" class="description">Name of the checkbox, that gets submitted with the form.</td></tr>
+    </tbody>
+  </table>
+        
+        
+        
+  <table  part="table table-slots" class=slots>
+    <caption class="title">Slots</caption>
+    <thead >
+      <tr>
+    <th part="slots-name-header" class="name">name</th><th part="slots-description-header" class="description">description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr itemscope itemtype="https://cdn.jsdelivr.net/npm/custom-elements-manifest@1.0.0/schema.json#definitions/Slot"><td  itemprop="name" part="cell slots-name-cell" class="name">label-txt</td><td  itemprop="description" part="cell slots-description-cell" class="description">The label to show with the checkbox.</td></tr>
+    </tbody>
+  </table>
+        
+        
+    </section>
+  
+
+    </main>
+    
+    <!-- <script type=module crossorigin=anonymous>
+        import 'https://esm.sh/be-lazy@0.0.33/emc.js';
+    </script> -->
+    <toc-ky id=tocky></toc-ky>
+    <script type=module>
+        import 'https://esm.sh/toc-ky@0.0.3/toc-ky.js';
+        nav.appendChild(tocky);
+    </script>
+    </body>
+    </html>
