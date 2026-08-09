@@ -26,12 +26,12 @@
     "safari": "npx playwright wk http://localhost:8000"
   },
   "dependencies": {
-    "typescript-json-schema": "0.65.1"
+    "typescript-json-schema": "0.68.0"
   },
   "devDependencies": {
     "custom-elements-manifest": "2.1.0",
-    "spa-ssi": "0.0.23",
-    "@playwright/test": "1.56.0"
+    "spa-ssi": "0.0.27",
+    "@playwright/test": "1.62.1"
   },
   "repository": {
     "type": "git",
