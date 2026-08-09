@@ -23,7 +23,7 @@ The three artifacts needed to generate the file:
 - A types.d.ts file that defines the "abstract class" and "package", for example, and points to the ".mjs" file that defines the definition of the html generator:
 
 ```TypeScript
-import {SimpleWCInfo} from './ts-refs/wc-info/SimpleWCInfo';
+import {SimpleWCInfo} from './types/wc-info/SimpleWCInfo';
 
 export interface EndUserProps{
     ...
@@ -101,11 +101,18 @@ So now the markup looks as follows:
 <!--[Demo](https://codepen.io/bahrus/pen/LYjxKGo)-->
 
 
-## Viewing Your Element (locally)
 
-```
-$ npm install
-$ npm run serve
-```
+## Viewing Demos Locally
+
+1. Install git
+2. Fork/clone this repo
+3. Install node.js
+4. Open command window to folder where you cloned this repo
+5. > git submodule add https://github.com/bahrus/types.git types
+6. > git submodule update --init --recursive
+7. > npm install
+8. > npm run serve
+9. Open http://localhost:8000/ in a modern browser
+
 
 
